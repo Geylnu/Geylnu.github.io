@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="脚本是啥？生活中的脚本“脚本”一词来源于演艺界，指拍摄戏剧、电影所依据的底本  公馆一室内王妈：（小心翼翼地）小姐，您还是得注意身子，就吃点东西吧。鸡小姐：（把碗砸在地上）不吃，我就是不吃。（王妈下）  事先剧组写好脚本，演出时依据脚本内容，设置舞台，演员按照剧本说出台词，做出动作，还有灯光道具等等。 当然，脚本也并不局限于此。生活中也有许多脚本，领导上台的演讲，什么时候声音大一点，小一点，表情是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="试试脚本">
+<meta property="og:url" content="http://yoursite.com/2018/03/25/%E8%AF%95%E8%AF%95%E8%84%9A%E6%9C%AC/index.html">
+<meta property="og:site_name" content="Hello!">
+<meta property="og:description" content="脚本是啥？生活中的脚本“脚本”一词来源于演艺界，指拍摄戏剧、电影所依据的底本  公馆一室内王妈：（小心翼翼地）小姐，您还是得注意身子，就吃点东西吧。鸡小姐：（把碗砸在地上）不吃，我就是不吃。（王妈下）  事先剧组写好脚本，演出时依据脚本内容，设置舞台，演员按照剧本说出台词，做出动作，还有灯光道具等等。 当然，脚本也并不局限于此。生活中也有许多脚本，领导上台的演讲，什么时候声音大一点，小一点，表情是">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-03-25T16:43:09.000Z">
+<meta property="article:modified_time" content="2021-05-31T16:27:02.852Z">
+<meta property="article:author" content="Geylnu">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="javaScript">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2018/03/25/%E8%AF%95%E8%AF%95%E8%84%9A%E6%9C%AC/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>试试脚本 | Hello!</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hello!</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/25/%E8%AF%95%E8%AF%95%E8%84%9A%E6%9C%AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+      <meta itemprop="description" content="记录我的前端学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello!">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          试试脚本
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-03-25 16:43:09" itemprop="dateCreated datePublished" datetime="2018-03-25T16:43:09+00:00">2018-03-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-31 16:27:02" itemprop="dateModified" datetime="2021-05-31T16:27:02+00:00">2021-05-31</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="脚本是啥？"><a href="#脚本是啥？" class="headerlink" title="脚本是啥？"></a>脚本是啥？</h1><h2 id="生活中的脚本"><a href="#生活中的脚本" class="headerlink" title="生活中的脚本"></a>生活中的脚本</h2><p>“脚本”一词来源于演艺界，指拍摄戏剧、电影所依据的底本</p>
+<blockquote>
+<p>公馆一室内<br>王妈：（小心翼翼地）小姐，您还是得注意身子，就吃点东西吧。<br>鸡小姐：（把碗砸在地上）不吃，我就是不吃。<br>（王妈下）</p>
+</blockquote>
+<p>事先剧组写好脚本，演出时依据脚本内容，设置舞台，演员按照剧本说出台词，做出动作，还有灯光道具等等。</p>
+<p>当然，脚本也并不局限于此。<br>生活中也有许多脚本，领导上台的演讲，什么时候声音大一点，小一点，表情是怎么样的；老师备课，准备预计讲什么内容，什么时候一些提出小问题，答错了怎么引导学生思考，什么时候分享小故事，什么时候刺激学生，提高学生注意……</p>
+<p>简而言之，其实就是根据写好的计划，让对象做指定的动作，一切都在把控之中。</p>
+<h2 id="计算机中的脚本"><a href="#计算机中的脚本" class="headerlink" title="计算机中的脚本"></a>计算机中的脚本</h2><p>计算机是个很复杂的东西，为了让人类来操控它，有最基础的处理器指令集，处理器接受到二进制的机器码，执行指定动作，然而机器码的可读性很差，人类最易理解的是自然语言，汇编就在此产生了，给这些机器码加上了名字，随着计算机能力的提高，能做的越来越多，有了更多的指令，做更多的事，汇编的代码越来越多，但是大量汇编代码在一起，是及其难懂的，为了更好的进行开发并更好的让人类理解，高级语言出现了，也就是我们目前的接触的程序语言。</p>
+<p>高级语言的确让开发更简单容易了，但是高级语言始终需要转换成机器码，编译、链接，直到运行，需要大量的时间，这种语言被称为<strong>编译型语言</strong>，为了解决这个问题（其实还有更多原因，比如跨平台问题），<strong>解释性语言</strong>出现了，解释型语言并不把整个项目进行全部编译成机器码，而是以行为单位，逐条编译运行，<strong>脚本语言</strong>也就出现了，只需输入可读的文字命令，就能立即执行动作，所输即所得。</p>
+<p>值得注意的是，解释型，编译型，并不是个绝对的概念，解释性语言也并不等于脚本，实际情况中有很多混合的地方，比如java，首先源代码经过编译变成跨平台的字节码（中间码），然后字节码交由java虚拟机进行解析，整个过程既有编译的地方，又有解释的地方。许多脚本语言也可以经过整体编译后再执行，所以这之间的界限并不明确。</p>
+<h1 id="自己写一个简单脚本"><a href="#自己写一个简单脚本" class="headerlink" title="自己写一个简单脚本"></a>自己写一个简单脚本</h1><p><strong>默认Linux系统</strong><br>目标：自动根据给出的文件名生成目录，并在其下生成index.html及相关js,css文件夹及文件</p>
+<pre><code> ├── css
+ │   └── style.css
+ ├── index.html
+ └── js
+     └── main.js
+</code></pre>
+<h2 id="bash脚本"><a href="#bash脚本" class="headerlink" title="bash脚本"></a>bash脚本</h2><p>bash是Unix操作系统的纯命令的人机交互界面，也是控制Unix系统的脚本语言，可以通过编写bash脚本来自动控制操作系统。</p>
+<p>bash脚本住主要由日常使用的命令组成，很方便<br>新建一个文件，输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ -d <span class="variable">$1</span> ]; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&#x27;error: dir exists&#x27;</span></span><br><span class="line">  <span class="built_in">exit</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  mkdir <span class="variable">$1</span></span><br><span class="line">  <span class="built_in">cd</span> <span class="variable">$1</span></span><br><span class="line">  mkdir css js</span><br><span class="line">  touch index.html css/style.css js/main.js</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&#x27;success&#x27;</span></span><br><span class="line">  <span class="built_in">exit</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<p>保存退出<br>添加执行权限：<code>chmod +x 文件名</code><br>sh ./文件名 搞定</p>
+<h2 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs"></a>nodejs</h2><p>能在服务器端运行的JavaScript的运行环境<br>同样新建</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> dirName =process.argv[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(fs.existsSync(<span class="string">&quot;./&quot;</span>+dirName))&#123;</span><br><span class="line">    process.exit(<span class="number">1</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    fs.mkdirSync(<span class="string">&quot;./&quot;</span>+dirName)</span><br><span class="line">    process.chdir(<span class="string">&quot;./&quot;</span>+dirName)</span><br><span class="line">    fs.mkdirSync(<span class="string">&#x27;css&#x27;</span>)</span><br><span class="line">    fs.mkdirSync(<span class="string">&#x27;js&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    fs.writeFileSync(<span class="string">&quot;./index.html&quot;</span>,<span class="string">&quot;&quot;</span>)</span><br><span class="line">    fs.writeFileSync(<span class="string">&quot;css/style.css&quot;</span>,<span class="string">&quot;&quot;</span>)</span><br><span class="line">    fs.writeFileSync(<span class="string">&quot;./js/main.js&quot;</span>,<span class="string">&quot;&quot;</span>)</span><br><span class="line">    process.exit(<span class="number">0</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同样保存退出，添加执行权限</p>
+<p>使用node.js运行它</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ node ./文件名</span><br></pre></td></tr></table></figure>
+<p>不想每次打开都输入<code>node</code>?<br>添加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env node</span></span><br></pre></td></tr></table></figure>
+<p>这样就指定使用了node运行，实际上不指定，使用的是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br></pre></td></tr></table></figure>
+
+<p>也就是bash解释器（吧？）。</p>
+<h2 id="给自己写的脚本添PATH"><a href="#给自己写的脚本添PATH" class="headerlink" title="给自己写的脚本添PATH"></a>给自己写的脚本添PATH</h2><p>写了脚本执行却总需要加上路径？<br>添加进PATH就可以解决</p>
+<ol>
+<li><p>打开~/.bashrc</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~./bashrc</span><br></pre></td></tr></table></figure></li>
+<li><p>找个喜欢的位置输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="string">&quot;脚本所在的绝对路径:<span class="variable">$PATH</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<p> 保存退出</p>
+</li>
+<li><p>应用修改</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~./bashrc</span><br></pre></td></tr></table></figure>
+<p> ok,现在就可以在任何地方执行脚本啦！</p>
+<p> 如果要查看你目前的PATH路径</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+<p> 看看我的</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo $PATH</span><br><span class="line">&#x2F;home&#x2F;geylnu&#x2F;bin:&#x2F;home&#x2F;geylnu&#x2F;.local&#x2F;bin:&#x2F;home&#x2F;geylnu&#x2F;local:&#x2F;usr&#x2F;local&#x2F;sbin:&#x2F;usr&#x2F;local&#x2F;bin:&#x2F;usr&#x2F;sbin:&#x2F;usr&#x2F;bin:&#x2F;sbin:&#x2F;bin:&#x2F;usr&#x2F;games:&#x2F;usr&#x2F;local&#x2F;games</span><br></pre></td></tr></table></figure>
+<p>匹配命令是从PATH路径<strong>从前向后找</strong>，优先是使用前面的可执行程序。<br>可以使用<code>type -a 命令</code>，查询命令匹配的选项，使用<code>which 命令</code>，查看要最终执行的是哪一个。</p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/javaScript/" rel="tag"># javaScript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/03/22/%E4%BD%BF%E7%94%A8Hexo-Github-Pages%E7%BB%99%E8%87%AA%E5%B7%B1%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/" rel="prev" title="使用Hexo+Github Pages给自己搭建一个博客">
+      <i class="fa fa-chevron-left"></i> 使用Hexo+Github Pages给自己搭建一个博客
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/03/30/http%E5%85%A5%E9%97%A8/" rel="next" title="http入门">
+      http入门 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC%E6%98%AF%E5%95%A5%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">脚本是啥？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%B4%BB%E4%B8%AD%E7%9A%84%E8%84%9A%E6%9C%AC"><span class="nav-number">1.1.</span> <span class="nav-text">生活中的脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E8%84%9A%E6%9C%AC"><span class="nav-number">1.2.</span> <span class="nav-text">计算机中的脚本</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%B7%B1%E5%86%99%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E8%84%9A%E6%9C%AC"><span class="nav-number">2.</span> <span class="nav-text">自己写一个简单脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bash%E8%84%9A%E6%9C%AC"><span class="nav-number">2.1.</span> <span class="nav-text">bash脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nodejs"><span class="nav-number">2.2.</span> <span class="nav-text">nodejs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%99%E8%87%AA%E5%B7%B1%E5%86%99%E7%9A%84%E8%84%9A%E6%9C%AC%E6%B7%BBPATH"><span class="nav-number">2.3.</span> <span class="nav-text">给自己写的脚本添PATH</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Geylnu</p>
+  <div class="site-description" itemprop="description">记录我的前端学习</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geylnu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

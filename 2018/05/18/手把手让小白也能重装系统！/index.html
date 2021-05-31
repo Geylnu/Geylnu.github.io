@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="写本文得目的主要是为了帮助我的笨蛋马q儿子，面向0基础的小白，看完这篇文章你也就可以为自己重装系统，不花一份钱啦！ 简单装机注意，名为简单装机的原因是一以下所有的步骤都是理想状态下的，由于系统、各厂商bios不同，历史各种版本迭代原因，带来了许多兼容性问题，本应该丝滑流畅的安装过程总有可能遇到难以解决的兼容性问题，我可以尽可能的把我所遇到的问题及解决办法写下来，但不可避免会让文章变得冗长，晦涩，因">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手把手让小白也能重装系统！">
+<meta property="og:url" content="http://yoursite.com/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/index.html">
+<meta property="og:site_name" content="Hello!">
+<meta property="og:description" content="写本文得目的主要是为了帮助我的笨蛋马q儿子，面向0基础的小白，看完这篇文章你也就可以为自己重装系统，不花一份钱啦！ 简单装机注意，名为简单装机的原因是一以下所有的步骤都是理想状态下的，由于系统、各厂商bios不同，历史各种版本迭代原因，带来了许多兼容性问题，本应该丝滑流畅的安装过程总有可能遇到难以解决的兼容性问题，我可以尽可能的把我所遇到的问题及解决办法写下来，但不可避免会让文章变得冗长，晦涩，因">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/1.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/2.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/3.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/4.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/5.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/6.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/7.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/8.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/9.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/10.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/11.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/12.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/13.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/14.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/15.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/16.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/17.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/18.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/19.png">
+<meta property="article:published_time" content="2018-05-18T19:00:51.000Z">
+<meta property="article:modified_time" content="2021-05-31T16:27:02.840Z">
+<meta property="article:author" content="Geylnu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/1.png">
+
+<link rel="canonical" href="http://yoursite.com/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>手把手让小白也能重装系统！ | Hello!</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hello!</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+      <meta itemprop="description" content="记录我的前端学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello!">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          手把手让小白也能重装系统！
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-05-18 19:00:51" itemprop="dateCreated datePublished" datetime="2018-05-18T19:00:51+00:00">2018-05-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-31 16:27:02" itemprop="dateModified" datetime="2021-05-31T16:27:02+00:00">2021-05-31</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><em>写本文得目的主要是为了帮助我的笨蛋马q儿子，面向0基础的小白，看完这篇文章你也就可以为自己重装系统，不花一份钱啦！</em></p>
+<h1 id="简单装机"><a href="#简单装机" class="headerlink" title="简单装机"></a>简单装机</h1><p>注意，名为简单装机的原因是一以下<strong>所有的步骤</strong>都是<strong>理想状态</strong>下的，由于系统、各厂商bios不同，历史各种版本迭代原因，带来了许多兼容性问题，本应该丝滑流畅的安装过程总有可能遇到难以解决的兼容性问题，我可以尽可能的把我所遇到的问题及解决办法写下来，但不可避免会让文章变得冗长，晦涩，因此我决定不写这方面的坑，如果你遇到了，去&lt;baidu.com&gt;或者&lt;google.com&gt;上寻找解决方案吧！<strong>网络是最大百科全书。</strong></p>
+<h1 id="安装前的准备"><a href="#安装前的准备" class="headerlink" title="安装前的准备"></a>安装前的准备</h1><h2 id="你需要的硬件准备"><a href="#你需要的硬件准备" class="headerlink" title="你需要的硬件准备"></a>你需要的硬件准备</h2><ul>
+<li>一个至少8G的U盘</li>
+<li>一台能上网的PC</li>
+</ul>
+<h2 id="你需要的软件准备"><a href="#你需要的软件准备" class="headerlink" title="你需要的软件准备"></a>你需要的软件准备</h2><h3 id="下载工具"><a href="#下载工具" class="headerlink" title="下载工具"></a>下载工具</h3><p>你可以选用迅雷，尽管它很臃肿。</p>
+<h3 id="下载系统"><a href="#下载系统" class="headerlink" title="下载系统"></a>下载系统</h3><p>请注意，我希望你仅仅只在&lt;msdn.itellyou.cn&gt;或者微软的官方渠道下载你需要的系统，在其它地方下载系统存在一定的风险。</p>
+<ul>
+<li>第一步<br><img src="1.png"></li>
+<li>第二步<br>我总是建议你使用当前最高版本的win10<br><img src="2.png"></li>
+<li>第三步<br>内存高于4G的总是选用x64（64位的）<br><img src="3.png"></li>
+<li>第四步<br>复制这个框内的链接<br>一般情况下迅雷检测到会自动弹出，如果没有你可以自己打开迅雷新建任务，它会自动识别剪切板的内容，创建下载任务。<br>选择你想储存到的地方，开始下载。<br><img src="4.png"><br><img src="5.png"></li>
+</ul>
+<h3 id="下载安装镜像写入工具"><a href="#下载安装镜像写入工具" class="headerlink" title="下载安装镜像写入工具"></a>下载安装镜像写入工具</h3><p>我使用的（UltraISO软碟通 ），你可以去这里下载<a target="_blank" rel="noopener" href="https://cn.ezbsystems.com/download.htm">https://cn.ezbsystems.com/download.htm</a><br><img src="6.png"><br>下载后直接安装即可</p>
+<h2 id="开始制作系统安装U盘"><a href="#开始制作系统安装U盘" class="headerlink" title="开始制作系统安装U盘"></a>开始制作系统安装U盘</h2><ul>
+<li>第一步<br>  打开UltraISO<br>  <img src="7.png"><br>  点击试用，对我们来说试用版的功能已经足够了</li>
+<li>第二步<br>  找到你下载的系统镜像<br>  <img src="8.png"><br>  双击它<br>  <img src="9.png"><br>  之后你会看见这样的目录及结构，这表示你已经进入镜像文件里了<br>  <img src="10.png"></li>
+<li>第三步<br>  <strong>插入U盘</strong><br>  单击上方的启动按钮<br>  <img src="11.png"><br>  选择写入硬盘镜像<br>  <img src="12.png"><br>  这时就会弹出设置，设置如何把系统镜像写入U盘的方式<br>  写入方式我建议使用USB-HDD的方式<br>  <img src="13.png"><br>  我建议你在写入前格式化你的U盘，这回带来更好的兼容性<br>  <strong>请注意备份你的U盘数据</strong><br>  然后点击<code>写入</code>，就开始将系统镜像写入到你的U盘，整个过程大约在5-10分钟<br>  另外请记住你的U盘物理名，这在后面有用。<br>  <img src="14.png"><br>  恭喜你！你已经制作好了系统安装U盘</li>
+</ul>
+<h2 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h2><p>安装系统是整个环节最困难最容易出问题的环节，我们得离开我们熟悉的windows进入bios，并且不同品牌的biso往往不尽相同。</p>
+<h3 id="选择从我们的U盘启动系统安装"><a href="#选择从我们的U盘启动系统安装" class="headerlink" title="选择从我们的U盘启动系统安装"></a>选择从我们的U盘启动系统安装</h3><h4 id="简单方法"><a href="#简单方法" class="headerlink" title="简单方法"></a>简单方法</h4><p>方法： 直接插入U盘，开机，就可以直接进入系统安装界面</p>
+<p>是的！简单方法我们仅仅只需要插入U盘就行了！一般来说近几年的电脑都支持这种方法，是不是很便利！</p>
+<h4 id="复杂方法"><a href="#复杂方法" class="headerlink" title="复杂方法"></a>复杂方法</h4><p><em>请注意！当你无法使用上面的方法进入系统安装界面，通常意味着你的bios很老旧或者厂商对你的bios做了一些奇奇怪怪的修改，你可能会遇见大量的兼容性问题，你可以尝试百度/谷歌相关错误现象/提示来解决</em></p>
+<ul>
+<li>复杂方法一<br>搜索你的电脑品牌+快捷启动，或启动选项，这些教程会很详细的告诉你如何进入快捷启动。</li>
+</ul>
+<p>进入快速启动后，选择你的U盘，<code>enter</code>确定就可以进入安装界面了</p>
+<ul>
+<li>复杂方法二<br>同样搜索你的电脑品牌+设置启动顺序，你也可以看见大量教程了，按照他们说的做，不要乱设置，设置完重启就可以了。</li>
+</ul>
+<h3 id="正式安装系统"><a href="#正式安装系统" class="headerlink" title="正式安装系统"></a>正式安装系统</h3><p>如果你成功的从U盘启动了系统安装，你会看见这样的界面<br><img src="15.png"></p>
+<p>点击<code>下一步</code>,再点击<code>现在安装</code>，你会过几秒后看到这个页面<br><img src="16.png"><br>请记住总是选择<strong>专业版</strong></p>
+<p>点击<code>下一步</code>，<code>我接受许可条款</code>，<code>下一步</code></p>
+<p>选择下方的自定义安装，升级选项总容易出问题<br><img src="17.png"></p>
+<p>选择后你会看到这样的界面<br><img src="18.png"></p>
+<p>如果你是全新的电脑，这里只会出现未分配的空间，重装的就会出现你的硬盘分区和默认隐藏的分区。</p>
+<p>全新的电脑你可以自由分配空间，重装的电脑你选择C盘下一步就可以了。<br><img src="19.png"></p>
+<p>完成后记得一定要拔掉U盘，否则又会进入安装界面。</p>
+<h2 id="激活"><a href="#激活" class="headerlink" title="激活"></a>激活</h2><h3 id="使用微软账号激活"><a href="#使用微软账号激活" class="headerlink" title="使用微软账号激活"></a>使用微软账号激活</h3><p>如果你之前有一台已经激活的win10，并注册了微软账号并在激活的win10上登陆过，在新的win10系统上你登陆你的微软账号就可以自动激活了，激活有数量限制，具体我未测试过。</p>
+<h3 id="使用产品密钥激活"><a href="#使用产品密钥激活" class="headerlink" title="使用产品密钥激活"></a>使用产品密钥激活</h3><p>你可以直接在淘宝上买到激活码,搜索win10专业版密钥，大概10元一个，激活后你可以注册微软账号，以后都可以激活自己的系统了。</p>
+<h3 id="使用kms破解激活"><a href="#使用kms破解激活" class="headerlink" title="使用kms破解激活"></a>使用kms破解激活</h3><p>你可以直接使用关键字win10破解搜索到相关工具，而且基本一定能破解，但是这个激活只能维持180天，kms会在180天后自动重新激活，并不方便，而且下载破解软件的过程中，可能感染病毒、被安装流氓软件，这是最不推荐的方式。</p>
+<p><strong>ok，一切完工啦！</strong></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/05/11/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%90%A7%EF%BC%81/" rel="prev" title="面向对象吧！">
+      <i class="fa fa-chevron-left"></i> 面向对象吧！
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/05/20/js%E6%95%B0%E7%BB%84/" rel="next" title="js数组">
+      js数组 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E8%A3%85%E6%9C%BA"><span class="nav-number">1.</span> <span class="nav-text">简单装机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%89%8D%E7%9A%84%E5%87%86%E5%A4%87"><span class="nav-number">2.</span> <span class="nav-text">安装前的准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E9%9C%80%E8%A6%81%E7%9A%84%E7%A1%AC%E4%BB%B6%E5%87%86%E5%A4%87"><span class="nav-number">2.1.</span> <span class="nav-text">你需要的硬件准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E9%9C%80%E8%A6%81%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%87%86%E5%A4%87"><span class="nav-number">2.2.</span> <span class="nav-text">你需要的软件准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7"><span class="nav-number">2.2.1.</span> <span class="nav-text">下载工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.2.2.</span> <span class="nav-text">下载系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E9%95%9C%E5%83%8F%E5%86%99%E5%85%A5%E5%B7%A5%E5%85%B7"><span class="nav-number">2.2.3.</span> <span class="nav-text">下载安装镜像写入工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E5%88%B6%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85U%E7%9B%98"><span class="nav-number">2.3.</span> <span class="nav-text">开始制作系统安装U盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.4.</span> <span class="nav-text">安装系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E4%BB%8E%E6%88%91%E4%BB%AC%E7%9A%84U%E7%9B%98%E5%90%AF%E5%8A%A8%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85"><span class="nav-number">2.4.1.</span> <span class="nav-text">选择从我们的U盘启动系统安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E6%96%B9%E6%B3%95"><span class="nav-number">2.4.1.1.</span> <span class="nav-text">简单方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E6%96%B9%E6%B3%95"><span class="nav-number">2.4.1.2.</span> <span class="nav-text">复杂方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E5%BC%8F%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.4.2.</span> <span class="nav-text">正式安装系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BF%80%E6%B4%BB"><span class="nav-number">2.5.</span> <span class="nav-text">激活</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%BE%AE%E8%BD%AF%E8%B4%A6%E5%8F%B7%E6%BF%80%E6%B4%BB"><span class="nav-number">2.5.1.</span> <span class="nav-text">使用微软账号激活</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E4%BA%A7%E5%93%81%E5%AF%86%E9%92%A5%E6%BF%80%E6%B4%BB"><span class="nav-number">2.5.2.</span> <span class="nav-text">使用产品密钥激活</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8kms%E7%A0%B4%E8%A7%A3%E6%BF%80%E6%B4%BB"><span class="nav-number">2.5.3.</span> <span class="nav-text">使用kms破解激活</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Geylnu</p>
+  <div class="site-description" itemprop="description">记录我的前端学习</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geylnu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

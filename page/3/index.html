@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="记录我的前端学习">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hello!">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta property="og:site_name" content="Hello!">
+<meta property="og:description" content="记录我的前端学习">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Geylnu">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/page/3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Hello!</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hello!</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/27/DOM-API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+      <meta itemprop="description" content="记录我的前端学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello!">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/05/27/DOM-API/" class="post-title-link" itemprop="url">DOM API</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-05-27 19:42:57" itemprop="dateCreated datePublished" datetime="2018-05-27T19:42:57+00:00">2018-05-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-31 16:27:02" itemprop="dateModified" datetime="2021-05-31T16:27:02+00:00">2021-05-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index"><span itemprop="name">javaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="什么是DOM？"><a href="#什么是DOM？" class="headerlink" title="什么是DOM？"></a>什么是DOM？</h1><p><code>DOM</code>全称为<code>Document Object Model</code>,是js用来操控XHTML,在DOM中，所有标签都是node的子集，文档最开始的属性标识了文档采用的版本，比如<code>&lt;!DOCTYPE html&gt;</code>表示是html5,这个属性每个HTML/XHTML文档都必须具有。将文档每个标签以树形的方式组织方便js对 其进行操控，着建里起的模型就叫DOM。</p>
+<h1 id="node"><a href="#node" class="headerlink" title="node"></a>node</h1><p>DOM中所有标签及元素等都被抽象地称为<code>node</code>节点，比如对于<code>标签元素</code>，还具有</p>
+<h1 id="DOM标准"><a href="#DOM标准" class="headerlink" title="DOM标准"></a>DOM标准</h1><p>Element对象代表页面中具有的标签，构造函数为Element,整个文档被称为document,对应的构造函数为Document<br>元素中的文字被Text构造出来</p>
+<p>Element、Document、Text都继承自node，其它结点还有注释结点<code>Comment</code>这些，不过平时很少用</p>
+<h2 id="nodeType"><a href="#nodeType" class="headerlink" title="nodeType"></a>nodeType</h2><table>
+<thead>
+<tr>
+<th align="center">编号</th>
+<th align="center">节点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">标签</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">文字</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">注释</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">document</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">声明文档类型的标签</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">虚拟DOM</td>
+</tr>
+</tbody></table>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><h3 id="nodeName"><a href="#nodeName" class="headerlink" title="nodeName"></a>nodeName</h3><p>返回节点的名称，除特例外总是返回名称的大写<br>特例：</p>
+<ul>
+<li><p>document<br>直接使用document.nodeName返回的是<code>#document</code>，需要使用<code>document.documentElement.nodeName</code>，才会正常返回<code>HTML</code></p>
+</li>
+<li><p>svg<br>  svg很特殊，只有它的标签是小写</p>
+</li>
+</ul>
+<h3 id="innerText"><a href="#innerText" class="headerlink" title="innerText"></a>innerText</h3><p>获取到其节点内的所有文本内容(微软发明的)</p>
+<h3 id="textContent"><a href="#textContent" class="headerlink" title="textContent"></a>textContent</h3><p>和上面一样，只是不会忽略style和script标签，性能会更好一点。（火狐发明的）</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="appendChild"><a href="#appendChild" class="headerlink" title="appendChild()"></a>appendChild()</h3><p>添加儿子</p>
+<h3 id="cloneNode"><a href="#cloneNode" class="headerlink" title="cloneNode()"></a>cloneNode()</h3><p>默认进行浅拷贝。如果传<code>true</code>进行深拷贝。</p>
+<h3 id="contains"><a href="#contains" class="headerlink" title="contains()"></a>contains()</h3><p>是否包含指定元素</p>
+<h3 id="hasChildNodes"><a href="#hasChildNodes" class="headerlink" title="hasChildNodes()"></a>hasChildNodes()</h3><p>是否有子节点</p>
+<h3 id="insertBefore"><a href="#insertBefore" class="headerlink" title="insertBefore()"></a>insertBefore()</h3><p>插入人到元素前面</p>
+<h3 id="isEqualNode"><a href="#isEqualNode" class="headerlink" title="isEqualNode()"></a>isEqualNode()</h3><p>元素类型、内容、属性完全一致</p>
+<h3 id="isSanmeNode"><a href="#isSanmeNode" class="headerlink" title="isSanmeNode()"></a>isSanmeNode()</h3><p>同一元素</p>
+<h3 id="removeChild"><a href="#removeChild" class="headerlink" title="removeChild()"></a>removeChild()</h3><p>从DOM树中移除，等待被垃圾回收</p>
+<h3 id="replaceChild-newChild-oldChild"><a href="#replaceChild-newChild-oldChild" class="headerlink" title="replaceChild(newChild,oldChild)"></a>replaceChild(newChild,oldChild)</h3><p>替换成指定的子节点</p>
+<h3 id="normalize"><a href="#normalize" class="headerlink" title="normalize()"></a>normalize()</h3><p>常规化，在一个”规范化”后的DOM树中，不存在一个空的文本节点，或者两个相邻的文本节点。</p>
+<h1 id="Document接口"><a href="#Document接口" class="headerlink" title="Document接口"></a>Document接口</h1><h2 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h2><h3 id="body"><a href="#body" class="headerlink" title="body"></a>body</h3><p>包含当前页面的元素</p>
+<h3 id="characterSet"><a href="#characterSet" class="headerlink" title="characterSet"></a>characterSet</h3><p>返回使用的字符编码</p>
+<h3 id="childElementCount"><a href="#childElementCount" class="headerlink" title="childElementCount"></a>childElementCount</h3><p>返回子元素个数</p>
+<h3 id="domain"><a href="#domain" class="headerlink" title="domain"></a>domain</h3><p>返回域名</p>
+<h3 id="location"><a href="#location" class="headerlink" title="location"></a>location</h3><p>一个包含地址信息的对象</p>
+<h3 id="readyState"><a href="#readyState" class="headerlink" title="readyState"></a>readyState</h3><p>是否正在下载</p>
+<h3 id="referrer"><a href="#referrer" class="headerlink" title="referrer"></a>referrer</h3><p>从哪里访问过来</p>
+<h3 id="visibilityState"><a href="#visibilityState" class="headerlink" title="visibilityState"></a>visibilityState</h3><p>该页面是否被显示</p>
+<h3 id="children"><a href="#children" class="headerlink" title="children"></a>children</h3><h3 id="doctype"><a href="#doctype" class="headerlink" title="doctype"></a>doctype</h3><h3 id="documentElement"><a href="#documentElement" class="headerlink" title="documentElement"></a>documentElement</h3><h3 id="fullscreen"><a href="#fullscreen" class="headerlink" title="fullscreen"></a>fullscreen</h3><h3 id="head"><a href="#head" class="headerlink" title="head"></a>head</h3><h3 id="hidden"><a href="#hidden" class="headerlink" title="hidden"></a>hidden</h3><h3 id="images"><a href="#images" class="headerlink" title="images"></a>images</h3><h3 id="links"><a href="#links" class="headerlink" title="links"></a>links</h3><h3 id="onxxxxxxxxx"><a href="#onxxxxxxxxx" class="headerlink" title="onxxxxxxxxx"></a>onxxxxxxxxx</h3><h3 id="origin"><a href="#origin" class="headerlink" title="origin"></a>origin</h3><h3 id="plugins"><a href="#plugins" class="headerlink" title="plugins"></a>plugins</h3><h3 id="readyState-1"><a href="#readyState-1" class="headerlink" title="readyState"></a>readyState</h3><h3 id="referrer-1"><a href="#referrer-1" class="headerlink" title="referrer"></a>referrer</h3><h3 id="scripts"><a href="#scripts" class="headerlink" title="scripts"></a>scripts</h3><h3 id="scrollingElement"><a href="#scrollingElement" class="headerlink" title="scrollingElement"></a>scrollingElement</h3><h3 id="styleSheets"><a href="#styleSheets" class="headerlink" title="styleSheets"></a>styleSheets</h3><h3 id="title"><a href="#title" class="headerlink" title="title"></a>title</h3><h2 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h2><h3 id="close"><a href="#close" class="headerlink" title="close()"></a>close()</h3><p>页面加载完毕后自动关闭</p>
+<h3 id="write"><a href="#write" class="headerlink" title="write()"></a>write()</h3><p>向文档内写入东西，如在open时调用write会向文档追加内容，如果已经关闭了调用write会<strong>重写documentn的内容</strong>，这<strong>十分危险！</strong> 不能在任何<strong>异步</strong>或者<strong>延时性</strong>的操作上使用write</p>
+<h3 id="writeln"><a href="#writeln" class="headerlink" title="writeln()"></a>writeln()</h3><p>写一行</p>
+<h3 id="open"><a href="#open" class="headerlink" title="open()"></a>open()</h3><p>页面一开始打开的时候启用open,可以向文档内写入数据</p>
+<h3 id="execCommand"><a href="#execCommand" class="headerlink" title="execCommand()"></a>execCommand()</h3><p>文本编辑器会用到这个</p>
+<h3 id="createDocumentFragment"><a href="#createDocumentFragment" class="headerlink" title="createDocumentFragment()"></a>createDocumentFragment()</h3><h3 id="createElement"><a href="#createElement" class="headerlink" title="createElement()"></a>createElement()</h3><h3 id="createTextNode"><a href="#createTextNode" class="headerlink" title="createTextNode()"></a>createTextNode()</h3><h3 id="exitFullscreen"><a href="#exitFullscreen" class="headerlink" title="exitFullscreen()"></a>exitFullscreen()</h3><h3 id="getElementById"><a href="#getElementById" class="headerlink" title="getElementById()"></a>getElementById()</h3><h3 id="getElementsByClassName"><a href="#getElementsByClassName" class="headerlink" title="getElementsByClassName()"></a>getElementsByClassName()</h3><h3 id="getElementsByName"><a href="#getElementsByName" class="headerlink" title="getElementsByName()"></a>getElementsByName()</h3><h3 id="getElementsByTagName"><a href="#getElementsByTagName" class="headerlink" title="getElementsByTagName()"></a>getElementsByTagName()</h3><h3 id="getSelection"><a href="#getSelection" class="headerlink" title="getSelection()"></a>getSelection()</h3><h3 id="hasFocus"><a href="#hasFocus" class="headerlink" title="hasFocus()"></a>hasFocus()</h3><h3 id="querySelector"><a href="#querySelector" class="headerlink" title="querySelector()"></a>querySelector()</h3><p>返回找到的第一个元素</p>
+<h3 id="querySelectorAll"><a href="#querySelectorAll" class="headerlink" title="querySelectorAll()"></a>querySelectorAll()</h3><p>以伪数组的形式返回符合的所有元素</p>
+<h1 id="Element"><a href="#Element" class="headerlink" title="Element"></a>Element</h1><h2 id="属性-2"><a href="#属性-2" class="headerlink" title="属性"></a>属性</h2><h3 id="innerHTML"><a href="#innerHTML" class="headerlink" title="innerHTML"></a>innerHTML</h3><p>其中的HTML，被改写有安全风险</p>
+<h1 id="一些其它需要注意的点"><a href="#一些其它需要注意的点" class="headerlink" title="一些其它需要注意的点"></a>一些其它需要注意的点</h1><p>看下面的代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> parent = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;parent&#x27;</span>);</span><br><span class="line">parent.childNodes.length <span class="comment">// 2</span></span><br><span class="line">parent.appendChild(<span class="built_in">document</span>.createElement(<span class="string">&#x27;div&#x27;</span>));</span><br><span class="line">parent.childNodes.length <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> allDiv = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line">allDiv.length <span class="comment">// 假设是 2</span></span><br><span class="line"><span class="built_in">document</span>.body.appendChild(  <span class="built_in">document</span>.createElement(<span class="string">&#x27;div&#x27;</span>)  )</span><br><span class="line">allDiv.length <span class="comment">// 还是2</span></span><br></pre></td></tr></table></figure>
+<p>这里length没有改变时因为<code>parent.childNodes</code>是动态集合。所谓动态集合就是一个活的集合，DOM树删除或新增一个相关节点，都会立刻反映在NodeList接口之中。<br> <code>document.querySelectorAll</code>方法返回的是一个静态集合(伪数组)。DOM内部的变化，并不会实时反映在该方法的返回结果之中。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/22/js%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+      <meta itemprop="description" content="记录我的前端学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello!">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/05/22/js%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">js函数</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-05-22 22:18:00" itemprop="dateCreated datePublished" datetime="2018-05-22T22:18:00+00:00">2018-05-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-31 16:27:02" itemprop="dateModified" datetime="2021-05-31T16:27:02+00:00">2021-05-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index"><span itemprop="name">javaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="函数是什么？"><a href="#函数是什么？" class="headerlink" title="函数是什么？"></a>函数是什么？</h1><p>函数在js中是以字符串的形式储存起来的（这会带来效率问题吧？）</p>
+<p>在js中函数也是个对象，执行的代码块以字符串的形式保存在对象某个地方，使用f()就是调用这块代码。<br>传统的调用方式是使用<code>.call()</code>执行函数。</p>
+<h1 id="声明方式"><a href="#声明方式" class="headerlink" title="声明方式"></a>声明方式</h1><h2 id="具名函数"><a href="#具名函数" class="headerlink" title="具名函数"></a>具名函数</h2><p>就是有名字的函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具名函数的声明，初始化，赋值都会被变量提升至顶部</p>
+<h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><p>就是没有名字的函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a() <span class="comment">//报错</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">666</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用此种方式，是以变量提升的方式，声明，初始化被提升至顶部，在声明前调用会错误。</p>
+<h2 id="具名函数赋值"><a href="#具名函数赋值" class="headerlink" title="具名函数赋值"></a>具名函数赋值</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">666</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种方式其实等于匿名函数，b不能被使用，但能在函数内部使用。(BUG js)</p>
+<h2 id="函数对象"><a href="#函数对象" class="headerlink" title="函数对象"></a>函数对象</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">&#x27;x&#x27;</span>,<span class="string">&#x27;y&#x27;</span>,<span class="string">&#x27;return x+y&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line"><span class="keyword">var</span> n =<span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> z = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">&#x27;x&#x27;</span>,<span class="string">&#x27;y&#x27;</span>,<span class="string">&#x27;return x+&#x27;</span>+n+<span class="string">&#x27;+y&#x27;</span>)</span><br><span class="line">z(<span class="number">1</span>,<span class="number">2</span>) <span class="comment">//返回4</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(x,y) =&gt; x+y</span><br></pre></td></tr></table></figure>
+<p>这回直接返回 <code>x+y</code>,如果参数只有一个，可以省略前面的括号，后面只有一个个表达式可以省略后面的大括号，箭头函数总是匿名函数</p>
+<h1 id="相关函数"><a href="#相关函数" class="headerlink" title="相关函数"></a>相关函数</h1><h2 id="f-name"><a href="#f-name" class="headerlink" title="f.name"></a>f.name</h2><p>得到函数名<br>匿名函数会得到指向它的变量，具名函数赋值会得到具名函数的值……<br>如果使用<code>Function()</code>声明，总是返回<code>anonymlus</code>，表示匿名的</p>
+<h2 id="f-call"><a href="#f-call" class="headerlink" title="f.call()"></a>f.call()</h2><p><code>f.call()</code>就是执行函数体<br>第一个参数为执行的对象，其余为函数的参数，这是js真正的调用方法，f()可以说只是一种语法糖</p>
+<p>call()的第一个参数可以用this得到，后面的参数可以用arguments得到</p>
+<h3 id="this"><a href="#this" class="headerlink" title="this"></a>this</h3><p>在普通模式，如果传入的是null或者undefined，则默认为Window<br>，如果开启严格模式，则不会自动转变，传入什么就是什么，严格模式可以使用<code>use strict</code>开启。</p>
+<p>严格模式中，参数的类型转换不会发生，比如这样</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="meta">    &#x27;use strict&#x27;</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>)</span><br><span class="line">&#125;</span><br><span class="line">f.call(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>本来1不是对象，但call需要第一个是对象，就会把1自动装箱成Number对象，使用’use strict’会禁用参数的自动装箱</p>
+<h3 id="arguments"><a href="#arguments" class="headerlink" title="arguments"></a>arguments</h3><p>arguments是一个伪数组，虽然是数组的形式，但_proto_指向Object，不指向Array。<br>它储存着函数调用时所有的实参。</p>
+<h3 id="函数调用过程"><a href="#函数调用过程" class="headerlink" title="函数调用过程"></a>函数调用过程</h3><p>函数调用过程是以栈的形式进行调用，先进后出，在我们递归调用时，尤其要注意栈空间的占用，否则可能溢出(stack Overflowd网站的名字,233)，如果递归时不会使用函数内的变量，会进行尾递归优化，不再存储函数内的变量，减少栈空间调用。</p>
+<h3 id="作用域（scope）"><a href="#作用域（scope）" class="headerlink" title="作用域（scope）"></a>作用域（scope）</h3><p>函数内会构成一个新的作用域，多个函数的嵌套，构成了一棵作用域树</p>
+<p>这里我们就需要区别几种声明变量的方式 </p>
+<ul>
+<li>不加关键字声明<br>  因为作用域是一棵树，找不到会向上找，直到找到window对象，如果window对象也不具有该值，就认为是为window设置键值对，这就创建了全局变量</li>
+<li>var 声明<br>  var 声明会被提升至该作用域顶部，并在顶部初始化为undefined</li>
+<li>let<br>  let声明同样会被提升至顶部，但初始化和赋值只会在进入let所在区块进行，未在所在区块的使用都被认为是非法的</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/20/js%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+      <meta itemprop="description" content="记录我的前端学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello!">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/05/20/js%E6%95%B0%E7%BB%84/" class="post-title-link" itemprop="url">js数组</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-05-20 23:00:45" itemprop="dateCreated datePublished" datetime="2018-05-20T23:00:45+00:00">2018-05-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-31 16:27:02" itemprop="dateModified" datetime="2021-05-31T16:27:02+00:00">2021-05-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index"><span itemprop="name">javaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>js中window拥有非标准库和标准库，标准库中有Object及相关api,Sting,Boolean等，我们可以先试试这些函数/对象</p>
+<h2 id="Object"><a href="#Object" class="headerlink" title="Object()"></a>Object()</h2><p>Object()会根据传入的参数返回不同的值</p>
+<ul>
+<li>基本类型，所有可以被包装的的基本类型都会被包装成包装类型<br>传入空对象,undefined,或者不传，返回null，传入非空对象返回原对象</li>
+</ul>
+<p>使用<code>new Array()</code>方式和构造函数没有区别</p>
+<p><strong>这里我们可以总结一下</strong><br>如果是基本类型的函数/对象，不加<code>new</code>和加<code>new</code>是不相同的<br>如果是对象，比如<code>Function</code> 我们这里的<code>Array</code>，这两者是等同的</p>
+<h3 id="Function构造函数"><a href="#Function构造函数" class="headerlink" title="Function构造函数"></a>Function构造函数</h3><p><code>let a = new Function(&#39;a&#39;,&#39;b&#39;,&#39;a+b&#39;)</code><br>参数可以无到任意，但至少有函数体</p>
+<p><code>function</code>是个关键字，<code>Function</code>是个全局对象</p>
+<p>函数有几种声明方式，声明出来的结果也不同<br>具名函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    xxx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>匿名函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    xxx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函数方法体</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;a+b&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="Function-prototype"><a href="#Function-prototype" class="headerlink" title="Function.prototype"></a>Function.prototype</h3><p><code>.call()</code><br><code>.bind()</code><br><code>.apply()</code></p>
+<h2 id="Number-Boolean"><a href="#Number-Boolean" class="headerlink" title="Number() Boolean()"></a>Number() Boolean()</h2><p> 转换为对应的基本类型</p>
+<h1 id="Array是什么？"><a href="#Array是什么？" class="headerlink" title="Array是什么？"></a>Array是什么？</h1><p><code>Array</code>对象是用于构造数组的全局对象，属于<code>Object</code></p>
+<p>我们一般声明Array采用的是<code>[gg, aga, aga]</code>，实际上这种方式等价于<code>new Array</code>,前者可以当作语法糖。</p>
+<h1 id="具体怎么用？"><a href="#具体怎么用？" class="headerlink" title="具体怎么用？"></a>具体怎么用？</h1><h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>Array()构造函数会根据传入的不同参数返回不同的数组</p>
+<ol>
+<li><p><code>let a = Array(1)</code><br> 当参数只有一个数字的情况，参数代表数组的长度，返回等于参数长度的数组，这个数组其它元素都没有被声明，包括<code>0 in a</code>，它返回undefined。</p>
+<p> 请注意，传入NaN会报错</p>
+</li>
+<li><p><code>let a = Array(&#39;我就要看你要做什么&#39;)</code><br> 当参数为一个非数字，返回一个长度为1且<code>a[0]=</code>所给字符串数组</p>
+</li>
+<li><p><code>let a = Array(3,3)</code><br> 当传入参数大于等于2，按顺序填充新数组并返回</p>
+</li>
+</ol>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="string-prototype"><a href="#string-prototype" class="headerlink" title="string.prototype"></a>string.prototype</h3><ul>
+<li><code>.trim()</code> 返回一个去掉两端空格的新字符串</li>
+<li><code>.spli()</code> 返回一个分割后的新字符串</li>
+</ul>
+<h3 id="Array-prototype"><a href="#Array-prototype" class="headerlink" title="Array.prototype"></a>Array.prototype</h3><p><code>.push()</code> 推入一个(末尾)<br><code>.pop()</code> 弹出一个(末尾)<br><code>.shift()</code> 删除数组头部元素<br><code>.unshift</code> 添加到头部<br><code>.join()</code> 把数组连接起来，并加上分隔符形成字符串返回，默认为<code>,</code>号<br><code>.concat(b)</code> 把数组连接起来返回新数组，也可以和空数组合并，等同于数组复制<br><code>.forEach()</code> 遍历数组，详见后文<br><code>.map()</code> 遍历数组，详见后文</p>
+<p>Array的关键是继承了<code>Array.prototype</code></p>
+<h3 id="数组遍历"><a href="#数组遍历" class="headerlink" title="数组遍历"></a>数组遍历</h3><p>如果是数组，可以使用<code>for(let i=0;i&lt;obj.length;i++&gt;)</code><br>如果不关心是否是数组，可以使用<code>for (let i in obj)</code>遍历所有键值<br>还可以使用<code>forEach()</code>，<code>.map()</code>遍历</p>
+<h4 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a><code>forEach()</code></h4><p><code>forEcah</code>接受一个函数，这个函数有是三个值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params">currentValue,index,array</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//当前值，索引，数组</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="map"><a href="#map" class="headerlink" title=".map()"></a><code>.map()</code></h4><p>和forEach差不多，不过对value的改变会以新数组的形式返回</p>
+<h4 id="a-filter"><a href="#a-filter" class="headerlink" title="a.filter()"></a><code>a.filter()</code></h4><p>和map差不过，就是筛选，ture要，false不要</p>
+<h4 id="reduce"><a href="#reduce" class="headerlink" title=".reduce()"></a><code>.reduce()</code></h4><p>每次会把函数的返回值作为下一次的返回值，还可以指定初始索引，最后返回最后执行后的函数返回值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.reduce( <span class="function"><span class="keyword">function</span> (<span class="params">sum,n</span>)</span>&#123;<span class="keyword">return</span> sum+=n&#125;,<span class="number">0</span>) <span class="comment">//返回6，0为初始索引</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="a-sort"><a href="#a-sort" class="headerlink" title="a.sort()"></a><code>a.sort()</code></h3><p>一般排序算法使用的都是快排<br>注意：js中默认排序是按照Unicode的码点进行排序，非常傻逼。</p>
+<p>幸运的是，sort接受一个可选参数，支持自定义的比较算法。<br>函数必须是这种形式的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    f (a &lt; b ) &#123;<span class="comment">// 按某种排序标准进行比较, a 小于 b</span></span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;<span class="comment">//小于0 a排前面</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (a &gt; b ) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;<span class="comment">//大于0 b排前面</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//相等不变，但实现不一</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因此比较数字大小的话，可以这样</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.sort(<span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>)</span>&#123;<span class="keyword">return</span> a-b&#125;) <span class="comment">// 最小的在最前</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.sort(<span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>)</span>&#123;<span class="keyword">return</span> b-a&#125;) <span class="comment">// 最大的在最前</span></span><br></pre></td></tr></table></figure>
+<p>其中forEach使用<code>this</code>表示调用者，可以使用<code>this</code>来获取调用者的属性</p>
+<h3 id="伪数组"><a href="#伪数组" class="headerlink" title="伪数组"></a>伪数组</h3><p>如果像一个数组，且<code>_proto_</code>不等于<code>Araay.prototype</code>,那这就是一个伪数组<br>在js目前遇到的伪数组就是<code>arguments</code>这个表示传给函数的参数</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+      <meta itemprop="description" content="记录我的前端学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello!">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/" class="post-title-link" itemprop="url">手把手让小白也能重装系统！</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-05-18 19:00:51" itemprop="dateCreated datePublished" datetime="2018-05-18T19:00:51+00:00">2018-05-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-31 16:27:02" itemprop="dateModified" datetime="2021-05-31T16:27:02+00:00">2021-05-31</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><em>写本文得目的主要是为了帮助我的笨蛋马q儿子，面向0基础的小白，看完这篇文章你也就可以为自己重装系统，不花一份钱啦！</em></p>
+<h1 id="简单装机"><a href="#简单装机" class="headerlink" title="简单装机"></a>简单装机</h1><p>注意，名为简单装机的原因是一以下<strong>所有的步骤</strong>都是<strong>理想状态</strong>下的，由于系统、各厂商bios不同，历史各种版本迭代原因，带来了许多兼容性问题，本应该丝滑流畅的安装过程总有可能遇到难以解决的兼容性问题，我可以尽可能的把我所遇到的问题及解决办法写下来，但不可避免会让文章变得冗长，晦涩，因此我决定不写这方面的坑，如果你遇到了，去&lt;baidu.com&gt;或者&lt;google.com&gt;上寻找解决方案吧！<strong>网络是最大百科全书。</strong></p>
+<h1 id="安装前的准备"><a href="#安装前的准备" class="headerlink" title="安装前的准备"></a>安装前的准备</h1><h2 id="你需要的硬件准备"><a href="#你需要的硬件准备" class="headerlink" title="你需要的硬件准备"></a>你需要的硬件准备</h2><ul>
+<li>一个至少8G的U盘</li>
+<li>一台能上网的PC</li>
+</ul>
+<h2 id="你需要的软件准备"><a href="#你需要的软件准备" class="headerlink" title="你需要的软件准备"></a>你需要的软件准备</h2><h3 id="下载工具"><a href="#下载工具" class="headerlink" title="下载工具"></a>下载工具</h3><p>你可以选用迅雷，尽管它很臃肿。</p>
+<h3 id="下载系统"><a href="#下载系统" class="headerlink" title="下载系统"></a>下载系统</h3><p>请注意，我希望你仅仅只在&lt;msdn.itellyou.cn&gt;或者微软的官方渠道下载你需要的系统，在其它地方下载系统存在一定的风险。</p>
+<ul>
+<li>第一步<br><img src="1.png"></li>
+<li>第二步<br>我总是建议你使用当前最高版本的win10<br><img src="2.png"></li>
+<li>第三步<br>内存高于4G的总是选用x64（64位的）<br><img src="3.png"></li>
+<li>第四步<br>复制这个框内的链接<br>一般情况下迅雷检测到会自动弹出，如果没有你可以自己打开迅雷新建任务，它会自动识别剪切板的内容，创建下载任务。<br>选择你想储存到的地方，开始下载。<br><img src="4.png"><br><img src="5.png"></li>
+</ul>
+<h3 id="下载安装镜像写入工具"><a href="#下载安装镜像写入工具" class="headerlink" title="下载安装镜像写入工具"></a>下载安装镜像写入工具</h3><p>我使用的（UltraISO软碟通 ），你可以去这里下载<a target="_blank" rel="noopener" href="https://cn.ezbsystems.com/download.htm">https://cn.ezbsystems.com/download.htm</a><br><img src="6.png"><br>下载后直接安装即可</p>
+<h2 id="开始制作系统安装U盘"><a href="#开始制作系统安装U盘" class="headerlink" title="开始制作系统安装U盘"></a>开始制作系统安装U盘</h2><ul>
+<li>第一步<br>  打开UltraISO<br>  <img src="7.png"><br>  点击试用，对我们来说试用版的功能已经足够了</li>
+<li>第二步<br>  找到你下载的系统镜像<br>  <img src="8.png"><br>  双击它<br>  <img src="9.png"><br>  之后你会看见这样的目录及结构，这表示你已经进入镜像文件里了<br>  <img src="10.png"></li>
+<li>第三步<br>  <strong>插入U盘</strong><br>  单击上方的启动按钮<br>  <img src="11.png"><br>  选择写入硬盘镜像<br>  <img src="12.png"><br>  这时就会弹出设置，设置如何把系统镜像写入U盘的方式<br>  写入方式我建议使用USB-HDD的方式<br>  <img src="13.png"><br>  我建议你在写入前格式化你的U盘，这回带来更好的兼容性<br>  <strong>请注意备份你的U盘数据</strong><br>  然后点击<code>写入</code>，就开始将系统镜像写入到你的U盘，整个过程大约在5-10分钟<br>  另外请记住你的U盘物理名，这在后面有用。<br>  <img src="14.png"><br>  恭喜你！你已经制作好了系统安装U盘</li>
+</ul>
+<h2 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h2><p>安装系统是整个环节最困难最容易出问题的环节，我们得离开我们熟悉的windows进入bios，并且不同品牌的biso往往不尽相同。</p>
+<h3 id="选择从我们的U盘启动系统安装"><a href="#选择从我们的U盘启动系统安装" class="headerlink" title="选择从我们的U盘启动系统安装"></a>选择从我们的U盘启动系统安装</h3><h4 id="简单方法"><a href="#简单方法" class="headerlink" title="简单方法"></a>简单方法</h4><p>方法： 直接插入U盘，开机，就可以直接进入系统安装界面</p>
+<p>是的！简单方法我们仅仅只需要插入U盘就行了！一般来说近几年的电脑都支持这种方法，是不是很便利！</p>
+<h4 id="复杂方法"><a href="#复杂方法" class="headerlink" title="复杂方法"></a>复杂方法</h4><p><em>请注意！当你无法使用上面的方法进入系统安装界面，通常意味着你的bios很老旧或者厂商对你的bios做了一些奇奇怪怪的修改，你可能会遇见大量的兼容性问题，你可以尝试百度/谷歌相关错误现象/提示来解决</em></p>
+<ul>
+<li>复杂方法一<br>搜索你的电脑品牌+快捷启动，或启动选项，这些教程会很详细的告诉你如何进入快捷启动。</li>
+</ul>
+<p>进入快速启动后，选择你的U盘，<code>enter</code>确定就可以进入安装界面了</p>
+<ul>
+<li>复杂方法二<br>同样搜索你的电脑品牌+设置启动顺序，你也可以看见大量教程了，按照他们说的做，不要乱设置，设置完重启就可以了。</li>
+</ul>
+<h3 id="正式安装系统"><a href="#正式安装系统" class="headerlink" title="正式安装系统"></a>正式安装系统</h3><p>如果你成功的从U盘启动了系统安装，你会看见这样的界面<br><img src="15.png"></p>
+<p>点击<code>下一步</code>,再点击<code>现在安装</code>，你会过几秒后看到这个页面<br><img src="16.png"><br>请记住总是选择<strong>专业版</strong></p>
+<p>点击<code>下一步</code>，<code>我接受许可条款</code>，<code>下一步</code></p>
+<p>选择下方的自定义安装，升级选项总容易出问题<br><img src="17.png"></p>
+<p>选择后你会看到这样的界面<br><img src="18.png"></p>
+<p>如果你是全新的电脑，这里只会出现未分配的空间，重装的就会出现你的硬盘分区和默认隐藏的分区。</p>
+<p>全新的电脑你可以自由分配空间，重装的电脑你选择C盘下一步就可以了。<br><img src="19.png"></p>
+<p>完成后记得一定要拔掉U盘，否则又会进入安装界面。</p>
+<h2 id="激活"><a href="#激活" class="headerlink" title="激活"></a>激活</h2><h3 id="使用微软账号激活"><a href="#使用微软账号激活" class="headerlink" title="使用微软账号激活"></a>使用微软账号激活</h3><p>如果你之前有一台已经激活的win10，并注册了微软账号并在激活的win10上登陆过，在新的win10系统上你登陆你的微软账号就可以自动激活了，激活有数量限制，具体我未测试过。</p>
+<h3 id="使用产品密钥激活"><a href="#使用产品密钥激活" class="headerlink" title="使用产品密钥激活"></a>使用产品密钥激活</h3><p>你可以直接在淘宝上买到激活码,搜索win10专业版密钥，大概10元一个，激活后你可以注册微软账号，以后都可以激活自己的系统了。</p>
+<h3 id="使用kms破解激活"><a href="#使用kms破解激活" class="headerlink" title="使用kms破解激活"></a>使用kms破解激活</h3><p>你可以直接使用关键字win10破解搜索到相关工具，而且基本一定能破解，但是这个激活只能维持180天，kms会在180天后自动重新激活，并不方便，而且下载破解软件的过程中，可能感染病毒、被安装流氓软件，这是最不推荐的方式。</p>
+<p><strong>ok，一切完工啦！</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%90%A7%EF%BC%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+      <meta itemprop="description" content="记录我的前端学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello!">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/05/11/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%90%A7%EF%BC%81/" class="post-title-link" itemprop="url">面向对象吧！</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-05-11 13:47:09" itemprop="dateCreated datePublished" datetime="2018-05-11T13:47:09+00:00">2018-05-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-31 16:27:02" itemprop="dateModified" datetime="2021-05-31T16:27:02+00:00">2021-05-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index"><span itemprop="name">javaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="全局对象window"><a href="#全局对象window" class="headerlink" title="全局对象window"></a>全局对象window</h1><p>标准里名为 global<br>但浏览器实现为window，global具有的window都有</p>
+<h2 id="ECMAScript规定的"><a href="#ECMAScript规定的" class="headerlink" title="ECMAScript规定的"></a>ECMAScript规定的</h2><p>如：</p>
+<ul>
+<li>parseInt()</li>
+<li>parseFloat()</li>
+<li>……<h2 id="浏览器私有"><a href="#浏览器私有" class="headerlink" title="浏览器私有"></a>浏览器私有</h2>每个浏览器不一样，<br>比如chrome/firefox具有</li>
+<li><code>alert()</code><br>  弹出提示框<br>还有</li>
+<li><code>prompt()</code><br>  提示输入</li>
+<li><code>confirm()</code><br>  提示确认</li>
+<li><code>console()</code><br>  控制台打印</li>
+<li><code>setTimeout(function,3000)</code><br>  指定毫秒后执行函数</li>
+<li><code>document</code><br>  document也是私有的<br>  dom规范由w3c指定</li>
+</ul>
+<h1 id="声明对象"><a href="#声明对象" class="headerlink" title="声明对象"></a>声明对象</h1><p><code>var n = new number(1)</code><br>把1包装成对象，会有更多的一些方法</p>
+<p>但是基本类型其实也可以使用各种方法，这是因为JS会在发现把其当作对象时，自动以它的值创建对象，调用结束就把它删除，这就像java的自动装箱/拆箱，所有的基本类型都是如此，包括string</p>
+<h2 id="语法糖"><a href="#语法糖" class="headerlink" title="语法糖"></a>语法糖</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;&#125;</span><br><span class="line"><span class="keyword">var</span> = <span class="keyword">new</span> <span class="built_in">Object</span>()</span><br></pre></td></tr></table></figure>
+<p>这两者功用是一样的</p>
+<h2 id="String对象"><a href="#String对象" class="headerlink" title="String对象"></a>String对象</h2><ul>
+<li>.toString(a) a指定以几进制显示</li>
+<li>.charAt()返回指定索引的字符</li>
+<li>.charCodeAt(0) 返回指定索引的unicode编码</li>
+<li>.trim 去掉多余的空格</li>
+<li>.concat(s) 将当前字符串与参数里面的字符串连接起来并返回（那和<code>+</code>有什么区别？）</li>
+<li>.slice(1,2)  返回指定索引到指定索引的字符(0,1]</li>
+</ul>
+<h2 id="Boolean对象"><a href="#Boolean对象" class="headerlink" title="Boolean对象"></a>Boolean对象</h2><p><strong>注意：new Boolean() 也是true</strong></p>
+<h1 id="原型链（继承？）"><a href="#原型链（继承？）" class="headerlink" title="原型链（继承？）"></a>原型链（继承？）</h1><h2 id="为了解决什么问题？"><a href="#为了解决什么问题？" class="headerlink" title="为了解决什么问题？"></a>为了解决什么问题？</h2><p>某一类对象拥有共同的方法，或属性，每个对象都声明一次既费时间又浪费内存，这时候使用继承就OK啦！</p>
+<h2 id="怎么解决的"><a href="#怎么解决的" class="headerlink" title="怎么解决的"></a>怎么解决的</h2><p>拥有共通属性的对象，把共通的属性抽象出来作为一个父对象，子对象不再存储这些共通的属性和方法，而使用__proto__存储父对象。</p>
+<h3 id="当我像调用toString-时，过程是怎样的？"><a href="#当我像调用toString-时，过程是怎样的？" class="headerlink" title="当我像调用toString()时，过程是怎样的？"></a>当我像调用<code>toString()</code>时，过程是怎样的？</h3><p>过程：</p>
+<ol>
+<li>判断是否是对象，如果是，自动装箱将其包装成对应的临时包装对象。</li>
+<li>查找当前对象是否包含<code>toString()</code>方法。</li>
+<li>如果当前对象不包括，访问<code>__proto__</code>里存储的父对象，继续寻找<code>toString()</code></li>
+<li>如果找到停止寻找，否则继续递归下去。</li>
+</ol>
+<p>从这里就可以看出，如果子对象和父对象拥有同样的方法/或者属性，总是使用的子对象的值，我们可以把这个称作覆盖</p>
+<p>Object是所有对象的父对象，Object再向上就为null</p>
+<h3 id="如何设置公有属性？"><a href="#如何设置公有属性？" class="headerlink" title="如何设置公有属性？"></a>如何设置公有属性？</h3><p>这里我们其实需要理解是如何创造对象的？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="keyword">new</span> <span class="built_in">Object</span>()</span><br></pre></td></tr></table></figure>
+<p>在这里 其实<code>new Object()</code>实际在调用一个函数，我们可以称作这个函数为构造函数，函数返回一个根据参数生成的对象。</p>
+<p>因此这里可以看做</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="function"><span class="keyword">function</span> <span class="title">Constructor</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">return</span> object</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实质上，在js中，函数也只是一种对象</p>
+<h4 id="Function对象"><a href="#Function对象" class="headerlink" title="Function对象"></a>Function对象</h4><p>如果我们使用<code>console.dir</code>打印Obeject、Number、Function的所有属性，我们就能真正理解__proto__和prototype具体是个什么鬼</p>
+<ul>
+<li>Function  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">prototype : f()</span><br><span class="line">__proto__ : f()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>展开<code>prototype</code>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">prototype : <span class="built_in">Object</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>Object  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">prototype : 一堆我看不懂的东西</span><br><span class="line">__proto__ : f()</span><br></pre></td></tr></table></figure></li>
+<li>Number  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">prototype : 一堆我看不懂的东西</span><br><span class="line">__proto__ : f()</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>我们发现了什么？<br>我们知道使用new 关键字创建的对象会得到原型对象的<code>prototype</code>的地址并保存在<code>__proto__</code>中，这样就能共用方法及属性。</p>
+<p>但是，原型对象又怎么产生？<br>这里就解释了一切，Function是所有原型对象的爸爸，所有的原型对象都是Function构造的，而Function爸爸需要让所有原型对象最后都继承自Object，这样才能面向对象嘛，所以<code>prototype</code>中的<code>__proto__ : Object</code>表示继承自Object，这种处理方式可能就叫中间层?</p>
+<p>至于<code>__proto__</code>指向自己，我猜测可能是在某些情况需要<code>new Function</code>来创造一个Function子对象，这样就能让Function表里如一。</p>
+<p>以上很多都是自己的猜测，可能有许多谬误，以后加深理解了再来更新，不说了，图还没画完呢…赶作业去了</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/09/javaScript%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+      <meta itemprop="description" content="记录我的前端学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello!">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/05/09/javaScript%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">javaScript入门</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-05-09 23:37:03" itemprop="dateCreated datePublished" datetime="2018-05-09T23:37:03+00:00">2018-05-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-31 16:27:02" itemprop="dateModified" datetime="2021-05-31T16:27:02+00:00">2021-05-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index"><span itemprop="name">javaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h1><p>1991年 李爵士发明万维网<br>1992年 其同事发明html和css<br>1993年 成立w3c<br>1995年 网景公司成立 能够执行脚本</p>
+<p>js之父Brendan Eich接到任务发明一种名为Mocha(咖啡配抹茶)的脚本语言，它需要看起来像java。js发布后，Unicode发布UTF-8，这就导致js不能完整兼容UTF-81996年微软模仿JS发明了Jscript。<br>在IE5.5微软推出JS发请求。<br>2004年Gmail利用这个功能做了一个网页上的程序，这让JS的地位大大提高。</p>
+<p>这时就出现了前端（以js为生）</p>
+<p>制约JS发展的问题</p>
+<ul>
+<li>大量全局变量</li>
+<li>缺少标准库</li>
+</ul>
+<p>出现了ECMAScript 5,Es4胎死腹中<br>Es5做了个小升级，具体谷歌</p>
+<p>rails社区（主要使用ruby）发明了coffeeScript，非常好用，ES6就迫在眉睫。</p>
+<p>JS集大家之所长。原创之处不优秀，优秀之处非原创</p>
+<h1 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h1><p>IE8部分兼容ES5,IE7及以下则不兼容</p>
+<h1 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h1><p>ES7及以后，每年一更。</p>
+<p>ESnext 还未正式公布的特性，可以使用webpack打包，使其支持。</p>
+<h1 id="js数据类型"><a href="#js数据类型" class="headerlink" title="js数据类型"></a>js数据类型</h1><p>7 种数据类型</p>
+<ol>
+<li>number</li>
+<li>string</li>
+<li>boolean</li>
+<li>symbol（ES6新增）</li>
+<li>null</li>
+<li>undefined</li>
+<li>object</li>
+</ol>
+<h2 id="number"><a href="#number" class="headerlink" title="number"></a>number</h2><p>支持:</p>
+<ul>
+<li>十进制 1</li>
+<li>浮点数 .1 //0.1</li>
+<li>科学计算法 1.23E2</li>
+<li>二进制 0b011</li>
+<li>八进制 0214542 //以0开头并且没有大于7的数</li>
+<li>十六进制 0x5116D</li>
+</ul>
+<h2 id="string"><a href="#string" class="headerlink" title="string"></a>string</h2><p>‘你好’ “你好”</p>
+<h3 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h3><p>为了避免冲突使用</p>
+<ul>
+<li>\t 制表符</li>
+<li>\n 回车</li>
+<li>\ \</li>
+</ul>
+<p>多行字符串 \就可以了，但是如果后面接字符串，就会出现错误，且不容易发现。<br>也可以用 +号，+号最好，这样易于阅读的</p>
+<p>ES6新增加了字符串语法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a =<span class="string">`123456</span></span><br><span class="line"><span class="string">7890`</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="boolean"><a href="#boolean" class="headerlink" title="boolean"></a>boolean</h2><ul>
+<li>ture</li>
+<li>false</li>
+</ul>
+<h3 id="amp-amp"><a href="#amp-amp" class="headerlink" title="&amp;&amp;"></a>&amp;&amp;</h3><p>全为真才为真，因为自动类型转换的缘故，实质上可以通过这种方式来简写<code>if</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = ture</span><br><span class="line"><span class="keyword">var</span> b = <span class="string">&#x27;z&#x27;</span></span><br><span class="line">a&amp;&amp;b <span class="comment">//返回b的值</span></span><br><span class="line"></span><br><span class="line">a = <span class="literal">false</span></span><br><span class="line">a&amp;&amp;b <span class="comment">//返回a的值</span></span><br></pre></td></tr></table></figure>
+<p>在这里，a为ture的情况下,b的布尔值就等同整个函数的布尔值，所以返回b和返回运算后的布尔值是没有区别的，a为false的情况下同理</p>
+<p><strong>注意，这种方式的<code>if</code>会难以阅读</strong></p>
+<h3 id=""><a href="#" class="headerlink" title="||"></a>||</h3><p>一个为真就为真<br>简写<code>if</code>的形式和上面相反</p>
+<h2 id="symbol"><a href="#symbol" class="headerlink" title="symbol"></a>symbol</h2><p>有点类似java的enum</p>
+<h2 id="null"><a href="#null" class="headerlink" title="null"></a>null</h2><p>指针不指向任何地址，也就是地址为0。</p>
+<h2 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h2><p>变量初始化会被初始化为undefined，不使用null是因为设计时认为null是数字0，这可能导致误解。</p>
+<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><p>除Object外都为基本类型,Object以hash表的方式组织对象,就是基本类型的组合。<br>注意<code>[]</code>表示声明一个空数组，<code>typeof []</code> 返回<code>Object</code>,但是以{0:’a’,1:’b’}，也是可以以数组的形式访问,但是<code>instanceof Array</code>返回false</p>
+<h3 id="声明方式"><a href="#声明方式" class="headerlink" title="声明方式"></a>声明方式</h3><p>只支持以字符串声明key，注意最后以<code>,</code>结尾是ES5的新特性，ES3不支持，IE7及一下只支持IE</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ob = &#123;</span><br><span class="line">    name: <span class="string">&#x27;aarG&#x27;</span>,</span><br><span class="line">    age: <span class="number">18</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>空字符也可以是key，调用使用[‘’]<br>key不加引号视为标识符，不可以以数字开头<br>同时，如果key符合标识符，可以使用.来更方便的取得</p>
+<h3 id="更改方式"><a href="#更改方式" class="headerlink" title="更改方式"></a>更改方式</h3><ul>
+<li><code>in</code> 判断key是不是在对象当中，js声明的全局变量实际都绑定在window上，可以用<code>in</code>判断是否声明过</li>
+<li><code>delete</code> 删除一个键值对</li>
+<li><code>for(var key in person)</code> 遍历键值</li>
+</ul>
+<h3 id="遍历方式"><a href="#遍历方式" class="headerlink" title="遍历方式"></a>遍历方式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> <span class="built_in">Object</span>)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.keys()</span><br></pre></td></tr></table></figure>
+<p>得到一个可枚属性组成的数组</p>
+<h1 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h1><p>返回对象的类型和方法</p>
+<p>注意 <code>typeof null</code>返回Object</p>
+<h1 id="去TM的js类型转换"><a href="#去TM的js类型转换" class="headerlink" title="去TM的js类型转换"></a>去TM的js类型转换</h1><h2 id="xx-toString"><a href="#xx-toString" class="headerlink" title="xx.toString()"></a>xx.toString()</h2><ul>
+<li>number 以字符串的形式输出，可选参数为以何种进制输出数字<br>  注意：以<code>1.toString()</code>的方式是不可行的</li>
+<li>boolean ture或者false</li>
+<li>null 空指针，直接报错</li>
+<li>undefined 直接报错</li>
+<li>Object 总是输出[object Object]，除非重写覆盖了<code>toString()</code>方法 </li>
+<li>{} 语法不支持</li>
+</ul>
+<p><strong>小技巧：</strong> xx + “”<br>js发现<code>+</code>运算符，会检测算子是否有运算符，有就转为字符串</p>
+<ul>
+<li>1 + ‘1’   “1”</li>
+<li>ture + ‘’ “true”</li>
+<li>{} + ‘’   0 //不懂，可能是对象转为0，空字符串再转为0</li>
+</ul>
+<h2 id="window-String"><a href="#window-String" class="headerlink" title="window.String()"></a>window.String()</h2><p>支持null undefined {},其它和toString()一致</p>
+<h2 id="window-Boolean"><a href="#window-Boolean" class="headerlink" title="window.Boolean()"></a>window.Boolean()</h2><p>7种类型种，只有以下几种是false</p>
+<ul>
+<li>number NAN 0</li>
+<li>null</li>
+<li>undefined</li>
+<li>Object 全为true </li>
+<li>String ‘’</li>
+</ul>
+<p>快速转boolean <code>!!</code></p>
+<h2 id="window-Number"><a href="#window-Number" class="headerlink" title="window.Number()"></a>window.Number()</h2><ul>
+<li>boolean 0或1</li>
+<li>null 0</li>
+<li>undefined NaN</li>
+<li>Object 调用valueOf，根据返回的值做决定，如果返回对象则为NaN</li>
+<li>string 如果为空字符串返回0，如果为数字则一个个解析，有非数字就返回NaN，其它返回NaN，特殊的是参数为011会被认为是11</li>
+</ul>
+<h2 id="window-paparseInt"><a href="#window-paparseInt" class="headerlink" title="window.paparseInt()"></a>window.paparseInt()</h2><ul>
+<li>参数为字符串，会从头开始寻找数字，直到遇到非数字为止，没有找到返回NaN</li>
+<li>如果开头为空格，会省略空格</li>
+<li>空字符返回NaN</li>
+<li>所有其它类型返回NaN</li>
+</ul>
+<h2 id="window-parseFloat"><a href="#window-parseFloat" class="headerlink" title="window.parseFloat()"></a>window.parseFloat()</h2><p>和paparseInt()一致，只是不会取整</p>
+<p><strong>小技巧</strong></p>
+<ul>
+<li>‘1’ - 0</li>
+<li>+’1’</li>
+<li>-()<br>都可以</li>
+</ul>
+<h1 id="内存模型"><a href="#内存模型" class="headerlink" title="内存模型"></a>内存模型</h1><p>内存具有内存颗粒，一般每个内存颗粒有512Mb,多个内存颗粒组成内存容量</p>
+<h2 id="内存分配"><a href="#内存分配" class="headerlink" title="内存分配"></a>内存分配</h2><p>浏览器(chrome)启动后会占用大量内存，并且每个新开页面都独立分配内存，这些内存又会分配给HTML+css，js，网络，定时器这些，一般JS内存只能申请到100Mb</p>
+<p>JS种内存分为两个区，一个区分为数据区，一个区分为代码区，我们这里只考虑数据区。</p>
+<p>数据区又分为两个部分，一个为stack(栈)，一个为heap(堆)。<br>js第一步先看声明了哪些变量，进行提升，这样方便内存分配<br>基本类型存在stack中，而Object由于数据量大，经常添加更改属性，不方便内存分配，所以Object就新开个部分存对象，声明对象后就把内存地址给变量，用指针来找对象，堆里新增加A数据是用引用的方式存储的，也就可以方便的添加删除了。</p>
+<p>数字64位，字符16位（2个字节）</p>
+<p>测试一下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">n</span>:<span class="number">1</span>&#125;</span><br><span class="line"><span class="keyword">var</span> b = a</span><br><span class="line">a.x = a = &#123;<span class="attr">n</span>:<span class="number">2</span>&#125;</span><br><span class="line"></span><br><span class="line">a.x <span class="comment">//undefined</span></span><br><span class="line">b.x <span class="comment">//[Object Object]</span></span><br></pre></td></tr></table></figure>
+<p>这里的关键是a.x这里，解释器确定变量是从左到右，先确定赋给谁，再进入表达式，所以a.x还是之前的a</p>
+<h3 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h3><p>如果一个对象没有被引用，就会被标记可以回收，在浏览器需要的时候就会被回收。但在IE6，在多个对象一级一级引用的时候，即使父对象不存在了，子对象却不会被回收,这会导致内存泄漏，因此需要这样做</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onunload = <span class="function"><span class="keyword">function</span></span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.onclick = <span class="literal">null</span></span><br><span class="line">    <span class="comment">//还要有所有的其它监听事件</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="深拷贝-amp-浅拷贝"><a href="#深拷贝-amp-浅拷贝" class="headerlink" title="深拷贝&amp;浅拷贝"></a>深拷贝&amp;浅拷贝</h3><p>你变我也变就是浅拷贝<br>你变我不变就是深拷贝（所有的引用都被复制，和原对象及其子对象没有任何关联）</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/08/canvas%E4%BD%93%E9%AA%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+      <meta itemprop="description" content="记录我的前端学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello!">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/05/08/canvas%E4%BD%93%E9%AA%8C/" class="post-title-link" itemprop="url">canvas体验</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-05-08 23:28:27" itemprop="dateCreated datePublished" datetime="2018-05-08T23:28:27+00:00">2018-05-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-31 16:27:02" itemprop="dateModified" datetime="2021-05-31T16:27:02+00:00">2021-05-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index"><span itemprop="name">javaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="必要的初始化"><a href="#必要的初始化" class="headerlink" title="必要的初始化"></a>必要的初始化</h1><ol>
+<li><p>canvas默认是一个inline-block元素，这通常会导致一些BUG产生，例如下方有空白，宽度不合理，建议将其显示为<code>block</code>元素</p>
+</li>
+<li><p>让画板覆盖全屏<br> 这里需要不能使用css为其设置样式，在css中设置的样式实际并没有改变画板内部的大小，只是将画布简单的放大。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> canvas =<span class="built_in">document</span>.getElementById(<span class="string">&#x27;id&#x27;</span>)</span><br><span class="line">canvas.width = <span class="built_in">document</span>.documentElement.clientWidth</span><br><span class="line">canvas.height = <span class="built_in">document</span>.documentElement.clientHeight</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>获得一个具有2D绘制功能的对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ctx = canvas.getContext(<span class="string">&#x27;2d&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="绘制图像"><a href="#绘制图像" class="headerlink" title="绘制图像"></a>绘制图像</h1><p>现在就可以开始绘制图像了<br>具体如何绘制可以参考官<a target="_blank" rel="noopener" href="http://bucephalus.org/text/CanvasHandbook/CanvasHandbook.html">api文档</a>，官方文档什么都有。</p>
+<p>绘制肯定需要鼠标键盘事件了，js监听事件非常简单</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里我们可以从鼠标事件中得到事件触发的相关参数，我们这里只需要clientX和clientY就可以了，它们代表鼠标点击的是当前页面窗口的位置，并不是在canvas中的位置，有时候页面会被用户改变，此时也需要让canvas自动改变</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">autoSetSize</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    obj.width = getPageSize().width</span><br><span class="line">    obj.height = getPageSize().height</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.onresize = <span class="function"><span class="keyword">function</span> (<span class="params">param</span>) </span>&#123;</span><br><span class="line">    autoSetSize(canvas)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样就可以了,getPageSize是前面函数的封装</p>
+<p>另外需要注意的是canvas默认背景是透明的，需要自己画个颜色做背景。</p>
+<h1 id="移动端优化"><a href="#移动端优化" class="headerlink" title="移动端优化"></a>移动端优化</h1><h2 id="历史渊源"><a href="#历史渊源" class="headerlink" title="历史渊源"></a>历史渊源</h2><p>最早的时候手机浏览采用的是一种wap语言，也就是HTML的简化版，到了iphone3Gs，乔布斯把真正的网页搬上了手机，它们把手机模拟成一个宽度为980px的网页，进行等比缩放，用户也可以放大进行点击。</p>
+<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>但是我们的画板我们并不需要缩放，我们因此就需要禁用它。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width,initial-scale=1,user-scalable=no&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>意思是内容宽度等于设备屏幕的物理宽度，初始比例为一，禁用缩放。<br>在移动端交互方式也不再一样，产生的是touch事件,touch事件会将每一个点的属性以数组的形式列在touch事件中。</p>
+<p>但是我们如何判断其是否支持触摸？<br>在事件初始化过程中，如果设备支持此事件，事件监听会被置为<code>null</code>,而如果不具有，会为<code>undefined</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">document</span>.onclick)</span><br></pre></td></tr></table></figure>
+<p>除此之外，在许多手机浏览器会给页面添加一些滚动的默认效果，比如露出背景，这需要使用preventDefault阻止。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+      <meta itemprop="description" content="记录我的前端学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello!">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/04/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">数据结构</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-04-23 20:50:24" itemprop="dateCreated datePublished" datetime="2018-04-23T20:50:24+00:00">2018-04-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-31 16:27:02" itemprop="dateModified" datetime="2021-05-31T16:27:02+00:00">2021-05-31</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="hash"><a href="#hash" class="headerlink" title="hash"></a>hash</h1><p>键值对</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;key&quot;:value</span><br></pre></td></tr></table></figure>
+<p>计数排序使用的就是这个办法<br>复杂度O(n+max)<br>缺点：空间复杂度高，无法对浮点数或负数进行对比（数组下标不能为负数）</p>
+<p>桶排序<br>每个里面装几个，再用其它进行排序，可以解决空间</p>
+<p>基数排序<br>从个位到最高位，一级一级排列，每次都会把数字放在这个位数确定的地方<br>如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">52 4554 555 6569 46444</span><br><span class="line">第一次</span><br><span class="line">52 4554 46444 555 6569</span><br><span class="line">第二次</span><br><span class="line">46444 52 4554 555 6569</span><br><span class="line">第三次</span><br><span class="line">52 46444 4554 555 6569</span><br><span class="line">第四次</span><br><span class="line">52 555 4554 6569 46444</span><br></pre></td></tr></table></figure>
+
+<h1 id="queue-队列"><a href="#queue-队列" class="headerlink" title="queue(队列)"></a>queue(队列)</h1><p>先进先出（访问）<br>查询快速，不好删除</p>
+<h1 id="stack-栈"><a href="#stack-栈" class="headerlink" title="stack(栈)"></a>stack(栈)</h1><p>后进先出，撤回就是此种</p>
+<h1 id="linkList（链表）"><a href="#linkList（链表）" class="headerlink" title="linkList（链表）"></a>linkList（链表）</h1><p>删除更改方便，查询缓慢</p>
+<h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><p>层级结构都比较像一棵树<br>几个概念：</p>
+<ul>
+<li>层</li>
+<li>深度</li>
+<li>节点个数 叶子节点 非叶子节点</li>
+</ul>
+<h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><p>每次最多只分两个叉</p>
+<ul>
+<li>节点个数等于2^层数-1</li>
+</ul>
+<h3 id="满二叉树"><a href="#满二叉树" class="headerlink" title="满二叉树"></a>满二叉树</h3><p>所有叶子节点都是全的 </p>
+<h3 id="完全二叉树"><a href="#完全二叉树" class="headerlink" title="完全二叉树"></a>完全二叉树</h3><p>除最后一层外，所有层数都是满的，且最后一层只有右边是缺的或不缺</p>
+<p>完全二叉树和满二叉树都可以用数组实现（因为有规律）</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/23/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+      <meta itemprop="description" content="记录我的前端学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello!">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/04/23/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">排序算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-04-23 19:41:44" itemprop="dateCreated datePublished" datetime="2018-04-23T19:41:44+00:00">2018-04-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-31 16:27:02" itemprop="dateModified" datetime="2021-05-31T16:27:02+00:00">2021-05-31</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="什么是算法"><a href="#什么是算法" class="headerlink" title="什么是算法"></a>什么是算法</h1><p>参见<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-hans/%E7%AE%97%E6%B3%95">维基</a></p>
+<ul>
+<li>输入：一个算法必须有零个或以上输入量。</li>
+<li>输出：一个算法应有一个或以上输出量，输出量是算法计算的结果。</li>
+<li>明确性：算法的描述必须无歧义，以保证算法的实际执行结果是精确地匹配要求或期望通常要求实际运行结果是确定的。</li>
+<li>有限性：依据图灵的定义，一个算法是能够被任何图灵完备系统模拟的一串运算，而图灵 机只有有限个状态、有限个输入符号和有限个转移函数（指令）。而一些定义更规定算法必须在有限个步骤内完成任务。</li>
+<li>有效性：又称可行性。能够实现，算法中描述的操作都是可以通过已经实现的基本运算执行有限次来实现。</li>
+</ul>
+<p>算法拥有常见的范式</p>
+<ul>
+<li>分治法：把一个问题分区成互相独立的多个部分分别求解的思路。这种求解思路带来的好处之一是便于进行并行计算。</li>
+<li>动态规划法：当问题的整体最优解就是由局部最优解组成的时候，经常采用的一种方法。</li>
+<li>贪婪（心）算法：常见的近似求解思路。当问题的整体最优解不是（或无法证明是）由局部最优解组成，且对解的最优性没有要求的时候，可以采用的一种方法。</li>
+<li>线性规划法： 考虑多变量寻求各方权衡的最优解。</li>
+<li>简并法：把一个问题通过逻辑或数学推理，简化成与之等价或者近似的、相对简单的模型，进而求解的方法。</li>
+</ul>
+<h1 id="什么是数据结构"><a href="#什么是数据结构" class="headerlink" title="什么是数据结构"></a>什么是数据结构</h1><p>顾名思义，就是指指导数据怎样存储，怎样组织，数据结构通常与算法是联结在一起的的，互不可分的。</p>
+<h1 id="常见排序算法"><a href="#常见排序算法" class="headerlink" title="常见排序算法"></a>常见排序算法</h1><p>参见<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95">维基</a></p>
+<p>每个算法的<a target="_blank" rel="noopener" href="https://visualgo.net/bn/sorting">可视化展示</a></p>
+<p>尽量找时间每个常见排序算法都写一次。</p>
+<p>已写的排序算法：</p>
+<ul>
+<li><p>冒泡排序</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(<span class="keyword">int</span> *p, <span class="keyword">int</span> length)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=length<span class="number">-1</span>;i&gt;<span class="number">0</span>;i--)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>,temp=<span class="number">0</span>;j&lt;i;j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(p[j] &gt; p[j+<span class="number">1</span>])&#123;</span><br><span class="line">				temp=p[j];</span><br><span class="line">				p[j]=p[j+<span class="number">1</span>];</span><br><span class="line">				p[j+<span class="number">1</span>]=temp;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>选择排序</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">selectionSort</span><span class="params">(<span class="keyword">int</span> *p, <span class="keyword">int</span> length)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,temp;i&lt;length<span class="number">-1</span>;i++)&#123;</span><br><span class="line">		temp=i;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;length;j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(p[j]&lt;=p[temp])&#123;</span><br><span class="line">				temp=j;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(temp!=i)&#123;</span><br><span class="line">			p[i]=p[i]+p[temp];</span><br><span class="line">			p[temp]=p[i]-p[temp];</span><br><span class="line">			p[i]=p[i]-p[temp];	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>基数排序</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实现的不好</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">countingSort</span><span class="params">(<span class="keyword">int</span> *p,<span class="keyword">int</span> length)</span></span>&#123;</span><br><span class="line">	<span class="comment">//假设只会对 [0,100)以内随机数进行排序</span></span><br><span class="line">	<span class="keyword">int</span> *tp =(<span class="keyword">int</span>*)<span class="built_in">malloc</span>(<span class="number">100</span>*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)&#123;</span><br><span class="line">		tp[i]=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)&#123;</span><br><span class="line">		tp[p[i]]++;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>,k=<span class="number">0</span>;j&lt;<span class="number">100</span>;j++)&#123;</span><br><span class="line">		<span class="keyword">while</span>(tp[j] &gt;<span class="number">0</span>)&#123;</span><br><span class="line">			p[k++]=j;</span><br><span class="line">			tp[j]--;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">free</span>(tp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>堆排序</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">headSort</span><span class="params">(<span class="keyword">int</span> *p,<span class="keyword">int</span> length)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">makeMaxHead</span><span class="params">(<span class="keyword">int</span> *<span class="built_in">array</span>,<span class="keyword">int</span> startIndex,<span class="keyword">int</span> length)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">headSort</span><span class="params">(<span class="keyword">int</span> *<span class="built_in">array</span>,<span class="keyword">int</span> length)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(length&lt;<span class="number">2</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> startIndex=length/<span class="number">2</span><span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span>  i=startIndex;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">        makeMaxHead(<span class="built_in">array</span>,i,length);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> temp=<span class="built_in">array</span>[<span class="number">0</span>];</span><br><span class="line">    <span class="built_in">array</span>[<span class="number">0</span>]=<span class="built_in">array</span>[length<span class="number">-1</span>];</span><br><span class="line">    <span class="built_in">array</span>[length<span class="number">-1</span>]=temp;</span><br><span class="line">    headSort(<span class="built_in">array</span>,--length);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">makeMaxHead</span><span class="params">(<span class="keyword">int</span> *<span class="built_in">array</span>,<span class="keyword">int</span> startIndex,<span class="keyword">int</span> length)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> iTop;</span><br><span class="line">    <span class="keyword">int</span> iLeft;</span><br><span class="line">    <span class="keyword">int</span> iRight;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">        iTop=startIndex;</span><br><span class="line">        iLeft=startIndex*<span class="number">2</span>+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> iRight=(startIndex+<span class="number">1</span>)*<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(iLeft&lt;length&amp;&amp;<span class="built_in">array</span>[iLeft]&gt;<span class="built_in">array</span>[iTop])&#123;</span><br><span class="line">            iTop=iLeft;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(iRight&lt;length&amp;&amp;<span class="built_in">array</span>[iRight]&gt;<span class="built_in">array</span>[iTop])&#123;</span><br><span class="line">            iTop=iRight;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(iTop!=startIndex)&#123;</span><br><span class="line">            <span class="keyword">int</span> temp =<span class="built_in">array</span>[iTop];</span><br><span class="line">            <span class="built_in">array</span>[iTop]=<span class="built_in">array</span>[startIndex];</span><br><span class="line">            <span class="built_in">array</span>[startIndex]=temp;</span><br><span class="line">            startIndex=iTop;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/22/css%E5%B8%83%E5%B1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+      <meta itemprop="description" content="记录我的前端学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello!">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/04/22/css%E5%B8%83%E5%B1%80/" class="post-title-link" itemprop="url">css布局</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-04-22 15:29:46" itemprop="dateCreated datePublished" datetime="2018-04-22T15:29:46+00:00">2018-04-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-31 16:27:02" itemprop="dateModified" datetime="2021-05-31T16:27:02+00:00">2021-05-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/css/" itemprop="url" rel="index"><span itemprop="name">css</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="左右布局"><a href="#左右布局" class="headerlink" title="左右布局"></a>左右布局</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">class</span>=<span class="string">&quot;clearfix&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;left&quot;</span>&gt;</span>左边的东西<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;right&quot;</span>&gt;</span>右边的东西<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> red solid;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">clear</span>: both;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.left</span>&#123;</span><br><span class="line">  <span class="attribute">float</span><span class="selector-pseudo">:left</span>;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">49%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.right</span>&#123;</span><br><span class="line">  <span class="attribute">float</span><span class="selector-pseudo">:right</span>;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">49%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>效果见<a target="_blank" rel="noopener" href="http://js.jirengu.com/xilocahoru/1/watch?html,css,output">jsBin</a></p>
+<h1 id="左中右布局"><a href="#左中右布局" class="headerlink" title="左中右布局"></a>左中右布局</h1><p>中间加个<code>inline-block</code>的<code>div</code>并居中。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">class</span>=<span class="string">&quot;clearfix&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;left&quot;</span>&gt;</span>左边的东西<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;center&quot;</span>&gt;</span>中间的东西<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;right&quot;</span>&gt;</span>右边的东西<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> red solid;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">clear</span>: both;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.left</span>&#123;</span><br><span class="line">  <span class="attribute">float</span><span class="selector-pseudo">:left</span>;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">20%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.right</span>&#123;</span><br><span class="line">  <span class="attribute">float</span><span class="selector-pseudo">:right</span>;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">20%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.center</span>&#123;</span><br><span class="line">  <span class="attribute">display</span>:inline-block;</span><br><span class="line">  <span class="attribute">margin-left</span>:auro;</span><br><span class="line">  <span class="attribute">margin-right</span>:auto;</span><br><span class="line">  <span class="attribute">vertical-align</span>: top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>效果见<a target="_blank" rel="noopener" href="http://js.jirengu.com/welotibebi/3/watch?html,css,output">jsBin</a></p>
+<h1 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h1><ul>
+<li><p>设置左右边距为auto;</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br></pre></td></tr></table></figure>
+<p>  优点：简单方便<br>  缺点：无法对已float元素生效,元素必须具有固定的宽度</p>
+</li>
+<li><p>设置为<code>inline-block</code>并<code>text-align: center</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*父元素*/</span></span><br><span class="line"><span class="attribute">text-align</span>: center</span><br><span class="line">/*子元素*/</span><br><span class="line">display: inline-block</span><br></pre></td></tr></table></figure>
+<p>  inline元素可以对父级元素使用<code>text-align: center</code><br>  优点：可以对float元素生效，也适用于多个块级元素需要垂直居中的情况<br>  缺点：容易出BUG，一般需要<code>vertical-align: top;</code>修复</p>
+</li>
+</ul>
+<h1 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h1><ul>
+<li><p>设置行高与高度相等</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line"><span class="attribute">line-height</span>: <span class="number">50px</span>;</span><br></pre></td></tr></table></figure>
+<p>设置<code>padding-top</code>与<code>pdding-bottom</code>也是可行的。<br>  缺点：只适合内联与内联块级元素</p>
+</li>
+<li><p>设置table布局</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*父元素*/</span></span><br><span class="line"><span class="attribute">display</span>: table;</span><br><span class="line"><span class="comment">/*子元素*/</span></span><br><span class="line"><span class="attribute">display</span>: inline-block;</span><br><span class="line"><span class="attribute">vertical-align</span>: middle;</span><br></pre></td></tr></table></figure></li>
+<li><p>position和top和transform</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*父元素*/</span></span><br><span class="line"><span class="attribute">position</span>: relative;</span><br><span class="line"><span class="comment">/*子元素*/</span></span><br><span class="line"><span class="attribute">position</span>: absolute;</span><br><span class="line"><span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line"><span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>,<span class="number">50%</span>);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="水平垂直居中"><a href="#水平垂直居中" class="headerlink" title="水平垂直居中"></a>水平垂直居中</h1><ul>
+<li><p>方法1：绝对定位+margin:auto</p>
+<p>  div{</p>
+<pre><code>  width: 200px;
+  height: 200px;
+  background: green;
+  
+  position:absolute;
+  left:0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+</code></pre>
+<p>  }</p>
+</li>
+<li><p>方法2：绝对定位+负margin</p>
+<p>  div{</p>
+<pre><code>  width:200px;
+  height: 200px;
+  background:green;
+  
+  position: absolute;
+  left:50%;
+  top:50%;
+  margin-left:-100px;
+  margin-top:-100px;
+</code></pre>
+<p>  }</p>
+</li>
+<li><p>方法3：绝对定位+transform</p>
+<p>  div{</p>
+<pre><code>  width: 200px;
+  height: 200px;
+  background: green;
+  
+  position:absolute;
+  left:50%;    /* 定位父级的50% */
+  top:50%;
+  transform: translate(-50%,-50%); /*自己的50% */
+</code></pre>
+<p>  }</p>
+</li>
+<li><p>方法4：flex布局</p>
+<p> .box{</p>
+<pre><code>   height:600px;  
+   
+   display:flex;
+   justify-content:center;  //子元素水平居中
+   align-items:center;      //子元素垂直居中
+     /* aa只要三句话就可以实现不定宽高水平垂直居中。 */
+</code></pre>
+<p>  }<br>  .box&gt;div{</p>
+<pre><code>  background: green;
+  width: 200px;
+  height: 200px;
+</code></pre>
+<p>  }</p>
+</li>
+</ul>
+<h1 id="还可以使用"><a href="#还可以使用" class="headerlink" title="还可以使用"></a>还可以使用</h1><ul>
+<li>flex布局，很方便</li>
+</ul>
+<h1 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h1><ul>
+<li>使用<code>::before</code>和<code>::after</code>可以方便的创建新元素再给它加样式</li>
+<li>可以重新设置盒模型<code>box-sizing</code>来方便的设置固定的比例的宽度等</li>
+<li>可以使用伪类来选择特定状态/性质的元素，如：<code>:nth-chlid(even)</code>,选择偶数子元素</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Geylnu</p>
+  <div class="site-description" itemprop="description">记录我的前端学习</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geylnu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

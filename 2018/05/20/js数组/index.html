@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="前言js中window拥有非标准库和标准库，标准库中有Object及相关api,Sting,Boolean等，我们可以先试试这些函数&#x2F;对象 Object()Object()会根据传入的参数返回不同的值  基本类型，所有可以被包装的的基本类型都会被包装成包装类型传入空对象,undefined,或者不传，返回null，传入非空对象返回原对象  使用new Array()方式和构造函数没有区别 这里我们">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js数组">
+<meta property="og:url" content="http://yoursite.com/2018/05/20/js%E6%95%B0%E7%BB%84/index.html">
+<meta property="og:site_name" content="Hello!">
+<meta property="og:description" content="前言js中window拥有非标准库和标准库，标准库中有Object及相关api,Sting,Boolean等，我们可以先试试这些函数&#x2F;对象 Object()Object()会根据传入的参数返回不同的值  基本类型，所有可以被包装的的基本类型都会被包装成包装类型传入空对象,undefined,或者不传，返回null，传入非空对象返回原对象  使用new Array()方式和构造函数没有区别 这里我们">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-05-20T23:00:45.000Z">
+<meta property="article:modified_time" content="2021-05-31T16:27:02.836Z">
+<meta property="article:author" content="Geylnu">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2018/05/20/js%E6%95%B0%E7%BB%84/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>js数组 | Hello!</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hello!</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/20/js%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+      <meta itemprop="description" content="记录我的前端学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello!">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          js数组
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-05-20 23:00:45" itemprop="dateCreated datePublished" datetime="2018-05-20T23:00:45+00:00">2018-05-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-31 16:27:02" itemprop="dateModified" datetime="2021-05-31T16:27:02+00:00">2021-05-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index"><span itemprop="name">javaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>js中window拥有非标准库和标准库，标准库中有Object及相关api,Sting,Boolean等，我们可以先试试这些函数/对象</p>
+<h2 id="Object"><a href="#Object" class="headerlink" title="Object()"></a>Object()</h2><p>Object()会根据传入的参数返回不同的值</p>
+<ul>
+<li>基本类型，所有可以被包装的的基本类型都会被包装成包装类型<br>传入空对象,undefined,或者不传，返回null，传入非空对象返回原对象</li>
+</ul>
+<p>使用<code>new Array()</code>方式和构造函数没有区别</p>
+<p><strong>这里我们可以总结一下</strong><br>如果是基本类型的函数/对象，不加<code>new</code>和加<code>new</code>是不相同的<br>如果是对象，比如<code>Function</code> 我们这里的<code>Array</code>，这两者是等同的</p>
+<h3 id="Function构造函数"><a href="#Function构造函数" class="headerlink" title="Function构造函数"></a>Function构造函数</h3><p><code>let a = new Function(&#39;a&#39;,&#39;b&#39;,&#39;a+b&#39;)</code><br>参数可以无到任意，但至少有函数体</p>
+<p><code>function</code>是个关键字，<code>Function</code>是个全局对象</p>
+<p>函数有几种声明方式，声明出来的结果也不同<br>具名函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    xxx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>匿名函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    xxx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函数方法体</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;a+b&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="Function-prototype"><a href="#Function-prototype" class="headerlink" title="Function.prototype"></a>Function.prototype</h3><p><code>.call()</code><br><code>.bind()</code><br><code>.apply()</code></p>
+<h2 id="Number-Boolean"><a href="#Number-Boolean" class="headerlink" title="Number() Boolean()"></a>Number() Boolean()</h2><p> 转换为对应的基本类型</p>
+<h1 id="Array是什么？"><a href="#Array是什么？" class="headerlink" title="Array是什么？"></a>Array是什么？</h1><p><code>Array</code>对象是用于构造数组的全局对象，属于<code>Object</code></p>
+<p>我们一般声明Array采用的是<code>[gg, aga, aga]</code>，实际上这种方式等价于<code>new Array</code>,前者可以当作语法糖。</p>
+<h1 id="具体怎么用？"><a href="#具体怎么用？" class="headerlink" title="具体怎么用？"></a>具体怎么用？</h1><h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>Array()构造函数会根据传入的不同参数返回不同的数组</p>
+<ol>
+<li><p><code>let a = Array(1)</code><br> 当参数只有一个数字的情况，参数代表数组的长度，返回等于参数长度的数组，这个数组其它元素都没有被声明，包括<code>0 in a</code>，它返回undefined。</p>
+<p> 请注意，传入NaN会报错</p>
+</li>
+<li><p><code>let a = Array(&#39;我就要看你要做什么&#39;)</code><br> 当参数为一个非数字，返回一个长度为1且<code>a[0]=</code>所给字符串数组</p>
+</li>
+<li><p><code>let a = Array(3,3)</code><br> 当传入参数大于等于2，按顺序填充新数组并返回</p>
+</li>
+</ol>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="string-prototype"><a href="#string-prototype" class="headerlink" title="string.prototype"></a>string.prototype</h3><ul>
+<li><code>.trim()</code> 返回一个去掉两端空格的新字符串</li>
+<li><code>.spli()</code> 返回一个分割后的新字符串</li>
+</ul>
+<h3 id="Array-prototype"><a href="#Array-prototype" class="headerlink" title="Array.prototype"></a>Array.prototype</h3><p><code>.push()</code> 推入一个(末尾)<br><code>.pop()</code> 弹出一个(末尾)<br><code>.shift()</code> 删除数组头部元素<br><code>.unshift</code> 添加到头部<br><code>.join()</code> 把数组连接起来，并加上分隔符形成字符串返回，默认为<code>,</code>号<br><code>.concat(b)</code> 把数组连接起来返回新数组，也可以和空数组合并，等同于数组复制<br><code>.forEach()</code> 遍历数组，详见后文<br><code>.map()</code> 遍历数组，详见后文</p>
+<p>Array的关键是继承了<code>Array.prototype</code></p>
+<h3 id="数组遍历"><a href="#数组遍历" class="headerlink" title="数组遍历"></a>数组遍历</h3><p>如果是数组，可以使用<code>for(let i=0;i&lt;obj.length;i++&gt;)</code><br>如果不关心是否是数组，可以使用<code>for (let i in obj)</code>遍历所有键值<br>还可以使用<code>forEach()</code>，<code>.map()</code>遍历</p>
+<h4 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a><code>forEach()</code></h4><p><code>forEcah</code>接受一个函数，这个函数有是三个值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params">currentValue,index,array</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//当前值，索引，数组</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="map"><a href="#map" class="headerlink" title=".map()"></a><code>.map()</code></h4><p>和forEach差不多，不过对value的改变会以新数组的形式返回</p>
+<h4 id="a-filter"><a href="#a-filter" class="headerlink" title="a.filter()"></a><code>a.filter()</code></h4><p>和map差不过，就是筛选，ture要，false不要</p>
+<h4 id="reduce"><a href="#reduce" class="headerlink" title=".reduce()"></a><code>.reduce()</code></h4><p>每次会把函数的返回值作为下一次的返回值，还可以指定初始索引，最后返回最后执行后的函数返回值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.reduce( <span class="function"><span class="keyword">function</span> (<span class="params">sum,n</span>)</span>&#123;<span class="keyword">return</span> sum+=n&#125;,<span class="number">0</span>) <span class="comment">//返回6，0为初始索引</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="a-sort"><a href="#a-sort" class="headerlink" title="a.sort()"></a><code>a.sort()</code></h3><p>一般排序算法使用的都是快排<br>注意：js中默认排序是按照Unicode的码点进行排序，非常傻逼。</p>
+<p>幸运的是，sort接受一个可选参数，支持自定义的比较算法。<br>函数必须是这种形式的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    f (a &lt; b ) &#123;<span class="comment">// 按某种排序标准进行比较, a 小于 b</span></span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;<span class="comment">//小于0 a排前面</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (a &gt; b ) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;<span class="comment">//大于0 b排前面</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//相等不变，但实现不一</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因此比较数字大小的话，可以这样</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.sort(<span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>)</span>&#123;<span class="keyword">return</span> a-b&#125;) <span class="comment">// 最小的在最前</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.sort(<span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>)</span>&#123;<span class="keyword">return</span> b-a&#125;) <span class="comment">// 最大的在最前</span></span><br></pre></td></tr></table></figure>
+<p>其中forEach使用<code>this</code>表示调用者，可以使用<code>this</code>来获取调用者的属性</p>
+<h3 id="伪数组"><a href="#伪数组" class="headerlink" title="伪数组"></a>伪数组</h3><p>如果像一个数组，且<code>_proto_</code>不等于<code>Araay.prototype</code>,那这就是一个伪数组<br>在js目前遇到的伪数组就是<code>arguments</code>这个表示传给函数的参数</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/" rel="prev" title="手把手让小白也能重装系统！">
+      <i class="fa fa-chevron-left"></i> 手把手让小白也能重装系统！
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/05/22/js%E5%87%BD%E6%95%B0/" rel="next" title="js函数">
+      js函数 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Object"><span class="nav-number">1.1.</span> <span class="nav-text">Object()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Function%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.1.</span> <span class="nav-text">Function构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Function-prototype"><span class="nav-number">1.1.2.</span> <span class="nav-text">Function.prototype</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Number-Boolean"><span class="nav-number">1.2.</span> <span class="nav-text">Number() Boolean()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Array%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">Array是什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E6%80%8E%E4%B9%88%E7%94%A8%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">具体怎么用？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#string-prototype"><span class="nav-number">3.2.1.</span> <span class="nav-text">string.prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype"><span class="nav-number">3.2.2.</span> <span class="nav-text">Array.prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86"><span class="nav-number">3.2.3.</span> <span class="nav-text">数组遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#forEach"><span class="nav-number">3.2.3.1.</span> <span class="nav-text">forEach()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map"><span class="nav-number">3.2.3.2.</span> <span class="nav-text">.map()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#a-filter"><span class="nav-number">3.2.3.3.</span> <span class="nav-text">a.filter()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reduce"><span class="nav-number">3.2.3.4.</span> <span class="nav-text">.reduce()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a-sort"><span class="nav-number">3.2.4.</span> <span class="nav-text">a.sort()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%AA%E6%95%B0%E7%BB%84"><span class="nav-number">3.2.5.</span> <span class="nav-text">伪数组</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Geylnu</p>
+  <div class="site-description" itemprop="description">记录我的前端学习</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geylnu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

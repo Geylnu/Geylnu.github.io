@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="1. 起因最近想制作一个在散开的纸面画画的效果，纸面会按一定角度倾斜，就像下面这样↓也就是给canvas元素加了transform: roate(-2deg) 2. 电脑端实现在电脑端很容易实现,鼠标事件中有offsetX Y，能够获得鼠标位置相对于目标节点的位置，可以简单理解为相对于元素左上角的坐标。获得坐标后，再按坐标绘制到Canvas上，一切就OK了，不过到了移动端就有点麻烦了。 3. 移动">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何在touch事件中模拟mouse事件中的offsetX offsetY">
+<meta property="og:url" content="http://yoursite.com/2019/07/29/%E5%A6%82%E4%BD%95%E5%9C%A8touch%E4%BA%8B%E4%BB%B6%E4%B8%AD%E6%A8%A1%E6%8B%9Fmouse%E4%BA%8B%E4%BB%B6%E4%B8%AD%E7%9A%84offsetX-offsetY/index.html">
+<meta property="og:site_name" content="Hello!">
+<meta property="og:description" content="1. 起因最近想制作一个在散开的纸面画画的效果，纸面会按一定角度倾斜，就像下面这样↓也就是给canvas元素加了transform: roate(-2deg) 2. 电脑端实现在电脑端很容易实现,鼠标事件中有offsetX Y，能够获得鼠标位置相对于目标节点的位置，可以简单理解为相对于元素左上角的坐标。获得坐标后，再按坐标绘制到Canvas上，一切就OK了，不过到了移动端就有点麻烦了。 3. 移动">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://cdn.geylnu.com/canvas.png">
+<meta property="og:image" content="http://cdn.geylnu.com/reason.png">
+<meta property="article:published_time" content="2019-07-29T22:49:31.000Z">
+<meta property="article:modified_time" content="2021-05-31T16:27:02.840Z">
+<meta property="article:author" content="Geylnu">
+<meta property="article:tag" content="移动端兼容">
+<meta property="article:tag" content="原生事件">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://cdn.geylnu.com/canvas.png">
+
+<link rel="canonical" href="http://yoursite.com/2019/07/29/%E5%A6%82%E4%BD%95%E5%9C%A8touch%E4%BA%8B%E4%BB%B6%E4%B8%AD%E6%A8%A1%E6%8B%9Fmouse%E4%BA%8B%E4%BB%B6%E4%B8%AD%E7%9A%84offsetX-offsetY/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>如何在touch事件中模拟mouse事件中的offsetX offsetY | Hello!</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hello!</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/29/%E5%A6%82%E4%BD%95%E5%9C%A8touch%E4%BA%8B%E4%BB%B6%E4%B8%AD%E6%A8%A1%E6%8B%9Fmouse%E4%BA%8B%E4%BB%B6%E4%B8%AD%E7%9A%84offsetX-offsetY/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+      <meta itemprop="description" content="记录我的前端学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello!">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          如何在touch事件中模拟mouse事件中的offsetX offsetY
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-29 22:49:31" itemprop="dateCreated datePublished" datetime="2019-07-29T22:49:31+00:00">2019-07-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-31 16:27:02" itemprop="dateModified" datetime="2021-05-31T16:27:02+00:00">2021-05-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h1><p>最近想制作一个在散开的纸面画画的效果，纸面会按一定角度倾斜，就像下面这样↓<br><img src="http://cdn.geylnu.com/canvas.png" alt="canvas"><br>也就是给canvas元素加了<code>transform: roate(-2deg)</code></p>
+<h1 id="2-电脑端实现"><a href="#2-电脑端实现" class="headerlink" title="2. 电脑端实现"></a>2. 电脑端实现</h1><p>在电脑端很容易实现,鼠标事件中有<code>offsetX Y</code>，能够获得鼠标位置相对于目标节点的位置，可以简单理解为相对于元素左上角的坐标。获得坐标后，再按坐标绘制到Canvas上，一切就OK了，不过到了移动端就有点麻烦了。</p>
+<h1 id="3-移动端实现"><a href="#3-移动端实现" class="headerlink" title="3. 移动端实现"></a>3. 移动端实现</h1><p>移动端touch事件有以下几个属性</p>
+<ul>
+<li>ClientX Y 相对于视口的坐标</li>
+<li>pageX Y 相对于页面左上角原点的坐标</li>
+<li>screenX Y 相对于屏幕的坐标标</li>
+<li>movementX Y 相对于上一次坐标的坐标</li>
+</ul>
+<p>然而就是没有<code>offsetX Y</code>，怎么办，自己模拟试试？</p>
+<h2 id="3-1-第一次模拟"><a href="#3-1-第一次模拟" class="headerlink" title="3.1 第一次模拟"></a>3.1 第一次模拟</h2><ol>
+<li>获得<code>pageX Y</code></li>
+<li>通过<code>offsetTop left</code>计算元素左上角的顶点位置<code>vertex</code></li>
+<li>计算相对坐标</li>
+</ol>
+<p>代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getVertexPosition</span>(<span class="params">el</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> currentTarget = el</span><br><span class="line">    <span class="keyword">let</span> top = <span class="number">0</span></span><br><span class="line">    <span class="keyword">let</span> left = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> (currentTarget !== <span class="literal">null</span>) &#123;</span><br><span class="line">        top += currentTarget.offsetTop</span><br><span class="line">        left += currentTarget.offsetLeft</span><br><span class="line">        currentTarget = currentTarget.offsetParent</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> &#123; top, left &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> vertex = getVertexPosition(canvas)</span><br><span class="line">canvas.addEventListener(<span class="string">&#x27;touchmove&#x27;</span>,<span class="function">(<span class="params">e</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> offsetX = e.pageX-vertex.left</span><br><span class="line">    <span class="keyword">let</span> offsetY = e.pageX-vertex.top</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>在页面没有设置任何<code>transform</code>属性的情况下，这个代码是生效的，能获得正确的坐标点。<br>然而如果父元素或目标元素有任何<code>transform</code>属性，坐标就会错误，比如本文中的canvas元素，设置了<code>transform: roate(-2deg)</code>,坐标就发生了偏移。<br>随后搜索了一下是否有类似的解决方案，结果都是这样的代码，都不能对<code>transform</code>元素生效。</p>
+<h2 id="3-2-偏移原因"><a href="#3-2-偏移原因" class="headerlink" title="3.2 偏移原因"></a>3.2 偏移原因</h2><p>偏移原因是因为变换后，元素的坐标轴已经改变了，而我们得到的坐标还是变换前的坐标，自然而然就发生错误了。<br><img src="http://cdn.geylnu.com/reason.png" alt="坐标图"><br>如图所示，实际触摸点是绿色，本应也绘制在绿色坐标点，但是我们现在的坐标系仍然是之前的坐标系，就导致了绘制点相对于原来的坐标点绘制，也即紫色，导致绘制偏移。<br>解决办法也很简单，将触摸点按照新坐标系计算得到值，就是真实的相对坐标了。<br><strong>步骤：</strong></p>
+<ol>
+<li>获得点击坐标（pageX pageY）</li>
+<li>获得旋转角度 旋转中心</li>
+<li>将旋转中心于元素顶点坐标相加，得到整个页面的旋转中心</li>
+<li>旋转相同负角度（逆运算），将点击坐标还原到真实的坐标系</li>
+<li>减去顶点坐标，获得真实相对坐标。</li>
+</ol>
+<h2 id="第二次模拟"><a href="#第二次模拟" class="headerlink" title="第二次模拟"></a>第二次模拟</h2><ol>
+<li><p>首先获得计算后的样式，获得<code>transform</code>相关属性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> style = <span class="built_in">window</span>.getComputedStyle(el)</span><br><span class="line"><span class="built_in">console</span>.log(style) </span><br></pre></td></tr></table></figure>
+<p>获得的<code>transform</code>属性如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">transform: &quot;matrix(0.999391, -0.0348995, 0.0348995, 0.999391, 0, 0)&quot;</span><br><span class="line">transformBox: &quot;view-box&quot;</span><br><span class="line">transformOrigin: &quot;160px 240px&quot;</span><br><span class="line">transformStyle: &quot;flat&quot;</span><br></pre></td></tr></table></figure>
+<p>关于<code>transform:matrix</code>以及如何理解查看<a target="_blank" rel="noopener" href="https://www.zhangxinxu.com/wordpress/2012/06/css3-transform-matrix-%E7%9F%A9%E9%98%B5/">张鑫旭的文章</a>。<br>简而言之，就是<code>transform</code>属性都是通过<code>transform:matrix</code>进行矩阵计算得到坐标的。</p>
+</li>
+<li><p>解析transform属性<br>由于这里涉及到矩阵运算，需要引入<a target="_blank" rel="noopener" href="https://mathjs.org/">math.js</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> transform = style.transform</span><br><span class="line"><span class="keyword">let</span> transformOrigin = style.transformOrigin</span><br><span class="line"><span class="keyword">let</span> origin = &#123; <span class="attr">x</span>: <span class="number">0</span>, <span class="attr">y</span>: <span class="number">0</span> &#125;</span><br><span class="line"><span class="keyword">let</span> matrix = math.ones([<span class="number">3</span>, <span class="number">3</span>])</span><br><span class="line"><span class="keyword">if</span> (transform !== <span class="string">&#x27;none&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> originArray = transformOrigin.split(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">    origin.x = <span class="built_in">parseInt</span>(originArray[<span class="number">0</span>])</span><br><span class="line">    origin.y = <span class="built_in">parseInt</span>(originArray[<span class="number">1</span>]) <span class="comment">//矩阵的坐标变化是基于变换中心得。</span></span><br><span class="line">    <span class="keyword">let</span> matrixString = transform.match(<span class="regexp">/\(([^)]*)\)/</span>)[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">let</span> stringArray = matrixString.split(<span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">    <span class="keyword">let</span> temp = []</span><br><span class="line">    stringArray.forEach(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">        temp.push(<span class="built_in">parseFloat</span>(value.trim()))</span><br><span class="line">    &#125;)</span><br><span class="line">    temp = [</span><br><span class="line">        [temp[<span class="number">0</span>], temp[<span class="number">2</span>], temp[<span class="number">4</span>]],</span><br><span class="line">        [temp[<span class="number">1</span>], temp[<span class="number">3</span>], temp[<span class="number">5</span>]],</span><br><span class="line">        [<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">    ]</span><br><span class="line">    matrix = math.inv(temp) <span class="comment">//进行逆矩阵</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    matrix = [[<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>]]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样我们就得到了原变换矩阵的逆矩阵和变换中心，就能将触摸点正确的还原到原坐标系了</p>
+</li>
+<li><p>计算</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">computPosition</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> &#123; matrix, origin, <span class="attr">vertex</span>: &#123; top, left &#125;,<span class="attr">ponit</span>:&#123;x,y&#125; &#125; = obj</span><br><span class="line">    x = x - left - origin.x</span><br><span class="line">    y = y - top - origin.y</span><br><span class="line">    <span class="keyword">let</span> result = math.multiply(matrix, [x, y, <span class="number">1</span>])</span><br><span class="line">    x = result[<span class="number">0</span>] + origin.x</span><br><span class="line">    y = result[<span class="number">1</span>] + origin.y</span><br><span class="line">    <span class="keyword">return</span> (x,y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>实际实现</p>
+<ol>
+<li>由于子元素会受到父元素变换影响，因此需要遍历所有父元素</li>
+<li>由于<code>getComputStyle()</code>和获得顶点坐标有较大性能消耗，最好将相关参数缓存起来<br>实际代码实现见此<a target="_blank" rel="noopener" href="https://github.com/Geylnu/touch-offset">https://github.com/Geylnu/touch-offset</a></li>
+</ol>
+</li>
+</ol>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>W3C给出了没有为touch事件添加<code>offsetX Y</code>的原因<a target="_blank" rel="noopener" href="https://github.com/w3c/touch-events/issues/62">https://github.com/w3c/touch-events/issues/62</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%85%BC%E5%AE%B9/" rel="tag"># 移动端兼容</a>
+              <a href="/tags/%E5%8E%9F%E7%94%9F%E4%BA%8B%E4%BB%B6/" rel="tag"># 原生事件</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/01/15/%E8%99%9A%E6%8B%9FDOM/" rel="prev" title="虚拟DOM">
+      <i class="fa fa-chevron-left"></i> 虚拟DOM
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/10/06/%E4%BB%8Ecallback%E5%88%B0async%E5%87%BD%E6%95%B0-js%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E7%9A%84%E6%BC%94%E5%8F%98/" rel="next" title="从callback到async函数-js异步编程的演变">
+      从callback到async函数-js异步编程的演变 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E8%B5%B7%E5%9B%A0"><span class="nav-number">1.</span> <span class="nav-text">1. 起因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E7%94%B5%E8%84%91%E7%AB%AF%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">2. 电脑端实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">3. 移动端实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 第一次模拟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E5%81%8F%E7%A7%BB%E5%8E%9F%E5%9B%A0"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 偏移原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E6%A8%A1%E6%8B%9F"><span class="nav-number">3.3.</span> <span class="nav-text">第二次模拟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E5%AE%83"><span class="nav-number">3.4.</span> <span class="nav-text">其它</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Geylnu</p>
+  <div class="site-description" itemprop="description">记录我的前端学习</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geylnu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

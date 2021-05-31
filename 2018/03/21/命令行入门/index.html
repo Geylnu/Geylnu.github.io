@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="给自己弄一个bash环境本文所使用的系统为Linux,如果你是macOS，大多命令是相通的，你不必担心；如果你使用的是Windows 10,你可以参照此篇博客，不到10分种为你的win10安装一个Linux子系统,如果你是win8&#x2F;win7&#x2F;winxp，你可以参考此篇文章使用带有模拟bash环境的命令行终端。 命令行释义打当你打开你的命令行，通常是这样的 1user@PC:~$  或 12user">
+<meta property="og:type" content="article">
+<meta property="og:title" content="命令行入门">
+<meta property="og:url" content="http://yoursite.com/2018/03/21/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="Hello!">
+<meta property="og:description" content="给自己弄一个bash环境本文所使用的系统为Linux,如果你是macOS，大多命令是相通的，你不必担心；如果你使用的是Windows 10,你可以参照此篇博客，不到10分种为你的win10安装一个Linux子系统,如果你是win8&#x2F;win7&#x2F;winxp，你可以参考此篇文章使用带有模拟bash环境的命令行终端。 命令行释义打当你打开你的命令行，通常是这样的 1user@PC:~$  或 12user">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-03-21T11:10:33.000Z">
+<meta property="article:modified_time" content="2021-05-31T16:27:02.840Z">
+<meta property="article:author" content="Geylnu">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2018/03/21/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%85%A5%E9%97%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>命令行入门 | Hello!</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hello!</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/21/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+      <meta itemprop="description" content="记录我的前端学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello!">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          命令行入门
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-03-21 11:10:33" itemprop="dateCreated datePublished" datetime="2018-03-21T11:10:33+00:00">2018-03-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-31 16:27:02" itemprop="dateModified" datetime="2021-05-31T16:27:02+00:00">2021-05-31</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="给自己弄一个bash环境"><a href="#给自己弄一个bash环境" class="headerlink" title="给自己弄一个bash环境"></a>给自己弄一个bash环境</h1><p>本文所使用的系统为Linux,如果你是macOS，大多命令是相通的，你不必担心；如果你使用的是Windows 10,你可以参照<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/bc38ed12da1d" title="win10安装Linux子系统">此篇博客</a>，不到10分种为你的win10安装一个Linux子系统,如果你是win8/win7/winxp，你可以<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/7a706c0a3411" title="cmder 一个比cmd强n倍的神器">参考此篇文章</a>使用带有模拟bash环境的命令行终端。</p>
+<h1 id="命令行释义"><a href="#命令行释义" class="headerlink" title="命令行释义"></a>命令行释义</h1><p>打当你打开你的命令行，通常是这样的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user@PC:~$ </span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user@PC ~ </span><br><span class="line">$ </span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>user</code> 指你当前登陆的账户的用户名。</li>
+<li><code>PC</code> 是指你当前登陆的主机名。</li>
+<li><code>~</code> 指当前你处在的目录，~代表你处在你的用户目录下。</li>
+<li><code>$</code> 指示你可以在其后输入命令并执行，并无实际意义，在部分Linux中，此符号为<code>#</code>。</li>
+</ol>
+<p>通常我们需要在命令后输入使用文件路径进行操作，而文件路径中分为<strong>绝对路径</strong>和<strong>相对路径</strong>,我们首先要理清这两者的概念。</p>
+<ol>
+<li><p><strong>绝对路径</strong><br>指该文件/文件夹真实的文件路径，在windows中，我们在经常看见的<code>&quot;C:\Program Files\Adobe\Adobe Photoshop CC 2018&quot;</code>就是绝对路径。而在Linux中，没有盘符的概念，只有一个根目录<code>/</code>，在根目录下拥有许多分区，常见的路径是这样的<code>/home/geylun/bilibili</code>，因此在Linux中你可以认为以<code>/</code>开头的路径即是绝对路径。</p>
+</li>
+<li><p><strong>相对路径</strong><br>相对路径其实只是绝对路径一种缩减的写法，方便我们进行路径输入，比如我总喜欢在我<code>/home/geylun/</code>下做各种操作，我不可能每次都在参数后面跟这一大串路径，相对路径这个办法就出来了，我用<code>.</code>代表当前目录，<code>..</code>代表当前目录的上级目录，<code>~</code>代表我的用户目录，这样在我的文件夹进行各种操作的时候，就只用输入<code>~</code>。</p>
+</li>
+</ol>
+<h1 id="命令释义"><a href="#命令释义" class="headerlink" title="命令释义"></a>命令释义</h1><h2 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h2><ul>
+<li><p><strong><code>cd</code></strong><br>改变你当前的工作目录，这样你可以以相对路径来更方便的输入路径，并且许多命令也只对当前工作目录生效。<br>如果目录太长，你可以按<strong>TAB</strong>键自动补全路径。</p>
+</li>
+<li><p><strong><code>pwd</code></strong><br>列出你当前目录的绝对路径</p>
+</li>
+<li><p><strong><code>ls</code></strong><br>列出当前目录里的文件及文件夹。<br>  <strong>可选参数</strong></p>
+<ul>
+<li><code>-a</code> 显示所有文件（包括以<code>.</code>开头的隐藏文件）</li>
+<li><code>-l</code> 显示详细信息，包括权限、所有者、创建时间</li>
+<li><code>-R</code> 递归的列出所有文件及其所在目录（tree更好）</li>
+</ul>
+</li>
+<li><p><strong><code>tree</code></strong><br>以树状图的方式展示当前目录结构及文件</p>
+<ul>
+<li><code>-a</code> 显示所有文件<br>如果你没有此命令，Linux系统可以输入<code>sudo apt-get install tree</code>安装tree工具。</li>
+</ul>
+</li>
+<li><p><strong><code>cat</code></strong><br>从文件中读入字符并打印到屏幕上<br>有很多参数可选，你可以参照<a target="_blank" rel="noopener" href="http://www.runoob.com/linux/linux-comm-cat.html" title="Linux cat命令">菜鸟教程</a></p>
+<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><p>注意，命令行是以空格等标记分割参数，如果你输入的文件名包含空格，你最好使用<code>&quot;&quot;</code>包裹它。</p>
+</li>
+<li><p><strong><code>touch</code></strong><br>如果文件不存在则创建文件，如存在则以当前系统时间修改时间属性</p>
+</li>
+<li><p><strong><code>echo</code></strong><br>回声，输入什么就输出什么<br>echo是一个很有趣的命令，你输入什么它就输出什么，使用<code>&gt;</code>重定向就能以指定的文本内容创建文件，例如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;Hello world&quot;</span> &gt;init.txt</span><br></pre></td></tr></table></figure>
+<p>  这样就可以创建一个内容为”Hello world”的文件<br>  每次重新执行会覆盖之前的内容<br>  如果你想追加内容，而不是覆盖原文件，可以这样做</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;QAQ&quot;</span> &gt;&gt;init.txt</span><br></pre></td></tr></table></figure>
+<p>  文本内容就会变成</p>
+<pre><code>  Hello world QAQ
+</code></pre>
+<p>  事实上你可以使用<code>&gt;</code>把任意的标准输出都重定向到新的文件中。</p>
+</li>
+<li><p><strong><code>cp</code></strong><br>复制文件到另一个文件，如果另一个文件不存在则创建。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cp init.txt init.txt.backup</span><br></pre></td></tr></table></figure>
+<p>  这样就会创建一个init文件的复制。</p>
+</li>
+<li><p><strong><code>mkdir</code></strong><br>创建一个目录<br>  <strong>可选参数</strong></p>
+<ul>
+<li><code>-p</code> 确保目录存在，不存在就创建一个</li>
+</ul>
+</li>
+</ul>
+<h2 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h2><ul>
+<li><p><strong><code>mv</code></strong><br>修改文件/文件夹路径，你可以使用此命令进行重名名、移动、覆盖等<br>比如修改名称</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mv init.txt hello.txt</span><br></pre></td></tr></table></figure>
+<p>  <strong>可选参数</strong></p>
+<ul>
+<li><code>-i</code> 如果目标文件存在就询问是否覆盖（默认直接覆盖）</li>
+<li><code>-u</code> 若目标文件已经存在，且源文件更新时，才进行覆盖。</li>
+</ul>
+</li>
+<li><p><strong><code>rm</code></strong><br>删除文件<br>  <strong>可选参数</strong></p>
+<ul>
+<li><code>r</code>递归删除，如果文件夹中还有文件夹，会一直查询到没有新的目录为止，然后一个个删除文件夹和文件</li>
+<li><code>r</code>不要询问、警告我。</li>
+<li><em>使用<code>rm -rf</code>请再三小心！</em>*</li>
+</ul>
+</li>
+<li><p><strong><code>vim</code></strong><br>  命令行界面的文字编辑器，你可以使用输入<code>vimtutor</code>查看它的自带教程。</p>
+</li>
+</ul>
+<h2 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h2><ul>
+<li><p><strong><code>clrar</code></strong><br>清屏</p>
+</li>
+<li><p><strong><code>history</code></strong><br>查看命令输入历史</p>
+</li>
+</ul>
+<h1 id="命令行技巧"><a href="#命令行技巧" class="headerlink" title="命令行技巧"></a>命令行技巧</h1><h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><ul>
+<li><strong><code>TAB</code></strong> 提示命令及补全路径</li>
+<li><strong><code>↑</code></strong>/<strong><code>↓</code></strong> 上一条下一条命令</li>
+<li><strong><code>ALT</code></strong>+<strong><code>.</code></strong> 上一个命令的最后一个参数</li>
+<li><strong><code>!!</code></strong> 上一条命令占位符</li>
+</ul>
+<h2 id="修改-bashrc"><a href="#修改-bashrc" class="headerlink" title="修改~/.bashrc"></a>修改~/.bashrc</h2><p>可以再.bashrc中添加命令，这些命令会在终端打开时自动执行这些命令<br>你可以添加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/Desketop</span><br></pre></td></tr></table></figure>
+<p>自动跳转到桌面</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> la=<span class="string">&#x27;ls -a&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>把 <code>la</code> 定义为<code>&#39;ls -a&#39;</code></p>
+<p>你还可以在这里定义环境变量，这些环境变量会影响到具体命令的执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> SASS_BINARY_SITE=<span class="string">&quot;https://npm.taobao.org/mirrors/node-sass&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/03/19/%E6%B2%A1%E6%9C%89edu%E9%82%AE%E7%AE%B1%E5%A6%82%E4%BD%95%E6%B3%A8%E5%86%8CJetBrains%E5%85%8D%E8%B4%B9%E6%95%99%E8%82%B2%E8%B4%A6%E6%88%B7%EF%BC%9F/" rel="prev" title="没有edu邮箱如何注册JetBrains免费教育账户？">
+      <i class="fa fa-chevron-left"></i> 没有edu邮箱如何注册JetBrains免费教育账户？
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/03/21/%E6%96%B9%E6%96%B9%E7%9A%84%E6%8E%A8%E8%8D%90%E4%B9%A6%E7%9B%AE-%E5%BD%B1%E7%89%87/" rel="next" title="方方的推荐书目/影片">
+      方方的推荐书目/影片 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%99%E8%87%AA%E5%B7%B1%E5%BC%84%E4%B8%80%E4%B8%AAbash%E7%8E%AF%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">给自己弄一个bash环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E9%87%8A%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">命令行释义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E9%87%8A%E4%B9%89"><span class="nav-number">3.</span> <span class="nav-text">命令释义</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B"><span class="nav-number">3.1.</span> <span class="nav-text">查看</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA"><span class="nav-number">3.2.</span> <span class="nav-text">创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9"><span class="nav-number">3.3.</span> <span class="nav-text">修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%82%E9%A1%B9"><span class="nav-number">3.4.</span> <span class="nav-text">杂项</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%8A%80%E5%B7%A7"><span class="nav-number">4.</span> <span class="nav-text">命令行技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">4.1.</span> <span class="nav-text">快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-bashrc"><span class="nav-number">4.2.</span> <span class="nav-text">修改~&#x2F;.bashrc</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Geylnu</p>
+  <div class="site-description" itemprop="description">记录我的前端学习</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geylnu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

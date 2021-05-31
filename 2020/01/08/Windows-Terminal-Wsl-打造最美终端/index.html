@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="前言自己之前在Windows一直使用cmder作为自己的终端使用，主要就是自带颜值比git-bash这些高很多，不过在把Windows升级到1909版本，cmder不知为何无法连接到wsl了, 正好也想试试微软新出的Windows Terminal 下载安装直接在应用商店里安装就可以了 个性化Windows Terminal默认的Windows Terminal各个终端都是默认样式，劝退级别233">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows Terminal 打造最美终端~">
+<meta property="og:url" content="http://yoursite.com/2020/01/08/Windows-Terminal-Wsl-%E6%89%93%E9%80%A0%E6%9C%80%E7%BE%8E%E7%BB%88%E7%AB%AF/index.html">
+<meta property="og:site_name" content="Hello!">
+<meta property="og:description" content="前言自己之前在Windows一直使用cmder作为自己的终端使用，主要就是自带颜值比git-bash这些高很多，不过在把Windows升级到1909版本，cmder不知为何无法连接到wsl了, 正好也想试试微软新出的Windows Terminal 下载安装直接在应用商店里安装就可以了 个性化Windows Terminal默认的Windows Terminal各个终端都是默认样式，劝退级别233">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2020/01/08/Windows-Terminal-Wsl-%E6%89%93%E9%80%A0%E6%9C%80%E7%BE%8E%E7%BB%88%E7%AB%AF/terminal.png">
+<meta property="article:published_time" content="2020-01-08T21:41:30.000Z">
+<meta property="article:modified_time" content="2021-05-31T16:27:02.796Z">
+<meta property="article:author" content="Geylnu">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Windows Terminal">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/01/08/Windows-Terminal-Wsl-%E6%89%93%E9%80%A0%E6%9C%80%E7%BE%8E%E7%BB%88%E7%AB%AF/terminal.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/01/08/Windows-Terminal-Wsl-%E6%89%93%E9%80%A0%E6%9C%80%E7%BE%8E%E7%BB%88%E7%AB%AF/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Windows Terminal 打造最美终端~ | Hello!</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hello!</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/08/Windows-Terminal-Wsl-%E6%89%93%E9%80%A0%E6%9C%80%E7%BE%8E%E7%BB%88%E7%AB%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+      <meta itemprop="description" content="记录我的前端学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello!">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Windows Terminal 打造最美终端~
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-08 21:41:30" itemprop="dateCreated datePublished" datetime="2020-01-08T21:41:30+00:00">2020-01-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-31 16:27:02" itemprop="dateModified" datetime="2021-05-31T16:27:02+00:00">2021-05-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Shell/" itemprop="url" rel="index"><span itemprop="name">Shell</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>自己之前在Windows一直使用<a target="_blank" rel="noopener" href="https://cmder.net/">cmder</a>作为自己的终端使用，主要就是自带颜值比git-bash这些高很多，不过在把Windows升级到1909版本，cmder不知为何无法连接到<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/wsl/install-win10" title="Windows Linux子系统">wsl</a>了, 正好也想试试微软新出的<a target="_blank" rel="noopener" href="https://github.com/microsoft/terminal">Windows Terminal</a></p>
+<h2 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h2><p>直接在<a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/p/windows-terminal-preview/9n0dx20hk701">应用商店</a>里安装就可以了</p>
+<h2 id="个性化Windows-Terminal"><a href="#个性化Windows-Terminal" class="headerlink" title="个性化Windows Terminal"></a>个性化Windows Terminal</h2><p>默认的Windows Terminal各个终端都是默认样式，劝退级别233。点击下拉菜单，点击设置就会打开Vscode来自己配置Windows Terminal了</p>
+<p>添加新的终端需要在<code>profiles</code>属性下添加，类似下面这样</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;guid&quot;</span>: <span class="string">&quot;&#123;156bea93-de01-48ff-bce0-860cc70a73d5&#125;&quot;</span>, <span class="comment">//uuid 用于区分不同终端</span></span><br><span class="line">    <span class="string">&quot;background&quot;</span>: <span class="string">&quot;#282c34&quot;</span>, <span class="comment">//背景颜色</span></span><br><span class="line">    <span class="string">&quot;closeOnExit&quot;</span>: <span class="literal">true</span>, </span><br><span class="line">    <span class="string">&quot;colorScheme&quot;</span>: <span class="string">&quot;Chester&quot;</span>, <span class="comment">//配色方案</span></span><br><span class="line">    <span class="string">&quot;commandline&quot;</span>: <span class="string">&quot;\&quot;%PROGRAMFILES%\\git\\usr\\bin\\bash.exe\&quot; -i -l&quot;</span>, <span class="comment">// 终端位置</span></span><br><span class="line">    <span class="string">&quot;cursorColor&quot;</span>: <span class="string">&quot;#FFFFFF&quot;</span>,</span><br><span class="line">    <span class="string">&quot;cursorShape&quot;</span>: <span class="string">&quot;bar&quot;</span>,</span><br><span class="line">    <span class="string">&quot;fontFace&quot;</span>: <span class="string">&quot;Consolas&quot;</span>,</span><br><span class="line">    <span class="string">&quot;fontSize&quot;</span>: <span class="number">12</span>,</span><br><span class="line">    <span class="string">&quot;historySize&quot;</span>: <span class="number">9001</span>,</span><br><span class="line">    <span class="string">&quot;icon&quot;</span>: <span class="string">&quot;%SystemDrive%\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico&quot;</span>, </span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Bash&quot;</span>,</span><br><span class="line">    <span class="string">&quot;padding&quot;</span>: <span class="string">&quot;10, 10, 10, 10&quot;</span>,</span><br><span class="line">    <span class="string">&quot;snapOnInput&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;startingDirectory&quot;</span>: <span class="string">&quot;%USERPROFILE%&quot;</span>,</span><br><span class="line">    <span class="string">&quot;useAcrylic&quot;</span>: <span class="literal">true</span>, <span class="comment">// 是否启用毛玻璃特效</span></span><br><span class="line">    <span class="string">&quot;acrylicOpacity&quot;</span>: <span class="number">0.85</span> <span class="comment">// 透明度 仅在启用毛玻璃特效后有效</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>想要终端变得好看，配色是第一步，可以去<a target="_blank" rel="noopener" href="https://github.com/mbadolato/iTerm2-Color-Schemes">iTerm2-Color-Schemes</a>上找一个自己喜欢的主题，复制<code>windowsterminal</code>同名文件的内容到<code>schemes</code>，比如我选择的<a target="_blank" rel="noopener" href="https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/windowsterminal/Chester.json">Chester</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Chester&quot;</span>,</span><br><span class="line">    <span class="string">&quot;black&quot;</span>: <span class="string">&quot;#080200&quot;</span>,</span><br><span class="line">    <span class="string">&quot;red&quot;</span>: <span class="string">&quot;#fa5e5b&quot;</span>,</span><br><span class="line">    <span class="string">&quot;green&quot;</span>: <span class="string">&quot;#16c98d&quot;</span>,</span><br><span class="line">    <span class="string">&quot;yellow&quot;</span>: <span class="string">&quot;#ffc83f&quot;</span>,</span><br><span class="line">    <span class="string">&quot;blue&quot;</span>: <span class="string">&quot;#288ad6&quot;</span>,</span><br><span class="line">    <span class="string">&quot;purple&quot;</span>: <span class="string">&quot;#d34590&quot;</span>,</span><br><span class="line">    <span class="string">&quot;cyan&quot;</span>: <span class="string">&quot;#28ddde&quot;</span>,</span><br><span class="line">    <span class="string">&quot;white&quot;</span>: <span class="string">&quot;#e7e7e7&quot;</span>,</span><br><span class="line">    <span class="string">&quot;brightBlack&quot;</span>: <span class="string">&quot;#6f6b68&quot;</span>,</span><br><span class="line">    <span class="string">&quot;brightRed&quot;</span>: <span class="string">&quot;#fa5e5b&quot;</span>,</span><br><span class="line">    <span class="string">&quot;brightGreen&quot;</span>: <span class="string">&quot;#16c98d&quot;</span>,</span><br><span class="line">    <span class="string">&quot;brightYellow&quot;</span>: <span class="string">&quot;#feef6d&quot;</span>,</span><br><span class="line">    <span class="string">&quot;brightBlue&quot;</span>: <span class="string">&quot;#278ad6&quot;</span>,</span><br><span class="line">    <span class="string">&quot;brightPurple&quot;</span>: <span class="string">&quot;#d34590&quot;</span>,</span><br><span class="line">    <span class="string">&quot;brightCyan&quot;</span>: <span class="string">&quot;#27dede&quot;</span>,</span><br><span class="line">    <span class="string">&quot;brightWhite&quot;</span>: <span class="string">&quot;#ffffff&quot;</span>,</span><br><span class="line">    <span class="string">&quot;background&quot;</span>: <span class="string">&quot;#2c3643&quot;</span>,</span><br><span class="line">    <span class="string">&quot;foreground&quot;</span>: <span class="string">&quot;#ffffff&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>把profiles中终端配置修改成对应主题名称</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">&quot;colorScheme&quot;</span>: <span class="string">&quot;Chester&quot;</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后顺带修改一下背景颜色，微调一下透明度</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;background&quot;</span>: <span class="string">&quot;#282c34&quot;</span>,  <span class="comment">// 比较有质感的黑色</span></span><br><span class="line">    <span class="string">&quot;useAcrylic&quot;</span>: <span class="literal">true</span>,       </span><br><span class="line">    <span class="string">&quot;acrylicOpacity&quot;</span>: <span class="number">0.85</span>    <span class="comment">// 0.8左右都是比较适合的</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后实现效果如下</p>
+<p><img src="terminal.png" alt="效果"></p>
+<p>这里用的是cat的升级版<a target="_blank" rel="noopener" href="https://github.com/sharkdp/bat">bat</a>,需要在<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/wsl/install-win10" title="Windows Linux子系统">wsl</a>下安装</p>
+<h3 id="无法出现毛玻璃特效？"><a href="#无法出现毛玻璃特效？" class="headerlink" title="无法出现毛玻璃特效？"></a>无法出现毛玻璃特效？</h3><p>这可能是由于在系统设置中关闭了特效，可以打开设置-&gt;个性化-&gt;颜色-&gt;透明效果-&gt;启用打开毛玻璃特效，然后重新打开Windows Terminal就生效了</p>
+<h3 id="进入后目录不是用户目录？"><a href="#进入后目录不是用户目录？" class="headerlink" title="进入后目录不是用户目录？"></a>进入后目录不是用户目录？</h3><p>可以在执行命令后面添加这些参数，相关issues可以看这里<a target="_blank" rel="noopener" href="https://github.com/microsoft/terminal/issues/592">startingDirectory setting issue for wsl profile</a></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;commandline&quot;</span>: <span class="string">&quot;wsl.exe ~ -d Ubuntu&quot;</span></span><br><span class="line">&#125;     </span><br></pre></td></tr></table></figure>
+
+<h3 id="如何让wsl和windows通信？"><a href="#如何让wsl和windows通信？" class="headerlink" title="如何让wsl和windows通信？"></a>如何让wsl和windows通信？</h3><p>根据 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/wsl/wsl2-ux-changes">官方文档</a>,在<code>/etc/resolv.conf</code>中，会储存windows主机的ip地址。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># This file was automatically generated by WSL. To stop automatic generation of this file, add the following entry to /etc/wsl.conf:</span></span><br><span class="line"><span class="comment"># [network]</span></span><br><span class="line"><span class="comment"># generateResolvConf = false</span></span><br><span class="line">nameserver 172.20.192.1</span><br></pre></td></tr></table></figure>
+<p>我们可以直接使用bash脚本提取它作为全局变量使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> win_host=<span class="string">&quot;<span class="subst">$(grep -oP &#x27;(?&lt;=nameserver )</span>\d&#123;1,3&#125;(?:\.\d&#123;1,3&#125;)&#123;3&#125;&#x27; /etc/resolv.conf)&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$win_host</span></span><br><span class="line">172.20.192.1</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> http_proxy=<span class="string">&quot;http://<span class="variable">$&#123;win_host&#125;</span>:1080&quot;</span></span><br><span class="line"><span class="built_in">export</span> https_proxy=<span class="string">&quot;http://<span class="variable">$&#123;win_host&#125;</span>:1080&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/Windows-Terminal/" rel="tag"># Windows Terminal</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/10/06/%E4%BB%8Ecallback%E5%88%B0async%E5%87%BD%E6%95%B0-js%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E7%9A%84%E6%BC%94%E5%8F%98/" rel="prev" title="从callback到async函数-js异步编程的演变">
+      <i class="fa fa-chevron-left"></i> 从callback到async函数-js异步编程的演变
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/17/%E8%B0%88%E8%B0%88%E7%BB%8F%E5%B8%B8%E5%87%BA%E7%8E%B0%E7%9A%84%E5%87%BA%E7%8E%B0%E7%9A%84-%E6%B7%B1%E6%8B%B7%E8%B4%9D/" rel="next" title="谈谈经常出现的出现的“深拷贝”">
+      谈谈经常出现的出现的“深拷贝” <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">下载安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AA%E6%80%A7%E5%8C%96Windows-Terminal"><span class="nav-number">3.</span> <span class="nav-text">个性化Windows Terminal</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E6%B3%95%E5%87%BA%E7%8E%B0%E6%AF%9B%E7%8E%BB%E7%92%83%E7%89%B9%E6%95%88%EF%BC%9F"><span class="nav-number">3.1.</span> <span class="nav-text">无法出现毛玻璃特效？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E5%85%A5%E5%90%8E%E7%9B%AE%E5%BD%95%E4%B8%8D%E6%98%AF%E7%94%A8%E6%88%B7%E7%9B%AE%E5%BD%95%EF%BC%9F"><span class="nav-number">3.2.</span> <span class="nav-text">进入后目录不是用户目录？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%AE%A9wsl%E5%92%8Cwindows%E9%80%9A%E4%BF%A1%EF%BC%9F"><span class="nav-number">3.3.</span> <span class="nav-text">如何让wsl和windows通信？</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Geylnu</p>
+  <div class="site-description" itemprop="description">记录我的前端学习</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geylnu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

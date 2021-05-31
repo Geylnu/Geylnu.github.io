@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="如何向后端请求数据？ form表单提交，使用method指定提交方式,action为提交的地址。  a标签点击能发请求这两者都要刷新页面或者新开页面  img可以发请求，但请求的必须是图片 不需要增加到页面  script和link也可以发起请求，但link和script只能加载指定格式，但是需要加到页面   之后，ie5在js中引入ActiveX对象（api），使js可以直接发起http请求随后">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ajax初探">
+<meta property="og:url" content="http://yoursite.com/2018/06/11/ajax%E5%88%9D%E6%8E%A2/index.html">
+<meta property="og:site_name" content="Hello!">
+<meta property="og:description" content="如何向后端请求数据？ form表单提交，使用method指定提交方式,action为提交的地址。  a标签点击能发请求这两者都要刷新页面或者新开页面  img可以发请求，但请求的必须是图片 不需要增加到页面  script和link也可以发起请求，但link和script只能加载指定格式，但是需要加到页面   之后，ie5在js中引入ActiveX对象（api），使js可以直接发起http请求随后">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-06-11T23:05:10.000Z">
+<meta property="article:modified_time" content="2021-05-31T16:27:02.800Z">
+<meta property="article:author" content="Geylnu">
+<meta property="article:tag" content="ajax">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2018/06/11/ajax%E5%88%9D%E6%8E%A2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>ajax初探 | Hello!</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hello!</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/11/ajax%E5%88%9D%E6%8E%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+      <meta itemprop="description" content="记录我的前端学习">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello!">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ajax初探
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-06-11 23:05:10" itemprop="dateCreated datePublished" datetime="2018-06-11T23:05:10+00:00">2018-06-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-31 16:27:02" itemprop="dateModified" datetime="2021-05-31T16:27:02+00:00">2021-05-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index"><span itemprop="name">javaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="如何向后端请求数据？"><a href="#如何向后端请求数据？" class="headerlink" title="如何向后端请求数据？"></a>如何向后端请求数据？</h1><ul>
+<li><p>form表单提交，使用method指定提交方式,action为提交的地址。</p>
+</li>
+<li><p>a标签点击能发请求<br>这两者都要刷新页面或者新开页面</p>
+</li>
+<li><p>img可以发请求，但请求的必须是图片 不需要增加到页面</p>
+</li>
+<li><p>script和link也可以发起请求，但link和script只能加载指定格式，但是需要加到页面</p>
+</li>
+</ul>
+<p>之后，ie5在js中引入ActiveX对象（api），使js可以直接发起http请求<br>随后其它浏览器也跟进，取名<code>XMLHttpRequest</code><br>不到一年，谷歌推出gmail.com,这里可以说前端真正诞生了</p>
+<p>ie6后来也成为了安装最多的浏览器60%,ie因此就膨胀了,随后微软拆开ie6的开发人员，只更新安全功能，让chrome也跟了上来</p>
+<h2 id="ajax"><a href="#ajax" class="headerlink" title="ajax"></a>ajax</h2><p>Jesse James Garrett 将一下技术取名AJAX（异步的javaScript和 XML</p>
+<ol>
+<li>使用XMLHttpRequest发请求</li>
+<li>服务器返回xml格式的字符串</li>
+<li>js解析xml，并更新局部页面(现在用JSON)</li>
+</ol>
+<p>使用<code>XMLHttpRequest</code>的方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">myButton.addEventListener(<span class="string">&#x27;click&#x27;</span>,<span class="function">()=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> request = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">    request.open(<span class="string">&#x27;GET&#x27;</span>,<span class="string">&#x27;/XXX&#x27;</span>) <span class="comment">//初始化配置  请求方式忽略大小写  默认异步</span></span><br><span class="line">    request.onreadystatechange = <span class="function">()=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (request.readyState === <span class="number">4</span> &amp;&amp; request.status === <span class="number">200</span>)&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(request.responseText) <span class="comment">//响应内容</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    request.send() <span class="comment">//发送</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>网络响应的时间会很长，这段时间已经够javaScript执行很多任务了，所以需要使用异步</p>
+<p><strong>readystate</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">值</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center"><code>open()</code>方法还没有被调用</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center"><code>send()</code>方法还没有被调用</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center"><code>send()</code>方法已被调用，响应头和响应状态码已经返回</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">正在下载响应体</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">请求全部完成</td>
+</tr>
+</tbody></table>
+<p>onreadystate 要注意放在前面</p>
+<p>一般不用管300状态码. 浏览器会自动处理</p>
+<h2 id="解析数据"><a href="#解析数据" class="headerlink" title="解析数据"></a>解析数据</h2><p>可以使用DOM api解析xml，但是很复杂，现在已经过时了。<br>1所以用什么更好的方法更好的表示数据呢？</p>
+<p>后来道格拉斯·克罗克福发明了一种轻量的资料语言<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-hans/JSON">JSON</a></p>
+<h3 id="JSON语法"><a href="#JSON语法" class="headerlink" title="JSON语法"></a>JSON语法</h3><p>JSON支持<code>object</code> <code>array</code>两种数据组织方式，值支持<code>string</code> <code>number</code> <code>object</code> <code>array</code> <code>true</code> <code>false</code> <code>null</code><br>没有<code>undefined</code></p>
+<p>json没有变量，不支持引用，没有原型链</p>
+<ul>
+<li>string 必须具有<code>&quot;&quot;</code><br>支持转义符<code>\\</code></li>
+</ul>
+<p>注意，永远返回的是字符串，只是将其解析为对象<br>解析:<code>JSON.parse(string)</code></p>
+<h2 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h2><p>同源策略要求协议+端口+域名一模一样才允许发起AJAX请求，保证安全</p>
+<p>本质是禁止一个域名的js在未经允许的情况下，不得读取另一个域名的内容。但浏览器并不阻止向另一个域名发送请求。</p>
+<p>不是同源的网页不能使用ajax发起请求（实际上发起了，只是不能读取内容），其他都可以</p>
+<p>简单规避方法就是使用CORS,服务端设置<code>Access-Control-Allow-Origin: xxx</code>响应头 表示允许xxx跨域访问</p>
+<h2 id="设置header"><a href="#设置header" class="headerlink" title="设置header"></a>设置header</h2><p>必须在open()和send()之间调用。<br>send()可以为post 设置请求内容</p>
+<p>getAllResponseHeader获得所有响应头</p>
+<p>tcp进行分片传输，因此会先拿到先拿到最开始的状态包，就可以先判断是否需要继续接受等之后的逻辑</p>
+<p>传多个变量很容易让别人不知道自己具体想传什么，这里可以采用传个对象的方式，这样就有名字了</p>
+<p>设置header 接受多参数</p>
+<p>析构赋值，把名字一样的赋到同名变量里</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">param = &#123;<span class="attr">a</span>:<span class="string">&#x27;aga&#x27;</span>,<span class="attr">b</span>:<span class="string">&#x27;gag&#x27;</span>,<span class="attr">c</span>:<span class="string">&#x27;aga&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">let</span> &#123;a,b,c&#125; = param</span><br></pre></td></tr></table></figure>
+<p>对于函数可以采用这个方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params">&#123;a,b,c&#125;</span>)</span>&#123;<span class="comment">//取得参数中的abc</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>还有很多方式比如对象键名为字符串，不可以调用变量，但是<code>[x]: sss</code>可以</p>
+<p>自己写回调可能不同库不一样，回调函数名不统一，所以需要规范出来</p>
+<p>Promise写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.then() <span class="comment">//第一个是成功第二个是失败</span></span><br></pre></td></tr></table></figure>
+
+<p>具体写法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve,reject</span>)</span>&#123;</span><br><span class="line"> xxx</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ajax/" rel="tag"># ajax</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/06/10/JSONP/" rel="prev" title="JSONP">
+      <i class="fa fa-chevron-left"></i> JSONP
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/07/09/MVC/" rel="next" title="MVC">
+      MVC <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%90%91%E5%90%8E%E7%AB%AF%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">如何向后端请求数据？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ajax"><span class="nav-number">1.1.</span> <span class="nav-text">ajax</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E6%95%B0%E6%8D%AE"><span class="nav-number">1.2.</span> <span class="nav-text">解析数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON%E8%AF%AD%E6%B3%95"><span class="nav-number">1.2.1.</span> <span class="nav-text">JSON语法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5"><span class="nav-number">1.3.</span> <span class="nav-text">同源策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEheader"><span class="nav-number">1.4.</span> <span class="nav-text">设置header</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Geylnu</p>
+  <div class="site-description" itemprop="description">记录我的前端学习</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geylnu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
