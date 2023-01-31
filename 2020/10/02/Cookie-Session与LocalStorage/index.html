@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Cookie由来谈到Cookie不得不谈到http协议，wiki上的定义⬇  设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法  由于这个设计目的，早期http协议被设计为无状态的协议，一个HTTP协议通信过程往往是建立连接&gt;传输内容&gt;关闭连接，整个过程十分简单。 然而万维网发展的比想象中快太多，HTML不再只是单纯的文档，还被用于交互，有了登陆注册等保存状态的需要，然">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cookie,Session与LocalStorage">
+<meta property="og:url" content="http://example.com/2020/10/02/Cookie-Session%E4%B8%8ELocalStorage/index.html">
+<meta property="og:site_name" content="Gelynu&#39;s Blog">
+<meta property="og:description" content="Cookie由来谈到Cookie不得不谈到http协议，wiki上的定义⬇  设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法  由于这个设计目的，早期http协议被设计为无状态的协议，一个HTTP协议通信过程往往是建立连接&gt;传输内容&gt;关闭连接，整个过程十分简单。 然而万维网发展的比想象中快太多，HTML不再只是单纯的文档，还被用于交互，有了登陆注册等保存状态的需要，然">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-02T19:42:11.000Z">
+<meta property="article:modified_time" content="2023-01-31T15:45:56.969Z">
+<meta property="article:author" content="Geylnu">
+<meta property="article:tag" content="cookie">
+<meta property="article:tag" content="LocalStorage">
+<meta property="article:tag" content="Session">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2020/10/02/Cookie-Session%E4%B8%8ELocalStorage/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2020/10/02/Cookie-Session%E4%B8%8ELocalStorage/","path":"2020/10/02/Cookie-Session与LocalStorage/","title":"Cookie,Session与LocalStorage"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Cookie,Session与LocalStorage | Gelynu's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Gelynu's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Cookie%E7%94%B1%E6%9D%A5"><span class="nav-number">1.</span> <span class="nav-text">Cookie由来</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cookie%E5%85%B7%E4%BD%93%E6%98%AF%E6%80%8E%E4%B9%88%E6%A0%B7%E7%9A%84%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">Cookie具体是怎么样的？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-Cookie"><span class="nav-number">2.1.</span> <span class="nav-text">Set-Cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js%E6%93%8D%E4%BD%9C%E6%96%B9%E5%BC%8F"><span class="nav-number">2.2.</span> <span class="nav-text">js操作方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Session"><span class="nav-number">2.3.</span> <span class="nav-text">Session</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LocalStorage"><span class="nav-number">3.</span> <span class="nav-text">LocalStorage</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sessionStorage"><span class="nav-number">4.</span> <span class="nav-text">sessionStorage</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#js%E6%93%8D%E4%BD%9C%E6%96%B9%E5%BC%8F-1"><span class="nav-number">4.1.</span> <span class="nav-text">js操作方式</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Geylnu</p>
+  <div class="site-description" itemprop="description">记录我的前端学习~</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/02/Cookie-Session%E4%B8%8ELocalStorage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gelynu's Blog">
+      <meta itemprop="description" content="记录我的前端学习~">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Cookie,Session与LocalStorage | Gelynu's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Cookie,Session与LocalStorage
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-10-02 19:42:11" itemprop="dateCreated datePublished" datetime="2020-10-02T19:42:11+00:00">2020-10-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-31 15:45:56" itemprop="dateModified" datetime="2023-01-31T15:45:56+00:00">2023-01-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" itemprop="url" rel="index"><span itemprop="name">网络协议</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Cookie由来"><a href="#Cookie由来" class="headerlink" title="Cookie由来"></a>Cookie由来</h1><p>谈到Cookie不得不谈到http协议，wiki上的定义⬇</p>
+<blockquote>
+<p>设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法</p>
+</blockquote>
+<p>由于这个设计目的，早期http协议被设计为无状态的协议，一个HTTP协议通信过程往往是建立连接&gt;传输内容&gt;关闭连接，整个过程十分简单。</p>
+<p>然而万维网发展的比想象中快太多，HTML不再只是单纯的文档，还被用于交互，有了登陆注册等保存状态的需要，然而http协议是无状态的，这个场景需要下，Cookie就诞生了。</p>
+<h1 id="Cookie具体是怎么样的？"><a href="#Cookie具体是怎么样的？" class="headerlink" title="Cookie具体是怎么样的？"></a>Cookie具体是怎么样的？</h1><p>Cookie其实就是一段文本信息，由浏览器储存在本地硬盘上，服务器通过<code>Set-Cookie</code>设置Cookie，浏览器通过<code>Cookie</code>字段附上设置的Cookie信息。</p>
+<p>emm，还是看一个完整的请求吧</p>
+<hr>
+<p><strong>响应</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 ok</span><br><span class="line">Date: Sat, 02 Feb 2019 14:24:28 GMT</span><br><span class="line">Content-Type: text/html</span><br><span class="line">Content-Length: 182</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Set-Cookie: tgw_l7_route=80f350dcd7c650b07bd7b485fcab5bf7; Expires=Sat, 02-Feb-2019 14:39:28 GMT; Path=/</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><strong>下次请求</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GET / HTTP/1.1</span><br><span class="line">Host: example.com</span><br><span class="line">Cookie: tgw_l7_route=80f350dcd7c650b07bd7b485fcab5bf7</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h2 id="Set-Cookie"><a href="#Set-Cookie" class="headerlink" title="Set-Cookie"></a><code>Set-Cookie</code></h2><p>服务端通过在响应头中添加<code>Set-Cookie: xxx=xxx</code>的方式以键值对的形式设置Cookie，除此之外还有其它字段可以控制Cookie的字段</p>
+<ul>
+<li><p><code>Domain</code><br>指定Cookie从属于那个域名，在请求对应域名时会带上这个Cookie，默认为当前文档域名，<strong>不包含子域名</strong>，若主动设置<code>Domain</code>,则一般会包含子域名，例如设置了<code>Domain=geylnu.com</code>,则<code>blog.geylnu.com</code>也是可以访问这个<code>geylnu.com</code>的Cookie。</p>
+</li>
+<li><p><code>Path</code><br>在域名符合的前提下，如果请求的路径与<code>Path</code>的路径相匹配就在请求中附上这个Cookie，路径匹配从前到后匹配，以<code>/</code>作为分隔符</p>
+</li>
+<li><p><code>Expires</code><br>在指定日期Cookie到期，Cookie到期后服务器会自动删除这个Cookie，设置时间格的式为<code>Thu, 01 Jan 1970 00:00:00 GMT</code>这样的格林尼治标准时间，没有设置该属性或<code>Max-age</code>，Cookie会自动在浏览器关闭后清除。值得注意的是响应头中的时间是基于服务器时间生成的，而客户端的时间可能与服务端不一致，这种情况下使用<code>max-age</code>属性设置过期时间是一个更好的选择。</p>
+</li>
+<li><p><code>Max-age</code><br>在指定秒后Cookie到期，作用等同于<code>Expires</code>，当同时设置了<code>Expires</code>和<code>Max-age</code>时，<code>Max-age</code>优先级更大；由于不直接设置时间，规避了服务端时间和客户端时间可能不一致的问题。</p>
+</li>
+<li><p><code>Http-only</code><br>Cookie只允许浏览器发出请求时在<code>Cookie</code>中附带上，通过<code>Set-Cookie</code>修改，不允许通过js脚本得到拿到，这可以有效的防止<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%B7%A8%E7%B6%B2%E7%AB%99%E6%8C%87%E4%BB%A4%E7%A2%BC" title="什么是xss攻击？">XSS攻击</a></p>
+</li>
+<li><p><code>Secure</code><br>指定该Cookie只在加密协议（https）才能把这个Cookie发送到服务器，如果设置该属性是通过http协议设置的，浏览器会自动忽略该属性（自动纠错，因为http下设置这个属性没有意义）。如果协议为<code>https</code>，该属性默认打开</p>
+</li>
+</ul>
+<p>一个完整的Cookie设置示范：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-Cookie: sessionId=hihihi; Expirers=Wed, 01 Jan 2020 00:00:00 GMT; Max-age=10000; Http-only; Secure;</span><br></pre></td></tr></table></figure>
+<h2 id="js操作方式"><a href="#js操作方式" class="headerlink" title="js操作方式"></a>js操作方式</h2><p>读</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="property">cookie</span> <span class="comment">//返回&quot;xx=xxx; yy=yyy&quot;</span></span><br></pre></td></tr></table></figure>
+<p>写</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="property">cookie</span> = <span class="string">&#x27;xxx=hihihi&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>这里由于设定了<code>get</code>和<code>set</code>属性，读是一次读写全部Cookie，写为一个个Cookie单独设置。</p>
+<h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h2><p>好了，现在http协议支持将状态保存在客户端了，之后每个客户端都是有名有姓的人了。<br>但是客户端保存状态信息是不可靠的，客户端可以修改自己本地的Coookie值，Cookie值在非<code>https</code>加密协议的情况下，也容易被截获获取到敏感信息（这里吐槽下我校教务系统，密码明文直接写在Cookie中）。</p>
+<p>对应的解决方法就是在服务端也维护对应的状态，大部分状态信息都由服务端记录，客户端只需要记录一个由服务端随机生成的sessionId用于服务端识别，这就是Session了，一般Session储存在内存，也有其它实现，甚至无Session的方式。</p>
+<h1 id="LocalStorage"><a href="#LocalStorage" class="headerlink" title="LocalStorage"></a>LocalStorage</h1><p>由于Cookie在每个请求中都会被添加，网络开销很大，很多非敏感状态信息也不需要服务器来存储，Cookie的大小有也很小，只有4kb；为了解决这个问题，HTML5规范就提出了LocalStorage，LocalStorage和cookie一样都是存在本地电脑磁盘上，数据形式也是hash表，存储形式也都是字符串。</p>
+<p>不过和cookie不同的是LocalStorage不会跟随请求发送，仅限通过浏览器api操作，储存空间一般为5M大小，远大于cookie可以使用的空间，并且没有过期期限，除非用户主动清理会一直存在，通常在能用LocalStorage的地方尽量都用LocalStorage，前端不应该使用Cookie。</p>
+<h1 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage"></a>sessionStorage</h1><p>sessionStorage与LocalStorage基本相同，只是sessionStorage过期不同，另外还有个显著的特点：sessionStorage会在窗口创建时初始化一个新的会话，也就是即使是同一个域名下不同窗口，sessionStorage也是不一样的。同时，在新标签或窗口打开一个页面时会复制顶级浏览会话的上下文作为新会话的上下文，这点与使用cookie作为凭证是相似的。</p>
+<h2 id="js操作方式-1"><a href="#js操作方式-1" class="headerlink" title="js操作方式"></a>js操作方式</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(<span class="string">&#x27;key&#x27;</span>,<span class="string">&#x27;value&#x27;</span>)</span><br><span class="line"><span class="variable language_">localStorage</span>.<span class="title function_">remove</span>(<span class="string">&#x27;key&#x27;</span>)</span><br><span class="line"><span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&#x27;key&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">localStorage</span>.<span class="title function_">clear</span>()<span class="comment">//移除全部</span></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/cookie/" rel="tag"># cookie</a>
+              <a href="/tags/LocalStorage/" rel="tag"># LocalStorage</a>
+              <a href="/tags/Session/" rel="tag"># Session</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/09/25/%E8%AF%B4%E8%AF%B4%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8B%E8%BD%BD%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/" rel="prev" title="说说浏览器下载的那些事儿">
+                  <i class="fa fa-chevron-left"></i> 说说浏览器下载的那些事儿
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/10/10/%E8%AF%B4%E8%AF%B4Vue3%E7%9A%84watchEffect%E4%B8%8EReact-Hooks%E7%9A%84useEffect/" rel="next" title="说说Vue3的watchEffect与React Hooks的useEffect">
+                  说说Vue3的watchEffect与React Hooks的useEffect <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备18020005号 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geylnu</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">49k</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

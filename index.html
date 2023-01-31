@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="记录我的前端学习~">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gelynu&#39;s Blog">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Gelynu&#39;s Blog">
+<meta property="og:description" content="记录我的前端学习~">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Geylnu">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Gelynu's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Gelynu's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Geylnu</p>
+  <div class="site-description" itemprop="description">记录我的前端学习~</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/30/%E6%88%91%E4%BB%AC%E4%BB%8D%E6%B2%A1%E6%9C%89%E5%AF%B9%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95%E8%BE%BE%E6%88%90%E5%85%B1%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gelynu's Blog">
+      <meta itemprop="description" content="记录我的前端学习~">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Gelynu's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/05/30/%E6%88%91%E4%BB%AC%E4%BB%8D%E6%B2%A1%E6%9C%89%E5%AF%B9%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95%E8%BE%BE%E6%88%90%E5%85%B1%E8%AF%86/" class="post-title-link" itemprop="url">[译]我们仍没有对私有方法是否需要进行测试达成共识</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-30 22:29:00" itemprop="dateCreated datePublished" datetime="2022-05-30T22:29:00+00:00">2022-05-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-31 15:45:57" itemprop="dateModified" datetime="2023-01-31T15:45:57+00:00">2023-01-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">测试</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>13 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>这篇文档来自于<a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2022/05/weekly-issue-207.html#:~:text=3%E3%80%81-,%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95%E8%A6%81%E5%86%99%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%90%97%EF%BC%9F,-%EF%BC%88%E8%8B%B1%E6%96%87%EF%BC%89">阮一峰老师的周刊</a>，主题是私有方法是否需要测试，罗列了多方的观点和意见，如果对单元测试的范围也不太确定的话，强烈推荐看看这一篇文章。原文：<a target="_blank" rel="noopener" href="https://jesseduffield.com/Testing-Private-Methods/">https://jesseduffield.com/Testing-Private-Methods/</a></p>
+</blockquote>
+<p>昨天，当我在一个Rust工作会议上，我不假思索的说：我想我们都同意在编写单元测试时，除非有特殊情况，否组都不应该直接测试私有方法。一个小型的辩论就展开了，许多人争论着互不相容的观点。我们很快结束了这场辩论，但是我还是有一点尴尬，我有点错判了开发人员的信条。</p>
+<p>毫无疑问，在开发人员这个职业中，至少有一种观点大家现在都是都是同意的，对吧？再猜一次。如果你想知道这个讨论上的共识有多少，你可以通读一下Stack Overflow上的帖子: <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/9122708/unit-testing-private-methods-in-c-sharp">Unit testing private methods in C#</a>, <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/48011295/how-to-unit-test-this-private-method">How to unit test this private method?</a>, <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/5601730/should-private-protected-methods-be-under-unit-test">Should Private&#x2F;Protected methods be under unit test? </a>。有人说我们应该总是直接测试私有方法，有的人说我们永远不应该直接测试私有方法。这些看法不可能都是对的！有没有最适合当前软件开发状况的观点？</p>
+<p>关于测试私有方法的讨论，有五种流行的观点：</p>
+<ul>
+<li><p>首先就不使用私有方法</p>
+</li>
+<li><p>总是测试私有方法</p>
+</li>
+<li><p>永远不要测试私有方法</p>
+</li>
+<li><p>有时可以测试私有方法</p>
+</li>
+<li><p>将私有方法提取到类中</p>
+</li>
+</ul>
+<p>在这篇文章中，我将讨论每一个观点，然后总结提炼成我自己的经验法则，希望大多数人都能赞同它。注意，虽然我们将讨论类和方法，但是相同的观点也适用于函数式语言中的匿名函数。</p>
+<h3 id="观点1：首先就不使用私有方法"><a href="#观点1：首先就不使用私有方法" class="headerlink" title="观点1：首先就不使用私有方法"></a>观点1：首先就不使用私有方法</h3><p>我会把这个观点展示出来，是因为大多数人都会认为它有点极端，如果它是对的，它会这个辩论的其他部分无效化。</p>
+<p>这种观点与其说是对私有方法的攻击，不如说是对试图预测未来的攻击，这个想法是，在编写库代码的时候，你不可能事先知道你的使用者想使用什么方法，并且默认使用私有方法将为你和你的客户带来更多的问题相比于默认为公共方法(或者受保护方法)。这似乎是一种库开发人员独一无二的想法（见<a target="_blank" rel="noopener" href="https://osoco.es/thoughts/2018/10/the-case-against-private-methods/">The case against private methods</a>, ）因为应用开发者可以用一下键盘就很容易让方法变成空的，而库的使用者需要分叉代码库或者提出问题等待回应。</p>
+<p>这种也有不利的一面：将一个私有方法转变成公开方法很容易，但是从公开方法降级到私有方法是一个破坏的改动。此外，你的公共方法表明了你希望他们如何使用你的库。为了假设的使用场景，使原有的私有API膨胀你的公共API，你会使你的所有使用者更加难受，他们只想知道如何满足已知的使用场景。这些缺点是交织在一起的：使用者使用错误的方法与你的库交互，这反过来也使重构变得更加困难</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/30/%E6%88%91%E4%BB%AC%E4%BB%8D%E6%B2%A1%E6%9C%89%E5%AF%B9%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95%E8%BE%BE%E6%88%90%E5%85%B1%E8%AF%86/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/18/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9C%A8Ts%E4%B8%ADObject-Keys%E6%80%BB%E6%98%AF%E8%BF%94%E5%9B%9E%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gelynu's Blog">
+      <meta itemprop="description" content="记录我的前端学习~">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Gelynu's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/04/18/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9C%A8Ts%E4%B8%ADObject-Keys%E6%80%BB%E6%98%AF%E8%BF%94%E5%9B%9E%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%BB%84/" class="post-title-link" itemprop="url">为什么在Ts中Object.keys总是返回字符串数组?</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-18 18:54:47" itemprop="dateCreated datePublished" datetime="2022-04-18T18:54:47+00:00">2022-04-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-31 15:45:57" itemprop="dateModified" datetime="2023-01-31T15:45:57+00:00">2023-01-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>505</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="一个常见的问题"><a href="#一个常见的问题" class="headerlink" title="一个常见的问题"></a>一个常见的问题</h3><p>在很多情况下，我们需要遍历一个对象的所有Key，就像这样</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> marks = &#123;</span><br><span class="line">    <span class="number">1</span>: <span class="string">&#x27;a&#x27;</span>,</span><br><span class="line">    <span class="number">2</span>: <span class="string">&#x27;b&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> values = <span class="title class_">Object</span>.<span class="title function_">keys</span>(marks).<span class="title function_">map</span>(<span class="function"><span class="params">key</span>=&gt;</span>marks[key]) </span><br><span class="line"><span class="comment">// error: 元素隐式具有 &quot;any&quot; 类型，因为类型为 &quot;string&quot; 的表达式不能用于索引类型 &quot;&#123; 1: string; 2: string; &#125;&quot;。在类型 &quot;&#123; 1: string; 2: string; &#125;&quot; 上找不到具有类型为 &quot;string&quot; 的参数的索引签名。</span></span><br></pre></td></tr></table></figure>
+
+<p>Ts会立即报错，因为Object.keys的类型是这样</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">ObjectConstructor</span> &#123;</span><br><span class="line">	<span class="title function_">keys</span>(<span class="attr">o</span>: <span class="built_in">object</span>): <span class="built_in">string</span>[];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种时候我们往往需要对key进行断言</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> marks = &#123;</span><br><span class="line">    <span class="number">1</span>: <span class="string">&#x27;a&#x27;</span>,</span><br><span class="line">    <span class="number">2</span>: <span class="string">&#x27;b&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> values = <span class="title class_">Object</span>.<span class="title function_">keys</span>(marks).<span class="title function_">map</span>(<span class="function"><span class="params">key</span>=&gt;</span>marks[key <span class="keyword">as</span> <span class="string">`<span class="subst">$&#123;keyof <span class="keyword">typeof</span> marks&#125;</span>`</span>])</span><br><span class="line"><span class="comment">// no error</span></span><br></pre></td></tr></table></figure>
+
+<p>这段代码只是简单的对类型的断言，更准确的断言实际还应该排除<code>symbol</code>类型，因为对象的键也可能是symbol，但是<code>Object.keys</code>只会遍历对象的可枚举的字符串属性。</p>
+<p>同时这里也将数字转换为字符串，因为对象的键除了<code>symbol</code>，都会被转换为字符串。</p>
+<h3 id="为什么Ts没有处理？"><a href="#为什么Ts没有处理？" class="headerlink" title="为什么Ts没有处理？"></a>为什么Ts没有处理？</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/18/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9C%A8Ts%E4%B8%ADObject-Keys%E6%80%BB%E6%98%AF%E8%BF%94%E5%9B%9E%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%BB%84/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/09/%E4%BB%8E%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98%E5%BC%80%E5%A7%8B%EF%BC%8C%E9%87%8D%E6%B8%A9%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gelynu's Blog">
+      <meta itemprop="description" content="记录我的前端学习~">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Gelynu's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/09/%E4%BB%8E%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98%E5%BC%80%E5%A7%8B%EF%BC%8C%E9%87%8D%E6%B8%A9%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" class="post-title-link" itemprop="url">从一道面试题开始，重温类型转换</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-03-09 23:32:22" itemprop="dateCreated datePublished" datetime="2022-03-09T23:32:22+00:00">2022-03-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-31 15:45:57" itemprop="dateModified" datetime="2023-01-31T15:45:57+00:00">2023-01-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="一道题目"><a href="#一道题目" class="headerlink" title="一道题目"></a>一道题目</h3><p>最近准备回成都，开始了各种面试，这次面试官出了一道函数坷里化的题，题目如下:</p>
+<blockquote>
+<p>实现如下函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">sum</span>(<span class="number">1</span>)       <span class="comment">// 1 </span></span><br><span class="line"><span class="title function_">sum</span>(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>) <span class="comment">// 6</span></span><br><span class="line"><span class="title function_">sum</span>(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)(<span class="number">4</span>) <span class="comment">// 10 </span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>面试的时候这道题愣了一下，没有答出来，主要纠结了一下在不定参的时候，如果能够链式调用，那一定需要返回的是一个函数，按照题目要求，值需要既是一个函数，又是一个数字。</p>
+<p>面试结束后仔细想了下，正好想到之前看《你不知道的JavaScript》中的对于对象类型的toPrimitive操作，面试后很快写了个Demo出来。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">sum</span>(<span class="params">...args</span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> previousArgs = []</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">func</span> = (<span class="params">...args</span>)=&gt;&#123;</span><br><span class="line">        previousArgs = previousArgs.<span class="title function_">concat</span>(args)</span><br><span class="line">        <span class="keyword">return</span> func</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    func.<span class="property">valueOf</span> = <span class="function">()=&gt;</span> previousArgs.<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, currentVal</span>)=&gt;</span> acc + currentVal)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">func</span>(...args)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">sum</span>(<span class="number">2</span>)(<span class="number">3</span>) + <span class="number">2</span>)  <span class="comment">// 7</span></span><br></pre></td></tr></table></figure>
+
+<p>这里实际上关于使用<code>toString</code>以及<code>Symbol.toPrimitive</code>可以达成效果的，但具体原理有一些差别。</p>
+<p>这里就借助这个机会回顾一下Js整个类型转换逻辑。</p>
+<h3 id="隐式类型转换"><a href="#隐式类型转换" class="headerlink" title="隐式类型转换"></a>隐式类型转换</h3><p>总所周知，js作为一种弱类型语言，在需要的场景下，会进行隐式的类型转换，为此 <a target="_blank" rel="noopener" href="https://tc39.es/ecma262/#sec-type-conversion">ECMA262  Type Conversion</a> 中规定了一系列类型转换的抽象方法，以及在各种运算符操作及函数中规定了如何去调用这些类型转换方法。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/09/%E4%BB%8E%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98%E5%BC%80%E5%A7%8B%EF%BC%8C%E9%87%8D%E6%B8%A9%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/10/%E4%BD%BF%E7%94%A8Github-Action-%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gelynu's Blog">
+      <meta itemprop="description" content="记录我的前端学习~">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Gelynu's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/10/%E4%BD%BF%E7%94%A8Github-Action-%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">使用GitHub Actions 自动化部署博客</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-02-10 21:36:59" itemprop="dateCreated datePublished" datetime="2022-02-10T21:36:59+00:00">2022-02-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-31 15:45:57" itemprop="dateModified" datetime="2023-01-31T15:45:57+00:00">2023-01-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CI-CD/" itemprop="url" rel="index"><span itemprop="name">CI/CD</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h3><p>最近重新准备写博客的时候，发现hexo已经更新了，支持以包的形式引用主题，按照文档指引重新配置了主题。之前博客构建使用的是hexo官网的Travis Ci，配置直接复制过去改改就好了，这次更新主题看到仓库上大大的GitHub Actions,手痒痒，就想试一下用GitHub Actions 进行自动构建。</p>
+<h3 id="构建产物"><a href="#构建产物" class="headerlink" title="构建产物"></a>构建产物</h3><p>GitHub Actions的快速上手文档异常的贴心，而且还是以npm构建为例子，前端基本可以很快上手~</p>
+<p>GitHub Actions 的构建任务有四个层级</p>
+<ul>
+<li>workflow： 工作流，整个运行过程</li>
+<li>job： 任务，工作流可以包含一个或多个任务，每个任务都是独立的机器运行</li>
+<li>step: 步骤。每一个任务可以执行一个或多个步骤，按顺序执行</li>
+<li>action: 动作，每一个步骤可以运行一个或者多个命令</li>
+</ul>
+<p>其中job是分别在不同机器上并发执行的，也可以通过<code>needs</code>参数和条件判断决定执行先后顺序，不过目前我们不需要多个机器并发执行。</p>
+<p>上面其实是一些概念，实际写一个简单的构建配置是十分简单的。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Deploy</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="comment"># 指定在main分支push时触发构建</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span> [ <span class="string">main</span> ]</span><br><span class="line">  <span class="comment"># 允许手动点击触发构建</span></span><br><span class="line">  <span class="attr">workflow_dispatch:</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="comment"># 任务名称</span></span><br><span class="line">  <span class="attr">build-and-deploy:</span></span><br><span class="line">    <span class="comment"># 运行环境为最新稳定版本的</span></span><br><span class="line">    <span class="comment"># ubuntu</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="comment"># 拉取这次提交后的代码</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">      <span class="comment"># 安装并设置node版本为14，并启用缓存 </span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/setup-node@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">&#x27;14&#x27;</span></span><br><span class="line">          <span class="attr">cache:</span> <span class="string">&#x27;npm&#x27;</span></span><br><span class="line">      <span class="comment"># 安装依赖并执行构建命令</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Clean</span> <span class="string">install</span> <span class="string">dependencies</span> <span class="string">and</span> <span class="string">build</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          npm ci</span></span><br><span class="line"><span class="string">          npm run build</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure>
+
+<p>其中use类似于npm包，可以使用其他人预先写好的构建指令及脚本，通过with传递参数。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/10/%E4%BD%BF%E7%94%A8Github-Action-%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/10/%E8%AF%B4%E8%AF%B4Vue3%E7%9A%84watchEffect%E4%B8%8EReact-Hooks%E7%9A%84useEffect/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gelynu's Blog">
+      <meta itemprop="description" content="记录我的前端学习~">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Gelynu's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/10/10/%E8%AF%B4%E8%AF%B4Vue3%E7%9A%84watchEffect%E4%B8%8EReact-Hooks%E7%9A%84useEffect/" class="post-title-link" itemprop="url">说说Vue3的watchEffect与React Hooks的useEffect</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-10-10 11:19:59" itemprop="dateCreated datePublished" datetime="2020-10-10T11:19:59+00:00">2020-10-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-31 15:45:57" itemprop="dateModified" datetime="2023-01-31T15:45:57+00:00">2023-01-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>最近有空阅读了一下 Vue3 的文档，发现 Vue 也新增了类似 React Hooks 中的 useEffect 的 watchEffect，两者基本很相似，这里就来比较比较。</p>
+<h3 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a><code>useEffect</code></h3><p>React Hooks 带有一种函数式的设计理念，期望 <code>UI = f(x)</code>，UI 是纯函数的渲染结果，useEffect 则用来处理副作用，也就是对外部环境的影响，在 Hooks 中基本取代了生命周期的概念,类似于原本的<code>componentDidMount</code>和<code>componentWillUnmount</code>。</p>
+<p>常见的在 useEffect 中请求数据</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">example</span> = (<span class="params">props</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> hasCancle = <span class="literal">false</span>;</span><br><span class="line">    <span class="title function_">query</span>(<span class="string">&quot;/xxxx&quot;</span>).<span class="title function_">then</span>(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 避免副作用被取消后仍然调用</span></span><br><span class="line">      <span class="keyword">if</span> (!hasCancle) &#123;</span><br><span class="line">        <span class="keyword">const</span> &#123; count &#125; = data;</span><br><span class="line">        <span class="title function_">setCount</span>(data);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 清除副作用</span></span><br><span class="line">      hasCancle = <span class="literal">true</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>You clicked &#123;count&#125; times<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> setCount(count + 1)&#125;&gt;Click me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="watchEffect"><a href="#watchEffect" class="headerlink" title="watchEffect"></a><code>watchEffect</code></h3><p>watchEffect 作用基本与 useEffect 作用一致，上面的代码可以很方便的改写为 Vue 版本</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">setup</span>(<span class="params">props</span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> count = <span class="title function_">ref</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="title function_">watchEffect</span>( <span class="function"><span class="params">onInvalidate</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> hasCancle = <span class="literal">false</span>;</span><br><span class="line">      <span class="title function_">query</span>(<span class="string">&quot;/xxxx&quot;</span>).<span class="title function_">then</span>(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!hasCancle) &#123;</span><br><span class="line">          <span class="keyword">const</span> &#123; count &#125; = data;</span><br><span class="line">          <span class="title function_">setCount</span>(data);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      <span class="title function_">onInvalidate</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">          hasCancle = <span class="literal">false</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>尽管功能上 watchEffect 与 useEffect 十分相似，但由于实现不一，实质还是有很多不同</p>
+<h4 id="调用时机"><a href="#调用时机" class="headerlink" title="调用时机"></a>调用时机</h4>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/10/%E8%AF%B4%E8%AF%B4Vue3%E7%9A%84watchEffect%E4%B8%8EReact-Hooks%E7%9A%84useEffect/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/02/Cookie-Session%E4%B8%8ELocalStorage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gelynu's Blog">
+      <meta itemprop="description" content="记录我的前端学习~">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Gelynu's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/10/02/Cookie-Session%E4%B8%8ELocalStorage/" class="post-title-link" itemprop="url">Cookie,Session与LocalStorage</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-10-02 19:42:11" itemprop="dateCreated datePublished" datetime="2020-10-02T19:42:11+00:00">2020-10-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-31 15:45:56" itemprop="dateModified" datetime="2023-01-31T15:45:56+00:00">2023-01-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" itemprop="url" rel="index"><span itemprop="name">网络协议</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Cookie由来"><a href="#Cookie由来" class="headerlink" title="Cookie由来"></a>Cookie由来</h1><p>谈到Cookie不得不谈到http协议，wiki上的定义⬇</p>
+<blockquote>
+<p>设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法</p>
+</blockquote>
+<p>由于这个设计目的，早期http协议被设计为无状态的协议，一个HTTP协议通信过程往往是建立连接&gt;传输内容&gt;关闭连接，整个过程十分简单。</p>
+<p>然而万维网发展的比想象中快太多，HTML不再只是单纯的文档，还被用于交互，有了登陆注册等保存状态的需要，然而http协议是无状态的，这个场景需要下，Cookie就诞生了。</p>
+<h1 id="Cookie具体是怎么样的？"><a href="#Cookie具体是怎么样的？" class="headerlink" title="Cookie具体是怎么样的？"></a>Cookie具体是怎么样的？</h1><p>Cookie其实就是一段文本信息，由浏览器储存在本地硬盘上，服务器通过<code>Set-Cookie</code>设置Cookie，浏览器通过<code>Cookie</code>字段附上设置的Cookie信息。</p>
+<p>emm，还是看一个完整的请求吧</p>
+<hr>
+<p><strong>响应</strong></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/02/Cookie-Session%E4%B8%8ELocalStorage/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/25/%E8%AF%B4%E8%AF%B4%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8B%E8%BD%BD%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gelynu's Blog">
+      <meta itemprop="description" content="记录我的前端学习~">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Gelynu's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/09/25/%E8%AF%B4%E8%AF%B4%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8B%E8%BD%BD%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/" class="post-title-link" itemprop="url">说说浏览器下载的那些事儿</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-09-25 11:47:29" itemprop="dateCreated datePublished" datetime="2020-09-25T11:47:29+00:00">2020-09-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-31 15:45:57" itemprop="dateModified" datetime="2023-01-31T15:45:57+00:00">2023-01-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/" itemprop="url" rel="index"><span itemprop="name">浏览器</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>最近突然在 chrome 85 版本上遇到下载后会出现”xxx 下载方式实属异常 因此它可能存在危险”，去看了下相关的谷歌博客，定位是谷歌的浏览器安全策略引起的。<br>实际上浏览器下载还有不少坑，这次就接这个机会总结一下。</p>
+<h2 id="前端如何实现文件下载？"><a href="#前端如何实现文件下载？" class="headerlink" title="前端如何实现文件下载？"></a>前端如何实现文件下载？</h2><h3 id="window-open"><a href="#window-open" class="headerlink" title="window.open"></a>window.open</h3><p>在 download 属性出现之前，前端实现文件下载实际上依赖于浏览器的默认行为，也就是打开链接。</p>
+<p>通常我们可以直接这样实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> url = <span class="string">&quot;http://xxxx&quot;</span>;</span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">open</span>(url);</span><br></pre></td></tr></table></figure>
+
+<p>这会以指定的 url 打开一个新窗口，浏览器在根据 url 获得到服务器的响应，判断出这不是一个浏览器可以打开的文件类型，就自动会转为下载。</p>
+<p>在段代码在正常情况下是能够工作正常的，然而实际上有些业务场景，下载链接是后台生成的，我们需要这样做</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">clickHandle</span>(<span class="params"></span>) &#123;</span><br><span class="line">  api.<span class="title function_">get</span>(<span class="string">&#x27;xxx&#x27;</span>, params).<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> data = response.<span class="property">data</span>;</span><br><span class="line">    <span class="keyword">if</span>(data.<span class="property">code</span> === <span class="number">0</span> ) &#123;</span><br><span class="line">      <span class="keyword">let</span> url = data.<span class="property">data</span>.<span class="property">url</span> || <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span> (url) &#123;</span><br><span class="line">        <span class="variable language_">window</span>.<span class="title function_">open</span>(url);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这在几乎所有的现代浏览器上都会被阻止，在 Chrome 上会在地址栏显示被拦截的标志，用户需要手动点击才能成功，Safari 会静默失效。<br>这是由于早期网页经常在页面插入自动打开广告页面，带来很糟糕的用户体验，因此浏览器做了限制，会禁止所有的异步回调中调用的 window.open()</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/25/%E8%AF%B4%E8%AF%B4%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8B%E8%BD%BD%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/24/%E8%87%AA%E5%B7%B1%E6%9D%A5%E5%AE%9E%E7%8E%B0%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gelynu's Blog">
+      <meta itemprop="description" content="记录我的前端学习~">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Gelynu's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/09/24/%E8%87%AA%E5%B7%B1%E6%9D%A5%E5%AE%9E%E7%8E%B0%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">自己来实现观察者模式</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-09-24 23:22:08" itemprop="dateCreated datePublished" datetime="2020-09-24T23:22:08+00:00">2020-09-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-31 15:45:57" itemprop="dateModified" datetime="2023-01-31T15:45:57+00:00">2023-01-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="自己来实现观察者模式"><a href="#自己来实现观察者模式" class="headerlink" title="自己来实现观察者模式"></a>自己来实现观察者模式</h1><p>今天写自己一个小demo时使用mvc的时候，想自己来实现观察者模式<br>也就是view层会观察model层数据的变化，相应渲染出改变后的数据</p>
+<h1 id="使用发布订阅模式"><a href="#使用发布订阅模式" class="headerlink" title="使用发布订阅模式"></a>使用发布订阅模式</h1><p>最开始想的办法是自己model拥有多个修改<code>model.data</code>的方法，如<code>fetch()</code>,<code>patch()</code>,<code>delete()</code>,<code>post()</code>,只需要每个方法里加一句</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">event.<span class="title function_">emit</span>(<span class="string">&#x27;dataChanged&#x27;</span>,<span class="variable language_">this</span>.<span class="property">data</span>)</span><br></pre></td></tr></table></figure>
+<p>就能通知在监听的view层进行渲染了</p>
+<p>不过有点不优雅，我需要在每个改变数据的方法后都加一句，很麻烦。</p>
+<h1 id="使用Object-defineProperty来自动化"><a href="#使用Object-defineProperty来自动化" class="headerlink" title="使用Object.defineProperty来自动化"></a>使用Object.defineProperty来自动化</h1><p>之后想到了ES5提供的**<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty">Object.defineProperty</a>**提供的<code>get</code>和<code>set</code>存取描述符，对这个属性的访问和读取会分别触发<code>get</code>和<code>set</code>函数, 也就是如果对<code>data</code>进行设置，就会触发<code>set</code>函数。</p>
+<h2 id="get-和set-又是什么？"><a href="#get-和set-又是什么？" class="headerlink" title="get()和set()又是什么？"></a><code>get()</code>和<code>set()</code>又是什么？</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/24/%E8%87%AA%E5%B7%B1%E6%9D%A5%E5%AE%9E%E7%8E%B0%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/14/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84javascript%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%BA%8C%EF%BC%9Athis%E4%B8%8E%E5%8E%9F%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gelynu's Blog">
+      <meta itemprop="description" content="记录我的前端学习~">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Gelynu's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/09/14/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84javascript%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%BA%8C%EF%BC%9Athis%E4%B8%8E%E5%8E%9F%E5%9E%8B/" class="post-title-link" itemprop="url">《你不知道的javascript》读书笔记二：this与原型</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-09-14 20:36:28" itemprop="dateCreated datePublished" datetime="2020-09-14T20:36:28+00:00">2020-09-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-31 15:45:57" itemprop="dateModified" datetime="2023-01-31T15:45:57+00:00">2023-01-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>这部分其实应该叫做吐槽合集，作者在这部分大量吐槽了把 js 中原型理解成类的做法。现在的前端社区中，如 React，Vue 也是更少利用类的一些特性，而是使用了混入，类似于该书中讲的行为委托模式；而在 React Hooks 和 Vue composition api 中，则更激进的几乎完全去掉了 Class 风格的代码。</p>
+<p>读了这部分，就能了解社区为什么不太喜欢 Class 风格的代码。</p>
+<h2 id="从-this-讲起"><a href="#从-this-讲起" class="headerlink" title="从 this 讲起"></a>从 this 讲起</h2><h3 id="this"><a href="#this" class="headerlink" title="this"></a>this</h3><p>this 也是 js 中新手很头疼的问题了，各种归纳总结 this 的方法随处可见。这里也贴下书中对 this 的定义</p>
+<blockquote>
+<p>当一个函数被调用时，会创建一个活动记录（有时候也称为执行上下文）。这个记录会包含函数在哪里被调用（调用栈）、函数的调用方式、传入的参数等信息。<br>this 就是这个记录的一个属性，会在函数执行的过程中用到。</p>
+</blockquote>
+<p>借助 this 我们可以很方便的来传递上下文</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 隐式绑定this</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Foo</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Foo&quot;</span>,</span><br><span class="line">  <span class="title function_">speak</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">name</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Foo</span>.<span class="title function_">speak</span>(); <span class="comment">// Foo</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Boo</span> = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Boo&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 显式绑定this</span></span><br><span class="line"><span class="title class_">Foo</span>.<span class="property">speak</span>.<span class="title function_">call</span>(<span class="title class_">Boo</span>); <span class="comment">// Boo</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 传统传递上下文</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">speak</span>(<span class="params">ctx</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(ctx.<span class="property">name</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">speak</span>(<span class="title class_">Foo</span>); <span class="comment">// Foo</span></span><br><span class="line"><span class="title function_">speak</span>(<span class="title class_">Boo</span>); <span class="comment">// Boo</span></span><br></pre></td></tr></table></figure>
+
+<p>书里归纳了五种 this 的绑定方式，就以上面的例子为例</p>
+<ol>
+<li>默认绑定 speak() this &#x3D; window</li>
+<li>隐式绑定 Foo.speak() this &#x3D; Foo</li>
+<li>显式绑定 Foo.speak.call(Boo) this &#x3D; Boo</li>
+<li>硬绑定 bind Foo.speak.bind(Boo) this &#x3D; Boo</li>
+<li>new 绑定 new Foo.speak this &#x3D; {}（es5）</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/14/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84javascript%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%BA%8C%EF%BC%9Athis%E4%B8%8E%E5%8E%9F%E5%9E%8B/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/08/29/https%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gelynu's Blog">
+      <meta itemprop="description" content="记录我的前端学习~">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Gelynu's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/08/29/https%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88/" class="post-title-link" itemprop="url">https原理是什么?</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-08-29 21:01:11" itemprop="dateCreated datePublished" datetime="2020-08-29T21:01:11+00:00">2020-08-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-31 15:45:56" itemprop="dateModified" datetime="2023-01-31T15:45:56+00:00">2023-01-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" itemprop="url" rel="index"><span itemprop="name">网络协议</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>自己初中的时候有过一段时间很好奇密码学相关的问题，当时就了解到了非对称加密，觉得很神奇，只要被公钥加密，就只有私钥才能解开，当时想，加密过程不过就是按照规则进行一些数学计算而已，怎么会不可逆呢？非对称加密是怎么做到这些的？怎么让网络变成可信的？<br>当时百度还挺可靠的，搜索到了一篇讲的很好文章，大概有了认知，可惜那篇文章找不到了；今天正好看到一个前端问题：https 原理是什么？就再学习了一次，写这篇博客记录下来。</p>
+<h1 id="https-为什么出现"><a href="#https-为什么出现" class="headerlink" title="https 为什么出现?"></a>https 为什么出现?</h1><p>因为网络链路默认是不可信任的，HTTP 在整个传输过程中无法保证数据不被窥探、篡改，常见的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB">中间人攻击</a>就是利用了这个原理，日常经常发现的网页出现莫名奇妙的新增广告，通常叫做运营商劫持，就是一种中间人攻击。</p>
+<h1 id="https-如何防止中间人攻击的？"><a href="#https-如何防止中间人攻击的？" class="headerlink" title="https 如何防止中间人攻击的？"></a>https 如何防止中间人攻击的？</h1><p>https 在 TCP 传输层和 HTTP 应用层之间再加了一层 SSL&#x2F;TSL(传输层安全协议)，用于对 HTTP 报文进行加密。</p>
+<p>SSL&#x2F;TSL 采用基于公钥的加密算法，比如最常用的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%82%B3%E8%BC%B8%E5%B1%A4%E5%AE%89%E5%85%A8%E6%80%A7%E5%8D%94%E5%AE%9A">RSA 算法</a>。</p>
+<p>RSA 是一种非对称加密算法，在了解非对称加密前，先了解一下对称加密，对称加密指的是在加密或者解密时使用相同的密钥。就像是为数据上一把锁，同时也要把钥匙拿给解密的人。<br>使用对称加密的过程往往是这样的：</p>
+<ul>
+<li>A 生成随机密钥 K</li>
+<li>A 与 B 通过某种方式</li>
+<li>A 密钥 K 加密明文数据</li>
+<li>A 传输密文数据</li>
+<li>B 使用密钥 K 解密密文</li>
+<li>得到明文数据<br>对称加密的一大问题就是存在密钥交换环节，想要解密必须传输密钥，而传输密钥这个环节，往往容易泄露密钥，整个加密环节也就不安全了。</li>
+</ul>
+<p>非对称加密算法就解决了这个问题，密钥加密解密使用不同的密钥，避免了密钥交换环节，最著名的非对称加密算法就是 RSA 算法</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/08/29/https%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备18020005号 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geylnu</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">49k</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

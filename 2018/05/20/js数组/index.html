@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="前言js中window拥有非标准库和标准库，标准库中有Object及相关api,Sting,Boolean等，我们可以先试试这些函数&#x2F;对象 Object()Object()会根据传入的参数返回不同的值  基本类型，所有可以被包装的的基本类型都会被包装成包装类型传入空对象,undefined,或者不传，返回null，传入非空对象返回原对象  使用new Array()方式和构造函数没有区别">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js数组">
+<meta property="og:url" content="http://example.com/2018/05/20/js%E6%95%B0%E7%BB%84/index.html">
+<meta property="og:site_name" content="Gelynu&#39;s Blog">
+<meta property="og:description" content="前言js中window拥有非标准库和标准库，标准库中有Object及相关api,Sting,Boolean等，我们可以先试试这些函数&#x2F;对象 Object()Object()会根据传入的参数返回不同的值  基本类型，所有可以被包装的的基本类型都会被包装成包装类型传入空对象,undefined,或者不传，返回null，传入非空对象返回原对象  使用new Array()方式和构造函数没有区别">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-05-20T23:00:45.000Z">
+<meta property="article:modified_time" content="2023-01-31T15:45:57.013Z">
+<meta property="article:author" content="Geylnu">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2018/05/20/js%E6%95%B0%E7%BB%84/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2018/05/20/js%E6%95%B0%E7%BB%84/","path":"2018/05/20/js数组/","title":"js数组"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>js数组 | Gelynu's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Gelynu's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Object"><span class="nav-number">1.1.</span> <span class="nav-text">Object()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Function%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.1.</span> <span class="nav-text">Function构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Function-prototype"><span class="nav-number">1.1.2.</span> <span class="nav-text">Function.prototype</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Number-Boolean"><span class="nav-number">1.2.</span> <span class="nav-text">Number() Boolean()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Array%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">Array是什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E6%80%8E%E4%B9%88%E7%94%A8%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">具体怎么用？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#string-prototype"><span class="nav-number">3.2.1.</span> <span class="nav-text">string.prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype"><span class="nav-number">3.2.2.</span> <span class="nav-text">Array.prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86"><span class="nav-number">3.2.3.</span> <span class="nav-text">数组遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#forEach"><span class="nav-number">3.2.3.1.</span> <span class="nav-text">forEach()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map"><span class="nav-number">3.2.3.2.</span> <span class="nav-text">.map()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#a-filter"><span class="nav-number">3.2.3.3.</span> <span class="nav-text">a.filter()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reduce"><span class="nav-number">3.2.3.4.</span> <span class="nav-text">.reduce()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a-sort"><span class="nav-number">3.2.4.</span> <span class="nav-text">a.sort()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%AA%E6%95%B0%E7%BB%84"><span class="nav-number">3.2.5.</span> <span class="nav-text">伪数组</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Geylnu</p>
+  <div class="site-description" itemprop="description">记录我的前端学习~</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/05/20/js%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gelynu's Blog">
+      <meta itemprop="description" content="记录我的前端学习~">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="js数组 | Gelynu's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          js数组
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-05-20 23:00:45" itemprop="dateCreated datePublished" datetime="2018-05-20T23:00:45+00:00">2018-05-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-31 15:45:57" itemprop="dateModified" datetime="2023-01-31T15:45:57+00:00">2023-01-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>944</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>js中window拥有非标准库和标准库，标准库中有Object及相关api,Sting,Boolean等，我们可以先试试这些函数&#x2F;对象</p>
+<h2 id="Object"><a href="#Object" class="headerlink" title="Object()"></a>Object()</h2><p>Object()会根据传入的参数返回不同的值</p>
+<ul>
+<li>基本类型，所有可以被包装的的基本类型都会被包装成包装类型<br>传入空对象,undefined,或者不传，返回null，传入非空对象返回原对象</li>
+</ul>
+<p>使用<code>new Array()</code>方式和构造函数没有区别</p>
+<p><strong>这里我们可以总结一下</strong><br>如果是基本类型的函数&#x2F;对象，不加<code>new</code>和加<code>new</code>是不相同的<br>如果是对象，比如<code>Function</code> 我们这里的<code>Array</code>，这两者是等同的</p>
+<h3 id="Function构造函数"><a href="#Function构造函数" class="headerlink" title="Function构造函数"></a>Function构造函数</h3><p><code>let a = new Function(&#39;a&#39;,&#39;b&#39;,&#39;a+b&#39;)</code><br>参数可以无到任意，但至少有函数体</p>
+<p><code>function</code>是个关键字，<code>Function</code>是个全局对象</p>
+<p>函数有几种声明方式，声明出来的结果也不同<br>具名函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params"></span>)&#123;</span><br><span class="line">    xxx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>匿名函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f = <span class="keyword">function</span> (<span class="params"></span>)&#123;</span><br><span class="line">    xxx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函数方法体</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Function</span>(<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;a+b&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="Function-prototype"><a href="#Function-prototype" class="headerlink" title="Function.prototype"></a>Function.prototype</h3><p><code>.call()</code><br><code>.bind()</code><br><code>.apply()</code></p>
+<h2 id="Number-Boolean"><a href="#Number-Boolean" class="headerlink" title="Number() Boolean()"></a>Number() Boolean()</h2><p> 转换为对应的基本类型</p>
+<h1 id="Array是什么？"><a href="#Array是什么？" class="headerlink" title="Array是什么？"></a>Array是什么？</h1><p><code>Array</code>对象是用于构造数组的全局对象，属于<code>Object</code></p>
+<p>我们一般声明Array采用的是<code>[gg, aga, aga]</code>，实际上这种方式等价于<code>new Array</code>,前者可以当作语法糖。</p>
+<h1 id="具体怎么用？"><a href="#具体怎么用？" class="headerlink" title="具体怎么用？"></a>具体怎么用？</h1><h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>Array()构造函数会根据传入的不同参数返回不同的数组</p>
+<ol>
+<li><p><code>let a = Array(1)</code><br> 当参数只有一个数字的情况，参数代表数组的长度，返回等于参数长度的数组，这个数组其它元素都没有被声明，包括<code>0 in a</code>，它返回undefined。</p>
+<p> 请注意，传入NaN会报错</p>
+</li>
+<li><p><code>let a = Array(&#39;我就要看你要做什么&#39;)</code><br> 当参数为一个非数字，返回一个长度为1且<code>a[0]=</code>所给字符串数组</p>
+</li>
+<li><p><code>let a = Array(3,3)</code><br> 当传入参数大于等于2，按顺序填充新数组并返回</p>
+</li>
+</ol>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="string-prototype"><a href="#string-prototype" class="headerlink" title="string.prototype"></a>string.prototype</h3><ul>
+<li><code>.trim()</code> 返回一个去掉两端空格的新字符串</li>
+<li><code>.spli()</code> 返回一个分割后的新字符串</li>
+</ul>
+<h3 id="Array-prototype"><a href="#Array-prototype" class="headerlink" title="Array.prototype"></a>Array.prototype</h3><p><code>.push()</code> 推入一个(末尾)<br><code>.pop()</code> 弹出一个(末尾)<br><code>.shift()</code> 删除数组头部元素<br><code>.unshift</code> 添加到头部<br><code>.join()</code> 把数组连接起来，并加上分隔符形成字符串返回，默认为<code>,</code>号<br><code>.concat(b)</code> 把数组连接起来返回新数组，也可以和空数组合并，等同于数组复制<br><code>.forEach()</code> 遍历数组，详见后文<br><code>.map()</code> 遍历数组，详见后文</p>
+<p>Array的关键是继承了<code>Array.prototype</code></p>
+<h3 id="数组遍历"><a href="#数组遍历" class="headerlink" title="数组遍历"></a>数组遍历</h3><p>如果是数组，可以使用<code>for(let i=0;i&lt;obj.length;i++&gt;)</code><br>如果不关心是否是数组，可以使用<code>for (let i in obj)</code>遍历所有键值<br>还可以使用<code>forEach()</code>，<code>.map()</code>遍历</p>
+<h4 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a><code>forEach()</code></h4><p><code>forEcah</code>接受一个函数，这个函数有是三个值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> (<span class="params">currentValue,index,array</span>)&#123;</span><br><span class="line">    <span class="comment">//当前值，索引，数组</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="map"><a href="#map" class="headerlink" title=".map()"></a><code>.map()</code></h4><p>和forEach差不多，不过对value的改变会以新数组的形式返回</p>
+<h4 id="a-filter"><a href="#a-filter" class="headerlink" title="a.filter()"></a><code>a.filter()</code></h4><p>和map差不过，就是筛选，ture要，false不要</p>
+<h4 id="reduce"><a href="#reduce" class="headerlink" title=".reduce()"></a><code>.reduce()</code></h4><p>每次会把函数的返回值作为下一次的返回值，还可以指定初始索引，最后返回最后执行后的函数返回值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.<span class="title function_">reduce</span>( <span class="keyword">function</span> (<span class="params">sum,n</span>)&#123;<span class="keyword">return</span> sum+=n&#125;,<span class="number">0</span>) <span class="comment">//返回6，0为初始索引</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="a-sort"><a href="#a-sort" class="headerlink" title="a.sort()"></a><code>a.sort()</code></h3><p>一般排序算法使用的都是快排<br>注意：js中默认排序是按照Unicode的码点进行排序，非常傻逼。</p>
+<p>幸运的是，sort接受一个可选参数，支持自定义的比较算法。<br>函数必须是这种形式的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> (<span class="params">a,b</span>)&#123;</span><br><span class="line">    f (a &lt; b ) &#123;<span class="comment">// 按某种排序标准进行比较, a 小于 b</span></span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;<span class="comment">//小于0 a排前面</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (a &gt; b ) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;<span class="comment">//大于0 b排前面</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//相等不变，但实现不一</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因此比较数字大小的话，可以这样</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.<span class="title function_">sort</span>(<span class="keyword">function</span> (<span class="params">a,b</span>)&#123;<span class="keyword">return</span> a-b&#125;) <span class="comment">// 最小的在最前</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.<span class="title function_">sort</span>(<span class="keyword">function</span> (<span class="params">a,b</span>)&#123;<span class="keyword">return</span> b-a&#125;) <span class="comment">// 最大的在最前</span></span><br></pre></td></tr></table></figure>
+<p>其中forEach使用<code>this</code>表示调用者，可以使用<code>this</code>来获取调用者的属性</p>
+<h3 id="伪数组"><a href="#伪数组" class="headerlink" title="伪数组"></a>伪数组</h3><p>如果像一个数组，且<code>_proto_</code>不等于<code>Araay.prototype</code>,那这就是一个伪数组<br>在js目前遇到的伪数组就是<code>arguments</code>这个表示传给函数的参数</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/05/18/%E6%89%8B%E6%8A%8A%E6%89%8B%E8%AE%A9%E5%B0%8F%E7%99%BD%E4%B9%9F%E8%83%BD%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%EF%BC%81/" rel="prev" title="手把手让小白也能重装系统！">
+                  <i class="fa fa-chevron-left"></i> 手把手让小白也能重装系统！
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/05/22/js%E5%87%BD%E6%95%B0/" rel="next" title="js函数">
+                  js函数 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备18020005号 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geylnu</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">49k</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

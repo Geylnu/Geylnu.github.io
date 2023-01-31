@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="一道题目最近准备回成都，开始了各种面试，这次面试官出了一道函数坷里化的题，题目如下:  实现如下函数 123sum(1)       &#x2F;&#x2F; 1 sum(1)(2)(3) &#x2F;&#x2F; 6sum(1)(2)(3)(4) &#x2F;&#x2F; 10   面试的时候这道题愣了一下，没有答出来，主要纠结了一下在不定参的时候，如果能够链式调用，那一定需要返回的是一个函数，按照题目要求，值需要既是一个函数，又是一个数字。 面试结束后">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从一道面试题开始，重温类型转换">
+<meta property="og:url" content="http://example.com/2022/03/09/%E4%BB%8E%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98%E5%BC%80%E5%A7%8B%EF%BC%8C%E9%87%8D%E6%B8%A9%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/index.html">
+<meta property="og:site_name" content="Gelynu&#39;s Blog">
+<meta property="og:description" content="一道题目最近准备回成都，开始了各种面试，这次面试官出了一道函数坷里化的题，题目如下:  实现如下函数 123sum(1)       &#x2F;&#x2F; 1 sum(1)(2)(3) &#x2F;&#x2F; 6sum(1)(2)(3)(4) &#x2F;&#x2F; 10   面试的时候这道题愣了一下，没有答出来，主要纠结了一下在不定参的时候，如果能够链式调用，那一定需要返回的是一个函数，按照题目要求，值需要既是一个函数，又是一个数字。 面试结束后">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-09T23:32:22.000Z">
+<meta property="article:modified_time" content="2023-01-31T15:45:57.013Z">
+<meta property="article:author" content="Geylnu">
+<meta property="article:tag" content="Symbol.toPrimitive">
+<meta property="article:tag" content="坷里化">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/03/09/%E4%BB%8E%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98%E5%BC%80%E5%A7%8B%EF%BC%8C%E9%87%8D%E6%B8%A9%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/03/09/%E4%BB%8E%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98%E5%BC%80%E5%A7%8B%EF%BC%8C%E9%87%8D%E6%B8%A9%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/","path":"2022/03/09/从一道面试题开始，重温类型转换/","title":"从一道面试题开始，重温类型转换"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>从一道面试题开始，重温类型转换 | Gelynu's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Gelynu's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E9%81%93%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">一道题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%90%E5%BC%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">2.</span> <span class="nav-text">隐式类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">抽象方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ToPrimitive-input-preferredType"><span class="nav-number">2.1.1.</span> <span class="nav-text">ToPrimitive(input[,preferredType])</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#OrdinaryToPrimitive-O-hint"><span class="nav-number">2.1.2.</span> <span class="nav-text">OrdinaryToPrimitive(O,hint)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">2.2.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ApplyStringOrNumericBinaryOperator-lval-opText-rval"><span class="nav-number">2.2.1.</span> <span class="nav-text">ApplyStringOrNumericBinaryOperator( lval, opText, rval )</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E8%A7%A3%E6%9E%90"><span class="nav-number">2.3.</span> <span class="nav-text">运行结果解析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#valueOf-NaN"><span class="nav-number">2.4.</span> <span class="nav-text">valueOf()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#toString-NaN"><span class="nav-number">2.5.</span> <span class="nav-text">toString()</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Symbol-toPrimitive-hint"><span class="nav-number">2.5.1.</span> <span class="nav-text">Symbol.toPrimitive(hint)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="nav-number">4.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Geylnu</p>
+  <div class="site-description" itemprop="description">记录我的前端学习~</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/09/%E4%BB%8E%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98%E5%BC%80%E5%A7%8B%EF%BC%8C%E9%87%8D%E6%B8%A9%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gelynu's Blog">
+      <meta itemprop="description" content="记录我的前端学习~">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="从一道面试题开始，重温类型转换 | Gelynu's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          从一道面试题开始，重温类型转换
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-03-09 23:32:22" itemprop="dateCreated datePublished" datetime="2022-03-09T23:32:22+00:00">2022-03-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-31 15:45:57" itemprop="dateModified" datetime="2023-01-31T15:45:57+00:00">2023-01-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="一道题目"><a href="#一道题目" class="headerlink" title="一道题目"></a>一道题目</h3><p>最近准备回成都，开始了各种面试，这次面试官出了一道函数坷里化的题，题目如下:</p>
+<blockquote>
+<p>实现如下函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">sum</span>(<span class="number">1</span>)       <span class="comment">// 1 </span></span><br><span class="line"><span class="title function_">sum</span>(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>) <span class="comment">// 6</span></span><br><span class="line"><span class="title function_">sum</span>(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)(<span class="number">4</span>) <span class="comment">// 10 </span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>面试的时候这道题愣了一下，没有答出来，主要纠结了一下在不定参的时候，如果能够链式调用，那一定需要返回的是一个函数，按照题目要求，值需要既是一个函数，又是一个数字。</p>
+<p>面试结束后仔细想了下，正好想到之前看《你不知道的JavaScript》中的对于对象类型的toPrimitive操作，面试后很快写了个Demo出来。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">sum</span>(<span class="params">...args</span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> previousArgs = []</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">func</span> = (<span class="params">...args</span>)=&gt;&#123;</span><br><span class="line">        previousArgs = previousArgs.<span class="title function_">concat</span>(args)</span><br><span class="line">        <span class="keyword">return</span> func</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    func.<span class="property">valueOf</span> = <span class="function">()=&gt;</span> previousArgs.<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, currentVal</span>)=&gt;</span> acc + currentVal)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">func</span>(...args)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">sum</span>(<span class="number">2</span>)(<span class="number">3</span>) + <span class="number">2</span>)  <span class="comment">// 7</span></span><br></pre></td></tr></table></figure>
+
+<p>这里实际上关于使用<code>toString</code>以及<code>Symbol.toPrimitive</code>可以达成效果的，但具体原理有一些差别。</p>
+<p>这里就借助这个机会回顾一下Js整个类型转换逻辑。</p>
+<h3 id="隐式类型转换"><a href="#隐式类型转换" class="headerlink" title="隐式类型转换"></a>隐式类型转换</h3><p>总所周知，js作为一种弱类型语言，在需要的场景下，会进行隐式的类型转换，为此 <a target="_blank" rel="noopener" href="https://tc39.es/ecma262/#sec-type-conversion">ECMA262  Type Conversion</a> 中规定了一系列类型转换的抽象方法，以及在各种运算符操作及函数中规定了如何去调用这些类型转换方法。</p>
+<h4 id="抽象方法"><a href="#抽象方法" class="headerlink" title="抽象方法"></a>抽象方法</h4><p> <a target="_blank" rel="noopener" href="https://tc39.es/ecma262/#sec-type-conversion">ECMA262  Type Conversion</a> 中规定了许多抽象方法，例如<code>ToString</code>、<code>ToNumber</code>、<code>toPrimitive</code>、<code>toBoolean</code>，其他的抽象方法也有很多，这里只简单介绍一下<code>toPrimitive</code>方法,步骤很清楚明白。</p>
+<h5 id="ToPrimitive-input-preferredType"><a href="#ToPrimitive-input-preferredType" class="headerlink" title="ToPrimitive(input[,preferredType])"></a>ToPrimitive(input[,preferredType])</h5><p><code>toPrimitive</code>方法主要用于将对象转换为原始值，它接受两个参数，第一个参数为任意的合法值，第二个参数为倾向转换的类型(<code>string</code>或<code>number</code>)。</p>
+<p>其执行逻辑如下</p>
+<ol>
+<li>如果input为对象，就：<ol>
+<li>获取对象上定义的<code>@@Primitive</code>方法，也就是<code>Symbol.Primitive</code></li>
+<li>如果<code>@@Primitive</code>方法不为<code>undefined</code>，就<ol>
+<li>如果<code>preferredType</code> 未指定，就将<code>hint</code>默认设置为<code>&quot;default&quot;</code></li>
+<li>否则,如果<code>preferredType</code>为<code>string</code>，就把<code>hint</code>设置为<code>&quot;string&quot;</code></li>
+<li>否则，<code>preferredType</code>为<code>number</code>，就把<code>hint</code>设置为<code>&quot;number&quot;</code></li>
+<li>将<code>result</code>设置为执行<code>@@Primitive(input, hint)</code>方法的结果</li>
+<li>如果<code>result</code>的类型不为<code>object</code>，将<code>resule</code>作为结果返回</li>
+<li>抛一个<code>TypeError</code>错误</li>
+</ol>
+</li>
+<li>如果<code>preferredType</code> 未指定，就默认设置为<code>number</code></li>
+<li>返回 调用<code> OrdinaryToPrimitive(input,preferredType)</code>方法的结果</li>
+</ol>
+</li>
+<li>否则将input作为返回值</li>
+</ol>
+<h5 id="OrdinaryToPrimitive-O-hint"><a href="#OrdinaryToPrimitive-O-hint" class="headerlink" title="OrdinaryToPrimitive(O,hint)"></a>OrdinaryToPrimitive(O,hint)</h5><ol>
+<li><p>如果<code>hint</code>为<code>&quot;string&quot;</code>,就</p>
+<ol>
+<li>将<code>mthodNames</code>设置为<code>&lt;&lt;&quot;toString&quot;,&quot;valueOf&quot;&gt;&gt;</code></li>
+</ol>
+</li>
+<li><p>如果<code>hint</code>为<code>&quot;number&quot;</code>,就</p>
+<ol>
+<li>将<code>mthodNames</code>设置为<code>&lt;&lt;&quot;valueOf&quot;,&quot;toString&quot;&gt;&gt;</code></li>
+</ol>
+</li>
+<li><p>按顺序取出<code>mthodNames</code>中的<code>name</code>，对于，每一项</p>
+<ol>
+<li>将<code>method</code>设置为对应对象上<code>name</code>的值</li>
+<li>如果<code>method</code>可以被调用，就<ol>
+<li>将<code>result</code>设置为执行<code>method()</code>方法的结果</li>
+<li>如果<code>result</code>的类型不为<code>object</code>，将<code>resule</code>作为结果返回</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>抛一个<code>TypeError</code>错误</p>
+</li>
+</ol>
+<p>这里就是<code>ToPrimitive</code>的逻辑了，整个逻辑就是优先调用<code>Symbol.Primitive</code>方法，如果不存在，再根据偏好顺序，执行<code>valueOf</code>及<code>toString</code>并作为结果返回。</p>
+<h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h4><p>在上面我们大致讲了类型转换中，将对象转为原始值的<code>ToPrimitive</code>方法，它被调用的一个典型案例就是使用<code>+</code>运算符，也就是本文的例子。在<a target="_blank" rel="noopener" href="https://tc39.es/ecma262/#sec-applystringornumericbinaryoperator">ECMA262  ApplyStringOrNumericBinaryOperator </a>中，规定了<code>+</code>运算符的行为。</p>
+<h5 id="ApplyStringOrNumericBinaryOperator-lval-opText-rval"><a href="#ApplyStringOrNumericBinaryOperator-lval-opText-rval" class="headerlink" title="ApplyStringOrNumericBinaryOperator( lval, opText, rval )"></a>ApplyStringOrNumericBinaryOperator( lval, opText, rval )</h5><p>对于字符串或数字的运算都被定义在这个方法下，这里简便起见，我们仅看类型转换的部分</p>
+<ol>
+<li>如果<code>opText</code>为<code>+</code> ，就<ol>
+<li>将<code>lprim</code>设为 <code>ToPrimitive(lval)</code>执行的结果</li>
+<li>将<code>rprim</code>设为<code>ToPrimitive(rval)</code>执行的结果</li>
+<li>如果<code>lprim</code>或<code>rprim</code>的类型为<code>string</code>，就<ol>
+<li>将<code>lstr</code>设为 <code>ToString(rprim)</code>执行的结果</li>
+<li>将<code>rstr</code>设为 <code>ToString(rprim)</code>执行的结果</li>
+<li>将<code>lstr</code>与<code>rstr</code>连接后返回的新字符串作为结果返回</li>
+</ol>
+</li>
+<li>将<code>lval</code>设为 <code>lprim</code></li>
+<li>将<code>rval</code>设为<code>rprim</code></li>
+</ol>
+</li>
+<li>将<code>lnum</code>设为 <code>ToNumeric(lval)</code>执行的结果</li>
+<li>将<code>rnum</code>设为 <code>ToNumeric(rval)</code>执行的结果</li>
+<li>如果<code>lnum</code>与<code>rnum</code>的值不匹配，返回一个<code>TypeError </code>错误</li>
+<li>执行定义的数学运算，相关逻辑省略</li>
+</ol>
+<h4 id="运行结果解析"><a href="#运行结果解析" class="headerlink" title="运行结果解析"></a>运行结果解析</h4><p>有了上面定义的运算符逻辑及对象转换逻辑，我们就能比较清晰的明白上面的例子在执行时，<code>valueOf</code>及<code>toString</code>，还有<code>Symbol.toPrimitive</code>的调用逻辑是什么，有什么区别。</p>
+<h4 id="valueOf-NaN"><a href="#valueOf-NaN" class="headerlink" title="valueOf()"></a>valueOf()</h4><p>为了方便对比，我们写一个最小化的Demo</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> demo = &#123;</span><br><span class="line">    <span class="title function_">valueOf</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">3</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(demo + <span class="number">1</span>) <span class="comment">// 4</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(demo + <span class="string">&#x27;1&#x27;</span>) <span class="comment">// &quot;31&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里按照上述的流程，会执行以下的步骤</p>
+<ol>
+<li><code>demo + 1</code> , 执行<code>toPrimitive(demo)</code></li>
+<li><code>toPrimitive(demo) </code>检查没有<code>@@Primitive</code>方法，并且没有指定<code>preferredType</code>，默认偏好类型设置为value。</li>
+<li>按照偏好类型，首先获取<code>valueOf</code>方法，并执行</li>
+<li>执行后，返回<code>3</code>，类型不为<code>object</code>，返回后续结果。</li>
+<li>执行后续流程。</li>
+</ol>
+<h4 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString()"></a>toString()</h4><p>实际上，重写<code>toString()</code>方法也能拿到一样的结果。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> demo = &#123;</span><br><span class="line">    <span class="title function_">toString</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">3</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(demo + <span class="number">1</span>) <span class="comment">// 4</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(demo + <span class="string">&#x27;1&#x27;</span>) <span class="comment">// &quot;31&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>在这种场景下，<code>toString()</code>和<code>valueOf</code>是近乎等同的。</p>
+<h5 id="Symbol-toPrimitive-hint"><a href="#Symbol-toPrimitive-hint" class="headerlink" title="Symbol.toPrimitive(hint)"></a>Symbol.toPrimitive(hint)</h5><p><code>Symbol.toPrimitive</code>方法是在ES6中出现的，让js有了覆写对象转换为原始值这一行为的能力，入参<code>hint</code>会根据转换的偏向类型，传入<code>&#39;string&#39;</code>、<code>&#39;number&#39;</code> 、<code>&#39;default&#39;</code>,上面的例子也可以使用<code>Symbol.toPrimitive</code>达到一样的效果。</p>
+<p><code>Symbol.toPrimitive</code>方法除会接受入参以外，如果返回值未返回原始值类型，就直接抛出<code>TypeError</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> demo = &#123;</span><br><span class="line">    [<span class="title class_">Symbol</span>.<span class="property">toPrimitive</span>]: <span class="function">()=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">demo +<span class="number">1</span> <span class="comment">// Uncaught TypeError: Cannot convert object to primitive value</span></span><br></pre></td></tr></table></figure>
+
+<p>而对于<code>toString</code>和<code>valueOf</code>方法，由于有默认的<code>Object.prototype.toString</code>方法，总是会输出对应的对象描述。</p>
+<p>如果没有<code>toString</code>和<code>valueOf</code>方法，也会抛出这个错误。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">create</span>(<span class="literal">null</span>) + <span class="number">1</span> <span class="comment">// Uncaught TypeError: Cannot convert object to primitive value</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>这里实际上是第一次阅读规范文档去解决自己的疑惑，规范实际写的非常简洁明了，很多时候要是不明白js的一些行为，阅读规范文档是一个好的办法。</p>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toPrimitive">MDN Symbol.toPrimitive</a><br><a target="_blank" rel="noopener" href="https://tc39.es/ecma262/#sec-type-conversion">ECMA262 Type Conversion</a><br><a target="_blank" rel="noopener" href="https://tc39.es/ecma262/#sec-applystringornumericbinaryoperator">ECMA262 ApplyStringOrNumericBinaryOperator</a><br><a target="_blank" rel="noopener" href="https://weread.qq.com/web/reader/f5d32510715c0190f5ddc42">《你不知道的JavaScript 中卷》强制类型转换</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Symbol-toPrimitive/" rel="tag"># Symbol.toPrimitive</a>
+              <a href="/tags/%E5%9D%B7%E9%87%8C%E5%8C%96/" rel="tag"># 坷里化</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/02/10/%E4%BD%BF%E7%94%A8Github-Action-%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/" rel="prev" title="使用GitHub Actions 自动化部署博客">
+                  <i class="fa fa-chevron-left"></i> 使用GitHub Actions 自动化部署博客
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/04/18/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9C%A8Ts%E4%B8%ADObject-Keys%E6%80%BB%E6%98%AF%E8%BF%94%E5%9B%9E%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%BB%84/" rel="next" title="为什么在Ts中Object.keys总是返回字符串数组?">
+                  为什么在Ts中Object.keys总是返回字符串数组? <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备18020005号 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geylnu</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">49k</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

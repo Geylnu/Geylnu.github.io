@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="缘由最近重新准备写博客的时候，发现hexo已经更新了，支持以包的形式引用主题，按照文档指引重新配置了主题。之前博客构建使用的是hexo官网的Travis Ci，配置直接复制过去改改就好了，这次更新主题看到仓库上大大的GitHub Actions,手痒痒，就想试一下用GitHub Actions 进行自动构建。 构建产物GitHub Actions的快速上手文档异常的贴心，而且还是以npm构建为例子">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用GitHub Actions 自动化部署博客">
+<meta property="og:url" content="http://example.com/2022/02/10/%E4%BD%BF%E7%94%A8Github-Action-%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="Gelynu&#39;s Blog">
+<meta property="og:description" content="缘由最近重新准备写博客的时候，发现hexo已经更新了，支持以包的形式引用主题，按照文档指引重新配置了主题。之前博客构建使用的是hexo官网的Travis Ci，配置直接复制过去改改就好了，这次更新主题看到仓库上大大的GitHub Actions,手痒痒，就想试一下用GitHub Actions 进行自动构建。 构建产物GitHub Actions的快速上手文档异常的贴心，而且还是以npm构建为例子">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/02/10/%E4%BD%BF%E7%94%A8Github-Action-%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/image-20220214212324285.png">
+<meta property="og:image" content="http://example.com/2022/02/10/%E4%BD%BF%E7%94%A8Github-Action-%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/image-20220214222645055.png">
+<meta property="og:image" content="http://example.com/2022/02/10/%E4%BD%BF%E7%94%A8Github-Action-%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/image-20220214223118913.png">
+<meta property="og:image" content="http://example.com/2022/02/10/%E4%BD%BF%E7%94%A8Github-Action-%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/image-20220214225137217.png">
+<meta property="article:published_time" content="2022-02-10T21:36:59.000Z">
+<meta property="article:modified_time" content="2023-01-31T15:45:57.013Z">
+<meta property="article:author" content="Geylnu">
+<meta property="article:tag" content="博客">
+<meta property="article:tag" content="GitHub Actions">
+<meta property="article:tag" content="TODO">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/02/10/%E4%BD%BF%E7%94%A8Github-Action-%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/image-20220214212324285.png">
+
+
+<link rel="canonical" href="http://example.com/2022/02/10/%E4%BD%BF%E7%94%A8Github-Action-%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/02/10/%E4%BD%BF%E7%94%A8Github-Action-%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/","path":"2022/02/10/使用Github-Action-自动化部署博客/","title":"使用GitHub Actions 自动化部署博客"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>使用GitHub Actions 自动化部署博客 | Gelynu's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Gelynu's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%98%E7%94%B1"><span class="nav-number">1.</span> <span class="nav-text">缘由</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E4%BA%A7%E7%89%A9"><span class="nav-number">2.</span> <span class="nav-text">构建产物</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%91%E5%B8%83%E5%88%B0GitHub-Pages"><span class="nav-number">3.</span> <span class="nav-text">发布到GitHub Pages</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3Git%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.</span> <span class="nav-text">解决Git配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%85%B7%E6%9C%89%E5%86%99%E5%85%A5%E6%9D%83%E9%99%90%E7%9A%84Token"><span class="nav-number">3.2.</span> <span class="nav-text">添加具有写入权限的Token</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%91%E5%B8%83%E5%88%B0%E4%B8%AA%E4%BA%BA%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">发布到个人云服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E9%85%8D%E7%BD%AE"><span class="nav-number">5.</span> <span class="nav-text">最终配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">小结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Geylnu</p>
+  <div class="site-description" itemprop="description">记录我的前端学习~</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/10/%E4%BD%BF%E7%94%A8Github-Action-%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gelynu's Blog">
+      <meta itemprop="description" content="记录我的前端学习~">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="使用GitHub Actions 自动化部署博客 | Gelynu's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用GitHub Actions 自动化部署博客
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-02-10 21:36:59" itemprop="dateCreated datePublished" datetime="2022-02-10T21:36:59+00:00">2022-02-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-31 15:45:57" itemprop="dateModified" datetime="2023-01-31T15:45:57+00:00">2023-01-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CI-CD/" itemprop="url" rel="index"><span itemprop="name">CI/CD</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h3><p>最近重新准备写博客的时候，发现hexo已经更新了，支持以包的形式引用主题，按照文档指引重新配置了主题。之前博客构建使用的是hexo官网的Travis Ci，配置直接复制过去改改就好了，这次更新主题看到仓库上大大的GitHub Actions,手痒痒，就想试一下用GitHub Actions 进行自动构建。</p>
+<h3 id="构建产物"><a href="#构建产物" class="headerlink" title="构建产物"></a>构建产物</h3><p>GitHub Actions的快速上手文档异常的贴心，而且还是以npm构建为例子，前端基本可以很快上手~</p>
+<p>GitHub Actions 的构建任务有四个层级</p>
+<ul>
+<li>workflow： 工作流，整个运行过程</li>
+<li>job： 任务，工作流可以包含一个或多个任务，每个任务都是独立的机器运行</li>
+<li>step: 步骤。每一个任务可以执行一个或多个步骤，按顺序执行</li>
+<li>action: 动作，每一个步骤可以运行一个或者多个命令</li>
+</ul>
+<p>其中job是分别在不同机器上并发执行的，也可以通过<code>needs</code>参数和条件判断决定执行先后顺序，不过目前我们不需要多个机器并发执行。</p>
+<p>上面其实是一些概念，实际写一个简单的构建配置是十分简单的。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Deploy</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="comment"># 指定在main分支push时触发构建</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span> [ <span class="string">main</span> ]</span><br><span class="line">  <span class="comment"># 允许手动点击触发构建</span></span><br><span class="line">  <span class="attr">workflow_dispatch:</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="comment"># 任务名称</span></span><br><span class="line">  <span class="attr">build-and-deploy:</span></span><br><span class="line">    <span class="comment"># 运行环境为最新稳定版本的</span></span><br><span class="line">    <span class="comment"># ubuntu</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="comment"># 拉取这次提交后的代码</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">      <span class="comment"># 安装并设置node版本为14，并启用缓存 </span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/setup-node@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">&#x27;14&#x27;</span></span><br><span class="line">          <span class="attr">cache:</span> <span class="string">&#x27;npm&#x27;</span></span><br><span class="line">      <span class="comment"># 安装依赖并执行构建命令</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Clean</span> <span class="string">install</span> <span class="string">dependencies</span> <span class="string">and</span> <span class="string">build</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          npm ci</span></span><br><span class="line"><span class="string">          npm run build</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure>
+
+<p>其中use类似于npm包，可以使用其他人预先写好的构建指令及脚本，通过with传递参数。</p>
+<p>对于自行编写的构建命令，直接使用<code>run</code>即可，如果有多条命令，需要使用<code>|</code> 进行换行。</p>
+<h3 id="发布到GitHub-Pages"><a href="#发布到GitHub-Pages" class="headerlink" title="发布到GitHub Pages"></a>发布到GitHub Pages</h3><p>hexo自带发布到Github Pages插件，在本地机器发布时，直接执行<code>hexo deploy</code>即可，但是在GitHub Actions上，默认仅有当前仓库的权限，并且没有设置Git用户名称和邮箱，会得到以下错误</p>
+<p><img data-src="/2022/02/10/%E4%BD%BF%E7%94%A8Github-Action-%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/image-20220214212324285.png" alt="image-20220214212324285"></p>
+<p>这是因为我们在远程的执行虚拟机上执行Git命令，Git并没有相关配置，同时显而易见的，也没有为仓库提交的权限。</p>
+<h4 id="解决Git配置"><a href="#解决Git配置" class="headerlink" title="解决Git配置"></a>解决Git配置</h4><p>Git配置很好解决,直接在发布前添加两行配置命令即可,这里使用GitHub Actions的<a target="_blank" rel="noopener" href="https://docs.github.com/en/actions/learn-github-actions/contexts">上下文变量</a>，访问触发构建的用户的用户名，并作为提交者。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">deploy</span> <span class="string">to</span> <span class="string">github</span></span><br><span class="line">  <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">    git config --global user.email &quot;$&#123;&#123; github.actor &#125;&#125;@noreply.github-action.com&quot;</span></span><br><span class="line"><span class="string">    git config --global user.name &quot;$&#123;&#123; github.actor &#125;&#125;.github-action&quot;</span></span><br><span class="line"><span class="string">    npm run deploy</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="添加具有写入权限的Token"><a href="#添加具有写入权限的Token" class="headerlink" title="添加具有写入权限的Token"></a>添加具有写入权限的Token</h4><p>作为一个很常用的功能，社区自然早早帮忙造好了轮子了，这里直接使用<code>webfactory/ssh-agent@v0.5.4</code>即可，然后在本地创建一对秘钥。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
+
+<p>之后再把公钥上传到对应的目标发布仓库，这里需要注意构建写入权限，才能够进行提交操作。</p>
+<p><img data-src="/2022/02/10/%E4%BD%BF%E7%94%A8Github-Action-%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/image-20220214222645055.png" alt="image-20220214222645055"></p>
+<p>私钥需要上传到Gituhb Actions执行的仓库，操作类似，之后就可以顺利执行<code>hexo deploy</code></p>
+<p><img data-src="/2022/02/10/%E4%BD%BF%E7%94%A8Github-Action-%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/image-20220214223118913.png" alt="image-20220214223118913"></p>
+<p>这里发布使用的是hexo自带的Git发布插件，整个发布流程实际也可以通过GitHub Actions实现，后面可以再改改。</p>
+<h3 id="发布到个人云服务器"><a href="#发布到个人云服务器" class="headerlink" title="发布到个人云服务器"></a>发布到个人云服务器</h3><p>为了方便国内访问，自己还有一个部署在国内的站点，希望在自动构建的时候，也直接发布到个人的云服务器上，搜索一下<code>deploy</code>关键字，直接就有相应的Actions了，这里直接用<code>easingthemes/ssh-deploy@main</code>，,填好参数，执行时通过<code>rsync</code>命令把文件同步到远程主机上。</p>
+<p><img data-src="/2022/02/10/%E4%BD%BF%E7%94%A8Github-Action-%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/image-20220214225137217.png" alt="image-20220214225137217"></p>
+<p>使用rsync的主要问题是GitHub Actions的主机在美国，远程同步的时间非常非常久，第一次同步耗时13m，以为是命令出了问题，强行结束了Actions任务，第二次同步依然执行了12m,直到第三次因为文件已同步了，执行时间才有显著的减慢。</p>
+<h3 id="最终配置"><a href="#最终配置" class="headerlink" title="最终配置"></a>最终配置</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Deploy</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span> [ <span class="string">main</span> ]</span><br><span class="line">  <span class="attr">workflow_dispatch:</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build-and-deploy:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/setup-node@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">&#x27;14&#x27;</span></span><br><span class="line">          <span class="attr">cache:</span> <span class="string">&#x27;npm&#x27;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Clean</span> <span class="string">install</span> <span class="string">dependencies</span> <span class="string">and</span> <span class="string">build</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          npm ci</span></span><br><span class="line"><span class="string">          npm run build</span></span><br><span class="line"><span class="string"></span>      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">webfactory/ssh-agent@v0.5.4</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">ssh-private-key:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.SSH_PRIVATE_KEY</span> <span class="string">&#125;&#125;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">deploy</span> <span class="string">to</span> <span class="string">github</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          git config --global user.email &quot;$&#123;&#123; github.actor &#125;&#125;@noreply.github-action.com&quot;</span></span><br><span class="line"><span class="string">          git config --global user.name &quot;$&#123;&#123; github.actor &#125;&#125;.github-action&quot;</span></span><br><span class="line"><span class="string">          npm run deploy</span></span><br><span class="line"><span class="string"></span>      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">deploy</span> <span class="string">to</span> <span class="string">server</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">easingthemes/ssh-deploy@main</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">            <span class="attr">SSH_PRIVATE_KEY:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.SERVER_SSH_KEY</span> <span class="string">&#125;&#125;</span></span><br><span class="line">            <span class="attr">ARGS:</span> <span class="string">&quot;-rltgoDzvO --delete&quot;</span></span><br><span class="line">            <span class="attr">SOURCE:</span> <span class="string">&quot;public/&quot;</span></span><br><span class="line">            <span class="attr">REMOTE_PORT:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.REMOTE_PORT</span> <span class="string">&#125;&#125;</span></span><br><span class="line">            <span class="attr">REMOTE_HOST:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.REMOTE_HOST</span> <span class="string">&#125;&#125;</span></span><br><span class="line">            <span class="attr">REMOTE_USER:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.REMOTE_USER</span> <span class="string">&#125;&#125;</span></span><br><span class="line">            <span class="attr">TARGET:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.REMOTE_TARGET</span> <span class="string">&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>这次使用GitHub Actions实际是自己第一次从零开始写构建流程，由于生态比较活跃，实际上各种想用的功能都有轮子，可以轻松实现自己的功能，比较大的缺点就是GitHub Actions是和GitHub强绑定的，并且提供的构建主机都在美国，连接速度比较慢，看文档也支持自托管的构建主机，有时间可以弄一个试试。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag"># 博客</a>
+              <a href="/tags/GitHub-Actions/" rel="tag"># GitHub Actions</a>
+              <a href="/tags/TODO/" rel="tag"># TODO</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/10/10/%E8%AF%B4%E8%AF%B4Vue3%E7%9A%84watchEffect%E4%B8%8EReact-Hooks%E7%9A%84useEffect/" rel="prev" title="说说Vue3的watchEffect与React Hooks的useEffect">
+                  <i class="fa fa-chevron-left"></i> 说说Vue3的watchEffect与React Hooks的useEffect
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/03/09/%E4%BB%8E%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98%E5%BC%80%E5%A7%8B%EF%BC%8C%E9%87%8D%E6%B8%A9%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="next" title="从一道面试题开始，重温类型转换">
+                  从一道面试题开始，重温类型转换 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备18020005号 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geylnu</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">49k</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

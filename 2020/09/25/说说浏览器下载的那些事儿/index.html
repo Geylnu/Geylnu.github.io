@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="最近突然在 chrome 85 版本上遇到下载后会出现”xxx 下载方式实属异常 因此它可能存在危险”，去看了下相关的谷歌博客，定位是谷歌的浏览器安全策略引起的。实际上浏览器下载还有不少坑，这次就接这个机会总结一下。 前端如何实现文件下载？window.open在 download 属性出现之前，前端实现文件下载实际上依赖于浏览器的默认行为，也就是打开链接。 通常我们可以直接这样实现 12cons">
+<meta property="og:type" content="article">
+<meta property="og:title" content="说说浏览器下载的那些事儿">
+<meta property="og:url" content="http://example.com/2020/09/25/%E8%AF%B4%E8%AF%B4%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8B%E8%BD%BD%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/index.html">
+<meta property="og:site_name" content="Gelynu&#39;s Blog">
+<meta property="og:description" content="最近突然在 chrome 85 版本上遇到下载后会出现”xxx 下载方式实属异常 因此它可能存在危险”，去看了下相关的谷歌博客，定位是谷歌的浏览器安全策略引起的。实际上浏览器下载还有不少坑，这次就接这个机会总结一下。 前端如何实现文件下载？window.open在 download 属性出现之前，前端实现文件下载实际上依赖于浏览器的默认行为，也就是打开链接。 通常我们可以直接这样实现 12cons">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-25T11:47:29.000Z">
+<meta property="article:modified_time" content="2023-01-31T15:45:57.025Z">
+<meta property="article:author" content="Geylnu">
+<meta property="article:tag" content="download">
+<meta property="article:tag" content="微信H5">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2020/09/25/%E8%AF%B4%E8%AF%B4%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8B%E8%BD%BD%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2020/09/25/%E8%AF%B4%E8%AF%B4%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8B%E8%BD%BD%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/","path":"2020/09/25/说说浏览器下载的那些事儿/","title":"说说浏览器下载的那些事儿"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>说说浏览器下载的那些事儿 | Gelynu's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Gelynu's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">前端如何实现文件下载？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#window-open"><span class="nav-number">1.1.</span> <span class="nav-text">window.open</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#window-location-href"><span class="nav-number">1.2.</span> <span class="nav-text">window.location.href</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-lt-a-gt-%E6%A0%87%E7%AD%BE"><span class="nav-number">1.3.</span> <span class="nav-text">使用 &lt;a&gt; 标签</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E7%AB%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">后端如何实现文件下载？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Content-Disposition"><span class="nav-number">2.1.</span> <span class="nav-text">Content-Disposition</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%98%E5%AD%98%E5%9C%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">还存在的一些问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ios"><span class="nav-number">3.1.</span> <span class="nav-text">ios</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E9%99%90%E5%88%B6"><span class="nav-number">3.2.</span> <span class="nav-text">安全限制</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Geylnu</p>
+  <div class="site-description" itemprop="description">记录我的前端学习~</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/25/%E8%AF%B4%E8%AF%B4%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8B%E8%BD%BD%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gelynu's Blog">
+      <meta itemprop="description" content="记录我的前端学习~">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="说说浏览器下载的那些事儿 | Gelynu's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          说说浏览器下载的那些事儿
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-09-25 11:47:29" itemprop="dateCreated datePublished" datetime="2020-09-25T11:47:29+00:00">2020-09-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-31 15:45:57" itemprop="dateModified" datetime="2023-01-31T15:45:57+00:00">2023-01-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/" itemprop="url" rel="index"><span itemprop="name">浏览器</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>最近突然在 chrome 85 版本上遇到下载后会出现”xxx 下载方式实属异常 因此它可能存在危险”，去看了下相关的谷歌博客，定位是谷歌的浏览器安全策略引起的。<br>实际上浏览器下载还有不少坑，这次就接这个机会总结一下。</p>
+<h2 id="前端如何实现文件下载？"><a href="#前端如何实现文件下载？" class="headerlink" title="前端如何实现文件下载？"></a>前端如何实现文件下载？</h2><h3 id="window-open"><a href="#window-open" class="headerlink" title="window.open"></a>window.open</h3><p>在 download 属性出现之前，前端实现文件下载实际上依赖于浏览器的默认行为，也就是打开链接。</p>
+<p>通常我们可以直接这样实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> url = <span class="string">&quot;http://xxxx&quot;</span>;</span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">open</span>(url);</span><br></pre></td></tr></table></figure>
+
+<p>这会以指定的 url 打开一个新窗口，浏览器在根据 url 获得到服务器的响应，判断出这不是一个浏览器可以打开的文件类型，就自动会转为下载。</p>
+<p>在段代码在正常情况下是能够工作正常的，然而实际上有些业务场景，下载链接是后台生成的，我们需要这样做</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">clickHandle</span>(<span class="params"></span>) &#123;</span><br><span class="line">  api.<span class="title function_">get</span>(<span class="string">&#x27;xxx&#x27;</span>, params).<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> data = response.<span class="property">data</span>;</span><br><span class="line">    <span class="keyword">if</span>(data.<span class="property">code</span> === <span class="number">0</span> ) &#123;</span><br><span class="line">      <span class="keyword">let</span> url = data.<span class="property">data</span>.<span class="property">url</span> || <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span> (url) &#123;</span><br><span class="line">        <span class="variable language_">window</span>.<span class="title function_">open</span>(url);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这在几乎所有的现代浏览器上都会被阻止，在 Chrome 上会在地址栏显示被拦截的标志，用户需要手动点击才能成功，Safari 会静默失效。<br>这是由于早期网页经常在页面插入自动打开广告页面，带来很糟糕的用户体验，因此浏览器做了限制，会禁止所有的异步回调中调用的 window.open()</p>
+<p>当然了，浏览器限制也拦不过各种奇思妙想，既然无法在异步代码中调用 window.open()，那先在同步代码中调用，等待异步调用完成，改变新开的浏览器窗口的 url 就好了。<br>下面的代码就是一种实现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">clickHandle</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> windowObjectReference = <span class="variable language_">window</span>.<span class="title function_">open</span>(<span class="string">&#x27;xxx&#x27;</span>)</span><br><span class="line">  api.<span class="title function_">get</span>(<span class="string">&#x27;xxx&#x27;</span>, params).<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> data = response.<span class="property">data</span>;</span><br><span class="line">    <span class="keyword">if</span>(data.<span class="property">code</span> === <span class="number">0</span> ) &#123;</span><br><span class="line">      <span class="keyword">let</span> url = data.<span class="property">data</span>.<span class="property">url</span> || <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span> (url) &#123;</span><br><span class="line">        windowObjectReference.<span class="property">location</span>.<span class="property">href</span> = url;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为上述的原因，使用了 window.open(), 无法打开页面是很容易发生的事，这时 window.open(）会返回 null，需要做一些失败后的处理</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="variable language_">window</span>.<span class="title function_">open</span>(<span class="string">&quot;xxxx&quot;</span>)) &#123;</span><br><span class="line">  <span class="comment">// do xxx</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="window-location-href"><a href="#window-location-href" class="headerlink" title="window.location.href"></a>window.location.href</h3><p>尽管可以以上面的方式绕过浏览器的安全限制，然而这种行为是不确定，永远无法知道浏览器会在哪一个版本改变这种做法，更安全的行为是使用 window.location.href</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">herf</span> = <span class="string">&quot;http://xxxx&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>这种方式下载是手动让浏览器跳转到指定页面，浏览器发现是不支持预览的文件类型，自动转为下载，由于浏览器加载链接到发现这是一个应该下载的资源需要一定时间，这会造成页面白屏一段时间，表现的像是页面闪动一样</p>
+<p>为了避免闪动，也有人想出了在 iframe 中调用 window.location.href 中的办法，由于链接是在 iframe 里加载的，也就不会出现闪动了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 无闪现下载excel</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">download</span>(<span class="params">url</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> iframe = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;iframe&quot;</span>);</span><br><span class="line">  iframe.<span class="property">style</span>.<span class="property">display</span> = <span class="string">&quot;none&quot;</span>;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">iframeLoad</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;iframe onload&quot;</span>);</span><br><span class="line">    <span class="keyword">const</span> win = iframe.<span class="property">contentWindow</span>;</span><br><span class="line">    <span class="keyword">const</span> doc = win.<span class="property">document</span>;</span><br><span class="line">    <span class="keyword">if</span> (win.<span class="property">location</span>.<span class="property">href</span> === url) &#123;</span><br><span class="line">      <span class="keyword">if</span> (doc.<span class="property">body</span>.<span class="property">childNodes</span>.<span class="property">length</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// response is error</span></span><br><span class="line">      &#125;</span><br><span class="line">      iframe.<span class="property">parentNode</span>.<span class="title function_">removeChild</span>(iframe);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (<span class="string">&quot;onload&quot;</span> <span class="keyword">in</span> iframe) &#123;</span><br><span class="line">    iframe.<span class="property">onload</span> = iframeLoad;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (iframe.<span class="property">attachEvent</span>) &#123;</span><br><span class="line">    iframe.<span class="title function_">attachEvent</span>(<span class="string">&quot;onload&quot;</span>, iframeLoad);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    iframe.<span class="property">onreadystatechange</span> = <span class="keyword">function</span> <span class="title function_">onreadystatechange</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (iframe.<span class="property">readyState</span> === <span class="string">&quot;complete&quot;</span>) &#123;</span><br><span class="line">        iframeLoad;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  iframe.<span class="property">src</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(iframe);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="keyword">function</span> <span class="title function_">loadUrl</span>(<span class="params"></span>) &#123;</span><br><span class="line">    iframe.<span class="property">contentWindow</span>.<span class="property">location</span>.<span class="property">href</span> = url;</span><br><span class="line">  &#125;, <span class="number">50</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用 iframe 的顾虑和使用 window.open 的顾虑一样，这依赖于浏览器的默认安全策略，我们无法知道浏览器会在哪天把创建 iframe 进行下载定义为危险的行为并进行拦截。</p>
+<h3 id="使用-lt-a-gt-标签"><a href="#使用-lt-a-gt-标签" class="headerlink" title="使用 &lt;a&gt; 标签"></a>使用 &lt;a&gt; 标签</h3><p>这实际上是目前大多数前端下载库的实现方式，会动态创建一个隐藏的 &lt;a&gt; 标签，通过 Blob 转换为 data 链接，点击这个 data 链接，浏览器会默认将这个文件 data 链接的内容进行保存。<br>15k start 的<a target="_blank" rel="noopener" href="https://github.com/eligrey/FileSaver.js">FileSaver.js</a>就是这样实现的。</p>
+<p>这样的方式相比直接打开或者直接使用链接的好处在于许多文件类型可以下载，而不是变为预览。</p>
+<p>除此之外，&lt;a&gt; 还能支持 download 属性，这是真正的浏览器语义上的下载属性，以上除 data 链接的方式，浏览器都会抛出控制台警告</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resource interpreted as Document but transferred with MIME type application xxx</span><br></pre></td></tr></table></figure>
+
+<p>浏览器的请求头会附带这样的 Accept 头：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Host: xxxx</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span><br></pre></td></tr></table></figure>
+
+<p>使用 download 属性后，浏览器发出的请求头会像这样</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Host: xxxx</span><br></pre></td></tr></table></figure>
+
+<p>浏览器不会带上 Accept 头，甚至请求也不会出现在开发者工具中，会直接进行下载。</p>
+<p>虽然 download 属性非常好用，但是还有一些限制：</p>
+<blockquote>
+<p>此属性仅适用于同源 URL<br>尽管 HTTP URL 需要位于同一源中，但是可以使用 blob: URL 和 data: URL ，以方便用户下载使用 JavaScript 生成的内容（例如使用在线绘图 Web 应用程序创建的照片）。<br>如果 HTTP 头中的 Content-Disposition 属性赋予了一个不同于此属性的文件名，HTTP 头属性优先于此属性。</p>
+</blockquote>
+<p>download 属性支持所有现代浏览器，而 IE 理所当然的不支持，需要进行一些特殊处理。</p>
+<h2 id="后端如何实现文件下载？"><a href="#后端如何实现文件下载？" class="headerlink" title="后端如何实现文件下载？"></a>后端如何实现文件下载？</h2><h3 id="Content-Disposition"><a href="#Content-Disposition" class="headerlink" title="Content-Disposition"></a>Content-Disposition</h3><p>实际上，在 HTTP 响应中加上 Content-Disposition 是浏览器兼容性最好的下载方式，大多数的浏览器都支持这种方式.</p>
+<p>Content-Disposition 可以指定浏览器是以附件的形式下载文件，还是以页面的一部分预览展示,同时也可以指定文件名。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Content-Disposition: inline</span><br><span class="line">Content-Disposition: attachment</span><br><span class="line">Content-Disposition: attachment; filename=&quot;filename.jpg&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="还存在的一些问题"><a href="#还存在的一些问题" class="headerlink" title="还存在的一些问题"></a>还存在的一些问题</h2><h3 id="ios"><a href="#ios" class="headerlink" title="ios"></a>ios</h3><p>IOS 由于系统是每个应用都是一个沙盒，没有为用户暴露文件系统，如果用户 IOS 手机上没有安装对应的打开软件是无法进行下载的。</p>
+<h3 id="安全限制"><a href="#安全限制" class="headerlink" title="安全限制"></a>安全限制</h3><p>在最新的谷歌浏览器版本中(chrome 84+)，会开始逐渐限制 https 网站下载 http 内容，其中可执行文件 exe、压缩文件都会警告下载方式十分危险，并且在未来可能所有通过 http 下载的可执行内容都会被阻止。尽管理解谷歌这种方式可能是为了防止中间人攻击替换下载内容，不过推进方式还是蛮激进的。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/download/" rel="tag"># download</a>
+              <a href="/tags/%E5%BE%AE%E4%BF%A1H5/" rel="tag"># 微信H5</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/09/24/%E8%87%AA%E5%B7%B1%E6%9D%A5%E5%AE%9E%E7%8E%B0%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" rel="prev" title="自己来实现观察者模式">
+                  <i class="fa fa-chevron-left"></i> 自己来实现观察者模式
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/10/02/Cookie-Session%E4%B8%8ELocalStorage/" rel="next" title="Cookie,Session与LocalStorage">
+                  Cookie,Session与LocalStorage <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备18020005号 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geylnu</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">49k</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

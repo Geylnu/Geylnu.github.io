@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="想想已经 N 久没有写文章了，有点怠惰，之后还是尽量学了什么，就写文章记录下来；写文章的过程也是自己把知识联系起来的过程。写这篇文章主要原因还是之前字节跳动三面，面试官一开始就要去写一个深拷贝，然而之前对这方面了解的很少很少，面试表现可以说相当差了，结果也是直接挂掉…之后重新学习了，这里就记录下吧 怎样定义深拷贝？深拷贝到底要拷贝什么？说起深拷贝，就得说下内存结构了，内存就是一断特殊的电路，我们通">
+<meta property="og:type" content="article">
+<meta property="og:title" content="谈谈经常出现的出现的“深拷贝”">
+<meta property="og:url" content="http://example.com/2020/02/17/%E8%B0%88%E8%B0%88%E7%BB%8F%E5%B8%B8%E5%87%BA%E7%8E%B0%E7%9A%84%E5%87%BA%E7%8E%B0%E7%9A%84-%E6%B7%B1%E6%8B%B7%E8%B4%9D/index.html">
+<meta property="og:site_name" content="Gelynu&#39;s Blog">
+<meta property="og:description" content="想想已经 N 久没有写文章了，有点怠惰，之后还是尽量学了什么，就写文章记录下来；写文章的过程也是自己把知识联系起来的过程。写这篇文章主要原因还是之前字节跳动三面，面试官一开始就要去写一个深拷贝，然而之前对这方面了解的很少很少，面试表现可以说相当差了，结果也是直接挂掉…之后重新学习了，这里就记录下吧 怎样定义深拷贝？深拷贝到底要拷贝什么？说起深拷贝，就得说下内存结构了，内存就是一断特殊的电路，我们通">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-17T18:16:12.000Z">
+<meta property="article:modified_time" content="2023-01-31T15:45:57.029Z">
+<meta property="article:author" content="Geylnu">
+<meta property="article:tag" content="深拷贝">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2020/02/17/%E8%B0%88%E8%B0%88%E7%BB%8F%E5%B8%B8%E5%87%BA%E7%8E%B0%E7%9A%84%E5%87%BA%E7%8E%B0%E7%9A%84-%E6%B7%B1%E6%8B%B7%E8%B4%9D/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2020/02/17/%E8%B0%88%E8%B0%88%E7%BB%8F%E5%B8%B8%E5%87%BA%E7%8E%B0%E7%9A%84%E5%87%BA%E7%8E%B0%E7%9A%84-%E6%B7%B1%E6%8B%B7%E8%B4%9D/","path":"2020/02/17/谈谈经常出现的出现的-深拷贝/","title":"谈谈经常出现的出现的“深拷贝”"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>谈谈经常出现的出现的“深拷贝” | Gelynu's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Gelynu's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%8E%E6%A0%B7%E5%AE%9A%E4%B9%89%E6%B7%B1%E6%8B%B7%E8%B4%9D%EF%BC%9F%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%88%B0%E5%BA%95%E8%A6%81%E6%8B%B7%E8%B4%9D%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">怎样定义深拷贝？深拷贝到底要拷贝什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E8%BF%9B%E8%A1%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">怎么进行深拷贝？</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Geylnu</p>
+  <div class="site-description" itemprop="description">记录我的前端学习~</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/17/%E8%B0%88%E8%B0%88%E7%BB%8F%E5%B8%B8%E5%87%BA%E7%8E%B0%E7%9A%84%E5%87%BA%E7%8E%B0%E7%9A%84-%E6%B7%B1%E6%8B%B7%E8%B4%9D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gelynu's Blog">
+      <meta itemprop="description" content="记录我的前端学习~">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="谈谈经常出现的出现的“深拷贝” | Gelynu's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          谈谈经常出现的出现的“深拷贝”
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-02-17 18:16:12" itemprop="dateCreated datePublished" datetime="2020-02-17T18:16:12+00:00">2020-02-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-31 15:45:57" itemprop="dateModified" datetime="2023-01-31T15:45:57+00:00">2023-01-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>想想已经 N 久没有写文章了，有点怠惰，之后还是尽量学了什么，就写文章记录下来；写文章的过程也是自己把知识联系起来的过程。<br>写这篇文章主要原因还是之前字节跳动三面，面试官一开始就要去写一个深拷贝，然而之前对这方面了解的很少很少，面试表现可以说相当差了，结果也是直接挂掉…<br>之后重新学习了，这里就记录下吧</p>
+<h2 id="怎样定义深拷贝？深拷贝到底要拷贝什么？"><a href="#怎样定义深拷贝？深拷贝到底要拷贝什么？" class="headerlink" title="怎样定义深拷贝？深拷贝到底要拷贝什么？"></a>怎样定义深拷贝？深拷贝到底要拷贝什么？</h2><p>说起深拷贝，就得说下内存结构了，内存就是一断特殊的电路，我们通过对内存的储存结构进行编码，某个内存地址对应内存某一个储存数据的地方，最小储存单元是 8 个 bit; 我们甚至可以把最小储存单元定义为 1 个 bit，但是这通常没有必要，因为我们需要针对每一个储存单元设置清除电路，而现实使用时的数据大多都会超过 1 个 bit，为了更小的储存单元而把电路变得更复杂完全不值得。<br>如果我们使用的数据超过最小储存单元，我们就把连续几个内存地址一起用了，记录首个地址，记录它使用个几个内存地址，也就是它的类型，比如<code>int</code>, 在大多数实现上，一般是 4 个字节，也就是连续占用 4 个地址，这些我们称之为基本类型。</p>
+<p>而如果我们要储存的数据包含多种类型，我们也可以按照这种方式，按顺序存储下来，记录首个地址，记录它使用了那些地址，通常我们还会有一些对应的函数来操作这些对应的数据，我们通常把这种结构称作为对象，相关的操作函数就被称作方法。</p>
+<p>当数据被作为函数的参数传递时，基本类型和对象有很明显的差异</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> number = <span class="number">4</span>;</span><br><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">num</span>: <span class="number">5</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params">a, b</span>) &#123;</span><br><span class="line">  a = <span class="number">0</span>;</span><br><span class="line">  b.<span class="property">num</span> = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">test</span>(number, obj);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(number); <span class="comment">// 4</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj); <span class="comment">// &#123;num: 0&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果值是一个基本类型，那传递给函数的是它直接的值，也就是值的拷贝；而如果是对象，我们传递的是它的储存位置，也就是地址值，或者更抽象的说法，对象的引用，通过这个引用操作到真正的对象。</p>
+<p>不过这其中有一个类型是个特例，那就是<code>string</code>，在 java 中<code>string</code>是一个对象，有各种操作方法，然而却表现的像基本类型一样，像是一个怪胎。在知乎中有许多相关的提问</p>
+<ul>
+<li>[Java 语言中 String a&#x3D;”a”;String b&#x3D;”a”; 为什么 a&#x3D;&#x3D;b 值为 true？]</li>
+<li>[Java 到底是值传递还是引用传递？]</li>
+<li>[如何理解 String 类型值的不可变？]</li>
+</ul>
+<p>而在 js 中<code>string</code>中直接被定义为基本类型</p>
+<ul>
+<li>[MDN-string]</li>
+</ul>
+<p>实际上，字符串的确是一个对象，只不过为了更好用，我们把它改造成了一个“基本类型”，在我们日常使用中，我们一般很少把字符串进行重新修改，甚至不能修改，有大量场景直接把字符串作为 key 值，有大量密码验证场景使用的就是字符串，如果改动了，一切就乱套了。总而言之，<code>string</code>不应该能被修改</p>
+<p>在老大哥 Java 的实现中，<code>string</code>是以常量池的形式维护，每次新建一个<code>string</code>，都会从常量池中寻找是否已存在相同的字符串，如果有直接就返回引用，如果没有则创建。得益于 string 的不可变性，才可以高效的复用相同字符串，甚至像基本类型一样直接比较。js 也实现了类似的设计。</p>
+<p>而深拷贝，实际就是拷贝数据里所有可变的数据结构，把新数据和老数据隔离开，避免更改一处数据结构，而更改多处。也就是直接返回所有基本类型和不可变对象，递归复制所有可变的对象。</p>
+<h2 id="怎么进行深拷贝？"><a href="#怎么进行深拷贝？" class="headerlink" title="怎么进行深拷贝？"></a>怎么进行深拷贝？</h2><p>搞清除要复制什么东西，只是个起步，深拷贝能经常出现在面试题并不是由于它有多实用，工作中有多常见；主要深拷贝这一块儿会涉及到很多 js 的各种知识，各种边界条件，很能考察面试者的知识深度。</p>
+<ol>
+<li><p>对于基本类型，直接返回<br>js 中有 7 种基本类型，分别是 <code>string</code>, <code>number</code>, <code>bigint</code>, <code>boolean</code>, <code>symbol</code>, <code>undefined</code>, <code>null</code>,<br>除了 null 和 function 以外，在<code>typeof</code>操作符下都显示为自己的类型名称，</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span>; <span class="comment">// object</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;&#125;; <span class="comment">// function</span></span><br></pre></td></tr></table></figure>
+
+<p>我们可以自定义一个<code>ownTypeof</code>方法来正好的帮助我们在深拷贝时判断类型</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> primitiveTypes = [</span><br><span class="line">  <span class="string">&quot;string&quot;</span>,</span><br><span class="line">  <span class="string">&quot;number&quot;</span>,</span><br><span class="line">  <span class="string">&quot;bigint&quot;</span>,</span><br><span class="line">  <span class="string">&quot;boolean&quot;</span>,</span><br><span class="line">  <span class="string">&quot;symbol&quot;</span>,</span><br><span class="line">  <span class="string">&quot;undefined&quot;</span>,</span><br><span class="line">  <span class="string">&quot;null&quot;</span>,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">ownTypeof</span> = (<span class="params">value</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> type = <span class="keyword">typeof</span> value;</span><br><span class="line">  <span class="keyword">if</span> (primitiveTypes.<span class="title function_">includes</span>(type) || value === <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;primitive&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> type;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这些值就可以直接返回，不经过任何处理。</p>
+</li>
+<li><p>如果是对象，遍历对象的所有值<br>这里也有许多门道，js 提供了太多根据 key 值循环处理的方法，</p>
+<ul>
+<li>for in<br>最常见的循环方法，遍历对象所有可遍历的字符串 key，无法遍历不可遍历的 key,会遍历到原型上的属性,无法遍历 symbol key,</li>
+<li>Object.keys()<br>基本等同于<code>for in</code>，除了不会遍历到原型上的属性</li>
+<li>Reflect.ownKeys()<br>获取对象所有的 key ，包括不可遍历的 key，symbol key, 等同于 Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target))。<br>这里为了方便就直接用 Es6 的新方法<code>Reflect.ownKeys()</code>，简单又快速。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">deepClone</span> = (<span class="params">value</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> typeofValue = <span class="title function_">ownTypeof</span>(value);</span><br><span class="line">  <span class="keyword">if</span> (typeofValue === <span class="string">&quot;primitive&quot;</span>) <span class="keyword">return</span> value;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> keys = <span class="title class_">Reflect</span>.<span class="title function_">ownKeys</span>(value);</span><br><span class="line">  <span class="keyword">const</span> finalValue = &#123;&#125;;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">of</span> keys) &#123;</span><br><span class="line">    finalValue[key] = <span class="title function_">deepClone</span>(value[key]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> finalValue;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解决环引用<br>事实上这里我们的代码已经能勾复制大多数普通对象了，但是会碰见序列化时遇见的一个常见问题：环引用，我们通常会在使用 JSON 时遇到相似的错误</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;&#125;;</span><br><span class="line">a.<span class="property">self</span> = a;</span><br><span class="line"></span><br><span class="line"><span class="title class_">JSON</span>.<span class="title function_">stringify</span>(a); <span class="comment">// Uncaught TypeError: Converting circular structure to JSON</span></span><br></pre></td></tr></table></figure>
+
+<p>而在我们编写的深拷贝函数种，这会直接导致无限递归，直到栈溢出。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;&#125;;</span><br><span class="line">a.<span class="property">self</span> = a;</span><br><span class="line"></span><br><span class="line"><span class="title function_">deepClone</span>(a); <span class="comment">// Maximum call stack size exceeded</span></span><br></pre></td></tr></table></figure>
+
+<p>解决环引用其实很简单，栈溢出的原因是我们的函数在不停的重复拷贝一个相同的对象，而实际上，如果这是一个重复的对象，我们直接返回它自身的引用就可以了。我们可以通过建立新老对象引用的映射达到这一点。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">deepClone</span> = (<span class="params">value, cache = <span class="keyword">new</span> <span class="built_in">Map</span>()</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> typeofValue = <span class="title function_">ownTypeof</span>(value);</span><br><span class="line">  <span class="keyword">if</span> (typeofValue === <span class="string">&quot;primitive&quot;</span>) <span class="keyword">return</span> value;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (cache.<span class="title function_">has</span>(value)) &#123;</span><br><span class="line">    <span class="keyword">return</span> cache.<span class="title function_">get</span>(value);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> keys = <span class="title class_">Reflect</span>.<span class="title function_">ownKeys</span>(value);</span><br><span class="line">  <span class="keyword">const</span> finalValue = &#123;&#125;;</span><br><span class="line">  cache.<span class="title function_">set</span>(value, finalValue);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">of</span> keys) &#123;</span><br><span class="line">    finalValue[key] = <span class="title function_">deepClone</span>(value[key], cache);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> finalValue;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这里基本的一个深拷贝实际上基本就完成了，然而其实还有更多的 edge case, 也就是由于这个原因，实现一个深拷贝很难很难</p>
+</li>
+<li><p>edge case</p>
+<ul>
+<li><p>是否考虑原型？<br>在继承了 Java 一切皆对象的思想， js 每一个对象都有一个原型，实际上，我们直接返回它的原型，只把它当作单独的数据处理，因为拷贝原型的代价十分高昂</p>
+</li>
+<li><p>是否复制函数？<br>在任何实现里面，我相信函数都是不可拷贝的，也无需拷贝，这是因为函数生成以后，其执行的代码就不可更改了，这是一个不可变数据结构，我们理所当然的也不需要考虑再复制一份代码。<br>除此之外还有一个重要原因是我们无法获得函数运行时的作用域，即使我们通过<code>toString()</code>获得源代码，也无法获得函数运行时的作用域。</p>
+</li>
+<li><p>是否拷贝对象描述符？<br>对象描述分别有两种，一种是数据描述符，一种是存取描述符，数据描述符是可复制的，存取描述符依赖于函数，无法复制</p>
+</li>
+<li><p>如果复制内置对象？<br>在 js 种，有许多对象是内置的，我们无法通过除其本身的构造函数外，创建出这个对象，比如最常见的数组</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> copyArray = <span class="title function_">deepClone</span>([<span class="number">1</span>, <span class="number">2</span>]);</span><br><span class="line"><span class="title class_">JSON</span>.<span class="title function_">stringify</span>(copyArray); <span class="comment">// &#123; &quot;1&quot;: 1, &quot;2&quot;: 2&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>即使我们拷贝了它的原型，它表现的也像是个普通对象，而不是一个数组，我们为其复制，length 属性也不会一同变换。<br>这是由于数组是 js 的内置的对象，有独有的处理逻辑。<br>类似的对象有许多许多：Date、RegExp、Map、Set、Blob，这也是整个过程最复杂的一块，不同的内置对象复制逻辑也不同。</p>
+<p>对于这种情况，则只能根据它的对象类型，使用其构造函数创建它。<br>我们可以使用<code>instanceof</code>来确人对象是不是这些内置对象的实例，不过通常使用更方便的方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>([]); <span class="comment">// [object Array]</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(<span class="regexp">/test/</span>); <span class="comment">// [object RegExp]</span></span><br></pre></td></tr></table></figure>
+
+<p>使用这个方式，我们可以直接读取这个对象类的名称，并进行相应处理。</p>
+</li>
+</ol>
+<p>使用上面的方式，基本就可以写出一个不错的深拷贝，在实际上编写中也是一个踩坑的过程，会了解许多日常忽视的 js 知识，对于一个面试题，称的上不错了。</p>
+<p>但是实际使用中，我们应该尽量避免大量使用深拷贝，这是一种大量浪费内存的行为，如果你需要的是不可变性，更应该采用一些提供 Immutable 特性的库。</p>
+<p>[Java 语言中 String a&#x3D;”a”;String b&#x3D;”a”; 为什么 a&#x3D;&#x3D;b 值为 true？]: <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/57697842/answer/210583977">https://www.zhihu.com/question/57697842/answer/210583977</a> “Java 语言中 String a&#x3D;”a”;String b&#x3D;”a”; 为什么 a&#x3D;&#x3D;b 值为 true？”<br>[Java 到底是值传递还是引用传递？]: <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/31203609/answer/576030121">https://www.zhihu.com/question/31203609/answer/576030121</a> “Java 到底是值传递还是引用传递？”<br>[如何理解 String 类型值的不可变？]: <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20618891">https://www.zhihu.com/question/20618891</a> “如何理解 String 类型值的不可变？”<br>[MDN-string]: <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Glossary/string">https://developer.mozilla.org/en-US/docs/Glossary/string</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%B7%B1%E6%8B%B7%E8%B4%9D/" rel="tag"># 深拷贝</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/01/08/Windows-Terminal-Wsl-%E6%89%93%E9%80%A0%E6%9C%80%E7%BE%8E%E7%BB%88%E7%AB%AF/" rel="prev" title="Windows Terminal 打造最美终端~">
+                  <i class="fa fa-chevron-left"></i> Windows Terminal 打造最美终端~
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/08/16/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84javascript%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%B8%80%EF%BC%9A%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85/" rel="next" title="《你不知道的javascript》读书笔记 一：作用域和闭包">
+                  《你不知道的javascript》读书笔记 一：作用域和闭包 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备18020005号 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geylnu</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">49k</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="注意：由于Markdown会自动将换行转换为&lt;br&gt;标签，为了避免换行，展现实际效果时的标签事实上都在同一行,这可能会带来一些空格的差异 &lt;div&gt;没有实义，主要用来分组，默认样式为块级，会单独占一行 12&lt;div&gt;A&lt;&#x2F;div&gt;&lt;div&gt;B&lt;&#x2F;div&gt; 效果： AB *** #  没有实义，主要用来分组和其它作用，默认样式为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML常用标签">
+<meta property="og:url" content="http://example.com/2018/04/03/HTML%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/index.html">
+<meta property="og:site_name" content="Gelynu&#39;s Blog">
+<meta property="og:description" content="注意：由于Markdown会自动将换行转换为&lt;br&gt;标签，为了避免换行，展现实际效果时的标签事实上都在同一行,这可能会带来一些空格的差异 &lt;div&gt;没有实义，主要用来分组，默认样式为块级，会单独占一行 12&lt;div&gt;A&lt;&#x2F;div&gt;&lt;div&gt;B&lt;&#x2F;div&gt; 效果： AB *** #  没有实义，主要用来分组和其它作用，默认样式为">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2018/03/17/Markdown%E5%85%A5%E9%97%A8/jz.png">
+<meta property="article:published_time" content="2018-04-03T19:25:19.000Z">
+<meta property="article:modified_time" content="2023-01-31T15:45:56.969Z">
+<meta property="article:author" content="Geylnu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2018/03/17/Markdown%E5%85%A5%E9%97%A8/jz.png">
+
+
+<link rel="canonical" href="http://example.com/2018/04/03/HTML%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2018/04/03/HTML%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/","path":"2018/04/03/HTML常用标签/","title":"HTML常用标签"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>HTML常用标签 | Gelynu's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Gelynu's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lt-div-gt"><span class="nav-number">1.</span> <span class="nav-text">&lt;div&gt;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">&#96;，以此类推
+123&lt;h1&gt;一级标题&lt;h1&gt;&lt;h2&gt;二级标题&lt;h2&gt;&lt;h3&gt;三级标题&lt;h3&gt;
+效果：
+一级标题二级标题三级标题
+# 
+段落元素，表示一个文本的段落
+1&lt;p&gt;埃菲尔铁塔最初是作为 1889 年世界博览会的入口而兴建的。得名于设计它的著名建筑、结构师古斯塔夫·埃菲尔。埃菲尔铁塔从 1887 年开始动工，直到 1898 年才结束。是目前世界上访问人数最多的付费建筑物，每年有 700 万人登上铁塔的最高处。&lt;&#x2F;p&gt;
+**效果：**
+埃菲尔铁塔最初是作为 1889 年世界博览会的入口而兴建的。得名于设计它的著名建筑、结构师古斯塔夫·埃菲尔。埃菲尔铁塔从 1887 年开始动工，直到 1898 年才结束。是目前世界上访问人数最多的付费建筑物，每年有 700 万人登上铁塔的最高处。
+***
+# 
+表示强调其中的内容，内容十分重要，会自动加粗，如果只是为了加粗，将其css中的&#96;font-weight&#96;属性设置为&#96;&quot;bold&quot;&#96;是更好的选择。**&#96;em&#96;**和其类似。
+
+由于Markdown只提供**xxx**的方式加粗文本，这被解释为&lt;strong&gt;xxx&lt;&#x2F;strong&gt;,所以我这里*效果：*的用法是不正确的。
+1&lt;strong&gt;这个文本很重要&lt;&#x2F;strong&gt;
+效果：这个文本很重要
+
+&lt;ul&gt; 表示无序列表,用&lt;li&gt;&lt;&#x2F;li&gt;来表示每一个例子&#x2F;选项，与其相似的还有ol有序列表 123456&lt;ul&gt;    &lt;li&gt;葡萄&lt;&#x2F;li&gt;    &lt;li&gt;橘子&lt;&#x2F;li&gt;    &lt;li&gt;香蕉&lt;&#x2F;li&gt;    &lt;li&gt;菠萝&lt;&#x2F;li&gt;&lt;&#x2F;ul&gt;效果：
+葡萄橘子香蕉菠萝
+***
+
+&lt;img&gt;显示图片，&lt;img&gt;是一个空标签，没有带有带&#x2F;的结束标签，且它也是一个可替换标签，它的相关样式由资源自己决定。
+1&lt;img src&#x3D;&quot;&#x2F;2018&#x2F;03&#x2F;17&#x2F;Markdown%E5%85%A5%E9%97%A8&#x2F;jz.png&quot; alt&#x3D;&quot;紫罗兰永恒花园&quot;&gt;
+效果：
+
+&lt;a&gt;可访问的链接，使用href指定访问的URL地址。也可以添加download属性，表示直接下载url的内容。
+download属性只在当前协议为http&#x2F;https时有用
+href有多种状态
+
+绝对路径 以&#x2F;开头，访问的是当前协议当前域名下的绝对地址
+ 1&lt;a href&#x3D;&quot;&#x2F;2018&#x2F;03&#x2F;17&#x2F;Markdown入门&#x2F;&quot;&gt;我的第一篇博客&lt;&#x2F;a&gt;
+ 效果： 我的第一篇博客
+
+相对路径 使用.或..可以访问当前目录和上级目录，默认会加上.&#x2F;
+ 1&lt;a href&#x3D;&quot;.&#x2F;龙王的工作.jpg&quot;&gt;点击查看《龙王的工作》图片&lt;&#x2F;a&gt;
+ 效果： 点击查看《龙王的工作》图片
+
+当前协议URL 使用很当前一致的协议补全URL
+ 1&lt;a href&#x3D;&quot;&#x2F;&#x2F;baidu.com&quot;&gt;点击访问百度&lt;&#x2F;a&gt;
+ 效果： 点击访问百度
+
+指定协议 输入一个完整的URL
+ 1&lt;a href&#x3D;&quot;mailto:yanglei1997630@gmail.com&quot;&gt;给我发邮件&lt;&#x2F;a&gt;
+ 效果： 给我发邮件
+
+伪协议 伪协议是指以javascript:为属性值，点击之后执行javascript, 这在某些方面有特殊的作用。 如想点击&lt;a&gt;
+
+为空值 这种方法会导致重新刷新此页面
+ 1&lt;a herf&#x3D;&quot;&quot;&gt;这会导致页面刷新&lt;&#x2F;a&gt;
+ 效果： 这会导致页面刷新
+
+为# 这种方法不会引起页面刷新，但会跳转到页面顶部
+ 1&lt;a herf&#x3D;&quot;#&quot;&gt;这会导致跳转到页面顶部&lt;&#x2F;a&gt;
+ 效果： 这会导致跳转到页面顶部
+
+
+ 比较好的解决办法是使用###。 1&lt;a herf&#x3D;&quot;###&quot;&gt;不会发生任何事，但地址栏会轻微改变&lt;&#x2F;a&gt; 效果： 不会发生任何事，但地址栏会轻微改变
+
+javascript空语句 另一个办法就是javascript为伪协议，执行一段空javascrpt语句 1&lt;a href&#x3D;&quot;javascript:;&quot;&gt;不会发生任何事&lt;&#x2F;a&gt;
+ 效果： 不会发生任何事
+
+
+
+
+&lt;iframe&gt;框架元素，主要用来在当前页面嵌入一个新的HTML页面，iframe几乎相当于独立的标签页，拥有自己独立的历史记录等，目前已经很少使用，不过在部分情况下仍然有用处。
+1&lt;iframe src&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot;&gt;&lt;p&gt;iframe未显示时出现的文本&lt;p&gt;&lt;&#x2F;iframe&gt;
+效果：
+iframe未显示时出现的文本
+
+
+如想在iframe中打开你需要的页面,需要添加name属性
+12&lt;iframe src&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; name&#x3D;&quot;iframe&quot;&gt;&lt;p&gt;iframe未显示时出现的文本&lt;p&gt;&lt;&#x2F;iframe&gt;&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;qq.com&quot; target&#x3D;&quot;iframe&quot;&gt;点击在iframe中打开qq.com&lt;&#x2F;a&gt;
+效果：
+iframe未显示时出现的文点击在iframe中打开qq.com
+
+除此之外，a标签还拥有其它target属性
+
+_black 在新标签页打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_blank&quot;&gt;点击在新标签页内访问百度&lt;&#x2F;a&gt;
+ 效果： 点击在新标签页内访问百度
+
+_self 在本页内打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_self&quot;&gt;点击在本标签页内访问百度&lt;&#x2F;a&gt;
+ 效果： 点击在本标签页内访问百度
+
+_parent 在父级页面打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_parent&quot;&gt;访问父级&lt;&#x2F;a&gt;
+ 效果： 比如页面内嵌套一个iframe，iframe内有一个在这样的标签，是在上级页面打开。
+
+_parent 在根页面打开打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_parent&quot;&gt;访问父级&lt;&#x2F;a&gt;
+ 效果： 在frame嵌套frame的多级嵌套情况下，无论嵌套多少层，总是在最开始的根页面打开。
+
+
+除此之外，因为自带的iframe边框比较丑，可以通过frameborder&#x3D;0来禁用。
+1&lt;iframe src&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; frameborder&#x3D;&quot;0&quot;&gt;&lt;p&gt;iframe未显示时出现的文本&lt;p&gt;&lt;&#x2F;iframe&gt;
+效果：
+iframe未显示时出现的文本
+***
+# 
+表单元素，用来提交给服务器表单数据，****标签中包含有许多子标签，包括**** **** ****等等
+
+form元素使用action确定请求的地址，使用method确定请求的方式，method拥有两种方式，分别为post和get,通过开发者工具可以方便的看见请求的类型,默认使用get请求
+123&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;get&quot;&gt;&lt;input type&#x3D;&quot;submit&quot; &gt;&lt;&#x2F;form&gt;
+效果：
+
+
+
+
+123&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;post&quot;&gt;&lt;input type&#x3D;&quot;submit&quot; &gt;&lt;&#x2F;form&gt;
+效果：
+
+
+
+
+
+&lt;input&gt;input拥有许多type值，常见的有text、button、submit、checkbox、radio、password、file等。
+
+submit 提交表单的内容 12345&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;post&quot;&gt;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;userName&quot;&gt;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;password&quot;&gt;&lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;登录&quot; &gt;&lt;&#x2F;form&gt;
+ 效果： 
+ 
+ 
+ 
+ 
+
+ 其中，具有想提交内容的标签必须具有name，否则无法提交内容。 使用get提交，会直接把内容加到路径后，使用post提交，会添加在header第四部分
+ 如果表单中没有form标签，没有指定type的&lt;button&gt;标签也具有提交功能 123&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;post&quot;&gt;&lt;button&gt;提交&lt;button&gt;&lt;&#x2F;form&gt; 效果：  提交 
+
+checkbox 多选框
+ 1234&lt;span&gt;喜欢吃的水果：&lt;span&gt;&lt;label&gt;&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;lovaFruit&quot; value&#x3D;&quot;苹果&quot;&gt;苹果&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;lovaFruit&quot; value&#x3D;&quot;草莓&quot;&gt;草莓&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;lovaFruit&quot; value&#x3D;&quot;橘子&quot;&gt;橘子&lt;&#x2F;label&gt;
+ 效果： 喜欢吃的水果：苹果草莓橘子
+
+radio 单选框
+ 1234&lt;span&gt;你是男孩还是女孩？&lt;&#x2F;span&gt;&lt;label&gt;&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;girl&quot;&gt;女孩&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;boy&quot;&gt;男孩&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;LGBT&quot;&gt;跨性别者&lt;&#x2F;label&gt;  
+ 效果： 你是男孩还是女孩？女孩男孩跨性别者
+
+
+
+
+
+
+&lt;select&gt;下拉列表，使用disabled不可选中，selected默认选中，multipl可以多选123456&lt;select&gt;&lt;option selected&gt;四川&lt;&#x2F;option&gt;&lt;option&gt;广东&lt;&#x2F;option&gt;&lt;option&gt;湖南&lt;&#x2F;option&gt;&lt;option disabled&gt;台湾&lt;&#x2F;option&gt;&lt;&#x2F;select&gt;
+
+效果：四川广东湖南台湾
+
+
+&lt;textarea&gt;文本域，主要用来输入大量文本，可以使用cols指定列数，rows指定行数，但是这与字符长度不完全匹配
+
+1&lt;textarea clos&#x3D;&quot;50&quot; rows&#x3D;&quot;50&quot;&gt;在这里输入&lt;&#x2F;textarea&gt;
+在这里输入
+
+
+&lt;table&gt;表格标签，表格标签分别具有三部分，分别是头&lt;thead&gt;，身体&lt;tbody&gt;，脚&lt;tfoot&gt;，还有管内容的标签&lt;th&gt;，&lt;tr&gt;，&lt;td&gt;。
+123456789101112131415161718&lt;table&gt;    &lt;thred&gt;        &lt;th&gt;姓名&lt;&#x2F;th&gt;&lt;th&gt;学号&lt;&#x2F;th&gt;&lt;th&gt;成绩&lt;&#x2F;th&gt;    &lt;&#x2F;thred&gt;        &lt;tr&gt;            &lt;td&gt;张三&lt;&#x2F;td&gt;&lt;td&gt;0101&lt;&#x2F;td&gt;&lt;td&gt;99&lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;        &lt;tr&gt;            &lt;td&gt;李四&lt;&#x2F;td&gt;&lt;td&gt;0102&lt;&#x2F;td&gt;&lt;td&gt;98&lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;        &lt;tr&gt;            &lt;td&gt;王麻子&lt;&#x2F;td&gt;&lt;td&gt;0103&lt;&#x2F;td&gt;&lt;td&gt;95&lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;    &lt;tbody&gt;    &lt;&#x2F;thred&gt;    &lt;tfoot&gt;    &lt;&#x2F;thred&gt;&lt;&#x2F;table&gt;
+
+姓名学号成绩张三010199李四010298王麻子010395
+
+还可以通过&lt;colgroup&gt;及其子元素&lt;col&gt;指定每一列的宽度
+
+OK
+</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">一级标题二级标题三级标题
+# 
+段落元素，表示一个文本的段落
+1&lt;p&gt;埃菲尔铁塔最初是作为 1889 年世界博览会的入口而兴建的。得名于设计它的著名建筑、结构师古斯塔夫·埃菲尔。埃菲尔铁塔从 1887 年开始动工，直到 1898 年才结束。是目前世界上访问人数最多的付费建筑物，每年有 700 万人登上铁塔的最高处。&lt;&#x2F;p&gt;
+**效果：**
+埃菲尔铁塔最初是作为 1889 年世界博览会的入口而兴建的。得名于设计它的著名建筑、结构师古斯塔夫·埃菲尔。埃菲尔铁塔从 1887 年开始动工，直到 1898 年才结束。是目前世界上访问人数最多的付费建筑物，每年有 700 万人登上铁塔的最高处。
+***
+# 
+表示强调其中的内容，内容十分重要，会自动加粗，如果只是为了加粗，将其css中的&#96;font-weight&#96;属性设置为&#96;&quot;bold&quot;&#96;是更好的选择。**&#96;em&#96;**和其类似。
+
+由于Markdown只提供**xxx**的方式加粗文本，这被解释为&lt;strong&gt;xxx&lt;&#x2F;strong&gt;,所以我这里*效果：*的用法是不正确的。
+1&lt;strong&gt;这个文本很重要&lt;&#x2F;strong&gt;
+效果：这个文本很重要
+
+&lt;ul&gt; 表示无序列表,用&lt;li&gt;&lt;&#x2F;li&gt;来表示每一个例子&#x2F;选项，与其相似的还有ol有序列表 123456&lt;ul&gt;    &lt;li&gt;葡萄&lt;&#x2F;li&gt;    &lt;li&gt;橘子&lt;&#x2F;li&gt;    &lt;li&gt;香蕉&lt;&#x2F;li&gt;    &lt;li&gt;菠萝&lt;&#x2F;li&gt;&lt;&#x2F;ul&gt;效果：
+葡萄橘子香蕉菠萝
+***
+
+&lt;img&gt;显示图片，&lt;img&gt;是一个空标签，没有带有带&#x2F;的结束标签，且它也是一个可替换标签，它的相关样式由资源自己决定。
+1&lt;img src&#x3D;&quot;&#x2F;2018&#x2F;03&#x2F;17&#x2F;Markdown%E5%85%A5%E9%97%A8&#x2F;jz.png&quot; alt&#x3D;&quot;紫罗兰永恒花园&quot;&gt;
+效果：
+
+&lt;a&gt;可访问的链接，使用href指定访问的URL地址。也可以添加download属性，表示直接下载url的内容。
+download属性只在当前协议为http&#x2F;https时有用
+href有多种状态
+
+绝对路径 以&#x2F;开头，访问的是当前协议当前域名下的绝对地址
+ 1&lt;a href&#x3D;&quot;&#x2F;2018&#x2F;03&#x2F;17&#x2F;Markdown入门&#x2F;&quot;&gt;我的第一篇博客&lt;&#x2F;a&gt;
+ 效果： 我的第一篇博客
+
+相对路径 使用.或..可以访问当前目录和上级目录，默认会加上.&#x2F;
+ 1&lt;a href&#x3D;&quot;.&#x2F;龙王的工作.jpg&quot;&gt;点击查看《龙王的工作》图片&lt;&#x2F;a&gt;
+ 效果： 点击查看《龙王的工作》图片
+
+当前协议URL 使用很当前一致的协议补全URL
+ 1&lt;a href&#x3D;&quot;&#x2F;&#x2F;baidu.com&quot;&gt;点击访问百度&lt;&#x2F;a&gt;
+ 效果： 点击访问百度
+
+指定协议 输入一个完整的URL
+ 1&lt;a href&#x3D;&quot;mailto:yanglei1997630@gmail.com&quot;&gt;给我发邮件&lt;&#x2F;a&gt;
+ 效果： 给我发邮件
+
+伪协议 伪协议是指以javascript:为属性值，点击之后执行javascript, 这在某些方面有特殊的作用。 如想点击&lt;a&gt;
+
+为空值 这种方法会导致重新刷新此页面
+ 1&lt;a herf&#x3D;&quot;&quot;&gt;这会导致页面刷新&lt;&#x2F;a&gt;
+ 效果： 这会导致页面刷新
+
+为# 这种方法不会引起页面刷新，但会跳转到页面顶部
+ 1&lt;a herf&#x3D;&quot;#&quot;&gt;这会导致跳转到页面顶部&lt;&#x2F;a&gt;
+ 效果： 这会导致跳转到页面顶部
+
+
+ 比较好的解决办法是使用###。 1&lt;a herf&#x3D;&quot;###&quot;&gt;不会发生任何事，但地址栏会轻微改变&lt;&#x2F;a&gt; 效果： 不会发生任何事，但地址栏会轻微改变
+
+javascript空语句 另一个办法就是javascript为伪协议，执行一段空javascrpt语句 1&lt;a href&#x3D;&quot;javascript:;&quot;&gt;不会发生任何事&lt;&#x2F;a&gt;
+ 效果： 不会发生任何事
+
+
+
+
+&lt;iframe&gt;框架元素，主要用来在当前页面嵌入一个新的HTML页面，iframe几乎相当于独立的标签页，拥有自己独立的历史记录等，目前已经很少使用，不过在部分情况下仍然有用处。
+1&lt;iframe src&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot;&gt;&lt;p&gt;iframe未显示时出现的文本&lt;p&gt;&lt;&#x2F;iframe&gt;
+效果：
+iframe未显示时出现的文本
+
+
+如想在iframe中打开你需要的页面,需要添加name属性
+12&lt;iframe src&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; name&#x3D;&quot;iframe&quot;&gt;&lt;p&gt;iframe未显示时出现的文本&lt;p&gt;&lt;&#x2F;iframe&gt;&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;qq.com&quot; target&#x3D;&quot;iframe&quot;&gt;点击在iframe中打开qq.com&lt;&#x2F;a&gt;
+效果：
+iframe未显示时出现的文点击在iframe中打开qq.com
+
+除此之外，a标签还拥有其它target属性
+
+_black 在新标签页打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_blank&quot;&gt;点击在新标签页内访问百度&lt;&#x2F;a&gt;
+ 效果： 点击在新标签页内访问百度
+
+_self 在本页内打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_self&quot;&gt;点击在本标签页内访问百度&lt;&#x2F;a&gt;
+ 效果： 点击在本标签页内访问百度
+
+_parent 在父级页面打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_parent&quot;&gt;访问父级&lt;&#x2F;a&gt;
+ 效果： 比如页面内嵌套一个iframe，iframe内有一个在这样的标签，是在上级页面打开。
+
+_parent 在根页面打开打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_parent&quot;&gt;访问父级&lt;&#x2F;a&gt;
+ 效果： 在frame嵌套frame的多级嵌套情况下，无论嵌套多少层，总是在最开始的根页面打开。
+
+
+除此之外，因为自带的iframe边框比较丑，可以通过frameborder&#x3D;0来禁用。
+1&lt;iframe src&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; frameborder&#x3D;&quot;0&quot;&gt;&lt;p&gt;iframe未显示时出现的文本&lt;p&gt;&lt;&#x2F;iframe&gt;
+效果：
+iframe未显示时出现的文本
+***
+# 
+表单元素，用来提交给服务器表单数据，****标签中包含有许多子标签，包括**** **** ****等等
+
+form元素使用action确定请求的地址，使用method确定请求的方式，method拥有两种方式，分别为post和get,通过开发者工具可以方便的看见请求的类型,默认使用get请求
+123&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;get&quot;&gt;&lt;input type&#x3D;&quot;submit&quot; &gt;&lt;&#x2F;form&gt;
+效果：
+
+
+
+
+123&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;post&quot;&gt;&lt;input type&#x3D;&quot;submit&quot; &gt;&lt;&#x2F;form&gt;
+效果：
+
+
+
+
+
+&lt;input&gt;input拥有许多type值，常见的有text、button、submit、checkbox、radio、password、file等。
+
+submit 提交表单的内容 12345&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;post&quot;&gt;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;userName&quot;&gt;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;password&quot;&gt;&lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;登录&quot; &gt;&lt;&#x2F;form&gt;
+ 效果： 
+ 
+ 
+ 
+ 
+
+ 其中，具有想提交内容的标签必须具有name，否则无法提交内容。 使用get提交，会直接把内容加到路径后，使用post提交，会添加在header第四部分
+ 如果表单中没有form标签，没有指定type的&lt;button&gt;标签也具有提交功能 123&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;post&quot;&gt;&lt;button&gt;提交&lt;button&gt;&lt;&#x2F;form&gt; 效果：  提交 
+
+checkbox 多选框
+ 1234&lt;span&gt;喜欢吃的水果：&lt;span&gt;&lt;label&gt;&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;lovaFruit&quot; value&#x3D;&quot;苹果&quot;&gt;苹果&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;lovaFruit&quot; value&#x3D;&quot;草莓&quot;&gt;草莓&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;lovaFruit&quot; value&#x3D;&quot;橘子&quot;&gt;橘子&lt;&#x2F;label&gt;
+ 效果： 喜欢吃的水果：苹果草莓橘子
+
+radio 单选框
+ 1234&lt;span&gt;你是男孩还是女孩？&lt;&#x2F;span&gt;&lt;label&gt;&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;girl&quot;&gt;女孩&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;boy&quot;&gt;男孩&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;LGBT&quot;&gt;跨性别者&lt;&#x2F;label&gt;  
+ 效果： 你是男孩还是女孩？女孩男孩跨性别者
+
+
+
+
+
+
+&lt;select&gt;下拉列表，使用disabled不可选中，selected默认选中，multipl可以多选123456&lt;select&gt;&lt;option selected&gt;四川&lt;&#x2F;option&gt;&lt;option&gt;广东&lt;&#x2F;option&gt;&lt;option&gt;湖南&lt;&#x2F;option&gt;&lt;option disabled&gt;台湾&lt;&#x2F;option&gt;&lt;&#x2F;select&gt;
+
+效果：四川广东湖南台湾
+
+
+&lt;textarea&gt;文本域，主要用来输入大量文本，可以使用cols指定列数，rows指定行数，但是这与字符长度不完全匹配
+
+1&lt;textarea clos&#x3D;&quot;50&quot; rows&#x3D;&quot;50&quot;&gt;在这里输入&lt;&#x2F;textarea&gt;
+在这里输入
+
+
+&lt;table&gt;表格标签，表格标签分别具有三部分，分别是头&lt;thead&gt;，身体&lt;tbody&gt;，脚&lt;tfoot&gt;，还有管内容的标签&lt;th&gt;，&lt;tr&gt;，&lt;td&gt;。
+123456789101112131415161718&lt;table&gt;    &lt;thred&gt;        &lt;th&gt;姓名&lt;&#x2F;th&gt;&lt;th&gt;学号&lt;&#x2F;th&gt;&lt;th&gt;成绩&lt;&#x2F;th&gt;    &lt;&#x2F;thred&gt;        &lt;tr&gt;            &lt;td&gt;张三&lt;&#x2F;td&gt;&lt;td&gt;0101&lt;&#x2F;td&gt;&lt;td&gt;99&lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;        &lt;tr&gt;            &lt;td&gt;李四&lt;&#x2F;td&gt;&lt;td&gt;0102&lt;&#x2F;td&gt;&lt;td&gt;98&lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;        &lt;tr&gt;            &lt;td&gt;王麻子&lt;&#x2F;td&gt;&lt;td&gt;0103&lt;&#x2F;td&gt;&lt;td&gt;95&lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;    &lt;tbody&gt;    &lt;&#x2F;thred&gt;    &lt;tfoot&gt;    &lt;&#x2F;thred&gt;&lt;&#x2F;table&gt;
+
+姓名学号成绩张三010199李四010298王麻子010395
+
+还可以通过&lt;colgroup&gt;及其子元素&lt;col&gt;指定每一列的宽度
+
+OK
+</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">二级标题三级标题
+# 
+段落元素，表示一个文本的段落
+1&lt;p&gt;埃菲尔铁塔最初是作为 1889 年世界博览会的入口而兴建的。得名于设计它的著名建筑、结构师古斯塔夫·埃菲尔。埃菲尔铁塔从 1887 年开始动工，直到 1898 年才结束。是目前世界上访问人数最多的付费建筑物，每年有 700 万人登上铁塔的最高处。&lt;&#x2F;p&gt;
+**效果：**
+埃菲尔铁塔最初是作为 1889 年世界博览会的入口而兴建的。得名于设计它的著名建筑、结构师古斯塔夫·埃菲尔。埃菲尔铁塔从 1887 年开始动工，直到 1898 年才结束。是目前世界上访问人数最多的付费建筑物，每年有 700 万人登上铁塔的最高处。
+***
+# 
+表示强调其中的内容，内容十分重要，会自动加粗，如果只是为了加粗，将其css中的&#96;font-weight&#96;属性设置为&#96;&quot;bold&quot;&#96;是更好的选择。**&#96;em&#96;**和其类似。
+
+由于Markdown只提供**xxx**的方式加粗文本，这被解释为&lt;strong&gt;xxx&lt;&#x2F;strong&gt;,所以我这里*效果：*的用法是不正确的。
+1&lt;strong&gt;这个文本很重要&lt;&#x2F;strong&gt;
+效果：这个文本很重要
+
+&lt;ul&gt; 表示无序列表,用&lt;li&gt;&lt;&#x2F;li&gt;来表示每一个例子&#x2F;选项，与其相似的还有ol有序列表 123456&lt;ul&gt;    &lt;li&gt;葡萄&lt;&#x2F;li&gt;    &lt;li&gt;橘子&lt;&#x2F;li&gt;    &lt;li&gt;香蕉&lt;&#x2F;li&gt;    &lt;li&gt;菠萝&lt;&#x2F;li&gt;&lt;&#x2F;ul&gt;效果：
+葡萄橘子香蕉菠萝
+***
+
+&lt;img&gt;显示图片，&lt;img&gt;是一个空标签，没有带有带&#x2F;的结束标签，且它也是一个可替换标签，它的相关样式由资源自己决定。
+1&lt;img src&#x3D;&quot;&#x2F;2018&#x2F;03&#x2F;17&#x2F;Markdown%E5%85%A5%E9%97%A8&#x2F;jz.png&quot; alt&#x3D;&quot;紫罗兰永恒花园&quot;&gt;
+效果：
+
+&lt;a&gt;可访问的链接，使用href指定访问的URL地址。也可以添加download属性，表示直接下载url的内容。
+download属性只在当前协议为http&#x2F;https时有用
+href有多种状态
+
+绝对路径 以&#x2F;开头，访问的是当前协议当前域名下的绝对地址
+ 1&lt;a href&#x3D;&quot;&#x2F;2018&#x2F;03&#x2F;17&#x2F;Markdown入门&#x2F;&quot;&gt;我的第一篇博客&lt;&#x2F;a&gt;
+ 效果： 我的第一篇博客
+
+相对路径 使用.或..可以访问当前目录和上级目录，默认会加上.&#x2F;
+ 1&lt;a href&#x3D;&quot;.&#x2F;龙王的工作.jpg&quot;&gt;点击查看《龙王的工作》图片&lt;&#x2F;a&gt;
+ 效果： 点击查看《龙王的工作》图片
+
+当前协议URL 使用很当前一致的协议补全URL
+ 1&lt;a href&#x3D;&quot;&#x2F;&#x2F;baidu.com&quot;&gt;点击访问百度&lt;&#x2F;a&gt;
+ 效果： 点击访问百度
+
+指定协议 输入一个完整的URL
+ 1&lt;a href&#x3D;&quot;mailto:yanglei1997630@gmail.com&quot;&gt;给我发邮件&lt;&#x2F;a&gt;
+ 效果： 给我发邮件
+
+伪协议 伪协议是指以javascript:为属性值，点击之后执行javascript, 这在某些方面有特殊的作用。 如想点击&lt;a&gt;
+
+为空值 这种方法会导致重新刷新此页面
+ 1&lt;a herf&#x3D;&quot;&quot;&gt;这会导致页面刷新&lt;&#x2F;a&gt;
+ 效果： 这会导致页面刷新
+
+为# 这种方法不会引起页面刷新，但会跳转到页面顶部
+ 1&lt;a herf&#x3D;&quot;#&quot;&gt;这会导致跳转到页面顶部&lt;&#x2F;a&gt;
+ 效果： 这会导致跳转到页面顶部
+
+
+ 比较好的解决办法是使用###。 1&lt;a herf&#x3D;&quot;###&quot;&gt;不会发生任何事，但地址栏会轻微改变&lt;&#x2F;a&gt; 效果： 不会发生任何事，但地址栏会轻微改变
+
+javascript空语句 另一个办法就是javascript为伪协议，执行一段空javascrpt语句 1&lt;a href&#x3D;&quot;javascript:;&quot;&gt;不会发生任何事&lt;&#x2F;a&gt;
+ 效果： 不会发生任何事
+
+
+
+
+&lt;iframe&gt;框架元素，主要用来在当前页面嵌入一个新的HTML页面，iframe几乎相当于独立的标签页，拥有自己独立的历史记录等，目前已经很少使用，不过在部分情况下仍然有用处。
+1&lt;iframe src&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot;&gt;&lt;p&gt;iframe未显示时出现的文本&lt;p&gt;&lt;&#x2F;iframe&gt;
+效果：
+iframe未显示时出现的文本
+
+
+如想在iframe中打开你需要的页面,需要添加name属性
+12&lt;iframe src&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; name&#x3D;&quot;iframe&quot;&gt;&lt;p&gt;iframe未显示时出现的文本&lt;p&gt;&lt;&#x2F;iframe&gt;&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;qq.com&quot; target&#x3D;&quot;iframe&quot;&gt;点击在iframe中打开qq.com&lt;&#x2F;a&gt;
+效果：
+iframe未显示时出现的文点击在iframe中打开qq.com
+
+除此之外，a标签还拥有其它target属性
+
+_black 在新标签页打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_blank&quot;&gt;点击在新标签页内访问百度&lt;&#x2F;a&gt;
+ 效果： 点击在新标签页内访问百度
+
+_self 在本页内打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_self&quot;&gt;点击在本标签页内访问百度&lt;&#x2F;a&gt;
+ 效果： 点击在本标签页内访问百度
+
+_parent 在父级页面打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_parent&quot;&gt;访问父级&lt;&#x2F;a&gt;
+ 效果： 比如页面内嵌套一个iframe，iframe内有一个在这样的标签，是在上级页面打开。
+
+_parent 在根页面打开打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_parent&quot;&gt;访问父级&lt;&#x2F;a&gt;
+ 效果： 在frame嵌套frame的多级嵌套情况下，无论嵌套多少层，总是在最开始的根页面打开。
+
+
+除此之外，因为自带的iframe边框比较丑，可以通过frameborder&#x3D;0来禁用。
+1&lt;iframe src&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; frameborder&#x3D;&quot;0&quot;&gt;&lt;p&gt;iframe未显示时出现的文本&lt;p&gt;&lt;&#x2F;iframe&gt;
+效果：
+iframe未显示时出现的文本
+***
+# 
+表单元素，用来提交给服务器表单数据，****标签中包含有许多子标签，包括**** **** ****等等
+
+form元素使用action确定请求的地址，使用method确定请求的方式，method拥有两种方式，分别为post和get,通过开发者工具可以方便的看见请求的类型,默认使用get请求
+123&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;get&quot;&gt;&lt;input type&#x3D;&quot;submit&quot; &gt;&lt;&#x2F;form&gt;
+效果：
+
+
+
+
+123&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;post&quot;&gt;&lt;input type&#x3D;&quot;submit&quot; &gt;&lt;&#x2F;form&gt;
+效果：
+
+
+
+
+
+&lt;input&gt;input拥有许多type值，常见的有text、button、submit、checkbox、radio、password、file等。
+
+submit 提交表单的内容 12345&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;post&quot;&gt;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;userName&quot;&gt;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;password&quot;&gt;&lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;登录&quot; &gt;&lt;&#x2F;form&gt;
+ 效果： 
+ 
+ 
+ 
+ 
+
+ 其中，具有想提交内容的标签必须具有name，否则无法提交内容。 使用get提交，会直接把内容加到路径后，使用post提交，会添加在header第四部分
+ 如果表单中没有form标签，没有指定type的&lt;button&gt;标签也具有提交功能 123&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;post&quot;&gt;&lt;button&gt;提交&lt;button&gt;&lt;&#x2F;form&gt; 效果：  提交 
+
+checkbox 多选框
+ 1234&lt;span&gt;喜欢吃的水果：&lt;span&gt;&lt;label&gt;&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;lovaFruit&quot; value&#x3D;&quot;苹果&quot;&gt;苹果&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;lovaFruit&quot; value&#x3D;&quot;草莓&quot;&gt;草莓&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;lovaFruit&quot; value&#x3D;&quot;橘子&quot;&gt;橘子&lt;&#x2F;label&gt;
+ 效果： 喜欢吃的水果：苹果草莓橘子
+
+radio 单选框
+ 1234&lt;span&gt;你是男孩还是女孩？&lt;&#x2F;span&gt;&lt;label&gt;&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;girl&quot;&gt;女孩&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;boy&quot;&gt;男孩&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;LGBT&quot;&gt;跨性别者&lt;&#x2F;label&gt;  
+ 效果： 你是男孩还是女孩？女孩男孩跨性别者
+
+
+
+
+
+
+&lt;select&gt;下拉列表，使用disabled不可选中，selected默认选中，multipl可以多选123456&lt;select&gt;&lt;option selected&gt;四川&lt;&#x2F;option&gt;&lt;option&gt;广东&lt;&#x2F;option&gt;&lt;option&gt;湖南&lt;&#x2F;option&gt;&lt;option disabled&gt;台湾&lt;&#x2F;option&gt;&lt;&#x2F;select&gt;
+
+效果：四川广东湖南台湾
+
+
+&lt;textarea&gt;文本域，主要用来输入大量文本，可以使用cols指定列数，rows指定行数，但是这与字符长度不完全匹配
+
+1&lt;textarea clos&#x3D;&quot;50&quot; rows&#x3D;&quot;50&quot;&gt;在这里输入&lt;&#x2F;textarea&gt;
+在这里输入
+
+
+&lt;table&gt;表格标签，表格标签分别具有三部分，分别是头&lt;thead&gt;，身体&lt;tbody&gt;，脚&lt;tfoot&gt;，还有管内容的标签&lt;th&gt;，&lt;tr&gt;，&lt;td&gt;。
+123456789101112131415161718&lt;table&gt;    &lt;thred&gt;        &lt;th&gt;姓名&lt;&#x2F;th&gt;&lt;th&gt;学号&lt;&#x2F;th&gt;&lt;th&gt;成绩&lt;&#x2F;th&gt;    &lt;&#x2F;thred&gt;        &lt;tr&gt;            &lt;td&gt;张三&lt;&#x2F;td&gt;&lt;td&gt;0101&lt;&#x2F;td&gt;&lt;td&gt;99&lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;        &lt;tr&gt;            &lt;td&gt;李四&lt;&#x2F;td&gt;&lt;td&gt;0102&lt;&#x2F;td&gt;&lt;td&gt;98&lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;        &lt;tr&gt;            &lt;td&gt;王麻子&lt;&#x2F;td&gt;&lt;td&gt;0103&lt;&#x2F;td&gt;&lt;td&gt;95&lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;    &lt;tbody&gt;    &lt;&#x2F;thred&gt;    &lt;tfoot&gt;    &lt;&#x2F;thred&gt;&lt;&#x2F;table&gt;
+
+姓名学号成绩张三010199李四010298王麻子010395
+
+还可以通过&lt;colgroup&gt;及其子元素&lt;col&gt;指定每一列的宽度
+
+OK
+</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">二级标题三级标题
+# 
+段落元素，表示一个文本的段落
+1&lt;p&gt;埃菲尔铁塔最初是作为 1889 年世界博览会的入口而兴建的。得名于设计它的著名建筑、结构师古斯塔夫·埃菲尔。埃菲尔铁塔从 1887 年开始动工，直到 1898 年才结束。是目前世界上访问人数最多的付费建筑物，每年有 700 万人登上铁塔的最高处。&lt;&#x2F;p&gt;
+**效果：**
+埃菲尔铁塔最初是作为 1889 年世界博览会的入口而兴建的。得名于设计它的著名建筑、结构师古斯塔夫·埃菲尔。埃菲尔铁塔从 1887 年开始动工，直到 1898 年才结束。是目前世界上访问人数最多的付费建筑物，每年有 700 万人登上铁塔的最高处。
+***
+# 
+表示强调其中的内容，内容十分重要，会自动加粗，如果只是为了加粗，将其css中的&#96;font-weight&#96;属性设置为&#96;&quot;bold&quot;&#96;是更好的选择。**&#96;em&#96;**和其类似。
+
+由于Markdown只提供**xxx**的方式加粗文本，这被解释为&lt;strong&gt;xxx&lt;&#x2F;strong&gt;,所以我这里*效果：*的用法是不正确的。
+1&lt;strong&gt;这个文本很重要&lt;&#x2F;strong&gt;
+效果：这个文本很重要
+
+&lt;ul&gt; 表示无序列表,用&lt;li&gt;&lt;&#x2F;li&gt;来表示每一个例子&#x2F;选项，与其相似的还有ol有序列表 123456&lt;ul&gt;    &lt;li&gt;葡萄&lt;&#x2F;li&gt;    &lt;li&gt;橘子&lt;&#x2F;li&gt;    &lt;li&gt;香蕉&lt;&#x2F;li&gt;    &lt;li&gt;菠萝&lt;&#x2F;li&gt;&lt;&#x2F;ul&gt;效果：
+葡萄橘子香蕉菠萝
+***
+
+&lt;img&gt;显示图片，&lt;img&gt;是一个空标签，没有带有带&#x2F;的结束标签，且它也是一个可替换标签，它的相关样式由资源自己决定。
+1&lt;img src&#x3D;&quot;&#x2F;2018&#x2F;03&#x2F;17&#x2F;Markdown%E5%85%A5%E9%97%A8&#x2F;jz.png&quot; alt&#x3D;&quot;紫罗兰永恒花园&quot;&gt;
+效果：
+
+&lt;a&gt;可访问的链接，使用href指定访问的URL地址。也可以添加download属性，表示直接下载url的内容。
+download属性只在当前协议为http&#x2F;https时有用
+href有多种状态
+
+绝对路径 以&#x2F;开头，访问的是当前协议当前域名下的绝对地址
+ 1&lt;a href&#x3D;&quot;&#x2F;2018&#x2F;03&#x2F;17&#x2F;Markdown入门&#x2F;&quot;&gt;我的第一篇博客&lt;&#x2F;a&gt;
+ 效果： 我的第一篇博客
+
+相对路径 使用.或..可以访问当前目录和上级目录，默认会加上.&#x2F;
+ 1&lt;a href&#x3D;&quot;.&#x2F;龙王的工作.jpg&quot;&gt;点击查看《龙王的工作》图片&lt;&#x2F;a&gt;
+ 效果： 点击查看《龙王的工作》图片
+
+当前协议URL 使用很当前一致的协议补全URL
+ 1&lt;a href&#x3D;&quot;&#x2F;&#x2F;baidu.com&quot;&gt;点击访问百度&lt;&#x2F;a&gt;
+ 效果： 点击访问百度
+
+指定协议 输入一个完整的URL
+ 1&lt;a href&#x3D;&quot;mailto:yanglei1997630@gmail.com&quot;&gt;给我发邮件&lt;&#x2F;a&gt;
+ 效果： 给我发邮件
+
+伪协议 伪协议是指以javascript:为属性值，点击之后执行javascript, 这在某些方面有特殊的作用。 如想点击&lt;a&gt;
+
+为空值 这种方法会导致重新刷新此页面
+ 1&lt;a herf&#x3D;&quot;&quot;&gt;这会导致页面刷新&lt;&#x2F;a&gt;
+ 效果： 这会导致页面刷新
+
+为# 这种方法不会引起页面刷新，但会跳转到页面顶部
+ 1&lt;a herf&#x3D;&quot;#&quot;&gt;这会导致跳转到页面顶部&lt;&#x2F;a&gt;
+ 效果： 这会导致跳转到页面顶部
+
+
+ 比较好的解决办法是使用###。 1&lt;a herf&#x3D;&quot;###&quot;&gt;不会发生任何事，但地址栏会轻微改变&lt;&#x2F;a&gt; 效果： 不会发生任何事，但地址栏会轻微改变
+
+javascript空语句 另一个办法就是javascript为伪协议，执行一段空javascrpt语句 1&lt;a href&#x3D;&quot;javascript:;&quot;&gt;不会发生任何事&lt;&#x2F;a&gt;
+ 效果： 不会发生任何事
+
+
+
+
+&lt;iframe&gt;框架元素，主要用来在当前页面嵌入一个新的HTML页面，iframe几乎相当于独立的标签页，拥有自己独立的历史记录等，目前已经很少使用，不过在部分情况下仍然有用处。
+1&lt;iframe src&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot;&gt;&lt;p&gt;iframe未显示时出现的文本&lt;p&gt;&lt;&#x2F;iframe&gt;
+效果：
+iframe未显示时出现的文本
+
+
+如想在iframe中打开你需要的页面,需要添加name属性
+12&lt;iframe src&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; name&#x3D;&quot;iframe&quot;&gt;&lt;p&gt;iframe未显示时出现的文本&lt;p&gt;&lt;&#x2F;iframe&gt;&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;qq.com&quot; target&#x3D;&quot;iframe&quot;&gt;点击在iframe中打开qq.com&lt;&#x2F;a&gt;
+效果：
+iframe未显示时出现的文点击在iframe中打开qq.com
+
+除此之外，a标签还拥有其它target属性
+
+_black 在新标签页打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_blank&quot;&gt;点击在新标签页内访问百度&lt;&#x2F;a&gt;
+ 效果： 点击在新标签页内访问百度
+
+_self 在本页内打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_self&quot;&gt;点击在本标签页内访问百度&lt;&#x2F;a&gt;
+ 效果： 点击在本标签页内访问百度
+
+_parent 在父级页面打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_parent&quot;&gt;访问父级&lt;&#x2F;a&gt;
+ 效果： 比如页面内嵌套一个iframe，iframe内有一个在这样的标签，是在上级页面打开。
+
+_parent 在根页面打开打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_parent&quot;&gt;访问父级&lt;&#x2F;a&gt;
+ 效果： 在frame嵌套frame的多级嵌套情况下，无论嵌套多少层，总是在最开始的根页面打开。
+
+
+除此之外，因为自带的iframe边框比较丑，可以通过frameborder&#x3D;0来禁用。
+1&lt;iframe src&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; frameborder&#x3D;&quot;0&quot;&gt;&lt;p&gt;iframe未显示时出现的文本&lt;p&gt;&lt;&#x2F;iframe&gt;
+效果：
+iframe未显示时出现的文本
+***
+# 
+表单元素，用来提交给服务器表单数据，****标签中包含有许多子标签，包括**** **** ****等等
+
+form元素使用action确定请求的地址，使用method确定请求的方式，method拥有两种方式，分别为post和get,通过开发者工具可以方便的看见请求的类型,默认使用get请求
+123&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;get&quot;&gt;&lt;input type&#x3D;&quot;submit&quot; &gt;&lt;&#x2F;form&gt;
+效果：
+
+
+
+
+123&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;post&quot;&gt;&lt;input type&#x3D;&quot;submit&quot; &gt;&lt;&#x2F;form&gt;
+效果：
+
+
+
+
+
+&lt;input&gt;input拥有许多type值，常见的有text、button、submit、checkbox、radio、password、file等。
+
+submit 提交表单的内容 12345&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;post&quot;&gt;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;userName&quot;&gt;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;password&quot;&gt;&lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;登录&quot; &gt;&lt;&#x2F;form&gt;
+ 效果： 
+ 
+ 
+ 
+ 
+
+ 其中，具有想提交内容的标签必须具有name，否则无法提交内容。 使用get提交，会直接把内容加到路径后，使用post提交，会添加在header第四部分
+ 如果表单中没有form标签，没有指定type的&lt;button&gt;标签也具有提交功能 123&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;post&quot;&gt;&lt;button&gt;提交&lt;button&gt;&lt;&#x2F;form&gt; 效果：  提交 
+
+checkbox 多选框
+ 1234&lt;span&gt;喜欢吃的水果：&lt;span&gt;&lt;label&gt;&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;lovaFruit&quot; value&#x3D;&quot;苹果&quot;&gt;苹果&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;lovaFruit&quot; value&#x3D;&quot;草莓&quot;&gt;草莓&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;lovaFruit&quot; value&#x3D;&quot;橘子&quot;&gt;橘子&lt;&#x2F;label&gt;
+ 效果： 喜欢吃的水果：苹果草莓橘子
+
+radio 单选框
+ 1234&lt;span&gt;你是男孩还是女孩？&lt;&#x2F;span&gt;&lt;label&gt;&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;girl&quot;&gt;女孩&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;boy&quot;&gt;男孩&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;LGBT&quot;&gt;跨性别者&lt;&#x2F;label&gt;  
+ 效果： 你是男孩还是女孩？女孩男孩跨性别者
+
+
+
+
+
+
+&lt;select&gt;下拉列表，使用disabled不可选中，selected默认选中，multipl可以多选123456&lt;select&gt;&lt;option selected&gt;四川&lt;&#x2F;option&gt;&lt;option&gt;广东&lt;&#x2F;option&gt;&lt;option&gt;湖南&lt;&#x2F;option&gt;&lt;option disabled&gt;台湾&lt;&#x2F;option&gt;&lt;&#x2F;select&gt;
+
+效果：四川广东湖南台湾
+
+
+&lt;textarea&gt;文本域，主要用来输入大量文本，可以使用cols指定列数，rows指定行数，但是这与字符长度不完全匹配
+
+1&lt;textarea clos&#x3D;&quot;50&quot; rows&#x3D;&quot;50&quot;&gt;在这里输入&lt;&#x2F;textarea&gt;
+在这里输入
+
+
+&lt;table&gt;表格标签，表格标签分别具有三部分，分别是头&lt;thead&gt;，身体&lt;tbody&gt;，脚&lt;tfoot&gt;，还有管内容的标签&lt;th&gt;，&lt;tr&gt;，&lt;td&gt;。
+123456789101112131415161718&lt;table&gt;    &lt;thred&gt;        &lt;th&gt;姓名&lt;&#x2F;th&gt;&lt;th&gt;学号&lt;&#x2F;th&gt;&lt;th&gt;成绩&lt;&#x2F;th&gt;    &lt;&#x2F;thred&gt;        &lt;tr&gt;            &lt;td&gt;张三&lt;&#x2F;td&gt;&lt;td&gt;0101&lt;&#x2F;td&gt;&lt;td&gt;99&lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;        &lt;tr&gt;            &lt;td&gt;李四&lt;&#x2F;td&gt;&lt;td&gt;0102&lt;&#x2F;td&gt;&lt;td&gt;98&lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;        &lt;tr&gt;            &lt;td&gt;王麻子&lt;&#x2F;td&gt;&lt;td&gt;0103&lt;&#x2F;td&gt;&lt;td&gt;95&lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;    &lt;tbody&gt;    &lt;&#x2F;thred&gt;    &lt;tfoot&gt;    &lt;&#x2F;thred&gt;&lt;&#x2F;table&gt;
+
+姓名学号成绩张三010199李四010298王麻子010395
+
+还可以通过&lt;colgroup&gt;及其子元素&lt;col&gt;指定每一列的宽度
+
+OK
+</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.2.</span> <span class="nav-text">三级标题
+# 
+段落元素，表示一个文本的段落
+1&lt;p&gt;埃菲尔铁塔最初是作为 1889 年世界博览会的入口而兴建的。得名于设计它的著名建筑、结构师古斯塔夫·埃菲尔。埃菲尔铁塔从 1887 年开始动工，直到 1898 年才结束。是目前世界上访问人数最多的付费建筑物，每年有 700 万人登上铁塔的最高处。&lt;&#x2F;p&gt;
+**效果：**
+埃菲尔铁塔最初是作为 1889 年世界博览会的入口而兴建的。得名于设计它的著名建筑、结构师古斯塔夫·埃菲尔。埃菲尔铁塔从 1887 年开始动工，直到 1898 年才结束。是目前世界上访问人数最多的付费建筑物，每年有 700 万人登上铁塔的最高处。
+***
+# 
+表示强调其中的内容，内容十分重要，会自动加粗，如果只是为了加粗，将其css中的&#96;font-weight&#96;属性设置为&#96;&quot;bold&quot;&#96;是更好的选择。**&#96;em&#96;**和其类似。
+
+由于Markdown只提供**xxx**的方式加粗文本，这被解释为&lt;strong&gt;xxx&lt;&#x2F;strong&gt;,所以我这里*效果：*的用法是不正确的。
+1&lt;strong&gt;这个文本很重要&lt;&#x2F;strong&gt;
+效果：这个文本很重要
+
+&lt;ul&gt; 表示无序列表,用&lt;li&gt;&lt;&#x2F;li&gt;来表示每一个例子&#x2F;选项，与其相似的还有ol有序列表 123456&lt;ul&gt;    &lt;li&gt;葡萄&lt;&#x2F;li&gt;    &lt;li&gt;橘子&lt;&#x2F;li&gt;    &lt;li&gt;香蕉&lt;&#x2F;li&gt;    &lt;li&gt;菠萝&lt;&#x2F;li&gt;&lt;&#x2F;ul&gt;效果：
+葡萄橘子香蕉菠萝
+***
+
+&lt;img&gt;显示图片，&lt;img&gt;是一个空标签，没有带有带&#x2F;的结束标签，且它也是一个可替换标签，它的相关样式由资源自己决定。
+1&lt;img src&#x3D;&quot;&#x2F;2018&#x2F;03&#x2F;17&#x2F;Markdown%E5%85%A5%E9%97%A8&#x2F;jz.png&quot; alt&#x3D;&quot;紫罗兰永恒花园&quot;&gt;
+效果：
+
+&lt;a&gt;可访问的链接，使用href指定访问的URL地址。也可以添加download属性，表示直接下载url的内容。
+download属性只在当前协议为http&#x2F;https时有用
+href有多种状态
+
+绝对路径 以&#x2F;开头，访问的是当前协议当前域名下的绝对地址
+ 1&lt;a href&#x3D;&quot;&#x2F;2018&#x2F;03&#x2F;17&#x2F;Markdown入门&#x2F;&quot;&gt;我的第一篇博客&lt;&#x2F;a&gt;
+ 效果： 我的第一篇博客
+
+相对路径 使用.或..可以访问当前目录和上级目录，默认会加上.&#x2F;
+ 1&lt;a href&#x3D;&quot;.&#x2F;龙王的工作.jpg&quot;&gt;点击查看《龙王的工作》图片&lt;&#x2F;a&gt;
+ 效果： 点击查看《龙王的工作》图片
+
+当前协议URL 使用很当前一致的协议补全URL
+ 1&lt;a href&#x3D;&quot;&#x2F;&#x2F;baidu.com&quot;&gt;点击访问百度&lt;&#x2F;a&gt;
+ 效果： 点击访问百度
+
+指定协议 输入一个完整的URL
+ 1&lt;a href&#x3D;&quot;mailto:yanglei1997630@gmail.com&quot;&gt;给我发邮件&lt;&#x2F;a&gt;
+ 效果： 给我发邮件
+
+伪协议 伪协议是指以javascript:为属性值，点击之后执行javascript, 这在某些方面有特殊的作用。 如想点击&lt;a&gt;
+
+为空值 这种方法会导致重新刷新此页面
+ 1&lt;a herf&#x3D;&quot;&quot;&gt;这会导致页面刷新&lt;&#x2F;a&gt;
+ 效果： 这会导致页面刷新
+
+为# 这种方法不会引起页面刷新，但会跳转到页面顶部
+ 1&lt;a herf&#x3D;&quot;#&quot;&gt;这会导致跳转到页面顶部&lt;&#x2F;a&gt;
+ 效果： 这会导致跳转到页面顶部
+
+
+ 比较好的解决办法是使用###。 1&lt;a herf&#x3D;&quot;###&quot;&gt;不会发生任何事，但地址栏会轻微改变&lt;&#x2F;a&gt; 效果： 不会发生任何事，但地址栏会轻微改变
+
+javascript空语句 另一个办法就是javascript为伪协议，执行一段空javascrpt语句 1&lt;a href&#x3D;&quot;javascript:;&quot;&gt;不会发生任何事&lt;&#x2F;a&gt;
+ 效果： 不会发生任何事
+
+
+
+
+&lt;iframe&gt;框架元素，主要用来在当前页面嵌入一个新的HTML页面，iframe几乎相当于独立的标签页，拥有自己独立的历史记录等，目前已经很少使用，不过在部分情况下仍然有用处。
+1&lt;iframe src&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot;&gt;&lt;p&gt;iframe未显示时出现的文本&lt;p&gt;&lt;&#x2F;iframe&gt;
+效果：
+iframe未显示时出现的文本
+
+
+如想在iframe中打开你需要的页面,需要添加name属性
+12&lt;iframe src&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; name&#x3D;&quot;iframe&quot;&gt;&lt;p&gt;iframe未显示时出现的文本&lt;p&gt;&lt;&#x2F;iframe&gt;&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;qq.com&quot; target&#x3D;&quot;iframe&quot;&gt;点击在iframe中打开qq.com&lt;&#x2F;a&gt;
+效果：
+iframe未显示时出现的文点击在iframe中打开qq.com
+
+除此之外，a标签还拥有其它target属性
+
+_black 在新标签页打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_blank&quot;&gt;点击在新标签页内访问百度&lt;&#x2F;a&gt;
+ 效果： 点击在新标签页内访问百度
+
+_self 在本页内打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_self&quot;&gt;点击在本标签页内访问百度&lt;&#x2F;a&gt;
+ 效果： 点击在本标签页内访问百度
+
+_parent 在父级页面打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_parent&quot;&gt;访问父级&lt;&#x2F;a&gt;
+ 效果： 比如页面内嵌套一个iframe，iframe内有一个在这样的标签，是在上级页面打开。
+
+_parent 在根页面打开打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_parent&quot;&gt;访问父级&lt;&#x2F;a&gt;
+ 效果： 在frame嵌套frame的多级嵌套情况下，无论嵌套多少层，总是在最开始的根页面打开。
+
+
+除此之外，因为自带的iframe边框比较丑，可以通过frameborder&#x3D;0来禁用。
+1&lt;iframe src&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; frameborder&#x3D;&quot;0&quot;&gt;&lt;p&gt;iframe未显示时出现的文本&lt;p&gt;&lt;&#x2F;iframe&gt;
+效果：
+iframe未显示时出现的文本
+***
+# 
+表单元素，用来提交给服务器表单数据，****标签中包含有许多子标签，包括**** **** ****等等
+
+form元素使用action确定请求的地址，使用method确定请求的方式，method拥有两种方式，分别为post和get,通过开发者工具可以方便的看见请求的类型,默认使用get请求
+123&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;get&quot;&gt;&lt;input type&#x3D;&quot;submit&quot; &gt;&lt;&#x2F;form&gt;
+效果：
+
+
+
+
+123&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;post&quot;&gt;&lt;input type&#x3D;&quot;submit&quot; &gt;&lt;&#x2F;form&gt;
+效果：
+
+
+
+
+
+&lt;input&gt;input拥有许多type值，常见的有text、button、submit、checkbox、radio、password、file等。
+
+submit 提交表单的内容 12345&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;post&quot;&gt;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;userName&quot;&gt;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;password&quot;&gt;&lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;登录&quot; &gt;&lt;&#x2F;form&gt;
+ 效果： 
+ 
+ 
+ 
+ 
+
+ 其中，具有想提交内容的标签必须具有name，否则无法提交内容。 使用get提交，会直接把内容加到路径后，使用post提交，会添加在header第四部分
+ 如果表单中没有form标签，没有指定type的&lt;button&gt;标签也具有提交功能 123&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;post&quot;&gt;&lt;button&gt;提交&lt;button&gt;&lt;&#x2F;form&gt; 效果：  提交 
+
+checkbox 多选框
+ 1234&lt;span&gt;喜欢吃的水果：&lt;span&gt;&lt;label&gt;&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;lovaFruit&quot; value&#x3D;&quot;苹果&quot;&gt;苹果&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;lovaFruit&quot; value&#x3D;&quot;草莓&quot;&gt;草莓&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;lovaFruit&quot; value&#x3D;&quot;橘子&quot;&gt;橘子&lt;&#x2F;label&gt;
+ 效果： 喜欢吃的水果：苹果草莓橘子
+
+radio 单选框
+ 1234&lt;span&gt;你是男孩还是女孩？&lt;&#x2F;span&gt;&lt;label&gt;&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;girl&quot;&gt;女孩&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;boy&quot;&gt;男孩&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;LGBT&quot;&gt;跨性别者&lt;&#x2F;label&gt;  
+ 效果： 你是男孩还是女孩？女孩男孩跨性别者
+
+
+
+
+
+
+&lt;select&gt;下拉列表，使用disabled不可选中，selected默认选中，multipl可以多选123456&lt;select&gt;&lt;option selected&gt;四川&lt;&#x2F;option&gt;&lt;option&gt;广东&lt;&#x2F;option&gt;&lt;option&gt;湖南&lt;&#x2F;option&gt;&lt;option disabled&gt;台湾&lt;&#x2F;option&gt;&lt;&#x2F;select&gt;
+
+效果：四川广东湖南台湾
+
+
+&lt;textarea&gt;文本域，主要用来输入大量文本，可以使用cols指定列数，rows指定行数，但是这与字符长度不完全匹配
+
+1&lt;textarea clos&#x3D;&quot;50&quot; rows&#x3D;&quot;50&quot;&gt;在这里输入&lt;&#x2F;textarea&gt;
+在这里输入
+
+
+&lt;table&gt;表格标签，表格标签分别具有三部分，分别是头&lt;thead&gt;，身体&lt;tbody&gt;，脚&lt;tfoot&gt;，还有管内容的标签&lt;th&gt;，&lt;tr&gt;，&lt;td&gt;。
+123456789101112131415161718&lt;table&gt;    &lt;thred&gt;        &lt;th&gt;姓名&lt;&#x2F;th&gt;&lt;th&gt;学号&lt;&#x2F;th&gt;&lt;th&gt;成绩&lt;&#x2F;th&gt;    &lt;&#x2F;thred&gt;        &lt;tr&gt;            &lt;td&gt;张三&lt;&#x2F;td&gt;&lt;td&gt;0101&lt;&#x2F;td&gt;&lt;td&gt;99&lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;        &lt;tr&gt;            &lt;td&gt;李四&lt;&#x2F;td&gt;&lt;td&gt;0102&lt;&#x2F;td&gt;&lt;td&gt;98&lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;        &lt;tr&gt;            &lt;td&gt;王麻子&lt;&#x2F;td&gt;&lt;td&gt;0103&lt;&#x2F;td&gt;&lt;td&gt;95&lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;    &lt;tbody&gt;    &lt;&#x2F;thred&gt;    &lt;tfoot&gt;    &lt;&#x2F;thred&gt;&lt;&#x2F;table&gt;
+
+姓名学号成绩张三010199李四010298王麻子010395
+
+还可以通过&lt;colgroup&gt;及其子元素&lt;col&gt;指定每一列的宽度
+
+OK
+</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.2.1.</span> <span class="nav-text">三级标题
+# 
+段落元素，表示一个文本的段落
+1&lt;p&gt;埃菲尔铁塔最初是作为 1889 年世界博览会的入口而兴建的。得名于设计它的著名建筑、结构师古斯塔夫·埃菲尔。埃菲尔铁塔从 1887 年开始动工，直到 1898 年才结束。是目前世界上访问人数最多的付费建筑物，每年有 700 万人登上铁塔的最高处。&lt;&#x2F;p&gt;
+**效果：**
+埃菲尔铁塔最初是作为 1889 年世界博览会的入口而兴建的。得名于设计它的著名建筑、结构师古斯塔夫·埃菲尔。埃菲尔铁塔从 1887 年开始动工，直到 1898 年才结束。是目前世界上访问人数最多的付费建筑物，每年有 700 万人登上铁塔的最高处。
+***
+# 
+表示强调其中的内容，内容十分重要，会自动加粗，如果只是为了加粗，将其css中的&#96;font-weight&#96;属性设置为&#96;&quot;bold&quot;&#96;是更好的选择。**&#96;em&#96;**和其类似。
+
+由于Markdown只提供**xxx**的方式加粗文本，这被解释为&lt;strong&gt;xxx&lt;&#x2F;strong&gt;,所以我这里*效果：*的用法是不正确的。
+1&lt;strong&gt;这个文本很重要&lt;&#x2F;strong&gt;
+效果：这个文本很重要
+
+&lt;ul&gt; 表示无序列表,用&lt;li&gt;&lt;&#x2F;li&gt;来表示每一个例子&#x2F;选项，与其相似的还有ol有序列表 123456&lt;ul&gt;    &lt;li&gt;葡萄&lt;&#x2F;li&gt;    &lt;li&gt;橘子&lt;&#x2F;li&gt;    &lt;li&gt;香蕉&lt;&#x2F;li&gt;    &lt;li&gt;菠萝&lt;&#x2F;li&gt;&lt;&#x2F;ul&gt;效果：
+葡萄橘子香蕉菠萝
+***
+
+&lt;img&gt;显示图片，&lt;img&gt;是一个空标签，没有带有带&#x2F;的结束标签，且它也是一个可替换标签，它的相关样式由资源自己决定。
+1&lt;img src&#x3D;&quot;&#x2F;2018&#x2F;03&#x2F;17&#x2F;Markdown%E5%85%A5%E9%97%A8&#x2F;jz.png&quot; alt&#x3D;&quot;紫罗兰永恒花园&quot;&gt;
+效果：
+
+&lt;a&gt;可访问的链接，使用href指定访问的URL地址。也可以添加download属性，表示直接下载url的内容。
+download属性只在当前协议为http&#x2F;https时有用
+href有多种状态
+
+绝对路径 以&#x2F;开头，访问的是当前协议当前域名下的绝对地址
+ 1&lt;a href&#x3D;&quot;&#x2F;2018&#x2F;03&#x2F;17&#x2F;Markdown入门&#x2F;&quot;&gt;我的第一篇博客&lt;&#x2F;a&gt;
+ 效果： 我的第一篇博客
+
+相对路径 使用.或..可以访问当前目录和上级目录，默认会加上.&#x2F;
+ 1&lt;a href&#x3D;&quot;.&#x2F;龙王的工作.jpg&quot;&gt;点击查看《龙王的工作》图片&lt;&#x2F;a&gt;
+ 效果： 点击查看《龙王的工作》图片
+
+当前协议URL 使用很当前一致的协议补全URL
+ 1&lt;a href&#x3D;&quot;&#x2F;&#x2F;baidu.com&quot;&gt;点击访问百度&lt;&#x2F;a&gt;
+ 效果： 点击访问百度
+
+指定协议 输入一个完整的URL
+ 1&lt;a href&#x3D;&quot;mailto:yanglei1997630@gmail.com&quot;&gt;给我发邮件&lt;&#x2F;a&gt;
+ 效果： 给我发邮件
+
+伪协议 伪协议是指以javascript:为属性值，点击之后执行javascript, 这在某些方面有特殊的作用。 如想点击&lt;a&gt;
+
+为空值 这种方法会导致重新刷新此页面
+ 1&lt;a herf&#x3D;&quot;&quot;&gt;这会导致页面刷新&lt;&#x2F;a&gt;
+ 效果： 这会导致页面刷新
+
+为# 这种方法不会引起页面刷新，但会跳转到页面顶部
+ 1&lt;a herf&#x3D;&quot;#&quot;&gt;这会导致跳转到页面顶部&lt;&#x2F;a&gt;
+ 效果： 这会导致跳转到页面顶部
+
+
+ 比较好的解决办法是使用###。 1&lt;a herf&#x3D;&quot;###&quot;&gt;不会发生任何事，但地址栏会轻微改变&lt;&#x2F;a&gt; 效果： 不会发生任何事，但地址栏会轻微改变
+
+javascript空语句 另一个办法就是javascript为伪协议，执行一段空javascrpt语句 1&lt;a href&#x3D;&quot;javascript:;&quot;&gt;不会发生任何事&lt;&#x2F;a&gt;
+ 效果： 不会发生任何事
+
+
+
+
+&lt;iframe&gt;框架元素，主要用来在当前页面嵌入一个新的HTML页面，iframe几乎相当于独立的标签页，拥有自己独立的历史记录等，目前已经很少使用，不过在部分情况下仍然有用处。
+1&lt;iframe src&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot;&gt;&lt;p&gt;iframe未显示时出现的文本&lt;p&gt;&lt;&#x2F;iframe&gt;
+效果：
+iframe未显示时出现的文本
+
+
+如想在iframe中打开你需要的页面,需要添加name属性
+12&lt;iframe src&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; name&#x3D;&quot;iframe&quot;&gt;&lt;p&gt;iframe未显示时出现的文本&lt;p&gt;&lt;&#x2F;iframe&gt;&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;qq.com&quot; target&#x3D;&quot;iframe&quot;&gt;点击在iframe中打开qq.com&lt;&#x2F;a&gt;
+效果：
+iframe未显示时出现的文点击在iframe中打开qq.com
+
+除此之外，a标签还拥有其它target属性
+
+_black 在新标签页打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_blank&quot;&gt;点击在新标签页内访问百度&lt;&#x2F;a&gt;
+ 效果： 点击在新标签页内访问百度
+
+_self 在本页内打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_self&quot;&gt;点击在本标签页内访问百度&lt;&#x2F;a&gt;
+ 效果： 点击在本标签页内访问百度
+
+_parent 在父级页面打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_parent&quot;&gt;访问父级&lt;&#x2F;a&gt;
+ 效果： 比如页面内嵌套一个iframe，iframe内有一个在这样的标签，是在上级页面打开。
+
+_parent 在根页面打开打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_parent&quot;&gt;访问父级&lt;&#x2F;a&gt;
+ 效果： 在frame嵌套frame的多级嵌套情况下，无论嵌套多少层，总是在最开始的根页面打开。
+
+
+除此之外，因为自带的iframe边框比较丑，可以通过frameborder&#x3D;0来禁用。
+1&lt;iframe src&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; frameborder&#x3D;&quot;0&quot;&gt;&lt;p&gt;iframe未显示时出现的文本&lt;p&gt;&lt;&#x2F;iframe&gt;
+效果：
+iframe未显示时出现的文本
+***
+# 
+表单元素，用来提交给服务器表单数据，****标签中包含有许多子标签，包括**** **** ****等等
+
+form元素使用action确定请求的地址，使用method确定请求的方式，method拥有两种方式，分别为post和get,通过开发者工具可以方便的看见请求的类型,默认使用get请求
+123&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;get&quot;&gt;&lt;input type&#x3D;&quot;submit&quot; &gt;&lt;&#x2F;form&gt;
+效果：
+
+
+
+
+123&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;post&quot;&gt;&lt;input type&#x3D;&quot;submit&quot; &gt;&lt;&#x2F;form&gt;
+效果：
+
+
+
+
+
+&lt;input&gt;input拥有许多type值，常见的有text、button、submit、checkbox、radio、password、file等。
+
+submit 提交表单的内容 12345&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;post&quot;&gt;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;userName&quot;&gt;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;password&quot;&gt;&lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;登录&quot; &gt;&lt;&#x2F;form&gt;
+ 效果： 
+ 
+ 
+ 
+ 
+
+ 其中，具有想提交内容的标签必须具有name，否则无法提交内容。 使用get提交，会直接把内容加到路径后，使用post提交，会添加在header第四部分
+ 如果表单中没有form标签，没有指定type的&lt;button&gt;标签也具有提交功能 123&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;post&quot;&gt;&lt;button&gt;提交&lt;button&gt;&lt;&#x2F;form&gt; 效果：  提交 
+
+checkbox 多选框
+ 1234&lt;span&gt;喜欢吃的水果：&lt;span&gt;&lt;label&gt;&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;lovaFruit&quot; value&#x3D;&quot;苹果&quot;&gt;苹果&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;lovaFruit&quot; value&#x3D;&quot;草莓&quot;&gt;草莓&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;lovaFruit&quot; value&#x3D;&quot;橘子&quot;&gt;橘子&lt;&#x2F;label&gt;
+ 效果： 喜欢吃的水果：苹果草莓橘子
+
+radio 单选框
+ 1234&lt;span&gt;你是男孩还是女孩？&lt;&#x2F;span&gt;&lt;label&gt;&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;girl&quot;&gt;女孩&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;boy&quot;&gt;男孩&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;LGBT&quot;&gt;跨性别者&lt;&#x2F;label&gt;  
+ 效果： 你是男孩还是女孩？女孩男孩跨性别者
+
+
+
+
+
+
+&lt;select&gt;下拉列表，使用disabled不可选中，selected默认选中，multipl可以多选123456&lt;select&gt;&lt;option selected&gt;四川&lt;&#x2F;option&gt;&lt;option&gt;广东&lt;&#x2F;option&gt;&lt;option&gt;湖南&lt;&#x2F;option&gt;&lt;option disabled&gt;台湾&lt;&#x2F;option&gt;&lt;&#x2F;select&gt;
+
+效果：四川广东湖南台湾
+
+
+&lt;textarea&gt;文本域，主要用来输入大量文本，可以使用cols指定列数，rows指定行数，但是这与字符长度不完全匹配
+
+1&lt;textarea clos&#x3D;&quot;50&quot; rows&#x3D;&quot;50&quot;&gt;在这里输入&lt;&#x2F;textarea&gt;
+在这里输入
+
+
+&lt;table&gt;表格标签，表格标签分别具有三部分，分别是头&lt;thead&gt;，身体&lt;tbody&gt;，脚&lt;tfoot&gt;，还有管内容的标签&lt;th&gt;，&lt;tr&gt;，&lt;td&gt;。
+123456789101112131415161718&lt;table&gt;    &lt;thred&gt;        &lt;th&gt;姓名&lt;&#x2F;th&gt;&lt;th&gt;学号&lt;&#x2F;th&gt;&lt;th&gt;成绩&lt;&#x2F;th&gt;    &lt;&#x2F;thred&gt;        &lt;tr&gt;            &lt;td&gt;张三&lt;&#x2F;td&gt;&lt;td&gt;0101&lt;&#x2F;td&gt;&lt;td&gt;99&lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;        &lt;tr&gt;            &lt;td&gt;李四&lt;&#x2F;td&gt;&lt;td&gt;0102&lt;&#x2F;td&gt;&lt;td&gt;98&lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;        &lt;tr&gt;            &lt;td&gt;王麻子&lt;&#x2F;td&gt;&lt;td&gt;0103&lt;&#x2F;td&gt;&lt;td&gt;95&lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;    &lt;tbody&gt;    &lt;&#x2F;thred&gt;    &lt;tfoot&gt;    &lt;&#x2F;thred&gt;&lt;&#x2F;table&gt;
+
+姓名学号成绩张三010199李四010298王麻子010395
+
+还可以通过&lt;colgroup&gt;及其子元素&lt;col&gt;指定每一列的宽度
+
+OK
+</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.2.2.</span> <span class="nav-text">
+# 
+段落元素，表示一个文本的段落
+1&lt;p&gt;埃菲尔铁塔最初是作为 1889 年世界博览会的入口而兴建的。得名于设计它的著名建筑、结构师古斯塔夫·埃菲尔。埃菲尔铁塔从 1887 年开始动工，直到 1898 年才结束。是目前世界上访问人数最多的付费建筑物，每年有 700 万人登上铁塔的最高处。&lt;&#x2F;p&gt;
+**效果：**
+埃菲尔铁塔最初是作为 1889 年世界博览会的入口而兴建的。得名于设计它的著名建筑、结构师古斯塔夫·埃菲尔。埃菲尔铁塔从 1887 年开始动工，直到 1898 年才结束。是目前世界上访问人数最多的付费建筑物，每年有 700 万人登上铁塔的最高处。
+***
+# 
+表示强调其中的内容，内容十分重要，会自动加粗，如果只是为了加粗，将其css中的&#96;font-weight&#96;属性设置为&#96;&quot;bold&quot;&#96;是更好的选择。**&#96;em&#96;**和其类似。
+
+由于Markdown只提供**xxx**的方式加粗文本，这被解释为&lt;strong&gt;xxx&lt;&#x2F;strong&gt;,所以我这里*效果：*的用法是不正确的。
+1&lt;strong&gt;这个文本很重要&lt;&#x2F;strong&gt;
+效果：这个文本很重要
+
+&lt;ul&gt; 表示无序列表,用&lt;li&gt;&lt;&#x2F;li&gt;来表示每一个例子&#x2F;选项，与其相似的还有ol有序列表 123456&lt;ul&gt;    &lt;li&gt;葡萄&lt;&#x2F;li&gt;    &lt;li&gt;橘子&lt;&#x2F;li&gt;    &lt;li&gt;香蕉&lt;&#x2F;li&gt;    &lt;li&gt;菠萝&lt;&#x2F;li&gt;&lt;&#x2F;ul&gt;效果：
+葡萄橘子香蕉菠萝
+***
+
+&lt;img&gt;显示图片，&lt;img&gt;是一个空标签，没有带有带&#x2F;的结束标签，且它也是一个可替换标签，它的相关样式由资源自己决定。
+1&lt;img src&#x3D;&quot;&#x2F;2018&#x2F;03&#x2F;17&#x2F;Markdown%E5%85%A5%E9%97%A8&#x2F;jz.png&quot; alt&#x3D;&quot;紫罗兰永恒花园&quot;&gt;
+效果：
+
+&lt;a&gt;可访问的链接，使用href指定访问的URL地址。也可以添加download属性，表示直接下载url的内容。
+download属性只在当前协议为http&#x2F;https时有用
+href有多种状态
+
+绝对路径 以&#x2F;开头，访问的是当前协议当前域名下的绝对地址
+ 1&lt;a href&#x3D;&quot;&#x2F;2018&#x2F;03&#x2F;17&#x2F;Markdown入门&#x2F;&quot;&gt;我的第一篇博客&lt;&#x2F;a&gt;
+ 效果： 我的第一篇博客
+
+相对路径 使用.或..可以访问当前目录和上级目录，默认会加上.&#x2F;
+ 1&lt;a href&#x3D;&quot;.&#x2F;龙王的工作.jpg&quot;&gt;点击查看《龙王的工作》图片&lt;&#x2F;a&gt;
+ 效果： 点击查看《龙王的工作》图片
+
+当前协议URL 使用很当前一致的协议补全URL
+ 1&lt;a href&#x3D;&quot;&#x2F;&#x2F;baidu.com&quot;&gt;点击访问百度&lt;&#x2F;a&gt;
+ 效果： 点击访问百度
+
+指定协议 输入一个完整的URL
+ 1&lt;a href&#x3D;&quot;mailto:yanglei1997630@gmail.com&quot;&gt;给我发邮件&lt;&#x2F;a&gt;
+ 效果： 给我发邮件
+
+伪协议 伪协议是指以javascript:为属性值，点击之后执行javascript, 这在某些方面有特殊的作用。 如想点击&lt;a&gt;
+
+为空值 这种方法会导致重新刷新此页面
+ 1&lt;a herf&#x3D;&quot;&quot;&gt;这会导致页面刷新&lt;&#x2F;a&gt;
+ 效果： 这会导致页面刷新
+
+为# 这种方法不会引起页面刷新，但会跳转到页面顶部
+ 1&lt;a herf&#x3D;&quot;#&quot;&gt;这会导致跳转到页面顶部&lt;&#x2F;a&gt;
+ 效果： 这会导致跳转到页面顶部
+
+
+ 比较好的解决办法是使用###。 1&lt;a herf&#x3D;&quot;###&quot;&gt;不会发生任何事，但地址栏会轻微改变&lt;&#x2F;a&gt; 效果： 不会发生任何事，但地址栏会轻微改变
+
+javascript空语句 另一个办法就是javascript为伪协议，执行一段空javascrpt语句 1&lt;a href&#x3D;&quot;javascript:;&quot;&gt;不会发生任何事&lt;&#x2F;a&gt;
+ 效果： 不会发生任何事
+
+
+
+
+&lt;iframe&gt;框架元素，主要用来在当前页面嵌入一个新的HTML页面，iframe几乎相当于独立的标签页，拥有自己独立的历史记录等，目前已经很少使用，不过在部分情况下仍然有用处。
+1&lt;iframe src&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot;&gt;&lt;p&gt;iframe未显示时出现的文本&lt;p&gt;&lt;&#x2F;iframe&gt;
+效果：
+iframe未显示时出现的文本
+
+
+如想在iframe中打开你需要的页面,需要添加name属性
+12&lt;iframe src&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; name&#x3D;&quot;iframe&quot;&gt;&lt;p&gt;iframe未显示时出现的文本&lt;p&gt;&lt;&#x2F;iframe&gt;&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;qq.com&quot; target&#x3D;&quot;iframe&quot;&gt;点击在iframe中打开qq.com&lt;&#x2F;a&gt;
+效果：
+iframe未显示时出现的文点击在iframe中打开qq.com
+
+除此之外，a标签还拥有其它target属性
+
+_black 在新标签页打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_blank&quot;&gt;点击在新标签页内访问百度&lt;&#x2F;a&gt;
+ 效果： 点击在新标签页内访问百度
+
+_self 在本页内打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_self&quot;&gt;点击在本标签页内访问百度&lt;&#x2F;a&gt;
+ 效果： 点击在本标签页内访问百度
+
+_parent 在父级页面打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_parent&quot;&gt;访问父级&lt;&#x2F;a&gt;
+ 效果： 比如页面内嵌套一个iframe，iframe内有一个在这样的标签，是在上级页面打开。
+
+_parent 在根页面打开打开
+ 1&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; target&#x3D;&quot;_parent&quot;&gt;访问父级&lt;&#x2F;a&gt;
+ 效果： 在frame嵌套frame的多级嵌套情况下，无论嵌套多少层，总是在最开始的根页面打开。
+
+
+除此之外，因为自带的iframe边框比较丑，可以通过frameborder&#x3D;0来禁用。
+1&lt;iframe src&#x3D;&quot;http:&#x2F;&#x2F;baidu.com&quot; frameborder&#x3D;&quot;0&quot;&gt;&lt;p&gt;iframe未显示时出现的文本&lt;p&gt;&lt;&#x2F;iframe&gt;
+效果：
+iframe未显示时出现的文本
+***
+# 
+表单元素，用来提交给服务器表单数据，****标签中包含有许多子标签，包括**** **** ****等等
+
+form元素使用action确定请求的地址，使用method确定请求的方式，method拥有两种方式，分别为post和get,通过开发者工具可以方便的看见请求的类型,默认使用get请求
+123&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;get&quot;&gt;&lt;input type&#x3D;&quot;submit&quot; &gt;&lt;&#x2F;form&gt;
+效果：
+
+
+
+
+123&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;post&quot;&gt;&lt;input type&#x3D;&quot;submit&quot; &gt;&lt;&#x2F;form&gt;
+效果：
+
+
+
+
+
+&lt;input&gt;input拥有许多type值，常见的有text、button、submit、checkbox、radio、password、file等。
+
+submit 提交表单的内容 12345&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;post&quot;&gt;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;userName&quot;&gt;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;password&quot;&gt;&lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;登录&quot; &gt;&lt;&#x2F;form&gt;
+ 效果： 
+ 
+ 
+ 
+ 
+
+ 其中，具有想提交内容的标签必须具有name，否则无法提交内容。 使用get提交，会直接把内容加到路径后，使用post提交，会添加在header第四部分
+ 如果表单中没有form标签，没有指定type的&lt;button&gt;标签也具有提交功能 123&lt;form action&#x3D;&quot;xxx&quot; method&#x3D;&quot;post&quot;&gt;&lt;button&gt;提交&lt;button&gt;&lt;&#x2F;form&gt; 效果：  提交 
+
+checkbox 多选框
+ 1234&lt;span&gt;喜欢吃的水果：&lt;span&gt;&lt;label&gt;&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;lovaFruit&quot; value&#x3D;&quot;苹果&quot;&gt;苹果&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;lovaFruit&quot; value&#x3D;&quot;草莓&quot;&gt;草莓&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;lovaFruit&quot; value&#x3D;&quot;橘子&quot;&gt;橘子&lt;&#x2F;label&gt;
+ 效果： 喜欢吃的水果：苹果草莓橘子
+
+radio 单选框
+ 1234&lt;span&gt;你是男孩还是女孩？&lt;&#x2F;span&gt;&lt;label&gt;&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;girl&quot;&gt;女孩&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;boy&quot;&gt;男孩&lt;&#x2F;label&gt;&lt;label&gt;&lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;LGBT&quot;&gt;跨性别者&lt;&#x2F;label&gt;  
+ 效果： 你是男孩还是女孩？女孩男孩跨性别者
+
+
+
+
+
+
+&lt;select&gt;下拉列表，使用disabled不可选中，selected默认选中，multipl可以多选123456&lt;select&gt;&lt;option selected&gt;四川&lt;&#x2F;option&gt;&lt;option&gt;广东&lt;&#x2F;option&gt;&lt;option&gt;湖南&lt;&#x2F;option&gt;&lt;option disabled&gt;台湾&lt;&#x2F;option&gt;&lt;&#x2F;select&gt;
+
+效果：四川广东湖南台湾
+
+
+&lt;textarea&gt;文本域，主要用来输入大量文本，可以使用cols指定列数，rows指定行数，但是这与字符长度不完全匹配
+
+1&lt;textarea clos&#x3D;&quot;50&quot; rows&#x3D;&quot;50&quot;&gt;在这里输入&lt;&#x2F;textarea&gt;
+在这里输入
+
+
+&lt;table&gt;表格标签，表格标签分别具有三部分，分别是头&lt;thead&gt;，身体&lt;tbody&gt;，脚&lt;tfoot&gt;，还有管内容的标签&lt;th&gt;，&lt;tr&gt;，&lt;td&gt;。
+123456789101112131415161718&lt;table&gt;    &lt;thred&gt;        &lt;th&gt;姓名&lt;&#x2F;th&gt;&lt;th&gt;学号&lt;&#x2F;th&gt;&lt;th&gt;成绩&lt;&#x2F;th&gt;    &lt;&#x2F;thred&gt;        &lt;tr&gt;            &lt;td&gt;张三&lt;&#x2F;td&gt;&lt;td&gt;0101&lt;&#x2F;td&gt;&lt;td&gt;99&lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;        &lt;tr&gt;            &lt;td&gt;李四&lt;&#x2F;td&gt;&lt;td&gt;0102&lt;&#x2F;td&gt;&lt;td&gt;98&lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;        &lt;tr&gt;            &lt;td&gt;王麻子&lt;&#x2F;td&gt;&lt;td&gt;0103&lt;&#x2F;td&gt;&lt;td&gt;95&lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;    &lt;tbody&gt;    &lt;&#x2F;thred&gt;    &lt;tfoot&gt;    &lt;&#x2F;thred&gt;&lt;&#x2F;table&gt;
+
+姓名学号成绩张三010199李四010298王麻子010395
+
+还可以通过&lt;colgroup&gt;及其子元素&lt;col&gt;指定每一列的宽度
+
+OK
+</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lt-ul-gt"><span class="nav-number">4.</span> <span class="nav-text">&lt;ul&gt;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lt-img-gt"><span class="nav-number">5.</span> <span class="nav-text">&lt;img&gt;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lt-a-gt"><span class="nav-number">6.</span> <span class="nav-text">&lt;a&gt;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lt-iframe-gt"><span class="nav-number">7.</span> <span class="nav-text">&lt;iframe&gt;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lt-table-gt"><span class="nav-number">8.</span> <span class="nav-text">&lt;table&gt;</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Geylnu</p>
+  <div class="site-description" itemprop="description">记录我的前端学习~</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/04/03/HTML%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gelynu's Blog">
+      <meta itemprop="description" content="记录我的前端学习~">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="HTML常用标签 | Gelynu's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTML常用标签
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-04-03 19:25:19" itemprop="dateCreated datePublished" datetime="2018-04-03T19:25:19+00:00">2018-04-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-31 15:45:56" itemprop="dateModified" datetime="2023-01-31T15:45:56+00:00">2023-01-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/HTML/" itemprop="url" rel="index"><span itemprop="name">HTML</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><em>注意：由于Markdown会自动将换行转换为&lt;br&gt;标签，为了避免换行，展现实际效果时的标签事实上都在同一行,这可能会带来一些空格的差异</em></p>
+<h1 id="lt-div-gt"><a href="#lt-div-gt" class="headerlink" title="&lt;div&gt;"></a>&lt;div&gt;</h1><p>没有实义，主要用来分组，默认样式为块级，会单独占一行</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>B<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>效果：</strong></p>
+<div>A</div><div>B</div>
+***
+# <span\>
+没有实义，主要用来分组和其它作用，默认样式为内嵌，与其它元素共存。
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>A<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>B<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+**效果：**
+<span>A</span><span>B</span>
+***
+# <h1\>
+表示一级标题，默认会加粗，二级标签使用`<h2>`，以此类推
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>一级标题<span class="tag">&lt;<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>二级标题<span class="tag">&lt;<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>三级标题<span class="tag">&lt;<span class="name">h3</span>&gt;</span></span><br></pre></td></tr></table></figure>
+效果：
+<h1>一级标题<h1><h2>二级标题<h2><h3>三级标题<h3>
+# <p\>
+段落元素，表示一个文本的段落
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;埃菲尔铁塔最初是作为 1889 年世界博览会的入口而兴建的。得名于设计它的著名建筑、结构师古斯塔夫·埃菲尔。埃菲尔铁塔从 1887 年开始动工，直到 1898 年才结束。是目前世界上访问人数最多的付费建筑物，每年有 700 万人登上铁塔的最高处。&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+**效果：**
+<p>埃菲尔铁塔最初是作为 1889 年世界博览会的入口而兴建的。得名于设计它的著名建筑、结构师古斯塔夫·埃菲尔。埃菲尔铁塔从 1887 年开始动工，直到 1898 年才结束。是目前世界上访问人数最多的付费建筑物，每年有 700 万人登上铁塔的最高处。</p>
+***
+# <strong\>
+表示强调其中的内容，内容十分重要，会自动加粗，如果只是为了加粗，将其css中的`font-weight`属性设置为`"bold"`是更好的选择。**`em`**和其类似。
+
+<p><em>由于Markdown只提供<code>**xxx**</code>的方式加粗文本，这被解释为&lt;strong&gt;xxx&lt;&#x2F;strong&gt;,所以我这里</em>*<code>效果：</code>*<em>的用法是不正确的。</em></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">strong</span>&gt;</span>这个文本很重要<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>效果：</strong><br><strong>这个文本很重要</strong></p>
+<hr>
+<h1 id="lt-ul-gt"><a href="#lt-ul-gt" class="headerlink" title="&lt;ul&gt;"></a>&lt;ul&gt;</h1><p> 表示无序列表,用<code>&lt;li&gt;&lt;/li&gt;</code>来表示每一个例子&#x2F;选项，与其相似的还有<code>ol</code>有序列表<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>葡萄<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>橘子<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>香蕉<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>菠萝<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure><br><strong>效果：</strong></p>
+<ul><li>葡萄</li><li>橘子</li><li>香蕉</li><li>菠萝</li></ul>
+***
+
+<h1 id="lt-img-gt"><a href="#lt-img-gt" class="headerlink" title="&lt;img&gt;"></a>&lt;img&gt;</h1><p>显示图片，<code>&lt;img&gt;</code>是一个空标签，没有带有带<code>/</code>的结束标签，且它也是一个可替换标签，它的相关样式由资源自己决定。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;/2018/03/17/Markdown%E5%85%A5%E9%97%A8/jz.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;紫罗兰永恒花园&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>效果：</strong><br><a href="/2018/03/17/Markdown%E5%85%A5%E9%97%A8/jz.png" download="紫罗兰紫罗兰永恒花园"><br><img data-src="/2018/03/17/Markdown%E5%85%A5%E9%97%A8/jz.png" alt="紫罗兰永恒花园" download></a></p>
+<hr>
+<h1 id="lt-a-gt"><a href="#lt-a-gt" class="headerlink" title="&lt;a&gt;"></a>&lt;a&gt;</h1><p>可访问的链接，使用href指定访问的URL地址。也可以添加<code>download</code>属性，表示直接下载url的内容。</p>
+<p><em>download属性只在当前协议为http&#x2F;https时有用</em></p>
+<p><strong>href有多种状态</strong></p>
+<ol>
+<li><p><strong>绝对路径</strong><br> 以<code>/</code>开头，访问的是当前协议当前域名下的绝对地址</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/2018/03/17/Markdown入门/&quot;</span>&gt;</span>我的第一篇博客<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> <strong>效果：</strong><br> <a href="/2018/03/17/Markdown入门/">我的第一篇博客</a></p>
+</li>
+<li><p><strong>相对路径</strong><br> 使用<code>.</code>或<code>..</code>可以访问当前目录和上级目录，默认会加上<code>./</code></p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;./龙王的工作.jpg&quot;</span>&gt;</span>点击查看《龙王的工作》图片<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> <strong>效果：</strong><br> <a href="./龙王的工作.jpg">点击查看《龙王的工作》图片</a></p>
+</li>
+<li><p><strong>当前协议URL</strong><br> 使用很当前一致的协议补全URL</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;//baidu.com&quot;</span>&gt;</span>点击访问百度<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> <strong>效果：</strong><br> <a target="_blank" rel="noopener" href="//baidu.com">点击访问百度</a></p>
+</li>
+<li><p><strong>指定协议</strong><br> 输入一个完整的URL</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;mailto:yanglei1997630@gmail.com&quot;</span>&gt;</span>给我发邮件<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> <strong>效果：</strong><br> <a href="mailto:yanglei1997630@gmail.com">给我发邮件</a></p>
+</li>
+<li><p><strong>伪协议</strong><br> 伪协议是指以<code>javascript:</code>为属性值，点击之后执行javascript,<br> 这在某些方面有特殊的作用。<br> 如想点击<code>&lt;a&gt;</code></p>
+<ul>
+<li><p><strong>为空值</strong><br> 这种方法会导致重新刷新此页面</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">herf</span>=<span class="string">&quot;&quot;</span>&gt;</span>这会导致页面刷新<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> <strong>效果：</strong><br> <a href="">这会导致页面刷新</a></p>
+</li>
+<li><p><strong>为<code>#</code></strong><br> 这种方法不会引起页面刷新，但会跳转到页面顶部</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">herf</span>=<span class="string">&quot;#&quot;</span>&gt;</span>这会导致跳转到页面顶部<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> <strong>效果：</strong><br> <a href="#">这会导致跳转到页面顶部</a></p>
+</li>
+</ul>
+<p> 比较好的解决办法是使用<code>###</code>。<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">herf</span>=<span class="string">&quot;###&quot;</span>&gt;</span>不会发生任何事，但地址栏会轻微改变<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure><br> <strong>效果：</strong><br> <a href="###">不会发生任何事，但地址栏会轻微改变</a></p>
+<ul>
+<li><strong>javascript空语句</strong><br> 另一个办法就是javascript为伪协议，执行一段空javascrpt语句 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;javascript:;&quot;</span>&gt;</span>不会发生任何事<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+ <strong>效果：</strong><br> <a href="javascript:;">不会发生任何事</a></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="lt-iframe-gt"><a href="#lt-iframe-gt" class="headerlink" title="&lt;iframe&gt;"></a>&lt;iframe&gt;</h1><p>框架元素，主要用来在当前页面嵌入一个新的HTML页面，iframe几乎相当于独立的标签页，拥有自己独立的历史记录等，目前已经很少使用，不过在部分情况下仍然有用处。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;http://baidu.com&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>iframe未显示时出现的文本<span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>效果：</strong></p>
+<iframe src="http://baidu.com"><p>iframe未显示时出现的文本<p></iframe>
+
+
+<p>如想在iframe中打开你需要的页面,需要添加name属性</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;http://baidu.com&quot;</span> <span class="attr">name</span>=<span class="string">&quot;iframe&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>iframe未显示时出现的文本<span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://qq.com&quot;</span> <span class="attr">target</span>=<span class="string">&quot;iframe&quot;</span>&gt;</span>点击在iframe中打开qq.com<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>效果：</strong></p>
+<iframe src="http://baidu.com" name="iframe"><p>iframe未显示时出现的文<p></iframe><a href="http://qq.com" target="iframe">点击在iframe中打开qq.com</a>
+
+<p>除此之外，a标签还拥有其它target属性</p>
+<ol>
+<li><p><strong>_black</strong><br> 在新标签页打开</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://baidu.com&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span>&gt;</span>点击在新标签页内访问百度<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> <strong>效果：</strong><br> <a href="http://baidu.com" target="_blank">点击在新标签页内访问百度</a></p>
+</li>
+<li><p><strong>_self</strong><br> 在本页内打开</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://baidu.com&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_self&quot;</span>&gt;</span>点击在本标签页内访问百度<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> <strong>效果：</strong><br> <a href="http://baidu.com" target="_self">点击在本标签页内访问百度</a></p>
+</li>
+<li><p><strong>_parent</strong><br> 在父级页面打开</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://baidu.com&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_parent&quot;</span>&gt;</span>访问父级<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> <strong>效果：</strong><br> 比如页面内嵌套一个iframe，iframe内有一个在这样的标签，是在上级页面打开。</p>
+</li>
+<li><p><strong>_parent</strong><br> 在根页面打开打开</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://baidu.com&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_parent&quot;</span>&gt;</span>访问父级<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> <strong>效果：</strong><br> 在frame嵌套frame的多级嵌套情况下，无论嵌套多少层，总是在最开始的根页面打开。</p>
+</li>
+</ol>
+<p>除此之外，因为自带的iframe边框比较丑，可以通过<code>frameborder=0</code>来禁用。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;http://baidu.com&quot;</span> <span class="attr">frameborder</span>=<span class="string">&quot;0&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>iframe未显示时出现的文本<span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>效果：</strong></p>
+<iframe src="http://baidu.com" frameborder="0"><p>iframe未显示时出现的文本<p></iframe>
+***
+# <form\>
+表单元素，用来提交给服务器表单数据，**<form\>**标签中包含有许多子标签，包括**<input\>** **<select\>** **<textarea\>**等等
+
+<p>form元素使用<code>action</code>确定请求的地址，使用<code>method</code>确定请求的方式，<code>method</code>拥有两种方式，分别为post和get,通过开发者工具可以方便的看见请求的类型,默认使用get请求</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;xxx&quot;</span> <span class="attr">method</span>=<span class="string">&quot;get&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>效果：</strong></p>
+<form action="xxx" method="get">
+<input type="submit" >
+</form>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;xxx&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>效果：</strong></p>
+<form action="xxx" method="post">
+<input type="submit" >
+</form>
+
+<ol>
+<li><p><strong>&lt;input&gt;</strong><br>input拥有许多type值，常见的有text、button、submit、checkbox、radio、password、file等。</p>
+<ul>
+<li><strong>submit</strong><br> 提交表单的内容 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;xxx&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;userName&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;登录&quot;</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+ <strong>效果：</strong> <form action="xxx" method="post">
+ <input type="text" name="userName">
+ <input type="text" name="password">
+ <input type="submit" value="登录" >
+ </form></li>
+</ul>
+<p> 其中，具有想提交内容的标签必须具有name，否则无法提交内容。<br> 使用get提交，会直接把内容加到路径后，使用post提交，会添加在header第四部分</p>
+<p> 如果表单中没有form标签，没有指定type的&lt;button&gt;标签也具有提交功能<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;xxx&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>提交<span class="tag">&lt;<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure><br> <strong>效果：</strong><br> <form action="xxx" method="post"><br> <button>提交</button><br> </form></p>
+<ul>
+<li><p><strong>checkbox</strong><br> 多选框</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>喜欢吃的水果：<span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">name</span>=<span class="string">&quot;lovaFruit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;苹果&quot;</span>&gt;</span>苹果<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">name</span>=<span class="string">&quot;lovaFruit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;草莓&quot;</span>&gt;</span>草莓<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">name</span>=<span class="string">&quot;lovaFruit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;橘子&quot;</span>&gt;</span>橘子<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> <strong>效果：</strong><br> <span>喜欢吃的水果：<span><label><input type="checkbox" name="lovaFruit" value="苹果">苹果</label><label><input type="checkbox" name="lovaFruit" value="草莓">草莓</label><label><input type="checkbox" name="lovaFruit" value="橘子">橘子</label></p>
+</li>
+<li><p><strong>radio</strong><br> 单选框</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>你是男孩还是女孩？<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;gender&quot;</span> <span class="attr">value</span>=<span class="string">&quot;girl&quot;</span>&gt;</span>女孩<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;gender&quot;</span> <span class="attr">value</span>=<span class="string">&quot;boy&quot;</span>&gt;</span>男孩<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;gender&quot;</span> <span class="attr">value</span>=<span class="string">&quot;LGBT&quot;</span>&gt;</span>跨性别者<span class="tag">&lt;/<span class="name">label</span>&gt;</span>  </span><br></pre></td></tr></table></figure>
+<p> <strong>效果：</strong><br> <span>你是男孩还是女孩？</span><label><input type="radio" name="gender" value="girl">女孩</label><label><input type="radio" name="gender" value="boy">男孩</label><label><input type="radio" name="gender" value="LGBT">跨性别者</label></p>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<ol start="2">
+<li><strong>&lt;select&gt;</strong><br>下拉列表，使用<code>disabled</code>不可选中，<code>selected</code>默认选中，<code>multipl</code>可以多选<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span> <span class="attr">selected</span>&gt;</span>四川<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span>&gt;</span>广东<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span>&gt;</span>湖南<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span> <span class="attr">disabled</span>&gt;</span>台湾<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><strong>效果：</strong><br><select><option selected>四川</option><option>广东</option><option>湖南</option><option disabled>台湾</option></select></p>
+<hr>
+<ol start="3">
+<li><strong>&lt;textarea&gt;</strong><br>文本域，主要用来输入大量文本，可以使用<code>cols</code>指定列数，<code>rows</code>指定行数，但是这与字符长度不完全匹配</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">clos</span>=<span class="string">&quot;50&quot;</span> <span class="attr">rows</span>=<span class="string">&quot;50&quot;</span>&gt;</span>在这里输入<span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<textarea clos="10" rows="10">在这里输入</textarea>
+
+<hr>
+<h1 id="lt-table-gt"><a href="#lt-table-gt" class="headerlink" title="&lt;table&gt;"></a>&lt;table&gt;</h1><p>表格标签，表格标签分别具有三部分，分别是头<code>&lt;thead&gt;</code>，身体<code>&lt;tbody&gt;</code>，脚<code>&lt;tfoot&gt;</code>，还有管内容的标签<code>&lt;th&gt;</code>，<code>&lt;tr&gt;</code>，<code>&lt;td&gt;</code>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">thred</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span>学号<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span>成绩<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">thred</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>张三<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>0101<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>99<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>李四<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>0102<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>98<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>王麻子<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>0103<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>95<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">thred</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tfoot</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">thred</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<table><thred><th>姓名</th><th>学号</th><th>成绩</th></thred><tr><td>张三</td><td>0101</td><td>99</td></tr><tr><td>李四</td><td>0102</td><td>98</td></tr><tr><td>王麻子</td><td>0103</td><td>95</td></tr><tbody></thred><tfoot></thred></table>
+
+<p>还可以通过<code>&lt;colgroup&gt;</code>及其子元素<code>&lt;col&gt;</code>指定每一列的宽度</p>
+<hr>
+<p><em>OK</em></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/03/30/http%E5%85%A5%E9%97%A8/" rel="prev" title="http入门">
+                  <i class="fa fa-chevron-left"></i> http入门
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/04/22/css%E5%B8%83%E5%B1%80/" rel="next" title="css布局">
+                  css布局 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备18020005号 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geylnu</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">49k</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

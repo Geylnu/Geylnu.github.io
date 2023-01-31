@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="HTTP是什么？HTTP是HyperText Transfer Protoco的缩写，中文译作“超文本传输协议”，HTTP构建在TCP传输协议的基础上，处于应用层，设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法，不过目前HTTP协议已经不仅仅只为传输HTML服务，还有其他功能，不过传输HTML仍然是最主要的。 怎样使用HTTP?在浏览器输入输入以HTTP或HTTPS作为协议名的U">
+<meta property="og:type" content="article">
+<meta property="og:title" content="http入门">
+<meta property="og:url" content="http://example.com/2018/03/30/http%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="Gelynu&#39;s Blog">
+<meta property="og:description" content="HTTP是什么？HTTP是HyperText Transfer Protoco的缩写，中文译作“超文本传输协议”，HTTP构建在TCP传输协议的基础上，处于应用层，设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法，不过目前HTTP协议已经不仅仅只为传输HTML服务，还有其他功能，不过传输HTML仍然是最主要的。 怎样使用HTTP?在浏览器输入输入以HTTP或HTTPS作为协议名的U">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2018/03/30/http%E5%85%A5%E9%97%A8/network.png">
+<meta property="og:image" content="http://example.com/2018/03/30/http%E5%85%A5%E9%97%A8/list.png">
+<meta property="og:image" content="http://example.com/2018/03/30/http%E5%85%A5%E9%97%A8/source.png">
+<meta property="og:image" content="http://example.com/2018/03/30/http%E5%85%A5%E9%97%A8/log.png">
+<meta property="article:published_time" content="2018-03-30T16:12:52.000Z">
+<meta property="article:modified_time" content="2023-01-31T15:45:56.977Z">
+<meta property="article:author" content="Geylnu">
+<meta property="article:tag" content="待更新">
+<meta property="article:tag" content="HTTP">
+<meta property="article:tag" content="网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2018/03/30/http%E5%85%A5%E9%97%A8/network.png">
+
+
+<link rel="canonical" href="http://example.com/2018/03/30/http%E5%85%A5%E9%97%A8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2018/03/30/http%E5%85%A5%E9%97%A8/","path":"2018/03/30/http入门/","title":"http入门"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>http入门 | Gelynu's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Gelynu's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">HTTP是什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%8E%E6%A0%B7%E4%BD%BF%E7%94%A8HTTP"><span class="nav-number">2.</span> <span class="nav-text">怎样使用HTTP?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFURL"><span class="nav-number">2.1.</span> <span class="nav-text">什么是URL?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL%E7%9A%84%E5%85%B7%E4%BD%93%E6%A0%B7%E5%AD%90"><span class="nav-number">2.2.</span> <span class="nav-text">URL的具体样子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9E%E8%BD%A6%E5%90%8E%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.3.</span> <span class="nav-text">回车后会发生什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DNS%E5%8F%88%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.3.1.</span> <span class="nav-text">DNS又是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DNS%E5%8F%88%E6%98%AF%E6%80%8E%E4%B9%88%E8%BF%90%E4%BD%9C%E7%9A%84%EF%BC%9F"><span class="nav-number">2.3.2.</span> <span class="nav-text">DNS又是怎么运作的？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%97%E5%88%B0ip%E5%87%86%E5%A4%87%E5%8F%91%E9%80%81%E6%8A%A5%E6%96%87"><span class="nav-number">2.4.</span> <span class="nav-text">得到ip准备发送报文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0curl%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">2.4.1.</span> <span class="nav-text">学习curl命令的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E9%83%A8%E5%88%86"><span class="nav-number">2.4.2.</span> <span class="nav-text">请求部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86"><span class="nav-number">2.4.2.1.</span> <span class="nav-text">第一部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86"><span class="nav-number">2.4.2.2.</span> <span class="nav-text">第二部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86"><span class="nav-number">2.4.2.3.</span> <span class="nav-text">第三部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86"><span class="nav-number">2.4.2.4.</span> <span class="nav-text">第四部分</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E9%83%A8%E5%88%86"><span class="nav-number">2.4.3.</span> <span class="nav-text">响应部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#100%E7%8A%B6%E6%80%81%E7%A0%81"><span class="nav-number">2.4.3.1.</span> <span class="nav-text">100状态码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#200%E7%8A%B6%E6%80%81%E7%A0%81"><span class="nav-number">2.4.3.2.</span> <span class="nav-text">200状态码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#300%E7%8A%B6%E6%80%81%E7%A0%81"><span class="nav-number">2.4.3.3.</span> <span class="nav-text">300状态码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#400%E7%8A%B6%E6%80%81%E7%A0%81"><span class="nav-number">2.4.3.4.</span> <span class="nav-text">400状态码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#500%E7%8A%B6%E6%80%81%E7%A0%81"><span class="nav-number">2.4.3.5.</span> <span class="nav-text">500状态码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-1"><span class="nav-number">2.4.4.</span> <span class="nav-text">第二部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E5%AE%83%E9%83%A8%E5%88%86%E5%92%8C%E8%AF%B7%E6%B1%82%E7%9B%B8%E5%90%8C%E3%80%82"><span class="nav-number">2.4.5.</span> <span class="nav-text">其它部分和请求相同。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Google-Chrome%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7%E6%9F%A5%E7%9C%8B"><span class="nav-number">2.4.6.</span> <span class="nav-text">使用Google Chrome开发者工具查看</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Geylnu</p>
+  <div class="site-description" itemprop="description">记录我的前端学习~</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/03/30/http%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gelynu's Blog">
+      <meta itemprop="description" content="记录我的前端学习~">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="http入门 | Gelynu's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          http入门
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-03-30 16:12:52" itemprop="dateCreated datePublished" datetime="2018-03-30T16:12:52+00:00">2018-03-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-31 15:45:56" itemprop="dateModified" datetime="2023-01-31T15:45:56+00:00">2023-01-31</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="HTTP是什么？"><a href="#HTTP是什么？" class="headerlink" title="HTTP是什么？"></a>HTTP是什么？</h1><p>HTTP是HyperText Transfer Protoco的缩写，中文译作“超文本传输协议”，HTTP构建在TCP传输协议的基础上，处于应用层，设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法，不过目前HTTP协议已经不仅仅只为传输HTML服务，还有其他功能，不过传输HTML仍然是最主要的。</p>
+<h1 id="怎样使用HTTP"><a href="#怎样使用HTTP" class="headerlink" title="怎样使用HTTP?"></a>怎样使用HTTP?</h1><p>在浏览器输入输入以HTTP或HTTPS作为协议名的URL就可以了<br>比如：<a target="_blank" rel="noopener" href="https://www.google.com.hk/search?q=URL&amp;oq=URL">https://www.google.com.hk/search?q=URL&amp;oq=URL</a></p>
+<h2 id="什么是URL"><a href="#什么是URL" class="headerlink" title="什么是URL?"></a>什么是URL?</h2><p>URL(统一资源定位符)是URI（统一资源标识符）的子集，或者说是一种具体实现，URI的定义不太好查，我的理解是URI是为了标识某一资源使用的某种编码方法，URL是通过使用其位置的方法标识资源，URI的另一个子集URN（统一资源名）是通过给予一个唯一的编码来标识资源。</p>
+<h2 id="URL的具体样子"><a href="#URL的具体样子" class="headerlink" title="URL的具体样子"></a>URL的具体样子</h2><pre><code>协议名://域名 端口 路径 ?查询参数 锚点
+</code></pre>
+<p>比如上文中的<code>https</code>就是协议名 <code>www.google.com.hk</code>为域名，端口这里留空，意思就是使用默认协议端口,<code>https</code>的默认端口为443，<code>/search</code>为路径，<code>?q=q=URL&amp;oq=URL</code>就是请求参数，请求参数以<code>?</code>开头，以<code>&amp;</code>来分割每一对请求参数，<code>#</code>为锚点，主要用来在HTML精确指定展示的段落。</p>
+<h2 id="回车后会发生什么？"><a href="#回车后会发生什么？" class="headerlink" title="回车后会发生什么？"></a>回车后会发生什么？</h2><p>浏览器会将其解析URL中的协议名，准备使用指定的协议发送报文，解析到主机时，使用DNS查询主机的ip地址，</p>
+<h3 id="DNS又是什么？"><a href="#DNS又是什么？" class="headerlink" title="DNS又是什么？"></a>DNS又是什么？</h3><p>域名解析服务，互联网的世界里只需要一串数字（ip）就可以标识一台唯一的主机，但是纯数字往往人记不清，比如谷歌的一台服务器ip：172.217.1.131，远远没有google.com.hk好记。域名等级从右向左看所处的位置，每隔一个点降一级，比如<code>www.google.com.hk</code>，<code>hk</code>是顶级域名(一级域名)，<code>com</code>是二级域名，<code>google</code>是三级域名，<code>www</code>是四级域名，查询域名的方式是从一级域名开始，一级级向下查询,其中还有内置的根域名服务器，主要用来查询顶级域名。</p>
+<h3 id="DNS又是怎么运作的？"><a href="#DNS又是怎么运作的？" class="headerlink" title="DNS又是怎么运作的？"></a>DNS又是怎么运作的？</h3><p>DNS采用一级级域名分配的方式方便查询，比如我们目前请求的主机名（域名）为<a target="_blank" rel="noopener" href="https://www.google.com.hk/">https://www.google.com.hk</a>。</p>
+<p>首先会查询我们本机的缓存，如果没有或者过期，就向当前网关指定的DNS服务器进行查询（在家庭里通常是你的路由器），如果仍然没有查询到，就会再向上级查询，通常这级请求的就是ISP的DNS服务器（互联网服务提供商，也就是我们经常说的联通，电信，移动这些电信运营商），ISP的DNS服务器拥有大量的缓存，更新也比较及时，基本在这里就会心满意足的得到IP了（不这样每次输个网址等大半天，不然得被投诉死），但是如果真的ISP的DNS服务器也没有呢？这时就会进入标准流程，服务器检查本地是否有.hk域名解析服务器的地址，如果没有会向13个根服务器（或其镜像）查询<code>.hk</code>域名解析服务器的地址，当然作为香港地区的一级域名，ISP的域名解析服务器一定会缓存的，ISP的DNS服务器向<code>.hk</code>的域名服务器询问<code>www.google.com.hk</code>的ip地址,<code>.hk</code>给出其子域名<code>.com.hk</code>的域名服务器地址，ISP域名服务器再向<code>.com.hk</code>的域名服务器询问，<code>.com.hk</code>的域名服务器返回<code>.google.com.hk</code>,再次查询，终于得到结果，OK。其实DNS有两种查询方式，分为递归查询和迭代，递归查询和迭代查询，递归要求必须返回最终的准确结果，迭代查询返回的是下一个子域名DNS服务器的地址，我们这里举例的就是迭代查询。</p>
+<p>DNS这里就告一段落了</p>
+<h2 id="得到ip准备发送报文"><a href="#得到ip准备发送报文" class="headerlink" title="得到ip准备发送报文"></a>得到ip准备发送报文</h2><p>解析到ip就可以准备发送报文了</p>
+<p>为了看见自己发送的报文，我们可以使用curl命令来查看整个过程。</p>
+<h3 id="学习curl命令的使用"><a href="#学习curl命令的使用" class="headerlink" title="学习curl命令的使用"></a>学习curl命令的使用</h3><p>直接使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl</span><br></pre></td></tr></table></figure>
+<p>会直接输出返回的HTML文档</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s</span><br></pre></td></tr></table></figure>
+<p>不要显示进度和警告，多余的东西闭嘴不要告诉我</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -v</span><br></pre></td></tr></table></figure>
+<p>显示更多的连接信息，其中</p>
+<ul>
+<li><code>&gt;</code>你发送的部分</li>
+<li><code>&lt;</code>你收到的部分</li>
+<li><code>*</code>由curl提供的辅助信息</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -H <span class="string">&quot;xxx&quot;</span></span><br></pre></td></tr></table></figure>
+<p>在报文的head部分添加指定的字符串</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X <span class="string">&quot;xxx&quot;</span></span><br></pre></td></tr></table></figure>
+<p>指定请求的方式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -d <span class="string">&quot;xxx&quot;</span></span><br></pre></td></tr></table></figure>
+<p>指定请求为post时发送的数据</p>
+<p>现在我们就用curl 命令来试试请求<a target="_blank" rel="noopener" href="https://www.google.com.hk/">https://www.google.com.hk</a></p>
+<h3 id="请求部分"><a href="#请求部分" class="headerlink" title="请求部分"></a>请求部分</h3><p>我们首先先忽略掉以*开头的部分，从上往下看。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; GET / HTTP/1.1</span><br><span class="line">&gt; Host: www.google.com.hk</span><br><span class="line">&gt; User-Agent: curl/7.47.0</span><br><span class="line">&gt; Accept: */*</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这里请求可以分为4部分</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 请求方式 路径及参数 协议版本</span><br><span class="line">2. 各种参数对</span><br><span class="line">2. 各种参数对</span><br><span class="line">2. 各种参数对</span><br><span class="line">3. 一个空行</span><br><span class="line">4. 要发送的数据</span><br></pre></td></tr></table></figure>
+
+<h4 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h4><p>这部分指定请求的关键信息，必不可少。</p>
+<ul>
+<li><p>请求方式<br>  请求方式实际有很多种，最常用的就是get和post。</p>
+<ul>
+<li>GET 服务器给我个东西<br>  直接在浏览器输入地址进行访问的方式就是get,get最大的特点就是请求参数是直接附在URL路径的路径后面，这个路径及参数直接显示在浏览器地址栏，并可以被保存为书签，可以在历史记录中看到，get请求的资源也往往可以被缓存。</li>
+<li>POST 寄给服务器一个东西<br>  在HTML中表单默认的提交方式就是POST,表示把数据发给服务器，这部分数据在报文的第四部分，POST不会再地址栏，历史记录中，一般不可缓存。</li>
+<li>PUT 整体更新<br>  没用过，看文章摸不着头脑，待更新</li>
+<li>PATCH 局部更新<br>  同上</li>
+<li>HEAD 给我看下资源的相关信息<br>  用来确定资源的相关信息，再考虑执行什么动作，这样以较少带宽消耗</li>
+<li>OPTIONS 服务器你告诉我一下支持的请求方法。<br>  比如我问一下谷歌支持什么请求方法  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt; HTTP/1.1 405 Method Not Allowed</span><br><span class="line">&lt; Allow: GET, HEAD</span><br><span class="line">&lt; Date: Sat, 31 Mar 2018 06:54:15 GMT</span><br><span class="line">&lt; Content-Type: text/html; charset=UTF-8</span><br><span class="line">&lt; Server: gws</span><br><span class="line">&lt; Content-Length: 1592</span><br><span class="line">&lt; X-XSS-Protection: 1; mode=block</span><br><span class="line">&lt; X-Frame-Options: SAMEORIGIN</span><br></pre></td></tr></table></figure>
+  只支持GET和HEAD。</li>
+</ul>
+</li>
+<li><p>路径及参数<br>值得注意的是这里的路径和URL中定义中的路径不一样，这里会包括参数</p>
+</li>
+<li><p>协议版本<br>HTTP有很多个版本，低版本支持的东西少一些。</p>
+</li>
+</ul>
+<h4 id="第二部分"><a href="#第二部分" class="headerlink" title="第二部分"></a>第二部分</h4><p>这部分作为补充信息，表达更多的东西<br>比如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Host: www.google.com.hk</span><br></pre></td></tr></table></figure>
+<p>用来指示这个http请求的是那个域名，比如有多个域名都指向同一IP，服务器接收到报文，就查找Host的字段，确定请求的是那个域名下的资源。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User-Agent: curl/7.47.0</span><br></pre></td></tr></table></figure>
+<p>发起请求的客户端（我）的名称</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Accept: */*</span><br></pre></td></tr></table></figure>
+<p>客户端（我）可以接受的数据类型</p>
+<h4 id="第三部分"><a href="#第三部分" class="headerlink" title="第三部分"></a>第三部分</h4><p>这部分固定为空行，用来分割1、2部分和4部分的联系，有时候我们也以空格为界，把空格上的部分称为head部分，下部分称为body部分。</p>
+<h4 id="第四部分"><a href="#第四部分" class="headerlink" title="第四部分"></a>第四部分</h4><p>传输的数据。</p>
+<h3 id="响应部分"><a href="#响应部分" class="headerlink" title="响应部分"></a>响应部分</h3><p>可能已经忘记了我们开始请求的谁了，贴一下命令</p>
+<p><code>curl -s -v -- &quot;https://www.google.com.hk&quot;</code></p>
+<p>这是响应部分</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt; HTTP/1.1 200 OK</span><br><span class="line">&lt; Date: Sat, 31 Mar 2018 07:03:53 GMT</span><br><span class="line">&lt; Expires: -1</span><br><span class="line">&lt; Cache-Control: private, max-age=0</span><br><span class="line">&lt; Content-Type: text/html; charset=Big5</span><br><span class="line">&lt; P3P: CP=<span class="string">&quot;This is not a P3P policy! See g.co/p3phelp for more info.&quot;</span></span><br><span class="line">&lt; Server: gws</span><br><span class="line">&lt; X-XSS-Protection: 1; mode=block</span><br><span class="line">&lt; X-Frame-Options: SAMEORIGIN</span><br><span class="line">&lt; Set-Cookie: 1P_JAR=2018-03-31-07; expires=Mon, 30-Apr-2018 07:03:53 GMT; path=/; domain=.google.com.hk</span><br><span class="line">&lt; Set-Cookie: NID=127=R-9OY1mXK_x-RPiO1dIs-6Noj2lg-Aq7rxtKPrZe9WoRtZAUpvURT_REdMZLag74mTGHBvnNfoIb6kImXFPS1acHFnNrru2C8WN5ggag5RtSF4e; expires=Sun, 30-Sep-2018 07:03:53 GMT; path=/; domain=.google.com.hk; HttpOnly</span><br><span class="line">&lt; Alt-Svc: hq=<span class="string">&quot;:443&quot;</span>; ma=2592000; quic=51303432; quic=51303431; quic=51303339; quic=51303335,quic=<span class="string">&quot;:443&quot;</span>; ma=2592000; v=<span class="string">&quot;42,41,39,35&quot;</span></span><br><span class="line">&lt; Accept-Ranges: none</span><br><span class="line">&lt; Vary: Accept-Encoding</span><br><span class="line">&lt; Transfer-Encoding: chunked</span><br><span class="line">&lt;</span><br><span class="line">&lt;!doctype html&gt;&lt;h……（后面的太多了）</span><br></pre></td></tr></table></figure>
+
+<p>响应部分其实和请求差不多，也分为四部分</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 协议版本 状态码 状态码描述文字</span><br><span class="line">2. 各种参数对</span><br><span class="line">2. 各种参数对</span><br><span class="line">2. 各种参数对</span><br><span class="line">3. 一个空行</span><br><span class="line">4. 响应的数据</span><br></pre></td></tr></table></figure>
+
+<p>这里主要讲一下状态码<br>状态码分为5段</p>
+<ol>
+<li>100~199 部分响应</li>
+<li>200~299 成功</li>
+<li>300~399 重定向</li>
+<li>400~499 客户端错误</li>
+<li>500~599 服务器错误</li>
+</ol>
+<h4 id="100状态码"><a href="#100状态码" class="headerlink" title="100状态码"></a>100状态码</h4><p>很少遇到，现在steam被墙返回的就是108错误，还有就是需要转换协议遇见过101状态码</p>
+<h4 id="200状态码"><a href="#200状态码" class="headerlink" title="200状态码"></a>200状态码</h4><p>请求成功 遇见新的再更新</p>
+<h4 id="300状态码"><a href="#300状态码" class="headerlink" title="300状态码"></a>300状态码</h4><p>重定向到某个地址，一般会在第二部分添加Location字段指定新地址</p>
+<ul>
+<li>301 请求的资源被永久移动到了新地址，网址改域名了就可能用这个</li>
+<li>302 请求的资源暂时移动到了新地址，这个我学校登陆认证后的页面就会302返回新地址，这个新地址指向个人主页，个人主页会设置cookies。</li>
+</ul>
+<h4 id="400状态码"><a href="#400状态码" class="headerlink" title="400状态码"></a>400状态码</h4><p>客户端错误</p>
+<ul>
+<li>400 请求的报文信息是错误的，写爬虫不填好refer,host这些经常遇见</li>
+<li>403 请求的支援禁止访问，一般是因为没有权限。</li>
+<li>404 请求的资源再服务器上找不到</li>
+</ul>
+<h4 id="500状态码"><a href="#500状态码" class="headerlink" title="500状态码"></a>500状态码</h4><p>服务器错误，我很少遇见。</p>
+<h3 id="第二部分-1"><a href="#第二部分-1" class="headerlink" title="第二部分"></a>第二部分</h3><p>也是辅助性的文本，比如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Date: Sat, 31 Mar 2018 07:03:53 GMT</span><br></pre></td></tr></table></figure>
+<p>响应生成的时间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Content-Type: text/html; charset=Big5</span><br></pre></td></tr></table></figure>
+<p>第四部分数据的格式和其使用的字符编码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-Cookie: NID=127=R-9OY1mXK……</span><br></pre></td></tr></table></figure>
+<p>用来辨识用户身份</p>
+<h3 id="其它部分和请求相同。"><a href="#其它部分和请求相同。" class="headerlink" title="其它部分和请求相同。"></a>其它部分和请求相同。</h3><h3 id="使用Google-Chrome开发者工具查看"><a href="#使用Google-Chrome开发者工具查看" class="headerlink" title="使用Google Chrome开发者工具查看"></a>使用Google Chrome开发者工具查看</h3><ol>
+<li><p>打开Google Chrome</p>
+</li>
+<li><p>按<code>F12</code>，开发者工具就打开了</p>
+</li>
+<li><p>点击Network<br><img data-src="/2018/03/30/http%E5%85%A5%E9%97%A8/network.png"></p>
+</li>
+<li><p>输入你想访问的网址</p>
+</li>
+<li><p>点击新产生的条目，就能看见相关的东西了<br><img data-src="/2018/03/30/http%E5%85%A5%E9%97%A8/list.png"></p>
+</li>
+</ol>
+<ul>
+<li><code>Headers</code>主要显示相关的请求头和请求参数，这些信息会被Chorom解码排版，如果想看原始信息，点击<code>view source</code>。<br><img data-src="/2018/03/30/http%E5%85%A5%E9%97%A8/source.png"></li>
+</ul>
+<p><code>注意：</code>访问新的网页会删除之前访问的列表，如果不想自动删除，勾选<code>Preserve log</code></p>
+<p><img data-src="/2018/03/30/http%E5%85%A5%E9%97%A8/log.png"></p>
+<hr>
+<p>OK，以后有什么新东西再来更新。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%BE%85%E6%9B%B4%E6%96%B0/" rel="tag"># 待更新</a>
+              <a href="/tags/HTTP/" rel="tag"># HTTP</a>
+              <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"># 网络</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/03/25/%E8%AF%95%E8%AF%95%E8%84%9A%E6%9C%AC/" rel="prev" title="试试脚本">
+                  <i class="fa fa-chevron-left"></i> 试试脚本
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/04/03/HTML%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/" rel="next" title="HTML常用标签">
+                  HTML常用标签 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备18020005号 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geylnu</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">49k</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="前言由于我专业原因，有大量软件都必须使用Windows,并且我的笔记本在安装Linux的过程中，总容易出现各种兼容问题，因此没有安装Windows&#x2F;Linux双系统，而在Windows上使用虚拟机也不是一个太棒的选择，最后使用了win10的Linux子系统，体验感觉还行，如果在Windows平台安装失败的同学可以参照我博客的Linux部分尝试安装。 在windows上安装准备安装的必要工">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Hexo+Github Pages给自己搭建一个博客">
+<meta property="og:url" content="http://example.com/2018/03/22/%E4%BD%BF%E7%94%A8Hexo-Github-Pages%E7%BB%99%E8%87%AA%E5%B7%B1%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="Gelynu&#39;s Blog">
+<meta property="og:description" content="前言由于我专业原因，有大量软件都必须使用Windows,并且我的笔记本在安装Linux的过程中，总容易出现各种兼容问题，因此没有安装Windows&#x2F;Linux双系统，而在Windows上使用虚拟机也不是一个太棒的选择，最后使用了win10的Linux子系统，体验感觉还行，如果在Windows平台安装失败的同学可以参照我博客的Linux部分尝试安装。 在windows上安装准备安装的必要工">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/look.png">
+<meta property="og:image" content="http://example.com/err1.png">
+<meta property="og:image" content="http://example.com/err2.png">
+<meta property="og:image" content="http://example.com/suc.png">
+<meta property="article:published_time" content="2018-03-22T09:46:51.000Z">
+<meta property="article:modified_time" content="2023-01-31T15:45:57.013Z">
+<meta property="article:author" content="Geylnu">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/look.png">
+
+
+<link rel="canonical" href="http://example.com/2018/03/22/%E4%BD%BF%E7%94%A8Hexo-Github-Pages%E7%BB%99%E8%87%AA%E5%B7%B1%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2018/03/22/%E4%BD%BF%E7%94%A8Hexo-Github-Pages%E7%BB%99%E8%87%AA%E5%B7%B1%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/","path":"2018/03/22/使用Hexo-Github-Pages给自己搭建一个博客/","title":"使用Hexo+Github Pages给自己搭建一个博客"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>使用Hexo+Github Pages给自己搭建一个博客 | Gelynu's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Gelynu's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8windows%E4%B8%8A%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">在windows上安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%AE%89%E8%A3%85%E7%9A%84%E5%BF%85%E8%A6%81%E5%B7%A5%E5%85%B7"><span class="nav-number">2.1.</span> <span class="nav-text">准备安装的必要工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E8%A1%8C%E6%9C%AC%E5%9C%B0%E5%AE%89%E8%A3%85"><span class="nav-number">2.2.</span> <span class="nav-text">进行本地安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Github-Pages"><span class="nav-number">2.3.</span> <span class="nav-text">使用Github Pages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Coding-Pages%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.4.</span> <span class="nav-text">使用Coding Pages服务</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8Linux-Ubuntu-%E4%B8%8A%E5%AE%89%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">在Linux(Ubuntu)上安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83"><span class="nav-number">3.1.</span> <span class="nav-text">我的系统环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85node-js"><span class="nav-number">3.2.</span> <span class="nav-text">安装node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Hexo"><span class="nav-number">3.3.</span> <span class="nav-text">安装Hexo</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Geylnu</p>
+  <div class="site-description" itemprop="description">记录我的前端学习~</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/03/22/%E4%BD%BF%E7%94%A8Hexo-Github-Pages%E7%BB%99%E8%87%AA%E5%B7%B1%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gelynu's Blog">
+      <meta itemprop="description" content="记录我的前端学习~">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="使用Hexo+Github Pages给自己搭建一个博客 | Gelynu's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用Hexo+Github Pages给自己搭建一个博客
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-03-22 09:46:51" itemprop="dateCreated datePublished" datetime="2018-03-22T09:46:51+00:00">2018-03-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-31 15:45:57" itemprop="dateModified" datetime="2023-01-31T15:45:57+00:00">2023-01-31</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>903</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由于我专业原因，有大量软件都必须使用Windows,并且我的笔记本在安装Linux的过程中，总容易出现各种兼容问题，因此没有安装Windows&#x2F;Linux双系统，而在Windows上使用虚拟机也不是一个太棒的选择，最后使用了win10的Linux子系统，体验感觉还行，如果在Windows平台安装失败的同学可以参照我博客的Linux部分尝试安装。</p>
+<h1 id="在windows上安装"><a href="#在windows上安装" class="headerlink" title="在windows上安装"></a>在windows上安装</h1><h2 id="准备安装的必要工具"><a href="#准备安装的必要工具" class="headerlink" title="准备安装的必要工具"></a>准备安装的必要工具</h2><p>本篇默认使用<strong>git bash</strong>作为bash环境，并且自带<strong>git</strong>，可以从<a target="_blank" rel="noopener" href="https://git-scm.com/download/win">这里</a>下载安装，还需要安装<strong>node.js</strong>，可以从<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/">这里</a>下载安装（记得勾选<strong>Add to PATH</strong>）。<br>我当前使用的node.js版本为v8.10.0，npm版本为5.6.0，版本不一致可能带来<strong>不可预知的错误</strong>。</p>
+<h2 id="进行本地安装"><a href="#进行本地安装" class="headerlink" title="进行本地安装"></a><strong>进行本地安装</strong></h2><ol>
+<li><p>首先使用<strong>npm</strong>安装<strong>hexo</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>你可以使用<code>hexo -v</code>查看是否安装成功</p>
+</li>
+<li><p><strong>创建的博客</strong><br>使用<code>cd</code>跳转到一个安全的目录，例如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/Documents</span><br></pre></td></tr></table></figure>
+<p> 初始化你的博客</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init myblog</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>这条命令执行中经常出现各种问题，可以<code>rm -rf myblog</code>删除这个目录重试</strong></p>
+</li>
+<li><p><strong>如果经常连接github失败，建议使用系统代理</strong></p>
+</li>
+<li><p><strong>仍然无法正确安装并初始化？</strong><br> <strong>可以用Linux子系统试试，参照本篇Linux部分</strong></p>
+</li>
+</ul>
+</li>
+<li><p><strong>验证</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> myblog</span><br><span class="line">$ npm i</span><br></pre></td></tr></table></figure>
+<p> 博客初始化就完成了</p>
+<p> 现在输入</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<pre><code>然后在浏览器中访问`http://localhost:4000/`即可预览界面。
+</code></pre>
+<p>界面是这样的<br><img data-src="/./look.png" alt="预览图像"></p>
+<h2 id="使用Github-Pages"><a href="#使用Github-Pages" class="headerlink" title="使用Github Pages"></a>使用Github Pages</h2><p>在Github上新建一个名为<code>你github用户名.github.io</code>的新repo<br>在博客目录中打开配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim _config.yml</span><br></pre></td></tr></table></figure>
+<p>把最后一行<code>type </code>改成<code>type: git</code><br>在最后一行，与type平齐，加上<code>repo: 仓库地址</code><br>比如的仓库地址是：<code>git@github.com:Geylnu/Geylnu.github.io.git</code><br>安装git部署插件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>请在此前确认已经正确配置git<br>然后输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>OK<br>等上几分钟，访问<code>用户名.github.io</code>就能看见自己的博客了。</p>
+<ul>
+<li>如果访问失败，检查Github Pages是否开启</li>
+<li>如果缺少样式，检查仓库名是否正确</li>
+</ul>
+<p>添加新的博客命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo start <span class="string">&quot;新的博客名&quot;</span></span><br></pre></td></tr></table></figure>
+<p>重新生成页面使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+<h2 id="使用Coding-Pages服务"><a href="#使用Coding-Pages服务" class="headerlink" title="使用Coding Pages服务"></a>使用Coding Pages服务</h2><p>由于总所周知的原因，Github在国内的访问很不稳定，由Github Pages支撑的博客自然也难以访问，<a target="_blank" rel="noopener" href="https://coding.net/">coding</a>位于国内，并且也支持Pages服务。<br>使用coding时，只需要将仓库名命名为<code>你的用户名.coding.me</code>，就可以了，其他操作和Giihub pages相同。</p>
+<h1 id="在Linux-Ubuntu-上安装"><a href="#在Linux-Ubuntu-上安装" class="headerlink" title="在Linux(Ubuntu)上安装"></a>在Linux(Ubuntu)上安装</h1><h2 id="我的系统环境"><a href="#我的系统环境" class="headerlink" title="我的系统环境"></a>我的系统环境</h2><p>我使用的是<strong>win10 1709版本</strong>，os内部版本为<strong>16299.309</strong>，安装的Linux子系统为<strong>Ubuntu 16.04.3</strong>内核版本<strong>4.4.0-43-Microsoft</strong><br>你可以<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/bc38ed12da1d">参照这里</a>安装win10 Linux子系统。</p>
+<h2 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h2><p>使用官方的脚本安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -</span><br><span class="line">$ sudo apt-get install -y nodejs</span><br></pre></td></tr></table></figure>
+<p>如果你是其他Linux发行版本或想安装其他版本，你可点此访问<a target="_blank" rel="noopener" href="https://github.com/nodesource/distributions">相关说明</a></p>
+<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p>使用npm安装hexo</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>安装完成后可以使用<code>node -v</code>和<code>npm -v</code>确认是否安装成功</p>
+<p><strong>初始化博客</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init myblog</span><br></pre></td></tr></table></figure>
+<p>我在这一步总是遇见报错<br><img data-src="/./err1.png" alt="报错"><br>根据错误提示尝试了各种办法都没有解决（还害的我重新装了次子系统），之后我在Github也看见了有人遇见了同样的<a target="_blank" rel="noopener" href="https://github.com/npm/npm/issues/20103" title="Rename Issues">问题</a></p>
+<p>因为这个问题是偶发性的，其实直接<code>cd ./myblog</code>重新执行<code>npm install</code></p>
+<p>还是报错？<br><img data-src="/./err2.png" alt="报错"><br>再来，直到不报错为止<br><img data-src="/./suc.png" alt="成功"><br>OK<br>可以用<code>hexo s</code>验证是否能正确浏览,其他的就很在windows一样了</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag"># 博客</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/03/21/%E6%96%B9%E6%96%B9%E7%9A%84%E6%8E%A8%E8%8D%90%E4%B9%A6%E7%9B%AE-%E5%BD%B1%E7%89%87/" rel="prev" title="方方的推荐书目/影片">
+                  <i class="fa fa-chevron-left"></i> 方方的推荐书目/影片
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/03/25/%E8%AF%95%E8%AF%95%E8%84%9A%E6%9C%AC/" rel="next" title="试试脚本">
+                  试试脚本 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备18020005号 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geylnu</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">49k</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

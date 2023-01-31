@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="如何向后端请求数据？ form表单提交，使用method指定提交方式,action为提交的地址。  a标签点击能发请求这两者都要刷新页面或者新开页面  img可以发请求，但请求的必须是图片 不需要增加到页面  script和link也可以发起请求，但link和script只能加载指定格式，但是需要加到页面   之后，ie5在js中引入ActiveX对象（api），使js可以直接发起http请求随后">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ajax初探">
+<meta property="og:url" content="http://example.com/2018/06/11/ajax%E5%88%9D%E6%8E%A2/index.html">
+<meta property="og:site_name" content="Gelynu&#39;s Blog">
+<meta property="og:description" content="如何向后端请求数据？ form表单提交，使用method指定提交方式,action为提交的地址。  a标签点击能发请求这两者都要刷新页面或者新开页面  img可以发请求，但请求的必须是图片 不需要增加到页面  script和link也可以发起请求，但link和script只能加载指定格式，但是需要加到页面   之后，ie5在js中引入ActiveX对象（api），使js可以直接发起http请求随后">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-06-11T23:05:10.000Z">
+<meta property="article:modified_time" content="2023-01-31T15:45:56.977Z">
+<meta property="article:author" content="Geylnu">
+<meta property="article:tag" content="ajax">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2018/06/11/ajax%E5%88%9D%E6%8E%A2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2018/06/11/ajax%E5%88%9D%E6%8E%A2/","path":"2018/06/11/ajax初探/","title":"ajax初探"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ajax初探 | Gelynu's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Gelynu's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%90%91%E5%90%8E%E7%AB%AF%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">如何向后端请求数据？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ajax"><span class="nav-number">1.1.</span> <span class="nav-text">ajax</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E6%95%B0%E6%8D%AE"><span class="nav-number">1.2.</span> <span class="nav-text">解析数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON%E8%AF%AD%E6%B3%95"><span class="nav-number">1.2.1.</span> <span class="nav-text">JSON语法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5"><span class="nav-number">1.3.</span> <span class="nav-text">同源策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEheader"><span class="nav-number">1.4.</span> <span class="nav-text">设置header</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Geylnu</p>
+  <div class="site-description" itemprop="description">记录我的前端学习~</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/06/11/ajax%E5%88%9D%E6%8E%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Geylnu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gelynu's Blog">
+      <meta itemprop="description" content="记录我的前端学习~">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ajax初探 | Gelynu's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ajax初探
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-06-11 23:05:10" itemprop="dateCreated datePublished" datetime="2018-06-11T23:05:10+00:00">2018-06-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-31 15:45:56" itemprop="dateModified" datetime="2023-01-31T15:45:56+00:00">2023-01-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>905</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="如何向后端请求数据？"><a href="#如何向后端请求数据？" class="headerlink" title="如何向后端请求数据？"></a>如何向后端请求数据？</h1><ul>
+<li><p>form表单提交，使用method指定提交方式,action为提交的地址。</p>
+</li>
+<li><p>a标签点击能发请求<br>这两者都要刷新页面或者新开页面</p>
+</li>
+<li><p>img可以发请求，但请求的必须是图片 不需要增加到页面</p>
+</li>
+<li><p>script和link也可以发起请求，但link和script只能加载指定格式，但是需要加到页面</p>
+</li>
+</ul>
+<p>之后，ie5在js中引入ActiveX对象（api），使js可以直接发起http请求<br>随后其它浏览器也跟进，取名<code>XMLHttpRequest</code><br>不到一年，谷歌推出gmail.com,这里可以说前端真正诞生了</p>
+<p>ie6后来也成为了安装最多的浏览器60%,ie因此就膨胀了,随后微软拆开ie6的开发人员，只更新安全功能，让chrome也跟了上来</p>
+<h2 id="ajax"><a href="#ajax" class="headerlink" title="ajax"></a>ajax</h2><p>Jesse James Garrett 将一下技术取名AJAX（异步的javaScript和 XML</p>
+<ol>
+<li>使用XMLHttpRequest发请求</li>
+<li>服务器返回xml格式的字符串</li>
+<li>js解析xml，并更新局部页面(现在用JSON)</li>
+</ol>
+<p>使用<code>XMLHttpRequest</code>的方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">myButton.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>,<span class="function">()=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> request = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br><span class="line">    request.<span class="title function_">open</span>(<span class="string">&#x27;GET&#x27;</span>,<span class="string">&#x27;/XXX&#x27;</span>) <span class="comment">//初始化配置  请求方式忽略大小写  默认异步</span></span><br><span class="line">    request.<span class="property">onreadystatechange</span> = <span class="function">()=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (request.<span class="property">readyState</span> === <span class="number">4</span> &amp;&amp; request.<span class="property">status</span> === <span class="number">200</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(request.<span class="property">responseText</span>) <span class="comment">//响应内容</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    request.<span class="title function_">send</span>() <span class="comment">//发送</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>网络响应的时间会很长，这段时间已经够javaScript执行很多任务了，所以需要使用异步</p>
+<p><strong>readystate</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">值</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center"><code>open()</code>方法还没有被调用</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center"><code>send()</code>方法还没有被调用</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center"><code>send()</code>方法已被调用，响应头和响应状态码已经返回</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">正在下载响应体</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">请求全部完成</td>
+</tr>
+</tbody></table>
+<p>onreadystate 要注意放在前面</p>
+<p>一般不用管300状态码. 浏览器会自动处理</p>
+<h2 id="解析数据"><a href="#解析数据" class="headerlink" title="解析数据"></a>解析数据</h2><p>可以使用DOM api解析xml，但是很复杂，现在已经过时了。<br>1所以用什么更好的方法更好的表示数据呢？</p>
+<p>后来道格拉斯·克罗克福发明了一种轻量的资料语言<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-hans/JSON">JSON</a></p>
+<h3 id="JSON语法"><a href="#JSON语法" class="headerlink" title="JSON语法"></a>JSON语法</h3><p>JSON支持<code>object</code> <code>array</code>两种数据组织方式，值支持<code>string</code> <code>number</code> <code>object</code> <code>array</code> <code>true</code> <code>false</code> <code>null</code><br>没有<code>undefined</code></p>
+<p>json没有变量，不支持引用，没有原型链</p>
+<ul>
+<li>string 必须具有<code>&quot;&quot;</code><br>支持转义符<code>\\</code></li>
+</ul>
+<p>注意，永远返回的是字符串，只是将其解析为对象<br>解析:<code>JSON.parse(string)</code></p>
+<h2 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h2><p>同源策略要求协议+端口+域名一模一样才允许发起AJAX请求，保证安全</p>
+<p>本质是禁止一个域名的js在未经允许的情况下，不得读取另一个域名的内容。但浏览器并不阻止向另一个域名发送请求。</p>
+<p>不是同源的网页不能使用ajax发起请求（实际上发起了，只是不能读取内容），其他都可以</p>
+<p>简单规避方法就是使用CORS,服务端设置<code>Access-Control-Allow-Origin: xxx</code>响应头 表示允许xxx跨域访问</p>
+<h2 id="设置header"><a href="#设置header" class="headerlink" title="设置header"></a>设置header</h2><p>必须在open()和send()之间调用。<br>send()可以为post 设置请求内容</p>
+<p>getAllResponseHeader获得所有响应头</p>
+<p>tcp进行分片传输，因此会先拿到先拿到最开始的状态包，就可以先判断是否需要继续接受等之后的逻辑</p>
+<p>传多个变量很容易让别人不知道自己具体想传什么，这里可以采用传个对象的方式，这样就有名字了</p>
+<p>设置header 接受多参数</p>
+<p>析构赋值，把名字一样的赋到同名变量里</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">param = &#123;<span class="attr">a</span>:<span class="string">&#x27;aga&#x27;</span>,<span class="attr">b</span>:<span class="string">&#x27;gag&#x27;</span>,<span class="attr">c</span>:<span class="string">&#x27;aga&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">let</span> &#123;a,b,c&#125; = param</span><br></pre></td></tr></table></figure>
+<p>对于函数可以采用这个方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> (<span class="params">&#123;a,b,c&#125;</span>)&#123;<span class="comment">//取得参数中的abc</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>还有很多方式比如对象键名为字符串，不可以调用变量，但是<code>[x]: sss</code>可以</p>
+<p>自己写回调可能不同库不一样，回调函数名不统一，所以需要规范出来</p>
+<p>Promise写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.<span class="title function_">then</span>() <span class="comment">//第一个是成功第二个是失败</span></span><br></pre></td></tr></table></figure>
+
+<p>具体写法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="keyword">function</span> (<span class="params">resolve,reject</span>)&#123;</span><br><span class="line"> xxx</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ajax/" rel="tag"># ajax</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/06/10/JSONP/" rel="prev" title="JSONP">
+                  <i class="fa fa-chevron-left"></i> JSONP
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/07/09/MVC/" rel="next" title="MVC">
+                  MVC <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备18020005号 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geylnu</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">49k</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
